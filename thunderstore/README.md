@@ -45,9 +45,9 @@ Built with [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Grou
 
 ![A selection of W&W Inc. units](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/units-infrequent.png)
 
-### More cards
+### Spells
 
-![A selection of W&W Inc. spells, units and rooms](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/spells-infrequent.png)
+![A selection of W&W Inc. spells](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/spells.png)
 
 ### Rooms
 
@@ -87,7 +87,7 @@ Si tienes la versión local de desarrollo en `Local-WWInc`, desactiva o retira e
 
 ## Galería
 
-[Ver las capturas de campeones, unidades, cartas y salas](#gallery).
+[Ver las capturas de campeones, unidades, hechizos y salas](#gallery).
 
 ## Créditos
 
@@ -97,3 +97,5 @@ Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Grou
 <!-- 2026-10-24-1705||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir galería de cinco capturas con enlaces públicos de mt2-ww-inc-media -->
 
 <!-- 2026-10-24-1709||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir aviso de clan inacabado y petición de errores y balance en inglés y español; enlaces públicos de W&W y Discord; conservar beta 0.1.132 -->
+
+<!-- 2026-10-24-1717||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Sustituir More cards/spells-infrequent.png por Spells/spells.png y actualizar enlace español de galería -->

@@ -22,6 +22,26 @@ If you have the local development build in `Local-WWInc`, disable or remove that
 
 Built with [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) and [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Thanks to their authors and the Monster Train modding community.
 
+## Gallery / Galería
+
+### Champions / Campeones
+
+![Dean of the Hat Department — three upgrade paths](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/dean.png)
+
+![Professor of Advanced Witchcraft — three upgrade paths](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/professor.png)
+
+### Units / Unidades
+
+![A selection of W&W Inc. units](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/units-infrequent.png)
+
+### More cards / Más cartas
+
+![A selection of W&W Inc. spells, units and rooms](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/spells-infrequent.png)
+
+### Rooms / Salas
+
+![Awkward Silence and Strictly Platonic](https://raw.githubusercontent.com/David-defrutos/mt2-ww-inc-media/main/rooms.png)
+
 ---
 
 # W&W Inc. — Beta
@@ -47,3 +67,5 @@ Si tienes la versión local de desarrollo en `Local-WWInc`, desactiva o retira e
 
 Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) y [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Gracias a sus autores y a la comunidad de modding de Monster Train.
 <!-- 2026-10-24-1621||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Ficha pública bilingüe beta con contenido, dependencias y aviso de instalación duplicada -->
+
+<!-- 2026-10-24-1705||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir galería de cinco capturas con enlaces públicos de mt2-ww-inc-media -->

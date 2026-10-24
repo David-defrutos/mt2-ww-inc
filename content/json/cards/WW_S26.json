@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S26",
+      "names": {
+        "spanish": "Retirada de Matrícula",
+        "english": "Enrollment Recall",
+        "french": "Rappel d'inscription",
+        "german": "Rückruf der Einschreibung",
+        "portuguese": "Recolhimento de Matrícula",
+        "russian": "Отзыв зачисления",
+        "chinese": "入学召回",
+        "chinese_traditional": "入學召回",
+        "korean": "등록 소환",
+        "japanese": "登録呼び戻し"
+      },
+      "descriptions": {
+        "english": "Return a non-champion friendly unit and its equipment to your hand.",
+        "spanish": "Devuelve una unidad aliada no campeón y su equipo a tu mano.",
+        "french": "Renvoie une unité alliée non-champion et son équipement dans votre main.",
+        "german": "Nimm einen verbündeten Nicht-Champion und seine Ausrüstung auf die Hand.",
+        "portuguese": "Devolve uma unidade aliada que não seja um campeão e seu equipamento à sua mão.",
+        "russian": "Возвращает союзного бойца, кроме чемпиона, и его снаряжение в руку.",
+        "chinese": "将一个非勇士友方单位及其装备返回手牌。",
+        "chinese_traditional": "將一個非勇士友方單位及其裝備返回手牌。",
+        "korean": "영웅이 아닌 아군 유닛과 그 장비를 손으로 되돌립니다.",
+        "japanese": "チャンピオン以外の味方ユニットとその装備を手札に戻す。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "effects": [
+        "@WW_S26_Return"
+      ],
+      "card_art": "@WW_S26CardArt",
+      "pools": [
+        "MegaPool"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S26_Return",
+      "name": "CardEffectReturnUnitToHand",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "target_character_excluded_subtypes": [
+        "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"
+      ],
+      "param_bool": true,
+      "param_bool_2": true,
+      "param_bool_3": true,
+      "should_fail_to_cast_if_test_fails": true,
+      "should_cancel_subsequent_effects_if_test_fails": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S26CardArt",
+      "path": "textures/cards/WW_S26CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S26CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S26CardArt"
+        }
+      }
+    }
+  ]
+}

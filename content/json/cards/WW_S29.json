@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S29",
+      "names": {
+        "spanish": "Spike de Prórroga",
+        "english": "Extension Spike",
+        "french": "Pointe de prolongation",
+        "german": "Verlängerungsstachel",
+        "portuguese": "Espigão de Prorrogação",
+        "russian": "Шип отсрочки",
+        "chinese": "延期尖刺",
+        "chinese_traditional": "延期尖刺",
+        "korean": "연장 쐐기",
+        "japanese": "延長のスパイク"
+      },
+      "descriptions": {
+        "english": "Apply [x] [spellweakness] to enemy units.",
+        "spanish": "Añade [spellweakness] [x] a las unidades enemigas.",
+        "french": "Appliquez [spellweakness] [x] aux unités ennemies.",
+        "german": "Wende [spellweakness] [x] auf gegnerische Einheiten an.",
+        "portuguese": "Aplica [spellweakness] [x] às unidades inimigas.",
+        "russian": "Накладывает [spellweakness] [x] на вражеских бойцов.",
+        "chinese": "对敌方单位施加[spellweakness] [x]。",
+        "chinese_traditional": "對敵方單位施加[spellweakness] [x]。",
+        "korean": "적 유닛들에게 [spellweakness] [x]를 부여합니다.",
+        "japanese": "敵ユニットに[spellweakness] [x]を付与する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "rare",
+      "targets_room": true,
+      "targetless": false,
+      "effects": [
+        "@WW_S29_Effect"
+      ],
+      "card_art": "@WW_S29CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "cost_type": "x",
+      "traits": [
+        "@WW_Consume",
+        "@WW_S29_WeaknessX"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S29_Effect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "room",
+      "target_team": "heroes",
+      "param_status_effects": [
+        {
+          "status": "spell weakness",
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S29CardArt",
+      "path": "textures/cards/WW_S29CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S29CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S29CardArt"
+        }
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S29_WeaknessX",
+      "name": "CardTraitScalingAddStatusEffect",
+      "param_status_effects": [
+        {
+          "status": "spell weakness",
+          "count": 0
+        }
+      ],
+      "param_tracked_value": "played_cost",
+      "param_entry_duration": "previous_turn",
+      "param_int": 1,
+      "param_team": "heroes"
+    }
+  ]
+}

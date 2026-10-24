@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S04_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "healing_area"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S04",
+      "names": {
+        "spanish": "Prácticas de Medicina Ofensiva",
+        "english": "Offensive Medicine Practicum",
+        "french": "Stage de médecine offensive",
+        "german": "Praktikum in offensiver Medizin",
+        "portuguese": "Estágio de Medicina Ofensiva",
+        "russian": "Практикум наступательной медицины",
+        "chinese": "攻击医学实习",
+        "chinese_traditional": "攻擊醫學實習",
+        "korean": "공격 의학 실습",
+        "japanese": "攻撃医学実習"
+      },
+      "descriptions": {
+        "spanish": "Este turno, los hechizos de curación también infligen tanto daño a las unidades enemigas de su piso como la salud restaurada.",
+        "english": "This turn, healing spells also deal damage to enemy units on their floor equal to the health restored.",
+        "french": "Ce tour, les sorts de soin infligent aussi à chaque ennemi de leur étage les PV restaurés.",
+        "german": "Diese Runde schädigen Heilzauber auch jeden Gegner ihrer Etage um die wiederhergestellte Gesundheit.",
+        "portuguese": "Neste turno, feitiços de cura também causam a cada inimigo do andar dano igual à vida mente restaurada.",
+        "russian": "В этот ход лечебные заклинания также наносят каждому врагу этажа урон, равный восстановленному здоровью.",
+        "chinese": "本回合治疗法术也对本层每个敌人造成恢复生命总量的伤害。",
+        "chinese_traditional": "本回合治療法術也對本層每個敵人造成恢復生命總量的傷害。",
+        "korean": "이번 턴 치유 주문은 회복한 총 생명력만큼 해당 층 모든 적에게도 피해를 줍니다.",
+        "japanese": "このターン回復呪文は、その階の各敵にも回復合計分のダメージを与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S04CardArt",
+      "pools": [],
+      "targetless": true,
+      "effects": [
+        "@WW_S04_Effect"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S04CardArt",
+      "path": "textures/cards/WW_S04CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S04CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S04CardArt"
+        }
+      }
+    }
+  ]
+}

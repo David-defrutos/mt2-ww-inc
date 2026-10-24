@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S20_Effect",
+      "name": "CardEffectDrawType",
+      "target_mode": "draw_pile",
+      "target_team": "none",
+      "target_card_type": "spell",
+      "param_int": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S20",
+      "names": {
+        "spanish": "Semana de Exámenes",
+        "english": "Exam Week",
+        "french": "Semaine d'examens",
+        "german": "Prüfungswoche",
+        "portuguese": "Semana de Provas",
+        "russian": "Экзаменационная неделя",
+        "chinese": "考试周",
+        "chinese_traditional": "考試週",
+        "korean": "시험 주간",
+        "japanese": "試験週間"
+      },
+      "descriptions": {
+        "english": "Draw [effect0.power] spells from your draw or discard pile.",
+        "spanish": "Roba [effect0.power] hechizos de tu pila de robo o de descartes.",
+        "french": "Piochez [effect0.power] sorts dans votre pioche ou votre défausse.",
+        "german": "Ziehe [effect0.power] Zauber aus deinem Nachzieh- oder Ablagestapel.",
+        "portuguese": "Compre [effect0.power] feitiços do seu baralho de compra ou da pilha de descarte.",
+        "russian": "Возьмите [effect0.power] заклинания из колоды добора или сброса.",
+        "chinese": "从抽牌堆或弃牌堆抽取 [effect0.power] 张法术牌。",
+        "chinese_traditional": "從抽牌堆或棄牌堆抽取 [effect0.power] 張法術牌。",
+        "korean": "뽑기 더미 또는 버린 카드 더미에서 주문을 [effect0.power]장 뽑습니다.",
+        "japanese": "山札または捨て札から呪文を[effect0.power]枚引く。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S20CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S20_Effect"
+      ],
+      "traits": []
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S20CardArt",
+      "path": "textures/cards/WW_S20CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S20CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S20CardArt"
+        }
+      }
+    }
+  ]
+}

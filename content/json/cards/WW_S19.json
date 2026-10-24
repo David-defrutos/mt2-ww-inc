@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S19_Effect",
+      "name": "@CardEffectAcademicDiscardForEmber",
+      "target_mode": "room",
+      "target_team": "monsters"
+    },
+    {
+      "id": "WW_S19_Draw",
+      "name": "CardEffectDraw",
+      "param_int": 1
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S19",
+      "names": {
+        "spanish": "Baja de Asignatura",
+        "english": "Course Withdrawal",
+        "french": "Abandon de cours",
+        "german": "Kursabmeldung",
+        "portuguese": "Cancelamento de Disciplina",
+        "russian": "Отказ от курса",
+        "chinese": "退课",
+        "chinese_traditional": "退課",
+        "korean": "수강 철회",
+        "japanese": "履修取消"
+      },
+      "descriptions": {
+        "english": "Discard a spell, Blight, or Scourge in hand. Gain [ember] equal to twice its current cost. Draw [effect1.power].",
+        "spanish": "Descarta un hechizo, Blight o Scourge de la mano. Obtén el doble de su coste actual en [ember]. Roba [effect1.power].",
+        "french": "Défaussez un sort, un Fléau ou une Plaie en main. Gagnez [ember] égal au double de son coût actuel. Piochez [effect1.power].",
+        "german": "Wirf einen Zauber, eine Plage oder eine Geißel auf der Hand ab. Erhalte [ember] in Höhe des Doppelten seiner aktuellen Kosten. Ziehe [effect1.power].",
+        "portuguese": "Descarta um feitiço, Praga ou Flagelo da mão. Ganha [ember] igual ao dobro do seu custo atual. Compra [effect1.power].",
+        "russian": "Сбросьте заклинание, Скверну или Плеть из руки. Получите [ember] в размере удвоенной текущей стоимости карты. Возьмите [effect1.power].",
+        "chinese": "弃掉一张手牌中的法术、祸害或天灾。获得等于其当前费用两倍的[ember]。抽[effect1.power]张牌。",
+        "chinese_traditional": "棄掉一張手牌中的法術、禍害或瘟疫。獲得等於其目前費用兩倍的[ember]。抽[effect1.power]張牌。",
+        "korean": "손의 주문, 저주 또는 재앙를 버립니다. 현재 비용의 두 배만큼 [ember]를 얻습니다. [effect1.power]장을 뽑습니다.",
+        "japanese": "手札の呪文、災厄、または災難を捨てる。現在のコストの2倍の[ember]を得る。[effect1.power]枚引く。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S19CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S19_Effect",
+        "@WW_S19_Draw"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S19CardArt",
+      "path": "textures/cards/WW_S19CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S19CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S19CardArt"
+        }
+      }
+    }
+  ]
+}

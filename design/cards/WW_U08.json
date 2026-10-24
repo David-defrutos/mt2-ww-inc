@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U08",
+  "selection": "U08",
+  "type": "unit",
+  "names": {
+    "spanish": "Postdoc de Asuntos Pendientes",
+    "english": "Postdoc of Unfinished Business"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Al morir, añade a tu mano una copia del último hechizo común jugado con 0[ember] y [ephemeral].",
+  "status": "implemented_unverified",
+  "implementation_note": "Trigger nativo OnDeath/Extinguish genera copia del último hechizo común global a coste 0 y Ephemeral; también se dispara en la reanimación Undying. La copia mantiene coste 0 entre turnos (SetFixedCost thisTurn=false); el registro se limpia al reiniciar batalla. Original intacto. Pendiente confirmar corrección en combate.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 0,
+    "health": 15,
+    "size": 1
+  },
+  "banner": false,
+  "ability_cooldown": null
+}

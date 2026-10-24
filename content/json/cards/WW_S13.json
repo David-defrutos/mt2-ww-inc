@@ -1,0 +1,107 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S13",
+      "names": {
+        "spanish": "Tesis con Revisiones Mayores",
+        "english": "Dissertation with Major Revisions",
+        "french": "Thèse à révisions majeures",
+        "german": "Dissertation mit großen Überarbeitungen",
+        "portuguese": "Tese com Revisões Extensas",
+        "russian": "Диссертация с крупными правками",
+        "chinese": "大修论文",
+        "chinese_traditional": "大修論文",
+        "korean": "대폭 수정 논문",
+        "japanese": "大幅修正の学位論文"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage.",
+        "spanish": "Inflige [effect0.power] de daño.",
+        "french": "Inflige [effect0.power] dégâts.",
+        "german": "Füge [effect0.power] Schaden zu.",
+        "portuguese": "Causa [effect0.power] de dano.",
+        "russian": "Наносит [effect0.power] урона.",
+        "chinese": "造成[effect0.power]点伤害。",
+        "chinese_traditional": "造成[effect0.power]點傷害。",
+        "korean": "[effect0.power]의 피해를 줍니다.",
+        "japanese": "[effect0.power]ダメージを与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "effects": [
+        "@WW_S13_Damage"
+      ],
+      "card_art": "@WW_S13CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "triggers": [
+        "@WW_S13_Slay"
+      ],
+      "traits": [
+        "@WW_S13_Trample"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S13_Damage",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_int": 4
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S13CardArt",
+      "path": "textures/cards/WW_S13CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S13CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S13CardArt"
+        }
+      }
+    }
+  ],
+  "card_triggers": [
+    {
+      "id": "WW_S13_Slay",
+      "descriptions": {
+        "english": "Increase damage by [triggereffect0.power] permanently.",
+        "french": "Augmente les dégâts de [triggereffect0.power] définitivement.",
+        "german": "Erhöht Schaden permanent um [triggereffect0.power].",
+        "russian": "Навсегда увеличивает урон на [triggereffect0.power].",
+        "portuguese": "Aumenta permanentemente o dano em [triggereffect0.power].",
+        "chinese": "永久增加[triggereffect0.power]点伤害。",
+        "spanish": "Aumenta el daño en [triggereffect0.power] permanentemente.",
+        "chinese_traditional": "永久提高[triggereffect0.power]點傷害。",
+        "korean": "피해가 영구적으로 [triggereffect0.power]만큼 증가합니다.",
+        "japanese": "ダメージを永続的に[triggereffect0.power]増加させる。"
+      },
+      "trigger": "on_kill",
+      "trigger_effects": [
+        {
+          "persistence_mode": "single_run",
+          "trigger_effect": "CardTriggerEffectBuffSpellDamage",
+          "param_int": 2
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S13_Trample",
+      "name": "CardTraitTrample"
+    }
+  ]
+}

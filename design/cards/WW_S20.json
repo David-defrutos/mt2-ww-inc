@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S20",
+  "selection": "S20",
+  "type": "spell",
+  "names": {
+    "spanish": "Semana de Exámenes",
+    "english": "Exam Week"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Roba [effect0.power] hechizos de tu pila de robo o de descartes.",
+  "status": "implemented_unverified",
+  "implementation_note": "Roba 3 hechizos desde robo o descarte. Rara, sin Consume.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

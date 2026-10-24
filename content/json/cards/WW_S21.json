@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S21_Effect",
+      "name": "@CardEffectAcademicArmorHonors",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S21",
+      "names": {
+        "spanish": "Matrícula de Honor Blindada",
+        "english": "Armored Honors Enrollment",
+        "french": "Inscription blindée avec mention",
+        "german": "Gepanzerte Ehreneinschreibung",
+        "portuguese": "Matrícula Blindada com Honras",
+        "russian": "Бронированное почётное зачисление",
+        "chinese": "装甲荣誉入学",
+        "chinese_traditional": "裝甲榮譽入學",
+        "korean": "방어된 우등 등록",
+        "japanese": "装甲付き優等登録"
+      },
+      "descriptions": {
+        "spanish": "Añade tanta [armor] a una unidad aliada como su [attack]. Su [attack] pasa a 0 este turno. Añade [dazed] 1.",
+        "english": "Apply [armor] equal to a friendly unit’s [attack]. Set its [attack] to 0 this turn. Apply [dazed] 1.",
+        "french": "Un allié gagne autant d'[armor] que son attaque. Son attaque devient 0 ce tour. Applique [dazed] 1.",
+        "german": "Gib einem Verbündeten [armor] in Höhe seines Angriffs. Sein Angriff wird diese Runde 0. [dazed] 1.",
+        "portuguese": "Um aliado ganha [armor] igual ao Ataque. O Ataque vira 0 neste turno. Aplica [dazed] 1.",
+        "russian": "Союзник получает [armor] в размере атаки. Атака становится 0 на этот ход. Даёт [dazed] 1.",
+        "chinese": "盟友获得当前攻击等量 [armor]。本回合攻击变为0，并获得 [dazed] 1。",
+        "chinese_traditional": "盟友獲得當前攻擊等量 [armor]。本回合攻擊變為0，並獲得 [dazed] 1。",
+        "korean": "아군은 공격력만큼 [armor]를 얻습니다. 이번 턴 공격력은 0이 되고 [dazed] 1을 받습니다.",
+        "japanese": "味方は攻撃と同量の[armor]を得る。このターン攻撃は0になり[dazed] 1を受ける。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S21CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S21_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S21CardArt",
+      "path": "textures/cards/WW_S21CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S21CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S21CardArt"
+        }
+      }
+    }
+  ]
+}

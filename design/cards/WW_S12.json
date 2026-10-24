@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S12",
+  "selection": "S12",
+  "type": "spell",
+  "names": {
+    "spanish": "Examen de Triple Impacto",
+    "english": "Triple Impact Exam"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
+  "status": "implemented_unverified",
+  "implementation_note": "Tres aplicaciones nativas de 1 de daño al mismo enemigo, coste 1 y rareza común. Sin Trample. Pendiente partida.",
+  "balance": "Valores vigentes: coste 1, daño 1 tres veces, común."
+}

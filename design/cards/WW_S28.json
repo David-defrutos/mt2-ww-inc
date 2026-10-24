@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S28",
+  "selection": "S28",
+  "type": "spell",
+  "names": {
+    "spanish": "Proyecto Aplazado",
+    "english": "Deferred Project"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Inflige 10 de daño a una unidad. Reserve: +5 de poder mágico. Slay: vuelve a la mano con Freeze y Unplayable hasta el próximo turno.",
+  "status": "implemented_unverified",
+  "implementation_note": "Reserve y Slay nativos; conexión mínima marca el retorno y reutiliza Restore tras descarte. Rasgos Freeze y Unplayable nativos; solo Unplayable expira al próximo turno. Conserva coste y Power. Pendiente prueba en partida.",
+  "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+}

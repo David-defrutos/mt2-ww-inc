@@ -1,0 +1,93 @@
+﻿{
+  "id": "WW_C02",
+  "selection": "C02",
+  "type": "champion",
+  "names": {
+    "spanish": "Catedrática de Brujería Avanzada",
+    "english": "Professor of Advanced Witchcraft"
+  },
+  "cost": 0,
+  "rarity": "champion",
+  "effect": "Tres sendas pasivas combinables. La senda Queen Bee escala con Wizards; las otras reaccionan a hechizos jugados en su piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 10,
+    "health": 20,
+    "size": 2
+  },
+  "appearance": "Bruja clásica con sombrero negro puntiagudo; arte pendiente.",
+  "paths": [
+    {
+      "name": "Queen Bee",
+      "ranks": [
+        "Mageblade +5 por Wizard en juego",
+        "Mageblade +10 por Wizard en juego",
+        "Mageblade +15 por Wizard en juego"
+      ],
+      "mode": "Aura dinámica, sin acumulación por turnos.",
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 10
+        },
+        {
+          "attack": 10,
+          "health": 20
+        },
+        {
+          "attack": 20,
+          "health": 35
+        }
+      ]
+    },
+    {
+      "name": "Advanced Spellwork",
+      "ranks": [
+        "Incant: +5 de ataque",
+        "Incant: +10 de ataque",
+        "Incant: +20 de ataque"
+      ],
+      "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectBuffDamage.",
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 5
+        },
+        {
+          "attack": 5,
+          "health": 10
+        },
+        {
+          "attack": 10,
+          "health": 20
+        }
+      ]
+    },
+    {
+      "name": "Protective Tenure",
+      "ranks": [
+        "Incant: Armor 5",
+        "Incant: Armor 10",
+        "Incant: Armor 20"
+      ],
+      "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectAddStatusEffect.",
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 10
+        },
+        {
+          "attack": 5,
+          "health": 25
+        },
+        {
+          "attack": 10,
+          "health": 45
+        }
+      ]
+    }
+  ]
+}

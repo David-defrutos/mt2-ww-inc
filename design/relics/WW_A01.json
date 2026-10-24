@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A01",
+  "names": {
+    "spanish": "Cátedra de Fuerza Mágica",
+    "english": "Chair of Magical Strength"
+  },
+  "effect": "El primer hechizo de daño de cada turno obtiene tanto [magicpower] como la mitad del [attack] de la primera unidad aliada de su piso, solo al jugarlo.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "common"
+}

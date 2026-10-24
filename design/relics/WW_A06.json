@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A06",
+  "names": {
+    "spanish": "Extensión de Convocatoria",
+    "english": "Extended Exam Session"
+  },
+  "effect": "El primer hechizo dirigido a un único enemigo de cada turno también afecta al enemigo que tiene detrás.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "uncommon"
+}

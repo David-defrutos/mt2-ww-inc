@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U05",
+  "selection": "U05",
+  "type": "unit",
+  "names": {
+    "spanish": "Ayudante de Laboratorio Explosivo",
+    "english": "Explosive Lab Assistant"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Arcane Slay: añade [burst] 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Trigger reutilizable @WW_ArcaneSlay registrado por Trainworks con nombre/tooltip/icono; efecto de U05 nativo AddStatusEffect Burst 1. Despacho por bajas de hechizos por piso, sin hardcode del ID U05. Icono existente FollowUp de Conductor reutilizado. Pendiente prueba de combate/tooltip.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 15,
+    "health": 20,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S21",
+  "selection": "S21",
+  "type": "spell",
+  "names": {
+    "spanish": "Matrícula de Honor Blindada",
+    "english": "Armored Honors Enrollment"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Añade tanta [armor] a una unidad aliada como su [attack]. Su [attack] pasa a 0 este turno. Añade [dazed] 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

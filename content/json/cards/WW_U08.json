@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U08_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U08_Character"
+    },
+    {
+      "id": "WW_U08_CopyLastCommon",
+      "name": "@CardEffectAcademicCopyLastCommon",
+      "target_mode": "self",
+      "target_team": "none"
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U08_Character",
+      "names": {
+        "spanish": "Postdoc de Asuntos Pendientes",
+        "english": "Postdoc of Unfinished Business",
+        "french": "Postdoctorant des affaires inachevées",
+        "german": "Postdoktorand für unerledigte Angelegenheiten",
+        "portuguese": "Pós-doutor em Assuntos Inacabados",
+        "russian": "Постдок незавершённых дел",
+        "chinese": "未竟事务博士后",
+        "chinese_traditional": "未竟事務博士後",
+        "korean": "미완의 업무 박사후연구원",
+        "japanese": "未完業務の博士研究員"
+      },
+      "character_art": "@WW_U08CharacterArt",
+      "size": 1,
+      "health": 10,
+      "attack_damage": 0,
+      "subtypes": [
+        "@WW_Witch"
+      ],
+      "starting_status_effects": [
+        {
+          "status": "undying",
+          "count": 1
+        }
+      ],
+      "triggers": [
+        "@WW_U08_Extinguish"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U08",
+      "names": {
+        "spanish": "Postdoc de Asuntos Pendientes",
+        "english": "Postdoc of Unfinished Business",
+        "french": "Postdoctorant des affaires inachevées",
+        "german": "Postdoktorand für unerledigte Angelegenheiten",
+        "portuguese": "Pós-doutor em Assuntos Inacabados",
+        "russian": "Постдок незавершённых дел",
+        "chinese": "未竟事务博士后",
+        "chinese_traditional": "未竟事務博士後",
+        "korean": "미완의 업무 박사후연구원",
+        "japanese": "未完業務の博士研究員"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "card_art": "@WW_U08CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "effects": [
+        "@WW_U08_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U08CardArt",
+      "path": "textures/cards/WW_U08CardArt.png"
+    },
+    {
+      "id": "WW_U08CharacterArt",
+      "path": "textures/characters/WW_U08CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U08CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U08CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U08CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U08CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.875,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.75,
+              "y": 1.75,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_U08_Extinguish",
+      "trigger": "on_death",
+      "effects": [
+        "@WW_U08_CopyLastCommon"
+      ],
+      "descriptions": {
+        "english": "Add a copy of the last common spell played to hand with 0[ember] and [ephemeral].",
+        "spanish": "Añade a tu mano una copia del último hechizo común jugado con 0[ember] y [ephemeral].",
+        "french": "Ajoute en main une copie du dernier sort commun joué avec 0[ember] et [ephemeral].",
+        "german": "Füge deiner Hand eine Kopie des zuletzt gespielten gewöhnlichen Zaubers mit 0[ember] und [ephemeral] hinzu.",
+        "portuguese": "Adiciona à mão uma cópia do último feitiço comum jogado com 0[ember] e [ephemeral].",
+        "russian": "Добавляет в руку копию последнего сыгранного обычного заклинания с ценой 0[ember] и [ephemeral].",
+        "chinese": "将最后使用的普通法术的复制加入手牌，费用为0[ember]并具有[ephemeral]。",
+        "chinese_traditional": "將最後使用的普通法術的複製加入手牌，費用為0[ember]並具有[ephemeral]。",
+        "korean": "마지막으로 사용한 일반 주문의 복사본을 비용 0[ember]과 [ephemeral]로 손에 추가합니다.",
+        "japanese": "最後に使ったコモンの呪文のコピーを、コスト0[ember]と[ephemeral]付きで手札に加える。"
+      }
+    }
+  ]
+}

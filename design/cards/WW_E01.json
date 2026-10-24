@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_E01",
+  "selection": "E01",
+  "type": "equipment",
+  "names": {
+    "spanish": "Sello de Baja",
+    "english": "Withdrawal Stamp"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Una vez por ring: da Purge a una carta de la mano.",
+  "status": "implemented_unverified",
+  "implementation_note": "Un Purge por ring y por copia física de Withdrawal Stamp. Ledger por referencia del equipo, no por su ID de CardData ni por la carta compartida de habilidad. El activador aporta su equipo; devolver o reequipar la misma copia no repone su uso. Máscara excluye Unpurgable; initial_cooldown 0 y cooldown 8. Pendiente prueba de dos copias en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

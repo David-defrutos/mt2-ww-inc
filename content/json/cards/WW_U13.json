@@ -1,0 +1,220 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U13_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U13_Character"
+    },
+    {
+      "id": "WW_U13_HarvestEffect",
+      "name": "CardEffectAddTempCardUpgradeToUnits",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_U13_HarvestUpgrade"
+    },
+    {
+      "id": "WW_U13_OverhealEffect",
+      "name": "@CardEffectOverhealStatus",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "armor",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U13_Character",
+      "names": {
+        "spanish": "Profesor Emérito de Medicina Defensiva",
+        "english": "Emeritus Professor of Defensive Medicine",
+        "french": "Professeur émérite de médecine défensive",
+        "german": "Emeritierter Professor für defensive Medizin",
+        "portuguese": "Professor Emérito de Medicina Defensiva",
+        "russian": "Почётный профессор защитной медицины",
+        "chinese": "防御医学荣誉教授",
+        "chinese_traditional": "防禦醫學榮譽教授",
+        "korean": "방어 의학 명예 교수",
+        "japanese": "防御医学名誉教授"
+      },
+      "character_art": "@WW_U13CharacterArt",
+      "size": 2,
+      "health": 30,
+      "attack_damage": 20,
+      "subtypes": [
+        "@WW_Wizard",
+        "SubtypesData_BannerUnit"
+      ],
+      "triggers": [
+        "@WW_U13_Harvest",
+        "@WW_U13_Overheal"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U13",
+      "names": {
+        "spanish": "Profesor Emérito de Medicina Defensiva",
+        "english": "Emeritus Professor of Defensive Medicine",
+        "french": "Professeur émérite de médecine défensive",
+        "german": "Emeritierter Professor für defensive Medizin",
+        "portuguese": "Professor Emérito de Medicina Defensiva",
+        "russian": "Почётный профессор защитной медицины",
+        "chinese": "防御医学荣誉教授",
+        "chinese_traditional": "防禦醫學榮譽教授",
+        "korean": "방어 의학 명예 교수",
+        "japanese": "防御医学名誉教授"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U13CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U13_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U13CardArt",
+      "path": "textures/cards/WW_U13CardArt.png"
+    },
+    {
+      "id": "WW_U13CharacterArt",
+      "path": "textures/characters/WW_U13CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U13CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U13CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U13CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U13CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 1.05,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_U13_Harvest",
+      "trigger": "on_any_unit_death_on_floor",
+      "descriptions": {
+        "english": "+[effect0.upgrade.bonushp][health].",
+        "spanish": "+[effect0.upgrade.bonushp][health].",
+        "french": "+[effect0.upgrade.bonushp][health].",
+        "german": "+[effect0.upgrade.bonushp][health].",
+        "portuguese": "+[effect0.upgrade.bonushp][health].",
+        "russian": "+[effect0.upgrade.bonushp][health].",
+        "chinese": "+[effect0.upgrade.bonushp][health].",
+        "chinese_traditional": "+[effect0.upgrade.bonushp][health].",
+        "korean": "+[effect0.upgrade.bonushp][health].",
+        "japanese": "+[effect0.upgrade.bonushp][health]."
+      },
+      "effects": [
+        "@WW_U13_HarvestEffect"
+      ]
+    },
+    {
+      "id": "WW_U13_Overheal",
+      "trigger": "@WW_Overheal",
+      "descriptions": {
+        "english": "Gain [armor] equal to the excess healing, up to your maximum health.",
+        "spanish": "Añade [armor] igual a la curación sobrante, hasta tu salud máxima.",
+        "french": "Gagne [armor] à hauteur des soins excédentaires, dans la limite de tes PV maximum.",
+        "german": "Erhalte [armor] in Höhe der überschüssigen Heilung, bis zu deinem maximalen Leben.",
+        "portuguese": "Ganha [armor] igual à cura excedente, até sua vida máxima.",
+        "russian": "Получает [armor] в размере избытка лечения, но не больше максимального здоровья.",
+        "chinese": "获得等于溢出治疗量的[armor]，上限为自身最大生命值。",
+        "chinese_traditional": "獲得等於溢出治療量的[armor]，上限為自身最大生命值。",
+        "korean": "최대 체력을 한도로 초과 치유량만큼 [armor]를 얻습니다.",
+        "japanese": "最大体力を上限として、超過回復量と同じ[armor]を得る。"
+      },
+      "effects": [
+        "@WW_U13_OverhealEffect"
+      ]
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_U13_HarvestUpgrade",
+      "bonus_hp": 5
+    }
+  ],
+  "character_trigger_types": [
+    {
+      "id": "WW_Overheal",
+      "names": {
+        "english": "Overheal",
+        "spanish": "Sobrecuración",
+        "french": "Sursoin",
+        "german": "Überheilung",
+        "portuguese": "Sobrecura",
+        "russian": "Избыточное лечение",
+        "chinese": "过量治疗",
+        "chinese_traditional": "過量治療",
+        "korean": "초과 치유",
+        "japanese": "過剰回復"
+      },
+      "descriptions": {
+        "english": "Triggers when this unit receives healing exceeding its maximum health. The effect uses the excess healing.",
+        "spanish": "Se activa cuando esta unidad recibe curación por encima de su salud máxima. El efecto utiliza la curación sobrante.",
+        "french": "Se déclenche quand les soins reçus dépassent les PV maximum de cette unité. L’effet utilise les soins excédentaires.",
+        "german": "Wird ausgelöst, wenn diese Einheit Heilung über ihr maximales Leben hinaus erhält. Der Effekt nutzt die überschüssige Heilung.",
+        "portuguese": "Ativa quando esta unidade recebe cura além da vida máxima. O efeito usa a cura excedente.",
+        "russian": "Срабатывает при лечении этого бойца сверх максимального здоровья. Эффект использует избыток лечения.",
+        "chinese": "此单位受到超出最大生命值的治疗时触发。效果使用溢出的治疗量。",
+        "chinese_traditional": "此單位受到超出最大生命值的治療時觸發。效果使用溢出的治療量。",
+        "korean": "이 유닛이 최대 체력을 초과하는 치유를 받으면 발동합니다. 효과는 초과 치유량을 사용합니다.",
+        "japanese": "このユニットが最大体力を超える回復を受けると発動する。効果には超過した回復量を使う。"
+      },
+      "notifications": {
+        "english": "Overheal",
+        "spanish": "Sobrecuración",
+        "french": "Sursoin",
+        "german": "Überheilung",
+        "portuguese": "Sobrecura",
+        "russian": "Избыточное лечение",
+        "chinese": "过量治疗",
+        "chinese_traditional": "過量治療",
+        "korean": "초과 치유",
+        "japanese": "過剰回復"
+      },
+      "sprite": "Conductor-Sprite-trigger_followup",
+      "disallow_in_deployment": true
+    }
+  ]
+}

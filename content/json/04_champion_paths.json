@@ -1,0 +1,564 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "upgrades": [
+    {
+      "id": "WW_FratBro1",
+      "titles": {
+        "spanish": "Frat Bro 1",
+        "english": "Frat Bro 1",
+        "french": "Frère de fraternité 1",
+        "german": "Verbindungsbruder 1",
+        "portuguese": "Irmão da Fraternidade 1",
+        "russian": "Брат по студенческому обществу 1",
+        "chinese": "兄弟会社员 1",
+        "chinese_traditional": "兄弟會社員 1",
+        "korean": "친목회 형제 1",
+        "japanese": "学生クラブの兄貴 1"
+      },
+      "descriptions": {
+        "spanish": "[conduit] +5 por Bruja en juego",
+        "english": "[conduit] +5 per Witch in the train.",
+        "french": "[conduit] +5 par sorcière dans le train.",
+        "german": "[conduit] +5 je Hexe im Zug.",
+        "portuguese": "[conduit] +5 por Bruxa no trem.",
+        "russian": "[conduit] +5 за каждую ведьму в поезде.",
+        "chinese": "列车每个女巫提供 [conduit] +5。",
+        "chinese_traditional": "列車每個女巫提供 [conduit] +5。",
+        "korean": "열차의 마녀당 [conduit] +5.",
+        "japanese": "列車内の魔女ごとに[conduit] +5。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 0,
+      "bonus_hp": 5,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "WW_FratBro2",
+      "titles": {
+        "spanish": "Frat Bro 2",
+        "english": "Frat Bro 2",
+        "french": "Frère de fraternité 2",
+        "german": "Verbindungsbruder 2",
+        "portuguese": "Irmão da Fraternidade 2",
+        "russian": "Брат по студенческому обществу 2",
+        "chinese": "兄弟会社员 2",
+        "chinese_traditional": "兄弟會社員 2",
+        "korean": "친목회 형제 2",
+        "japanese": "学生クラブの兄貴 2"
+      },
+      "descriptions": {
+        "spanish": "[conduit] +10 por Bruja en juego",
+        "english": "[conduit] +10 per Witch in the train.",
+        "french": "[conduit] +10 par sorcière dans le train.",
+        "german": "[conduit] +10 je Hexe im Zug.",
+        "portuguese": "[conduit] +10 por Bruxa no trem.",
+        "russian": "[conduit] +10 за каждую ведьму в поезде.",
+        "chinese": "列车每个女巫提供 [conduit] +10。",
+        "chinese_traditional": "列車每個女巫提供 [conduit] +10。",
+        "korean": "열차의 마녀당 [conduit] +10.",
+        "japanese": "列車内の魔女ごとに[conduit] +10。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 5,
+      "bonus_hp": 15,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": "WW_FratBro3",
+      "titles": {
+        "spanish": "Frat Bro 3",
+        "english": "Frat Bro 3",
+        "french": "Frère de fraternité 3",
+        "german": "Verbindungsbruder 3",
+        "portuguese": "Irmão da Fraternidade 3",
+        "russian": "Брат по студенческому обществу 3",
+        "chinese": "兄弟会社员 3",
+        "chinese_traditional": "兄弟會社員 3",
+        "korean": "친목회 형제 3",
+        "japanese": "学生クラブの兄貴 3"
+      },
+      "descriptions": {
+        "spanish": "[conduit] +15 por Bruja en juego",
+        "english": "[conduit] +15 per Witch in the train.",
+        "french": "[conduit] +15 par sorcière dans le train.",
+        "german": "[conduit] +15 je Hexe im Zug.",
+        "portuguese": "[conduit] +15 por Bruxa no trem.",
+        "russian": "[conduit] +15 за каждую ведьму в поезде.",
+        "chinese": "列车每个女巫提供 [conduit] +15。",
+        "chinese_traditional": "列車每個女巫提供 [conduit] +15。",
+        "korean": "열차의 마녀당 [conduit] +15.",
+        "japanese": "列車内の魔女ごとに[conduit] +15。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 10,
+      "bonus_hp": 30,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 15
+        }
+      ]
+    },
+    {
+      "id": "WW_Explosive1",
+      "titles": {
+        "english": "Department of Practical Magic 1",
+        "spanish": "Departamento de Magia Práctica 1",
+        "french": "Département de magie pratique 1",
+        "german": "Abteilung für praktische Magie 1",
+        "portuguese": "Departamento de Magia Prática 1",
+        "russian": "Кафедра практической магии 1",
+        "chinese": "实用魔法系 1",
+        "chinese_traditional": "實用魔法系 1",
+        "korean": "실용 마법 학과 1",
+        "japanese": "実践魔法学科 1"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 0,
+      "bonus_hp": 5,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Explosive1_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_Explosive2",
+      "titles": {
+        "english": "Department of Practical Magic 2",
+        "spanish": "Departamento de Magia Práctica 2",
+        "french": "Département de magie pratique 2",
+        "german": "Abteilung für praktische Magie 2",
+        "portuguese": "Departamento de Magia Prática 2",
+        "russian": "Кафедра практической магии 2",
+        "chinese": "实用魔法系 2",
+        "chinese_traditional": "實用魔法系 2",
+        "korean": "실용 마법 학과 2",
+        "japanese": "実践魔法学科 2"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 5,
+      "bonus_hp": 10,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 10
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Explosive2_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_Explosive3",
+      "titles": {
+        "english": "Department of Practical Magic 3",
+        "spanish": "Departamento de Magia Práctica 3",
+        "french": "Département de magie pratique 3",
+        "german": "Abteilung für praktische Magie 3",
+        "portuguese": "Departamento de Magia Prática 3",
+        "russian": "Кафедра практической магии 3",
+        "chinese": "实用魔法系 3",
+        "chinese_traditional": "實用魔法系 3",
+        "korean": "실용 마법 학과 3",
+        "japanese": "実践魔法学科 3"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 10,
+      "bonus_hp": 20,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 15
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Explosive3_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_Attuned1",
+      "titles": {
+        "spanish": "Departamento de Ajuste de Hechizos 1",
+        "english": "Department of Spell Tuning 1",
+        "french": "Département d'ajustement des sorts 1",
+        "german": "Abteilung für Zauberabstimmung 1",
+        "portuguese": "Departamento de Ajuste de Feitiços 1",
+        "russian": "Кафедра настройки заклинаний 1",
+        "chinese": "法术调谐系 1",
+        "chinese_traditional": "法術調諧系 1",
+        "korean": "주문 조율 학과 1",
+        "japanese": "呪文調整学科 1"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 0,
+      "bonus_hp": 5,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Attuned1_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_Attuned2",
+      "titles": {
+        "spanish": "Departamento de Ajuste de Hechizos 2",
+        "english": "Department of Spell Tuning 2",
+        "french": "Département d'ajustement des sorts 2",
+        "german": "Abteilung für Zauberabstimmung 2",
+        "portuguese": "Departamento de Ajuste de Feitiços 2",
+        "russian": "Кафедра настройки заклинаний 2",
+        "chinese": "法术调谐系 2",
+        "chinese_traditional": "法術調諧系 2",
+        "korean": "주문 조율 학과 2",
+        "japanese": "呪文調整学科 2"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 5,
+      "bonus_hp": 10,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 10
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Attuned2_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_Attuned3",
+      "titles": {
+        "spanish": "Departamento de Ajuste de Hechizos 3",
+        "english": "Department of Spell Tuning 3",
+        "french": "Département d'ajustement des sorts 3",
+        "german": "Abteilung für Zauberabstimmung 3",
+        "portuguese": "Departamento de Ajuste de Feitiços 3",
+        "russian": "Кафедра настройки заклинаний 3",
+        "chinese": "法术调谐系 3",
+        "chinese_traditional": "法術調諧系 3",
+        "korean": "주문 조율 학과 3",
+        "japanese": "呪文調整学科 3"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 10,
+      "bonus_hp": 20,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 15
+        }
+      ],
+      "trigger_upgrades": [
+        "@WW_Attuned3_ArcaneSlay"
+      ]
+    },
+    {
+      "id": "WW_QueenBee1",
+      "titles": {
+        "spanish": "Queen Bee 1",
+        "english": "Queen Bee 1",
+        "french": "Reine des abeilles 1",
+        "german": "Bienenkönigin 1",
+        "portuguese": "Rainha das Abelhas 1",
+        "russian": "Пчелиная королева 1",
+        "chinese": "蜂后 1",
+        "chinese_traditional": "蜂后 1",
+        "korean": "여왕벌 1",
+        "japanese": "女王蜂 1"
+      },
+      "descriptions": {
+        "spanish": "[mageblade] +5 por Mago en juego",
+        "english": "[mageblade] +5 per Wizard in the train.",
+        "french": "[mageblade] +5 par sorcier vivant dans le train.",
+        "german": "[mageblade] +5 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +5 por Mago vivo no trem.",
+        "russian": "[mageblade] +5 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +5。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +5。",
+        "korean": "열차의 마법사당 [mageblade] +5.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +5。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 0,
+      "bonus_hp": 10
+    },
+    {
+      "id": "WW_QueenBee2",
+      "titles": {
+        "spanish": "Queen Bee 2",
+        "english": "Queen Bee 2",
+        "french": "Reine des abeilles 2",
+        "german": "Bienenkönigin 2",
+        "portuguese": "Rainha das Abelhas 2",
+        "russian": "Пчелиная королева 2",
+        "chinese": "蜂后 2",
+        "chinese_traditional": "蜂后 2",
+        "korean": "여왕벌 2",
+        "japanese": "女王蜂 2"
+      },
+      "descriptions": {
+        "spanish": "[mageblade] +10 por Mago en juego",
+        "english": "[mageblade] +10 per Wizard in the train.",
+        "french": "[mageblade] +10 par sorcier vivant dans le train.",
+        "german": "[mageblade] +10 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +10 por Mago vivo no trem.",
+        "russian": "[mageblade] +10 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +10。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +10。",
+        "korean": "열차의 마법사당 [mageblade] +10.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +10。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 10,
+      "bonus_hp": 20
+    },
+    {
+      "id": "WW_QueenBee3",
+      "titles": {
+        "spanish": "Queen Bee 3",
+        "english": "Queen Bee 3",
+        "french": "Reine des abeilles 3",
+        "german": "Bienenkönigin 3",
+        "portuguese": "Rainha das Abelhas 3",
+        "russian": "Пчелиная королева 3",
+        "chinese": "蜂后 3",
+        "chinese_traditional": "蜂后 3",
+        "korean": "여왕벌 3",
+        "japanese": "女王蜂 3"
+      },
+      "descriptions": {
+        "spanish": "[mageblade] +15 por Mago en juego",
+        "english": "[mageblade] +15 per Wizard in the train.",
+        "french": "[mageblade] +15 par sorcier vivant dans le train.",
+        "german": "[mageblade] +15 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +15 por Mago vivo no trem.",
+        "russian": "[mageblade] +15 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +15。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +15。",
+        "korean": "열차의 마법사당 [mageblade] +15.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +15。"
+      },
+      "does_not_replace_ability": true,
+      "bonus_damage": 20,
+      "bonus_hp": 35
+    },
+    {
+      "id": "WW_Attuned1_HandPower",
+      "bonus_damage": 1,
+      "bonus_heal": 1,
+      "filters": [
+        "OnlySpells"
+      ]
+    },
+    {
+      "id": "WW_Attuned2_HandPower",
+      "bonus_damage": 2,
+      "bonus_heal": 2,
+      "filters": [
+        "OnlySpells"
+      ]
+    },
+    {
+      "id": "WW_Attuned3_HandPower",
+      "bonus_damage": 3,
+      "bonus_heal": 3,
+      "filters": [
+        "OnlySpells"
+      ]
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_Explosive1_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Gain [conduit] 1.",
+        "spanish": "Añade [conduit] 1.",
+        "french": "Gagne [conduit] 1.",
+        "german": "Erhalte [conduit] 1.",
+        "portuguese": "Ganha [conduit] 1.",
+        "russian": "Получает [conduit] 1.",
+        "chinese": "获得[conduit] 1。",
+        "chinese_traditional": "獲得[conduit] 1。",
+        "korean": "[conduit] 1을 얻습니다.",
+        "japanese": "[conduit] 1を得る。"
+      },
+      "effects": [
+        "@WW_Explosive1_SlayEffect"
+      ]
+    },
+    {
+      "id": "WW_Explosive2_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Gain [conduit] 2.",
+        "spanish": "Añade [conduit] 2.",
+        "french": "Gagne [conduit] 2.",
+        "german": "Erhalte [conduit] 2.",
+        "portuguese": "Ganha [conduit] 2.",
+        "russian": "Получает [conduit] 2.",
+        "chinese": "获得[conduit] 2。",
+        "chinese_traditional": "獲得[conduit] 2。",
+        "korean": "[conduit] 2을 얻습니다.",
+        "japanese": "[conduit] 2を得る。"
+      },
+      "effects": [
+        "@WW_Explosive2_SlayEffect"
+      ]
+    },
+    {
+      "id": "WW_Explosive3_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Gain [conduit] 3.",
+        "spanish": "Añade [conduit] 3.",
+        "french": "Gagne [conduit] 3.",
+        "german": "Erhalte [conduit] 3.",
+        "portuguese": "Ganha [conduit] 3.",
+        "russian": "Получает [conduit] 3.",
+        "chinese": "获得[conduit] 3。",
+        "chinese_traditional": "獲得[conduit] 3。",
+        "korean": "[conduit] 3을 얻습니다.",
+        "japanese": "[conduit] 3を得る。"
+      },
+      "effects": [
+        "@WW_Explosive3_SlayEffect"
+      ]
+    },
+    {
+      "id": "WW_Attuned1_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Give the killing spell +1 [magicpower] permanently.",
+        "spanish": "Otorga +1 [magicpower] permanente al hechizo que causó la muerte.",
+        "french": "Donne définitivement +1 [magicpower] au sort qui a tué.",
+        "german": "Gib dem tödlichen Zauber dauerhaft +1 [magicpower].",
+        "portuguese": "Concede +1 [magicpower] permanentemente ao feitiço que causou a morte.",
+        "russian": "Даёт убившему заклинанию +1 [magicpower] навсегда.",
+        "chinese": "使造成击杀的法术永久获得+1 [magicpower]。",
+        "chinese_traditional": "使造成擊殺的法術永久獲得+1 [magicpower]。",
+        "korean": "적을 처치한 주문에 영구적으로 +1 [magicpower]을 부여합니다.",
+        "japanese": "敵を倒した呪文に永続的に+1 [magicpower]を付与する。"
+      },
+      "effects": [
+        "@WW_Attuned1_SlayEffect"
+      ]
+    },
+    {
+      "id": "WW_Attuned2_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Give the killing spell +2 [magicpower] permanently.",
+        "spanish": "Otorga +2 [magicpower] permanente al hechizo que causó la muerte.",
+        "french": "Donne définitivement +2 [magicpower] au sort qui a tué.",
+        "german": "Gib dem tödlichen Zauber dauerhaft +2 [magicpower].",
+        "portuguese": "Concede +2 [magicpower] permanentemente ao feitiço que causou a morte.",
+        "russian": "Даёт убившему заклинанию +2 [magicpower] навсегда.",
+        "chinese": "使造成击杀的法术永久获得+2 [magicpower]。",
+        "chinese_traditional": "使造成擊殺的法術永久獲得+2 [magicpower]。",
+        "korean": "적을 처치한 주문에 영구적으로 +2 [magicpower]을 부여합니다.",
+        "japanese": "敵を倒した呪文に永続的に+2 [magicpower]を付与する。"
+      },
+      "effects": [
+        "@WW_Attuned2_SlayEffect"
+      ]
+    },
+    {
+      "id": "WW_Attuned3_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Give the killing spell +3 [magicpower] permanently.",
+        "spanish": "Otorga +3 [magicpower] permanente al hechizo que causó la muerte.",
+        "french": "Donne définitivement +3 [magicpower] au sort qui a tué.",
+        "german": "Gib dem tödlichen Zauber dauerhaft +3 [magicpower].",
+        "portuguese": "Concede +3 [magicpower] permanentemente ao feitiço que causou a morte.",
+        "russian": "Даёт убившему заклинанию +3 [magicpower] навсегда.",
+        "chinese": "使造成击杀的法术永久获得+3 [magicpower]。",
+        "chinese_traditional": "使造成擊殺的法術永久獲得+3 [magicpower]。",
+        "korean": "적을 처치한 주문에 영구적으로 +3 [magicpower]을 부여합니다.",
+        "japanese": "敵を倒した呪文に永続的に+3 [magicpower]を付与する。"
+      },
+      "effects": [
+        "@WW_Attuned3_SlayEffect"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_Explosive1_SlayEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "WW_Explosive2_SlayEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "WW_Explosive3_SlayEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "WW_Attuned1_SlayEffect",
+      "name": "@CardEffectAcademicUpgradeSlayingSpell",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_Attuned1_HandPower"
+    },
+    {
+      "id": "WW_Attuned2_SlayEffect",
+      "name": "@CardEffectAcademicUpgradeSlayingSpell",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_Attuned2_HandPower"
+    },
+    {
+      "id": "WW_Attuned3_SlayEffect",
+      "name": "@CardEffectAcademicUpgradeSlayingSpell",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_Attuned3_HandPower"
+    }
+  ]
+}

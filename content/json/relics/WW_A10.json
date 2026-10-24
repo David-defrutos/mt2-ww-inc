@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A10_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A10",
+      "type": "collectable",
+      "names": {
+        "spanish": "Prácticas de Medicina Ofensiva",
+        "english": "Offensive Medicine Practicum",
+        "french": "Stage de médecine offensive",
+        "german": "Praktikum in offensiver Medizin",
+        "portuguese": "Estágio de Medicina Ofensiva",
+        "russian": "Практикум наступательной медицины",
+        "chinese": "攻击医学实习",
+        "chinese_traditional": "攻擊醫學實習",
+        "korean": "공격 의학 실습",
+        "japanese": "攻撃医学実習"
+      },
+      "descriptions": {
+        "english": "The first healing spell each turn also deals damage to enemy units on its floor equal to the health restored.",
+        "spanish": "El primer hechizo de curación de cada turno también inflige daño a las unidades enemigas de su piso igual a la salud restaurada.",
+        "french": "Le premier sort de soins de chaque tour inflige aussi aux ennemis de son étage des dégâts égaux aux PV restaurés.",
+        "german": "Der erste Heilzauber jeder Runde fügt den Gegnern auf seiner Etage außerdem Schaden in Höhe des wiederhergestellten Lebens zu.",
+        "portuguese": "O primeiro feitiço de cura de cada turno também causa dano às unidades inimigas do seu andar igual à vida restaurada.",
+        "russian": "Первое заклинание лечения каждого хода также наносит врагам на своём этаже урон, равный восстановленному здоровью.",
+        "chinese": "每回合第一个治疗法术也对所在层的敌方单位造成等于恢复生命值的伤害。",
+        "chinese_traditional": "每回合第一個治療法術也對所在層的敵方單位造成等於恢復生命值的傷害。",
+        "korean": "매 턴 첫 치유 주문은 회복한 체력만큼 해당 층의 적 유닛들에게도 피해를 줍니다.",
+        "japanese": "毎ターン最初の回復呪文は、回復した体力と同じダメージを、その階の敵ユニットにも与える。"
+      },
+      "icon": "@WW_A10Icon",
+      "icon_small": "@WW_A10IconSmall",
+      "relic_effects": [
+        "@WW_A10_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A10Icon",
+      "path": "textures/relics/WW_A10Icon.png"
+    },
+    {
+      "id": "WW_A10IconSmall",
+      "path": "textures/relics/WW_A10IconSmall.png"
+    }
+  ]
+}

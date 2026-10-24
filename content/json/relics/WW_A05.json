@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A05_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A05",
+      "type": "collectable",
+      "names": {
+        "spanish": "Reembolso de Matrícula Mortal",
+        "english": "Lethal Tuition Refund",
+        "french": "Remboursement des frais létaux",
+        "german": "Tödliche Studiengebührenerstattung",
+        "portuguese": "Reembolso de Mensalidade Letal",
+        "russian": "Возврат смертельной платы",
+        "chinese": "致命学费退款",
+        "chinese_traditional": "致命學費退款",
+        "korean": "치명적 등록금 환불",
+        "japanese": "致命的授業料返金"
+      },
+      "descriptions": {
+        "english": "Every 5th spell that kills an enemy refunds its [ember] cost.",
+        "spanish": "Por cada 5 hechizos que maten a un enemigo, recupera el coste del último en [ember].",
+        "french": "Chaque 5e sort qui tue un ennemi rembourse son coût en [ember].",
+        "german": "Jeder 5. Zauber, der einen Gegner tötet, erstattet seine [ember]-Kosten.",
+        "portuguese": "A cada 5 feitiços que matarem um inimigo, recupera o custo do último em [ember].",
+        "russian": "Каждое пятое заклинание, убившее врага, возвращает свою стоимость в [ember].",
+        "chinese": "每第5个击杀敌人的法术返还其[ember]费用。",
+        "chinese_traditional": "每第5個擊殺敵人的法術返還其[ember]費用。",
+        "korean": "적을 처치하는 주문을 5번 사용할 때마다 마지막 주문의 [ember] 비용을 돌려받습니다.",
+        "japanese": "敵を倒した呪文5回ごとに、最後の呪文の[ember]コストを返す。"
+      },
+      "icon": "@WW_A05Icon",
+      "icon_small": "@WW_A05IconSmall",
+      "relic_effects": [
+        "@WW_A05_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "uncommon",
+            "force_update_count_label": true
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A05Icon",
+      "path": "textures/relics/WW_A05Icon.png"
+    },
+    {
+      "id": "WW_A05IconSmall",
+      "path": "textures/relics/WW_A05IconSmall.png"
+    }
+  ]
+}

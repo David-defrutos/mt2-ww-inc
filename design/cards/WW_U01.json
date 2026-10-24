@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U01",
+  "selection": "U01",
+  "type": "unit",
+  "names": {
+    "spanish": "Becario Pararrayos",
+    "english": "Lightning Rod Intern"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Los hechizos dirigidos a enemigos pueden seleccionar esta unidad. Redirígelos al primer enemigo de su piso, o a todos si son de área. Recupera las [ember] gastadas. Sufre 10 de daño por cada [dazed] y después añade [dazed] 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 0,
+    "health": 40,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

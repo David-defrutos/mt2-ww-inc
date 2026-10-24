@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A03",
+  "names": {
+    "spanish": "Beca de Matrícula Congelada",
+    "english": "Frozen Enrollment Scholarship"
+  },
+  "effect": "Roba 1 la primera vez de cada turno que juegues una carta con [freeze].",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "common"
+}

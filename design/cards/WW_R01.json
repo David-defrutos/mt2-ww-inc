@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_R01",
+  "selection": "R01",
+  "type": "room",
+  "names": {
+    "spanish": "Strictly Platonic",
+    "english": "Strictly Platonic"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Las parejas adyacentes Mago–Bruja tienen 1 menos de [cooldown] base, mínimo 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Reutiliza SocialRules.Mixed para dúos adyacentes en ambos órdenes, sin Chaperone. Conserva -1 cooldown base, mínimo 1. Pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

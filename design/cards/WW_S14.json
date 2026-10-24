@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S14",
+  "selection": "S14",
+  "type": "spell",
+  "names": {
+    "spanish": "Prácticas con Seguro Médico",
+    "english": "Practicum with Health Insurance"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Inflige [effect0.power] de daño a una unidad. Restaura [effect1.power] de salud a todos los aliados de este piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Daño 12 a una unidad y curación nativa 4 a todos los aliados del piso. CardEffectHeal room/monsters; enemigos excluidos. Pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_R02",
+  "selection": "R02",
+  "type": "room",
+  "names": {
+    "spanish": "Awkward Silence",
+    "english": "Awkward Silence"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Los hechizos de este piso obtienen +15 [magicpower] por cada pareja adyacente Mago–Bruja, en cualquier orden.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

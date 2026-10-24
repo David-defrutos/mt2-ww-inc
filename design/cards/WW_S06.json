@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S06",
+  "selection": "S06",
+  "type": "spell",
+  "names": {
+    "spanish": "Convocatoria Extraordinaria",
+    "english": "Extraordinary Exam Session"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Aparta hasta tres hechizos de tu mano. Al comienzo del próximo turno, vuelven a la mano con 0[ember].",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirado por petición del usuario."
+}

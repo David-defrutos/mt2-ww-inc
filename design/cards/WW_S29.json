@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S29",
+  "selection": "S29",
+  "type": "spell",
+  "names": {
+    "spanish": "Spike de Prórroga",
+    "english": "Extension Spike"
+  },
+  "cost": "X",
+  "rarity": "rare",
+  "effect": "Añade [spellweakness] [x] a las unidades enemigas.",
+  "status": "implemented_unverified",
+  "implementation_note": "CardEffectAddStatusEffect room/heroes con stacks cero y CardTraitScalingAddStatusEffect played_cost, multiplicador 1. Patrón nativo de Spike of the Stygian. Rara, X y Consume conservados. Sin efecto sobre cooldown ni C# propio. Pendiente partida.",
+  "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+}

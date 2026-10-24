@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_E02_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_E02_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_E02_Upgrade",
+      "titles": {
+        "english": "Faculty Robe",
+        "spanish": "Toga del Profesorado",
+        "french": "Robe du corps enseignant",
+        "german": "Dozententalar",
+        "portuguese": "Beca do Corpo Docente",
+        "russian": "Мантия преподавателя",
+        "chinese": "教职长袍",
+        "chinese_traditional": "教職長袍",
+        "korean": "교수진 로브",
+        "japanese": "教授陣のローブ"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_E02Icon",
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_E02",
+      "names": {
+        "english": "Faculty Robe",
+        "spanish": "Toga del Profesorado",
+        "french": "Robe du corps enseignant",
+        "german": "Dozententalar",
+        "portuguese": "Beca do Corpo Docente",
+        "russian": "Мантия преподавателя",
+        "chinese": "教职长袍",
+        "chinese_traditional": "教職長袍",
+        "korean": "교수진 로브",
+        "japanese": "教授陣のローブ"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "card_art": "@WW_E02CardArt",
+      "pools": [],
+      "targetless": false,
+      "effects": [
+        "@WW_E02_Equip"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_E02CardArt",
+      "path": "textures/cards/WW_E02CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_E02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_E02CardArt"
+        }
+      }
+    }
+  ]
+}

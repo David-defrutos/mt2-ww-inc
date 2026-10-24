@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S07_Effect",
+      "name": "@CardEffectAcademicConduitTransfer",
+      "target_mode": "room",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S07",
+      "names": {
+        "spanish": "Convalidación de Conduit",
+        "english": "Conduit Credit Transfer",
+        "french": "Transfert de crédits Conduit",
+        "german": "Conduit-Leistungspunkttransfer",
+        "portuguese": "Transferência de Créditos Conduit",
+        "russian": "Перевод зачётов Conduit",
+        "chinese": "Conduit 学分转移",
+        "chinese_traditional": "Conduit 學分轉移",
+        "korean": "Conduit 학점 이전",
+        "japanese": "Conduit 単位振替"
+      },
+      "descriptions": {
+        "spanish": "Elimina todo el [conduit] de las unidades aliadas de todos los pisos. Un hechizo de tu mano obtiene esa cantidad de [magicpower] y Explosive.",
+        "english": "Remove all [conduit] from friendly units on all floors. A spell in hand gains that much [magicpower] and Explosive.",
+        "french": "Retire toute la [conduit] de vos unités. Un sort choisi gagne autant de [magicpower] et Explosive.",
+        "german": "Entferne alle [conduit] deiner Einheiten. Ein gewählter Zauber erhält so viel [magicpower] und Explosive.",
+        "portuguese": "Remove toda a [conduit] das suas unidades. Um feitiço escolhido ganha essa quantidade de [magicpower] e Explosive.",
+        "russian": "Убирает всю [conduit] ваших единиц. Выбранное заклинание получает столько же [magicpower] и Explosive.",
+        "chinese": "移除己方单位全部 [conduit]。选定法术获得等量 [magicpower] 和 Explosive。",
+        "chinese_traditional": "移除己方單位全部 [conduit]。選定法術獲得等量 [magicpower] 和 Explosive。",
+        "korean": "아군 유닛의 모든 [conduit]를 제거합니다. 선택한 주문이 그만큼 [magicpower]와 Explosive를 얻습니다.",
+        "japanese": "味方ユニットの全[conduit]を除く。選んだ呪文は、同量の[magicpower]とExplosiveを得る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S07CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S07_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S07CardArt",
+      "path": "textures/cards/WW_S07CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S07CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S07CardArt"
+        }
+      }
+    }
+  ]
+}

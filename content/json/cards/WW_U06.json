@@ -1,0 +1,158 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U06_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U06_Character"
+    },
+    {
+      "id": "WW_U06_Ability_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_str": "area"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U06_Ability",
+      "names": {
+        "english": "Collective Assessment",
+        "spanish": "Evaluación Colectiva",
+        "french": "Évaluation collective",
+        "german": "Gemeinschaftsprüfung",
+        "portuguese": "Avaliação Coletiva",
+        "russian": "Коллективная оценка",
+        "chinese": "集体考核",
+        "chinese_traditional": "集體考核",
+        "korean": "공동 평가",
+        "japanese": "合同評価"
+      },
+      "descriptions": {
+        "spanish": "Elige un hechizo de daño de tu mano. Este turno, inflige la mitad de daño, a todos los enemigos de su piso.",
+        "english": "Choose a damage spell in hand. This turn, it deals half damage, to all enemies on its floor.",
+        "french": "Choisissez un sort de dégâts en main. Ce tour, il inflige la moitié des dégâts, à tous les ennemis de son étage.",
+        "german": "Wähle einen Schadenszauber auf der Hand. Diese Runde trifft er alle Gegner seiner Etage mit halbem, em Schaden.",
+        "portuguese": "Escolha um feitiço de dano da mão. Neste turno causa metade do dano, a todos os inimigos do andar.",
+        "russian": "выберите заклинание урона в руке. В этот ход наносит всем врагам этажа половину урона.",
+        "chinese": "选择手牌伤害法术。本回合对使用层所有敌人造成一半伤害，。",
+        "chinese_traditional": "選擇手牌傷害法術。本回合對使用層所有敵人造成一半傷害，。",
+        "korean": "손의 피해 주문을 선택합니다. 이번 턴 해당 층 모든 적에게 절반의 피해를 내림하여 줍니다.",
+        "japanese": "手札のダメージ呪文を選ぶ。このターン、使用階の全敵に半分のダメージを与える。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "starter",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 2,
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true,
+      "card_art": "@WW_U06CardArt",
+      "effects": [
+        "@WW_U06_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly"
+    },
+    {
+      "id": "WW_U06",
+      "names": {
+        "spanish": "Catedrática de Daños Compartidos",
+        "english": "Professor of Shared Damages",
+        "french": "Professeur de dégâts partagés",
+        "german": "Professor für geteilten Schaden",
+        "portuguese": "Professor de Danos Compartilhados",
+        "russian": "Профессор распределённого урона",
+        "chinese": "伤害分担教授",
+        "chinese_traditional": "傷害分擔教授",
+        "korean": "피해 분담 교수",
+        "japanese": "損害分担教授"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_U06CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U06_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U06_Character",
+      "names": {
+        "spanish": "Catedrática de Daños Compartidos",
+        "english": "Professor of Shared Damages",
+        "french": "Professeur de dégâts partagés",
+        "german": "Professor für geteilten Schaden",
+        "portuguese": "Professor de Danos Compartilhados",
+        "russian": "Профессор распределённого урона",
+        "chinese": "伤害分担教授",
+        "chinese_traditional": "傷害分擔教授",
+        "korean": "피해 분담 교수",
+        "japanese": "損害分担教授"
+      },
+      "character_art": "@WW_U06CharacterArt",
+      "size": 2,
+      "health": 30,
+      "attack_damage": 10,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_BannerUnit"
+      ],
+      "ability": "@WW_U06_Ability"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U06CardArt",
+      "path": "textures/cards/WW_U06CardArt.png"
+    },
+    {
+      "id": "WW_U06CharacterArt",
+      "path": "textures/characters/WW_U06CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U06CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U06CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U06CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U06CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.98,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

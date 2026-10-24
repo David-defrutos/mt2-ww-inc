@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S22",
+  "selection": "S22",
+  "type": "spell",
+  "names": {
+    "spanish": "Tutoría de Emergencia",
+    "english": "Emergency Office Hours"
+  },
+  "cost": 0,
+  "rarity": "rare",
+  "effect": "Reduce la recarga actual de una unidad aliada en 1. Añade Dazed 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Efectos nativos RemoveStatusEffect cooldown 1 y Dazed 1; pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

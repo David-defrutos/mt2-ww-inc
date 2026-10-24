@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U02_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U02_Character"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U02",
+      "names": {
+        "spanish": "Doctorado en Primeros Auxilios Arcanos",
+        "english": "PhD in Arcane First Aid",
+        "french": "Docteur en premiers secours arcaniques",
+        "german": "Doktor der arkanen Ersten Hilfe",
+        "portuguese": "Doutor em Primeiros Socorros Arcanos",
+        "russian": "Доктор магической первой помощи",
+        "chinese": "奥术急救博士",
+        "chinese_traditional": "奧術急救博士",
+        "korean": "비전 응급 처치 박사",
+        "japanese": "秘術応急処置博士"
+      },
+      "descriptions": {
+        "english": "The first spell each turn that damages enemies on this floor also restores health equal to that damage, divided evenly among friendly units on this floor.",
+        "spanish": "El primer hechizo de cada turno que dañe a enemigos de este piso también restaura salud igual al daño infligido, repartida por igual entre los aliados de este piso.",
+        "french": "Le premier sort de chaque tour qui blesse les ennemis de cet étage restaure aussi des PV égaux aux dégâts infligés, répartis également entre les alliés de cet étage.",
+        "german": "Der erste Zauber jeder Runde, der Gegnern dieser Etage Schaden zufügt, stellt auch Leben in Höhe dieses Schadens wieder her, gleichmäßig auf die Verbündeten dieser Etage verteilt.",
+        "portuguese": "O primeiro feitiço de cada turno que causa dano a inimigos neste andar também restaura vida igual ao dano causado, dividida igualmente entre os aliados deste andar.",
+        "russian": "Первое заклинание каждого хода, наносящее урон врагам этого этажа, также восстанавливает столько же здоровья, поровну между союзниками на этом этаже.",
+        "chinese": "每回合首个对本层敌人造成伤害的法术，也会恢复等于该伤害量的生命值，由本层友方单位平均分配。",
+        "chinese_traditional": "每回合首個對本層敵人造成傷害的法術，也會恢復等於該傷害量的生命值，由本層友方單位平均分配。",
+        "korean": "매 턴 이 층의 적에게 처음 피해를 주는 주문은 그 피해만큼 체력도 회복하며, 이 층의 아군에게 균등하게 나눕니다.",
+        "japanese": "毎ターンこの階の敵に最初にダメージを与える呪文は、そのダメージと同量の体力も回復し、この階の味方に均等に分配する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U02CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U02_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U02_Character",
+      "names": {
+        "spanish": "Doctorado en Primeros Auxilios Arcanos",
+        "english": "PhD in Arcane First Aid",
+        "french": "Docteur en premiers secours arcaniques",
+        "german": "Doktor der arkanen Ersten Hilfe",
+        "portuguese": "Doutor em Primeiros Socorros Arcanos",
+        "russian": "Доктор магической первой помощи",
+        "chinese": "奥术急救博士",
+        "chinese_traditional": "奧術急救博士",
+        "korean": "비전 응급 처치 박사",
+        "japanese": "秘術応急処置博士"
+      },
+      "character_art": "@WW_U02CharacterArt",
+      "size": 2,
+      "health": 30,
+      "attack_damage": 5,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_BannerUnit"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U02CardArt",
+      "path": "textures/cards/WW_U02CardArt.png"
+    },
+    {
+      "id": "WW_U02CharacterArt",
+      "path": "textures/characters/WW_U02CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U02CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U02CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U02CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 1.04,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

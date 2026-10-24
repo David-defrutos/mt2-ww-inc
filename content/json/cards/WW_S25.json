@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S25_Heal",
+      "name": "CardEffectHeal",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_int": 10
+    },
+    {
+      "id": "WW_S25_Effect",
+      "name": "@CardEffectAcademicOneTurnUpgrade",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_Retribution"
+    },
+    {
+      "id": "WW_RetributionDamage",
+      "name": "CardEffectDamagePerHp",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 1,
+      "param_bool": true
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_Retribution",
+      "trigger_upgrades": [
+        "@WW_RetributionHit"
+      ],
+      "status_effect_upgrades": [
+        {
+          "status": "@insured",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_RetributionHit",
+      "trigger": "on_hit",
+      "descriptions": {
+        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
+        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
+        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
+        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
+        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
+        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
+        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
+        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
+        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
+        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+      },
+      "effects": [
+        "@WW_RetributionDamage"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S25",
+      "names": {
+        "spanish": "Seguro de Responsabilidad Arcana",
+        "english": "Arcane Liability Insurance",
+        "french": "Assurance responsabilité arcanique",
+        "german": "Arkane Haftpflichtversicherung",
+        "portuguese": "Seguro de Responsabilidade Arcana",
+        "russian": "Страхование магической ответственности",
+        "chinese": "奥术责任保险",
+        "chinese_traditional": "奧術責任保險",
+        "korean": "비전 배상 책임 보험",
+        "japanese": "秘術賠償責任保険"
+      },
+      "descriptions": {
+        "spanish": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige tanto daño al atacante como la [health] actual de esta unidad.",
+        "english": "Restore [effect0.power] health. Until next turn, deal damage to the attacker equal to this unit’s current [health] when hit.",
+        "french": "Restaure [effect0.power] PV. Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
+        "german": "Stelle [effect0.power] Gesundheit wieder her. Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
+        "portuguese": "Restaura [effect0.power] de vida. Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
+        "russian": "Восстанавливает [effect0.power] здоровья. До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
+        "chinese": "恢复[effect0.power]点生命值。直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
+        "chinese_traditional": "恢復[effect0.power]點生命值。直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
+        "korean": "생명력을 [effect0.power] 회복합니다. 다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
+        "japanese": "HPを[effect0.power]回復する。次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S25CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S25_Heal",
+        "@WW_S25_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S25CardArt",
+      "path": "textures/cards/WW_S25CardArt.png"
+    },
+    {
+      "id": "WW_InsuranceIcon",
+      "path": "textures/icons/WW_InsuranceIcon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S25CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S25CardArt"
+        }
+      }
+    }
+  ],
+  "status_effects": [
+    {
+      "id": "insured",
+      "class_name": "@StatusEffectAcademicInsurance",
+      "names": {
+        "spanish": "Seguro de Responsabilidad Arcana",
+        "english": "Arcane Liability Insurance",
+        "french": "Assurance responsabilité arcanique",
+        "german": "Arkane Haftpflichtversicherung",
+        "portuguese": "Seguro de Responsabilidade Arcana",
+        "russian": "Страхование магической ответственности",
+        "chinese": "奥术责任保险",
+        "chinese_traditional": "奧術責任保險",
+        "korean": "비전 배상 책임 보험",
+        "japanese": "秘術賠償責任保険"
+      },
+      "card_tooltips": {
+        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
+        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
+        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
+        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
+        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
+        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
+        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
+        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
+        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
+        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+      },
+      "character_tooltips": {
+        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
+        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
+        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
+        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
+        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
+        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
+        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
+        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
+        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
+        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+      },
+      "trigger_stage": "none",
+      "remove_when_triggered": false,
+      "is_propagatable": false,
+      "exclude_hero_propagation": true,
+      "exclude_monster_propagation": true,
+      "display_category": "persistent",
+      "is_stackable": false,
+      "hidden": false,
+      "icon": "@WW_InsuranceIcon"
+    }
+  ],
+  "atlas_icons": [
+    {
+      "id": "WW_InsuranceIcon",
+      "path": "textures/icons/WW_InsuranceTooltip.png"
+    }
+  ]
+}

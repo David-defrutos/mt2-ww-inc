@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A04_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A04",
+      "type": "collectable",
+      "names": {
+        "spanish": "Certificado de Buena Conducta",
+        "english": "Certificate of Good Conduct",
+        "french": "Certificat de bonne conduite",
+        "german": "Führungszeugnis",
+        "portuguese": "Certificado de Boa Conduta",
+        "russian": "Справка о хорошем поведении",
+        "chinese": "良好行为证明",
+        "chinese_traditional": "良好行為證明",
+        "korean": "품행 증명서",
+        "japanese": "素行証明書"
+      },
+      "descriptions": {
+        "spanish": "Si no juegas hechizos de daño este turno, roba +1 en el próximo turno.",
+        "english": "If you play no damage spells this turn, draw +1 next turn.",
+        "french": "Si vous terminez le tour sans sort de dégâts, piochez 1 carte supplémentaire au prochain tour.",
+        "german": "Endest du die Runde ohne Schadenszauber, ziehe nächste Runde 1 zusätzliche Karte.",
+        "portuguese": "Se terminar o turno sem jogar feitiço de dano, compre 1 carta extra no próximo turno.",
+        "russian": "Если закончить ход без заклинаний урона, в следующий ход возьмите 1 дополнительную карту.",
+        "chinese": "若回合结束前未使用伤害法术，下回合额外抽1张牌。",
+        "chinese_traditional": "若回合結束前未使用傷害法術，下回合額外抽1張牌。",
+        "korean": "피해 주문을 사용하지 않고 턴을 마치면 다음 턴 1장을 추가로 뽑습니다.",
+        "japanese": "ダメージ呪文を使わずターンを終えると、次のターン追加で1枚引く。"
+      },
+      "icon": "@WW_A04Icon",
+      "icon_small": "@WW_A04IconSmall",
+      "relic_effects": [
+        "@WW_A04_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A04Icon",
+      "path": "textures/relics/WW_A04Icon.png"
+    },
+    {
+      "id": "WW_A04IconSmall",
+      "path": "textures/relics/WW_A04IconSmall.png"
+    }
+  ]
+}

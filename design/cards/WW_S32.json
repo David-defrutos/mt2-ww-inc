@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S32",
+  "selection": "S32",
+  "type": "spell",
+  "names": {
+    "english": "Pair Assignment",
+    "spanish": "Trabajo en Pareja"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Inflige [effect0.power] de daño a una unidad enemiga. Si hay un Mago y una Bruja adyacentes en este piso, gana [explosive] y [attuned] solo al jugarlo.",
+  "status": "retired",
+  "implementation_note": "Antes del daño añade solo los traits ausentes por pareja adyacente. Cleanup retira únicamente instancias añadidas al terminar resolución, tanto real como preview; conserva propiedades previas. Arte provisional S24.",
+  "retired_reason": "Retirado por petición del usuario."
+}

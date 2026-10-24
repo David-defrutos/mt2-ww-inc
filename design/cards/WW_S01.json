@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S01",
+  "selection": "S01",
+  "type": "spell",
+  "names": {
+    "spanish": "Circular de Daños Interdepartamentales",
+    "english": "Interdepartmental Damage Memo"
+  },
+  "cost": 2,
+  "rarity": "rare",
+  "effect": "El siguiente hechizo dirigido a un único enemigo también afecta al primer enemigo de los demás pisos.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

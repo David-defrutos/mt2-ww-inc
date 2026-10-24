@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U17",
+  "selection": "U17",
+  "type": "unit",
+  "names": {
+    "spanish": "Delegada del Primer Hechizo",
+    "english": "First Spell Class Representative"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "El primer hechizo de daño de cada turno le otorga tanto [attack] como el daño total que inflija, durante ese turno.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 5,
+    "health": 35,
+    "size": 1
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

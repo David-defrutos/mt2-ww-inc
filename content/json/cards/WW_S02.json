@@ -1,0 +1,136 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S02_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_str": "bind_attack",
+      "param_card_filter": "OnlySpells"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S02",
+      "names": {
+        "spanish": "Tesis Encantada",
+        "english": "Enchanted Dissertation",
+        "french": "Thèse enchantée",
+        "german": "Verzauberte Dissertation",
+        "portuguese": "Tese Encantada",
+        "russian": "Зачарованная диссертация",
+        "chinese": "附魔论文",
+        "chinese_traditional": "附魔論文",
+        "korean": "마법 논문",
+        "japanese": "魔法の学位論文"
+      },
+      "descriptions": {
+        "english": "Set aside a spell in hand that can target enemies and choose a friendly unit. Its next three attacks also play that spell on the enemy attacked. Return it to the discard pile when the effect ends.",
+        "spanish": "Aparta un hechizo de tu mano que pueda dirigirse a enemigos y elige una unidad aliada. Sus próximos tres ataques también juegan ese hechizo sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
+        "french": "Mettez de côté un sort en main pouvant cibler les ennemis et choisissez un allié. Ses trois prochaines attaques jouent aussi ce sort sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
+        "german": "Lege einen Handzauber beiseite, der Gegner anvisieren kann, und wähle einen Verbündeten. Seine nächsten drei Angriffe spielen auch diesen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
+        "portuguese": "Reserve um feitiço da mão que possa ter inimigos como alvo e escolha um aliado. Seus próximos três ataques também lançam esse feitiço no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
+        "russian": "Отложите заклинание из руки, способное выбирать врагов целью, и выберите союзника. Следующие три его атаки также применяют это заклинание к атакуемому врагу. Верните его в сброс, когда эффект закончится.",
+        "chinese": "暂存一个可指定敌人为目标的手牌法术，并选择一个友方单位。其接下来三次攻击也会对被攻击的敌人施放该法术。效果结束后，将其放回弃牌堆。",
+        "chinese_traditional": "暫存一個可指定敵人為目標的手牌法術，並選擇一個友方單位。其接下來三次攻擊也會對被攻擊的敵人施放該法術。效果結束後，將其放回棄牌堆。",
+        "korean": "적을 대상으로 할 수 있는 손의 주문을 보관하고 아군을 선택합니다. 다음 세 번의 공격 때 공격한 적에게 그 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "敵を対象にできる手札の呪文を取り置き、味方を選ぶ。その味方の次の3回の攻撃は、攻撃した敵にその呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 2,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S02CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S02_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S02CardArt",
+      "path": "textures/cards/WW_S02CardArt.png"
+    },
+    {
+      "id": "WW_DissertationIcon",
+      "path": "textures/icons/WW_ReservedSpellIcon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S02CardArt"
+        }
+      }
+    }
+  ],
+  "status_effects": [
+    {
+      "id": "ww_dissertation",
+      "class_name": "@StatusEffectAcademicDissertation",
+      "names": {
+        "spanish": "Tesis Encantada",
+        "english": "Enchanted Dissertation",
+        "french": "Thèse enchantée",
+        "german": "Verzauberte Dissertation",
+        "portuguese": "Tese Encantada",
+        "russian": "Зачарованная диссертация",
+        "chinese": "附魔论文",
+        "chinese_traditional": "附魔論文",
+        "korean": "마법 논문",
+        "japanese": "魔法の学位論文"
+      },
+      "card_tooltips": {
+        "english": "Each attack also plays the bound spells on the enemy attacked. Return it to the discard pile when the effect ends.",
+        "spanish": "Cada ataque también juega los hechizos vinculados sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
+        "french": "Chaque attaque joue aussi les sorts liés sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
+        "german": "Jeder Angriff spielt auch die gebundenen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
+        "portuguese": "Cada ataque também lança os feitiços vinculados no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
+        "russian": "Каждая атака также применяет привязанные заклинания к атакованному врагу. Верните его в сброс, когда эффект закончится.",
+        "chinese": "每次攻击也会对被攻击的敌人施放绑定的法术。效果结束后，将其放回弃牌堆。",
+        "chinese_traditional": "每次攻擊也會對被攻擊的敵人施放綁定的法術。效果結束後，將其放回棄牌堆。",
+        "korean": "각 공격은 공격한 적에게 연결된 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "各攻撃は、攻撃した敵に結び付けられた呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+      },
+      "character_tooltips": {
+        "english": "Each attack also plays the bound spells on the enemy attacked. Return it to the discard pile when the effect ends.",
+        "spanish": "Cada ataque también juega los hechizos vinculados sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
+        "french": "Chaque attaque joue aussi les sorts liés sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
+        "german": "Jeder Angriff spielt auch die gebundenen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
+        "portuguese": "Cada ataque também lança os feitiços vinculados no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
+        "russian": "Каждая атака также применяет привязанные заклинания к атакованному врагу. Верните его в сброс, когда эффект закончится.",
+        "chinese": "每次攻击也会对被攻击的敌人施放绑定的法术。效果结束后，将其放回弃牌堆。",
+        "chinese_traditional": "每次攻擊也會對被攻擊的敵人施放綁定的法術。效果結束後，將其放回棄牌堆。",
+        "korean": "각 공격은 공격한 적에게 연결된 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "各攻撃は、攻撃した敵に結び付けられた呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+      },
+      "trigger_stage": "none",
+      "remove_when_triggered": false,
+      "is_propagatable": false,
+      "exclude_hero_propagation": true,
+      "exclude_monster_propagation": true,
+      "display_category": "persistent",
+      "is_stackable": true,
+      "hidden": false,
+      "icon": "@WW_DissertationIcon"
+    }
+  ],
+  "atlas_icons": [
+    {
+      "id": "WW_DissertationIcon",
+      "path": "textures/icons/WW_ReservedSpellIcon.png"
+    }
+  ]
+}

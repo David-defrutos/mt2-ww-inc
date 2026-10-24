@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A03_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A03",
+      "type": "collectable",
+      "names": {
+        "spanish": "Beca de Matrícula Congelada",
+        "english": "Frozen Enrollment Scholarship",
+        "french": "Bourse d'inscription gelée",
+        "german": "Stipendium für eingefrorene Einschreibung",
+        "portuguese": "Bolsa de Matrícula Congelada",
+        "russian": "Стипендия замороженного зачисления",
+        "chinese": "冻结入学奖学金",
+        "chinese_traditional": "凍結入學獎學金",
+        "korean": "동결 등록 장학금",
+        "japanese": "凍結登録奨学金"
+      },
+      "descriptions": {
+        "spanish": "Roba 1 la primera vez de cada turno que juegues una carta con [freeze].",
+        "english": "Draw 1 the first time each turn you play a card with [freeze].",
+        "french": "La première fois par tour que vous jouez une carte gelée, piochez 1.",
+        "german": "Ziehe 1, wenn du in einer Runde erstmals eine eingefrorene Karte spielst.",
+        "portuguese": "Na primeira vez de cada turno que jogar uma carta congelada, compre 1.",
+        "russian": "При первом розыгрыше замороженной карты за ход возьмите 1 карту.",
+        "chinese": "每回合首次使用冻结卡牌时，抽1张牌。",
+        "chinese_traditional": "每回合首次使用凍結卡牌時，抽1張牌。",
+        "korean": "매 턴 처음 얼어 있던 카드를 사용하면 1장을 뽑습니다.",
+        "japanese": "毎ターン初めて凍結していたカードを使うと1枚引く。"
+      },
+      "icon": "@WW_A03Icon",
+      "icon_small": "@WW_A03IconSmall",
+      "relic_effects": [
+        "@WW_A03_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A03Icon",
+      "path": "textures/relics/WW_A03Icon.png"
+    },
+    {
+      "id": "WW_A03IconSmall",
+      "path": "textures/relics/WW_A03IconSmall.png"
+    }
+  ]
+}

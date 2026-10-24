@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S04",
+  "selection": "S04",
+  "type": "spell",
+  "names": {
+    "spanish": "Prácticas de Medicina Ofensiva",
+    "english": "Offensive Medicine Practicum"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Este turno, los hechizos de curación también infligen tanto daño a las unidades enemigas de su piso como la salud restaurada.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Convertido en reliquia del primer hechizo de curación cada turno."
+}

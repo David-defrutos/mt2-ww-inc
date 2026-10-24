@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U16",
+  "selection": "U16",
+  "type": "unit",
+  "names": {
+    "spanish": "Inspector de Debilidades Aplicadas",
+    "english": "Applied Weakness Inspector"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Strike: aplica [spellweakness] 1.",
+  "status": "implemented_unverified",
+  "implementation_note": "Trigger nativo on_attacking y CardEffectAddStatusEffect dirigido a last_attacked_character, como Coldcaelia y el chaperón. Spell Weakness 1 por Strike. Eliminada conversión propia a Melee Weakness. Pierce, Multistrike, 5/12, coste 2 y rareza infrecuente conservados. Texto/tooltip nativos en diez idiomas; no override duplicado. Pendiente partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 5,
+    "health": 12,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

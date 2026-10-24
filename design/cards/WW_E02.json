@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_E02",
+  "selection": "E02",
+  "type": "equipment",
+  "names": {
+    "english": "Faculty Robe",
+    "spanish": "Toga del Profesorado"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "[conduit] 5.",
+  "status": "retired",
+  "implementation_note": "Sin overrides de carta ni mejora: el motor muestra Conduit 5 una sola vez y aporta tooltip nativo. Mecánica y estadísticas intactas. Pendiente verificación visual.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirada por petición del usuario tras añadir Tenured Wand."
+}

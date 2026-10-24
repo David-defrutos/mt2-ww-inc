@@ -1,0 +1,1319 @@
+﻿{
+  "clan": "W&W Inc.",
+  "expanded_name": "Wizards & Witches Inc.",
+  "created": "2026-10-09-2249",
+  "cards": [
+    {
+      "id": "WW_C01",
+      "selection": "C01",
+      "type": "champion",
+      "names": {
+        "spanish": "Decano del Departamento de Sombreros",
+        "english": "Dean of the Hat Department"
+      },
+      "cost": 0,
+      "rarity": "champion",
+      "effect": "Roba un hechizo de daño. Otórgale [explosive] para su próximo uso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Habilidad común roba un hechizo de daño y añade Explosive solo para próximo uso. Mejora nativa identificada WW_C01_NextUseUpgrade con avoidClobberingExistingTraits=true; marcador propio OnCardPlayed retira únicamente esa mejora tras resolver hechizo. No caduca por fin de turno o descarte sin jugar; copias llevan su propio marcador. Conduit y sendas conservados. Sin migración que retire Explosive antiguo no identificado. Pendiente partida.",
+      "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 5,
+        "health": 20,
+        "size": 2
+      },
+      "ability_cooldown": 3,
+      "appearance": "Brujo con sombrero azul puntiagudo; arte pendiente.",
+      "paths": [
+        {
+          "name": "Frat Bro",
+          "ranks": [
+            "[conduit] +5 por Bruja en juego",
+            "[conduit] +10 por Bruja en juego",
+            "[conduit] +15 por Bruja en juego"
+          ],
+          "mode": "Aura dinámica; desaparece al salir las Witches. No acumulación cada turno.",
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 5
+            },
+            {
+              "attack": 5,
+              "health": 15
+            },
+            {
+              "attack": 10,
+              "health": 30
+            }
+          ]
+        },
+        {
+          "name": "Department of Practical Magic",
+          "ranks": [
+            "Arcane Slay: añade [conduit] 1.",
+            "Arcane Slay: añade [conduit] 2.",
+            "Arcane Slay: añade [conduit] 3."
+          ],
+          "note": "Gana Conduit por cada baja de hechizo en su piso.",
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 5
+            },
+            {
+              "attack": 5,
+              "health": 10
+            },
+            {
+              "attack": 10,
+              "health": 20
+            }
+          ]
+        },
+        {
+          "name": "Department of Spell Tuning",
+          "ranks": [
+            "Arcane Slay: Otorga +1 [magicpower] permanente al hechizo que causó la muerte.",
+            "Arcane Slay: Otorga +2 [magicpower] permanente al hechizo que causó la muerte.",
+            "Arcane Slay: Otorga +3 [magicpower] permanente al hechizo que causó la muerte."
+          ],
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 5
+            },
+            {
+              "attack": 5,
+              "health": 10
+            },
+            {
+              "attack": 10,
+              "health": 20
+            }
+          ]
+        }
+      ],
+      "ability_name": {
+        "english": "Explosive Requisition",
+        "spanish": "Solicitud Explosiva",
+        "french": "Demande explosive",
+        "german": "Explosive Anforderung",
+        "portuguese": "Requisição Explosiva",
+        "russian": "Взрывной запрос",
+        "chinese": "爆炸申请",
+        "chinese_traditional": "爆炸申請",
+        "korean": "폭발 신청",
+        "japanese": "爆発申請"
+      },
+      "baseline_conduit_by_level": [
+        5,
+        10,
+        15
+      ]
+    },
+    {
+      "id": "WW_C02",
+      "selection": "C02",
+      "type": "champion",
+      "names": {
+        "spanish": "Catedrática de Brujería Avanzada",
+        "english": "Professor of Advanced Witchcraft"
+      },
+      "cost": 0,
+      "rarity": "champion",
+      "effect": "Tres sendas pasivas combinables. La senda Queen Bee escala con Wizards; las otras reaccionan a hechizos jugados en su piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 10,
+        "health": 20,
+        "size": 2
+      },
+      "appearance": "Bruja clásica con sombrero negro puntiagudo; arte pendiente.",
+      "paths": [
+        {
+          "name": "Queen Bee",
+          "ranks": [
+            "Mageblade +5 por Wizard en juego",
+            "Mageblade +10 por Wizard en juego",
+            "Mageblade +15 por Wizard en juego"
+          ],
+          "mode": "Aura dinámica, sin acumulación por turnos.",
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 10
+            },
+            {
+              "attack": 10,
+              "health": 20
+            },
+            {
+              "attack": 20,
+              "health": 35
+            }
+          ]
+        },
+        {
+          "name": "Advanced Spellwork",
+          "ranks": [
+            "Incant: +5 de ataque",
+            "Incant: +10 de ataque",
+            "Incant: +20 de ataque"
+          ],
+          "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectBuffDamage.",
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 5
+            },
+            {
+              "attack": 5,
+              "health": 10
+            },
+            {
+              "attack": 10,
+              "health": 20
+            }
+          ]
+        },
+        {
+          "name": "Protective Tenure",
+          "ranks": [
+            "Incant: Armor 5",
+            "Incant: Armor 10",
+            "Incant: Armor 20"
+          ],
+          "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectAddStatusEffect.",
+          "stat_bonuses": [
+            {
+              "attack": 0,
+              "health": 10
+            },
+            {
+              "attack": 5,
+              "health": 25
+            },
+            {
+              "attack": 10,
+              "health": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WW_T01",
+      "selection": "T01",
+      "type": "starter",
+      "names": {
+        "spanish": "Chaperón de Inconducta",
+        "english": "Wizard Affairs Chaperon"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Impact: aplica Spell Weakness 1 al enemigo golpeado. Ocupa capacidad normal.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Chaperone",
+      "stats": {
+        "attack": 1,
+        "health": 10,
+        "size": 1
+      }
+    },
+    {
+      "id": "WW_T02",
+      "selection": "T02",
+      "type": "starter",
+      "names": {
+        "spanish": "Chaperona de Inconducta",
+        "english": "Witch Affairs Chaperone"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Aura: otorga Conduit 5 a los Wizards y Witches de su piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Chaperone",
+      "beneficiaries": [
+        "Wizard",
+        "Witch"
+      ],
+      "stats": {
+        "attack": 0,
+        "health": 10,
+        "size": 1
+      }
+    },
+    {
+      "id": "WW_U01",
+      "selection": "U01",
+      "type": "unit",
+      "names": {
+        "spanish": "Becario Pararrayos",
+        "english": "Lightning Rod Intern"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Los hechizos dirigidos a enemigos pueden seleccionar esta unidad. Redirígelos al primer enemigo de su piso, o a todos si son de área. Recupera las [ember] gastadas. Sufre 10 de daño por cada [dazed] y después añade [dazed] 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 0,
+        "health": 40,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U02",
+      "selection": "U02",
+      "type": "unit",
+      "names": {
+        "spanish": "Doctorado en Primeros Auxilios Arcanos",
+        "english": "PhD in Arcane First Aid"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "El primer hechizo de cada turno que dañe a enemigos de este piso también restaura salud igual al daño infligido, repartida por igual entre los aliados de este piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Primer hechizo de daño apto por turno y piso: curación por aliado = daño efectivo total / aliados vivos, redondeo entero habitual. Incluye al PhD y aliados con vida completa; no redistribuye exceso. Usa ApplyHeal nativo y conserva interacciones de excedente con Emeritus/Hostile Medicine. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 5,
+        "health": 30,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U03",
+      "selection": "U03",
+      "type": "unit",
+      "names": {
+        "spanish": "Catedrático de Medicina Hostil",
+        "english": "Professor of Hostile Medicine"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+      "status": "implemented_unverified",
+      "implementation_note": "Trigger WW_Overheal compartido: paramInt transporta el exceso en la cola nativa. Adaptador escala una copia del estado y delega daño en área a CardEffectDamage. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 10,
+        "health": 25,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U04",
+      "selection": "U04",
+      "type": "unit",
+      "names": {
+        "spanish": "Profesor de Educación Mágica",
+        "english": "Professor of Magical Education"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "El primer hechizo jugado en este piso cada turno obtiene tanto [magicpower] como la mitad del [attack] de la primera unidad aliada, solo al jugarlo.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 15,
+        "health": 15,
+        "size": 1
+      },
+      "banner": false,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U05",
+      "selection": "U05",
+      "type": "unit",
+      "names": {
+        "spanish": "Ayudante de Laboratorio Explosivo",
+        "english": "Explosive Lab Assistant"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Arcane Slay: añade [burst] 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Trigger reutilizable @WW_ArcaneSlay registrado por Trainworks con nombre/tooltip/icono; efecto de U05 nativo AddStatusEffect Burst 1. Despacho por bajas de hechizos por piso, sin hardcode del ID U05. Icono existente FollowUp de Conductor reutilizado. Pendiente prueba de combate/tooltip.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 15,
+        "health": 20,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U06",
+      "selection": "U06",
+      "type": "unit",
+      "names": {
+        "spanish": "Catedrática de Daños Compartidos",
+        "english": "Professor of Shared Damages"
+      },
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "Elige un hechizo de daño de tu mano. Este turno, inflige la mitad de daño, a todos los enemigos de su piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 10,
+        "health": 30,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": 2,
+      "ability_name": {
+        "english": "Collective Assessment",
+        "spanish": "Evaluación Colectiva",
+        "french": "Évaluation collective",
+        "german": "Gemeinschaftsprüfung",
+        "portuguese": "Avaliação Coletiva",
+        "russian": "Коллективная оценка",
+        "chinese": "集体考核",
+        "chinese_traditional": "集體考核",
+        "korean": "공동 평가",
+        "japanese": "合同評価"
+      }
+    },
+    {
+      "id": "WW_U08",
+      "selection": "U08",
+      "type": "unit",
+      "names": {
+        "spanish": "Postdoc de Asuntos Pendientes",
+        "english": "Postdoc of Unfinished Business"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Al morir, añade a tu mano una copia del último hechizo común jugado con 0[ember] y [ephemeral].",
+      "status": "implemented_unverified",
+      "implementation_note": "Trigger nativo OnDeath/Extinguish genera copia del último hechizo común global a coste 0 y Ephemeral; también se dispara en la reanimación Undying. La copia mantiene coste 0 entre turnos (SetFixedCost thisTurn=false); el registro se limpia al reiniciar batalla. Original intacto. Pendiente confirmar corrección en combate.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 0,
+        "health": 15,
+        "size": 1
+      },
+      "banner": false,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U10",
+      "selection": "U10",
+      "type": "unit",
+      "names": {
+        "spanish": "Becario de Créditos Consumibles",
+        "english": "Consumable Credits Intern"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "[consume] un hechizo de tu mano sin jugarlo. Añade tanto [conduit] como cinco veces su coste base en [ember].",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 5,
+        "health": 20,
+        "size": 1
+      },
+      "banner": false,
+      "ability_cooldown": 3,
+      "ability_name": {
+        "english": "Credit Conversion",
+        "spanish": "Conversión de Créditos",
+        "french": "Conversion de crédits",
+        "german": "Leistungspunkteumwandlung",
+        "portuguese": "Conversão de Créditos",
+        "russian": "Обмен зачётных единиц",
+        "chinese": "学分转换",
+        "chinese_traditional": "學分轉換",
+        "korean": "학점 전환",
+        "japanese": "単位変換"
+      },
+      "starting_status_effects": [
+        {
+          "status": "mageblade",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "WW_U11",
+      "selection": "U11",
+      "type": "unit",
+      "names": {
+        "spanish": "Archivera de Hechizos Extraviados",
+        "english": "Lost Spells Archivist"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Habilidad Recuperación de Hechizos: devuelve un hechizo consumido a tu mano.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 0,
+        "health": 25,
+        "size": 1
+      },
+      "banner": false,
+      "ability_cooldown": 3,
+      "ability_name": {
+        "english": "Spell Recovery",
+        "spanish": "Recuperación de Hechizos",
+        "french": "Récupération de sorts",
+        "german": "Zauberrückholung",
+        "portuguese": "Recuperação de Feitiços",
+        "russian": "Возвращение заклинаний",
+        "chinese": "法术回收",
+        "chinese_traditional": "法術回收",
+        "korean": "주문 회수",
+        "japanese": "呪文回収"
+      }
+    },
+    {
+      "id": "WW_U13",
+      "selection": "U13",
+      "type": "unit",
+      "names": {
+        "spanish": "Profesor Emérito de Medicina Defensiva",
+        "english": "Emeritus Professor of Defensive Medicine"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Sobrecuración: Añade [armor] igual a la curación sobrante, hasta tu salud máxima.",
+      "status": "implemented_unverified",
+      "implementation_note": "Trigger WW_Overheal compartido: paramInt transporta el exceso en la cola nativa. Adaptador escala una copia del estado y delega Armor a CardEffectAddStatusEffect. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 20,
+        "health": 30,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U16",
+      "selection": "U16",
+      "type": "unit",
+      "names": {
+        "spanish": "Inspector de Debilidades Aplicadas",
+        "english": "Applied Weakness Inspector"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Strike: aplica [spellweakness] 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Trigger nativo on_attacking y CardEffectAddStatusEffect dirigido a last_attacked_character, como Coldcaelia y el chaperón. Spell Weakness 1 por Strike. Eliminada conversión propia a Melee Weakness. Pierce, Multistrike, 5/12, coste 2 y rareza infrecuente conservados. Texto/tooltip nativos en diez idiomas; no override duplicado. Pendiente partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Wizard",
+      "stats": {
+        "attack": 5,
+        "health": 12,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U17",
+      "selection": "U17",
+      "type": "unit",
+      "names": {
+        "spanish": "Delegada del Primer Hechizo",
+        "english": "First Spell Class Representative"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "El primer hechizo de daño de cada turno le otorga tanto [attack] como el daño total que inflija, durante ese turno.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 5,
+        "health": 35,
+        "size": 1
+      },
+      "banner": true,
+      "ability_cooldown": null
+    },
+    {
+      "id": "WW_U18",
+      "selection": "U18",
+      "type": "unit",
+      "names": {
+        "spanish": "Catedrática de Matrícula Congelada",
+        "english": "Professor of Frozen Tuition"
+      },
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "Por cada 30 de daño que inflija, reduce el coste de todas las cartas con [freeze] de tu mano en 1[ember].",
+      "status": "implemented_unverified",
+      "implementation_note": "Habilidad usa CardEffectFreezeCard nativo de Freeze Ray/Cuttlehex, cooldown 2. Pasiva independiente acumula daño efectivo por unidad en tramos de 30 y conserva resto; cada tramo reduce en 1 el coste de todas las cartas que tengan CardTraitFreeze y estén en mano en ese momento. Sin vínculo a carta elegida ni reset al activar Freeze. Descuentos duran la batalla. Texto de habilidad solo Freeze; cuerpo y tooltip de unidad describen únicamente pasiva. Pendiente partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "subtype": "Witch",
+      "stats": {
+        "attack": 25,
+        "health": 25,
+        "size": 2
+      },
+      "banner": true,
+      "ability_cooldown": 2,
+      "ability_name": {
+        "english": "Frozen Enrollment",
+        "spanish": "Matrícula Congelada",
+        "french": "Inscription gelée",
+        "german": "Eingefrorene Einschreibung",
+        "portuguese": "Matrícula Congelada",
+        "russian": "Замороженная запись",
+        "chinese": "冻结注册",
+        "chinese_traditional": "凍結註冊",
+        "korean": "동결 등록",
+        "japanese": "凍結登録"
+      },
+      "ability_effect": "Añade [freeze] a una carta de tu mano."
+    },
+    {
+      "id": "WW_S01",
+      "selection": "S01",
+      "type": "spell",
+      "names": {
+        "spanish": "Circular de Daños Interdepartamentales",
+        "english": "Interdepartmental Damage Memo"
+      },
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "El siguiente hechizo dirigido a un único enemigo también afecta al primer enemigo de los demás pisos.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S02",
+      "selection": "S02",
+      "type": "spell",
+      "names": {
+        "spanish": "Tesis Encantada",
+        "english": "Enchanted Dissertation"
+      },
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "Aparta un hechizo de tu mano que pueda dirigirse a enemigos y elige una unidad aliada. Sus próximos tres ataques también juegan ese hechizo sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
+      "status": "implemented_unverified",
+      "implementation_note": "Selecciona hechizos cuyo equipo objetivo nativo incluya Heroes (incluye Both y área); no exige daño. OnlySpells nativo y GetTargetedTeamType se comprueban al validar, mostrar y confirmar. Pendiente prueba en partida. Marca visible ww_dissertation: cuenta ataques restantes (máximo entre vínculos); tooltip nativo del estado lista cada hechizo y su contador. Icono existente de reserva reutilizado, sin arte nuevo. Pendiente partida. Devuelve el original al descarte tras el tercer ataque completo o al morir la unidad. Usa RemoveFromStandByCondition y CheckStandByConditions nativos (puente a coroutine privada), sin cambiar coste, mejoras o rasgos. Sweep/Multistrike liberan después de la secuencia; ataques directos alternativos después de repetir. Sin mutación de pilas en preview. Pendiente partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S07",
+      "selection": "S07",
+      "type": "spell",
+      "names": {
+        "spanish": "Convalidación de Conduit",
+        "english": "Conduit Credit Transfer"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Elimina todo el [conduit] de las unidades aliadas de todos los pisos. Un hechizo de tu mano obtiene esa cantidad de [magicpower] y Explosive.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S09",
+      "selection": "S09",
+      "type": "spell",
+      "names": {
+        "spanish": "Beca por Contusión",
+        "english": "Concussion Scholarship"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Una unidad aliada obtiene: al recibir un golpe, reduce el coste de una carta aleatoria de tu pila de robo en 1[ember].",
+      "status": "implemented_unverified",
+      "implementation_note": "Estado visible ww_scholarship; al recibir golpe el hook elige cualquier carta de GetDrawPile con RNG nativo y aplica mejora temporal nativa de coste -1. Descuento conservado durante la batalla; no roba ni mezcla pilas. Icono provisional de seguro reutilizado. Pendiente partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S12",
+      "selection": "S12",
+      "type": "spell",
+      "names": {
+        "spanish": "Examen de Triple Impacto",
+        "english": "Triple Impact Exam"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
+      "status": "implemented_unverified",
+      "implementation_note": "Tres aplicaciones nativas de 1 de daño al mismo enemigo, coste 1 y rareza común. Sin Trample. Pendiente partida.",
+      "balance": "Valores vigentes: coste 1, daño 1 tres veces, común."
+    },
+    {
+      "id": "WW_S13",
+      "selection": "S13",
+      "type": "spell",
+      "names": {
+        "spanish": "Tesis con Revisiones Mayores",
+        "english": "Dissertation with Major Revisions"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "[trample]. Inflige [effect0.power] de daño. Slay: aumenta el daño en 2 permanentemente.",
+      "status": "implemented_unverified",
+      "implementation_note": "CardTraitTrample nativo añadido; keyword y tooltip nativos. Conserva coste 1, común, daño base 4 y Slay nativo +2 de daño permanente mediante CardTriggerEffectBuffSpellDamage single_run. Pendiente partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S14",
+      "selection": "S14",
+      "type": "spell",
+      "names": {
+        "spanish": "Prácticas con Seguro Médico",
+        "english": "Practicum with Health Insurance"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Inflige [effect0.power] de daño a una unidad. Restaura [effect1.power] de salud a todos los aliados de este piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Daño 12 a una unidad y curación nativa 4 a todos los aliados del piso. CardEffectHeal room/monsters; enemigos excluidos. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S15",
+      "selection": "S15",
+      "type": "spell",
+      "names": {
+        "spanish": "Trabajo Negativo en Grupo",
+        "english": "Negative Group Assignment"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Transfiere todos los efectos de [debuff] de las demás unidades aliadas de este piso a una unidad aliada.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S16",
+      "selection": "S16",
+      "type": "spell",
+      "names": {
+        "spanish": "Intercambio de Expedientes Vitales",
+        "english": "Vital Records Exchange"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Intercambia la salud actual de la primera y la última unidad aliada. La salud que exceda su máximo se convierte en [armor].",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S17",
+      "selection": "S17",
+      "type": "spell",
+      "names": {
+        "spanish": "Año Sabático de un Turno",
+        "english": "One Turn Sabbatical"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de la salud que le falte más [effect0.power].",
+      "status": "implemented_unverified",
+      "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10 con ApplyHeal nativo.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S18",
+      "selection": "S18",
+      "type": "spell",
+      "names": {
+        "spanish": "Cambio de Pupitres",
+        "english": "Desk Swap"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Intercambia la primera y la última unidad aliada. La nueva primera unidad ataca de inmediato.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S19",
+      "selection": "S19",
+      "type": "spell",
+      "names": {
+        "spanish": "Baja de Asignatura",
+        "english": "Course Withdrawal"
+      },
+      "cost": 0,
+      "rarity": "rare",
+      "effect": "Descarta un hechizo, Blight o Scourge de la mano. Obtén el doble de su coste actual en [ember]. Roba [effect1.power].",
+      "status": "implemented_unverified",
+      "implementation_note": "Selecciona Spell o Blight de mano, conservando exclusión de Persistent/Infusion. Captura GetCost actual antes de DiscardCard nativo; da el doble en Ember solo si sale de mano. Después CardEffectDraw roba 1. Rara, coste 0. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S20",
+      "selection": "S20",
+      "type": "spell",
+      "names": {
+        "spanish": "Semana de Exámenes",
+        "english": "Exam Week"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Roba [effect0.power] hechizos de tu pila de robo o de descartes.",
+      "status": "implemented_unverified",
+      "implementation_note": "Roba 3 hechizos desde robo o descarte. Rara, sin Consume.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S21",
+      "selection": "S21",
+      "type": "spell",
+      "names": {
+        "spanish": "Matrícula de Honor Blindada",
+        "english": "Armored Honors Enrollment"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Añade tanta [armor] a una unidad aliada como su [attack]. Su [attack] pasa a 0 este turno. Añade [dazed] 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S22",
+      "selection": "S22",
+      "type": "spell",
+      "names": {
+        "spanish": "Tutoría de Emergencia",
+        "english": "Emergency Office Hours"
+      },
+      "cost": 0,
+      "rarity": "rare",
+      "effect": "Reduce la recarga actual de una unidad aliada en 1. Añade Dazed 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Efectos nativos RemoveStatusEffect cooldown 1 y Dazed 1; pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S23",
+      "selection": "S23",
+      "type": "spell",
+      "names": {
+        "spanish": "Convalidación de Espacio",
+        "english": "Spatial Credit Transfer"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Añade [effect0.upgrade.bonussize][size] a una unidad aliada.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S25",
+      "selection": "S25",
+      "type": "spell",
+      "names": {
+        "spanish": "Seguro de Responsabilidad Arcana",
+        "english": "Arcane Liability Insurance"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige tanto daño al atacante como la [health] actual de esta unidad.",
+      "status": "implemented_unverified",
+      "implementation_note": "C# compilado. Marcador insured visible en unidad con icono de póliza y tooltip localizado, ligado a la retirada de Retribution al próximo turno. Pendiente comprobación en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S26",
+      "selection": "S26",
+      "type": "spell",
+      "names": {
+        "spanish": "Retirada de Matrícula",
+        "english": "Enrollment Recall"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Devuelve una unidad aliada no campeón y su equipo a tu mano.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_E01",
+      "selection": "E01",
+      "type": "equipment",
+      "names": {
+        "spanish": "Sello de Baja",
+        "english": "Withdrawal Stamp"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Una vez por ring: da Purge a una carta de la mano.",
+      "status": "implemented_unverified",
+      "implementation_note": "Un Purge por ring y por copia física de Withdrawal Stamp. Ledger por referencia del equipo, no por su ID de CardData ni por la carta compartida de habilidad. El activador aporta su equipo; devolver o reequipar la misma copia no repone su uso. Máscara excluye Unpurgable; initial_cooldown 0 y cooldown 8. Pendiente prueba de dos copias en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_R01",
+      "selection": "R01",
+      "type": "room",
+      "names": {
+        "spanish": "Strictly Platonic",
+        "english": "Strictly Platonic"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Las parejas adyacentes Mago–Bruja tienen 1 menos de [cooldown] base, mínimo 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Reutiliza SocialRules.Mixed para dúos adyacentes en ambos órdenes, sin Chaperone. Conserva -1 cooldown base, mínimo 1. Pendiente prueba en partida.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_R02",
+      "selection": "R02",
+      "type": "room",
+      "names": {
+        "spanish": "Awkward Silence",
+        "english": "Awkward Silence"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Los hechizos de este piso obtienen +15 [magicpower] por cada pareja adyacente Mago–Bruja, en cualquier orden.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+    },
+    {
+      "id": "WW_S28",
+      "selection": "S28",
+      "type": "spell",
+      "names": {
+        "spanish": "Proyecto Aplazado",
+        "english": "Deferred Project"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Inflige 10 de daño a una unidad. Reserve: +5 de poder mágico. Slay: vuelve a la mano con Freeze y Unplayable hasta el próximo turno.",
+      "status": "implemented_unverified",
+      "implementation_note": "Reserve y Slay nativos; conexión mínima marca el retorno y reutiliza Restore tras descarte. Rasgos Freeze y Unplayable nativos; solo Unplayable expira al próximo turno. Conserva coste y Power. Pendiente prueba en partida.",
+      "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+    },
+    {
+      "id": "WW_S29",
+      "selection": "S29",
+      "type": "spell",
+      "names": {
+        "spanish": "Spike de Prórroga",
+        "english": "Extension Spike"
+      },
+      "cost": "X",
+      "rarity": "rare",
+      "effect": "Añade [spellweakness] [x] a las unidades enemigas.",
+      "status": "implemented_unverified",
+      "implementation_note": "CardEffectAddStatusEffect room/heroes con stacks cero y CardTraitScalingAddStatusEffect played_cost, multiplicador 1. Patrón nativo de Spike of the Stygian. Rara, X y Consume conservados. Sin efecto sobre cooldown ni C# propio. Pendiente partida.",
+      "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+    },
+    {
+      "id": "WW_S30",
+      "selection": "S30",
+      "type": "spell",
+      "names": {
+        "spanish": "Tomo de Evaluación Destructiva",
+        "english": "Tome of Destructive Assessment"
+      },
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "Añade [attuned] y +10 [magicpower] a un hechizo de daño de tu mano.",
+      "status": "implemented_unverified",
+      "implementation_note": "Selector mínimo de mano; filtros nativos OnlyDamageCard/OnlySpells y helper nativo aplican Attuned y +10 Power sin cambiar coste. Pendiente prueba en partida.",
+      "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+    },
+    {
+      "id": "WW_S31",
+      "selection": "S31",
+      "type": "spell",
+      "names": {
+        "english": "General Examination",
+        "spanish": "Examen General"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Inflige 8 de daño a todas las unidades enemigas del piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "CardEffectDamage nativo Room/Heroes; daño 8, coste 1 y Piercing conservados. Pendiente partida.",
+      "balance": "Valores vigentes: 1 Ember, 8 de daño, común."
+    },
+    {
+      "id": "WW_E03",
+      "selection": "E03",
+      "type": "equipment",
+      "names": {
+        "english": "Tenured Wand",
+        "spanish": "Varita Titular"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Arcane Slay: añade [conduit] 1 permanentemente.",
+      "status": "implemented_unverified",
+      "implementation_note": "CardEffectAttachEquipment concede WW_ArcaneSlay al portador. CardEffectAddCardUpgradeToUnits self con UnitUpgradeLifetime.Permanent (param_int_3=2) guarda Conduit 1 en la carta de la unidad, no en la varita. Sin C# adicional. Arte oficial Luna Cyclestaff provisional. Pendiente partida, guardar/reanudar y desequipar.",
+      "balance": "Propuesta inicial: rara, 1 Ember; ajuste posterior."
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A01",
+      "names": {
+        "spanish": "Cátedra de Fuerza Mágica",
+        "english": "Chair of Magical Strength"
+      },
+      "effect": "El primer hechizo de daño de cada turno obtiene tanto [magicpower] como la mitad del [attack] de la primera unidad aliada de su piso, solo al jugarlo.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A02",
+      "names": {
+        "spanish": "Fotocopiadora de Hechizos Consumibles",
+        "english": "Consumable Spell Photocopier"
+      },
+      "effect": "El primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A03",
+      "names": {
+        "spanish": "Beca de Matrícula Congelada",
+        "english": "Frozen Enrollment Scholarship"
+      },
+      "effect": "Roba 1 la primera vez de cada turno que juegues una carta con [freeze].",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A04",
+      "names": {
+        "spanish": "Certificado de Buena Conducta",
+        "english": "Certificate of Good Conduct"
+      },
+      "effect": "Si no juegas hechizos de daño este turno, roba +1 en el próximo turno.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A05",
+      "names": {
+        "spanish": "Reembolso de Matrícula Mortal",
+        "english": "Lethal Tuition Refund"
+      },
+      "effect": "Por cada 5 hechizos que maten a un enemigo, recupera el coste del último en [ember].",
+      "status": "implemented_unverified",
+      "implementation_note": "Contador 0–4 por batalla, conserva progreso entre turnos. Una vez por lanzamiento letal aunque mate varios. Al quinto reinicia a cero y devuelve su coste pagado. AppendConditionCountDisplay y force_update_count_label nativos; preview no cuenta. Pendiente prueba en partida.",
+      "balance": "Reembolso repetible cada cinco hechizos letales; el quinto de coste cero también reinicia el ciclo.",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "WW_A06",
+      "names": {
+        "spanish": "Extensión de Convocatoria",
+        "english": "Extended Exam Session"
+      },
+      "effect": "El primer hechizo dirigido a un único enemigo de cada turno también afecta al enemigo que tiene detrás.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "uncommon"
+    },
+    {
+      "id": "WW_A07",
+      "names": {
+        "spanish": "Comité de Relaciones Impropias",
+        "english": "Committee for Improper Relations"
+      },
+      "effect": "Al comienzo del turno, invoca un chaperón 0/1 de 1[size] y [conduit] 1 entre cada Mago y Bruja adyacentes. Usa la variante del mago de la izquierda. Recorre de abajo arriba y de izquierda a derecha. Ignora [capacity]; máximo 7 unidades por piso. Al morir, desaparece.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A08",
+      "names": {
+        "spanish": "Minuto de Silencio Administrativo",
+        "english": "Administrative Minute of Silence"
+      },
+      "effect": "La primera muerte de un chaperón o chaperona de cada turno reduce la [cooldown] actual de los aliados de su piso en 1.",
+      "status": "implemented_unverified",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A09",
+      "names": {
+        "spanish": "Oficina de Quejas y Maleficios",
+        "english": "Office of Complaints and Curses"
+      },
+      "effect": "Al comienzo del turno, transfiere todos los efectos de [debuff] de un Mago y una Bruja a un Chaperón de su piso.",
+      "status": "implemented_unverified",
+      "implementation_note": "Al comienzo del turno, el primer piso válido de abajo arriba con Wizard, Witch y Chaperone transfiere los estados negativos del primer Wizard y la primera Witch al primer Chaperone de izquierda a derecha. No exige adyacencia; una sola transferencia por turno. Incluye campeones por subtipos. Pendiente partida.",
+      "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+      "rarity": "common"
+    },
+    {
+      "id": "WW_A10",
+      "names": {
+        "spanish": "Prácticas de Medicina Ofensiva",
+        "english": "Offensive Medicine Practicum"
+      },
+      "effect": "El primer hechizo de curación de cada turno también inflige daño a las unidades enemigas de su piso igual a la salud restaurada.",
+      "status": "implemented_unverified",
+      "rarity": "common",
+      "implementation_note": "Reutiliza la conversión de curación contabilizada por hechizo del clan y ApplyDamageToTarget nativo. Clasificación CardEffectHeal/subclases y registro compartido de Conductor y cuota OnceTurn global reservada antes de resolver. No cuenta curaciones indirectas/abilities ni restaura en vez de dañar. Iconos provisionales WW_A03 reutilizados. Pendiente partida."
+    }
+  ],
+  "reserved_room_names": [
+    "Bog of Love",
+    "Broom Service"
+  ],
+  "optional_unapproved_idea": {
+    "name": "Peer Pressure",
+    "effect": "Mover un Wizard o Witch junto a otro Wizard o Witch.",
+    "status": "Sin carta ni habilidad asignada; idea para revisar."
+  },
+  "constraints": [
+    "No incluir las cuatro últimas reliquias rechazadas.",
+    "Arte para más adelante.",
+    "No sustituir las mecánicas pendientes por aproximaciones distintas.",
+    "C# autorizado por el usuario: Adelante con todo."
+  ],
+  "retired_cards": [
+    {
+      "id": "WW_S05",
+      "selection": "S05",
+      "type": "spell",
+      "names": {
+        "spanish": "Consume y Sigue Matriculado",
+        "english": "Consume and Re-enroll"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Elige un hechizo con [consume] de tu mano. Si mata a un enemigo, vuelve a la mano en lugar de consumirse.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirada del mazo del clan por petición del usuario; sin recompensas."
+    },
+    {
+      "id": "WW_S24",
+      "selection": "S24",
+      "type": "spell",
+      "names": {
+        "spanish": "Devolución de Material Prestado",
+        "english": "Loaned Equipment Return"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Devuelve el equipo de una unidad aliada a tu mano con 0[ember] este turno. Añade [damageshield] 1 a esa unidad.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Sustituida por Trabajo en Pareja por petición del usuario."
+    },
+    {
+      "id": "WW_E02",
+      "selection": "E02",
+      "type": "equipment",
+      "names": {
+        "english": "Faculty Robe",
+        "spanish": "Toga del Profesorado"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "[conduit] 5.",
+      "status": "retired",
+      "implementation_note": "Sin overrides de carta ni mejora: el motor muestra Conduit 5 una sola vez y aporta tooltip nativo. Mecánica y estadísticas intactas. Pendiente verificación visual.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirada por petición del usuario tras añadir Tenured Wand."
+    },
+    {
+      "id": "WW_S11",
+      "selection": "S11",
+      "type": "spell",
+      "names": {
+        "spanish": "Recuperación de Créditos",
+        "english": "Credit Recovery"
+      },
+      "cost": "X",
+      "rarity": "rare",
+      "effect": "Devuelve hasta [x] hechizos de tu pila de robo o de descartes a tu mano. Añade [attuned] y [consume]. Cuestan 0[ember] este turno.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirada por petición del usuario."
+    },
+    {
+      "id": "WW_S10",
+      "selection": "S10",
+      "type": "spell",
+      "names": {
+        "spanish": "Publicación por Duplicado",
+        "english": "Double Publication"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "El siguiente hechizo de daño inflige el doble de daño. Apártalo y devuélvelo a la mano al comienzo del próximo turno.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirado por petición del usuario."
+    },
+    {
+      "id": "WW_S06",
+      "selection": "S06",
+      "type": "spell",
+      "names": {
+        "spanish": "Convocatoria Extraordinaria",
+        "english": "Extraordinary Exam Session"
+      },
+      "cost": 1,
+      "rarity": "rare",
+      "effect": "Aparta hasta tres hechizos de tu mano. Al comienzo del próximo turno, vuelven a la mano con 0[ember].",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirado por petición del usuario."
+    },
+    {
+      "id": "WW_S04",
+      "selection": "S04",
+      "type": "spell",
+      "names": {
+        "spanish": "Prácticas de Medicina Ofensiva",
+        "english": "Offensive Medicine Practicum"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Este turno, los hechizos de curación también infligen tanto daño a las unidades enemigas de su piso como la salud restaurada.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Convertido en reliquia del primer hechizo de curación cada turno."
+    },
+    {
+      "id": "WW_S32",
+      "selection": "S32",
+      "type": "spell",
+      "names": {
+        "english": "Pair Assignment",
+        "spanish": "Trabajo en Pareja"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "effect": "Inflige [effect0.power] de daño a una unidad enemiga. Si hay un Mago y una Bruja adyacentes en este piso, gana [explosive] y [attuned] solo al jugarlo.",
+      "status": "retired",
+      "implementation_note": "Antes del daño añade solo los traits ausentes por pareja adyacente. Cleanup retira únicamente instancias añadidas al terminar resolución, tanto real como preview; conserva propiedades previas. Arte provisional S24.",
+      "retired_reason": "Retirado por petición del usuario."
+    },
+    {
+      "id": "WW_S03",
+      "selection": "S03",
+      "type": "spell",
+      "names": {
+        "spanish": "Centralización de Puntos Débiles",
+        "english": "Weakness Central Office"
+      },
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "Transfiere toda la [spellweakness] de los enemigos de todos los pisos a una unidad enemiga.",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirado por petición del usuario."
+    },
+    {
+      "id": "WW_S08",
+      "selection": "S08",
+      "type": "spell",
+      "names": {
+        "spanish": "Bibliografía Consumida",
+        "english": "Consumed Bibliography"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Inflige 10 de daño a una unidad. +10 de daño por cada carta consumida. Si la mata, devuelve un hechizo consumido a tu mano.",
+      "status": "retired",
+      "implementation_note": "Trait C# aditivo conserva daño entrante, incluido Power/Attuned, y suma 10 por carta consumida mediante estadística nativa. Corrige sustitución del daño base del trait PerCard. Compilado e instalado 0.1.47; pendiente verificación de combate.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "retired_reason": "Retirado por petición del usuario."
+    },
+    {
+      "id": "WW_S27",
+      "selection": "S27",
+      "type": "spell",
+      "names": {
+        "spanish": "Puesto de Helados del Campus",
+        "english": "Campus Ice Cream Stand"
+      },
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "Invoca un Puesto de Helados 0/10 de 1[size]. A partir del próximo turno, al comienzo de cada turno invoca un Helado de 1[size], con tanto [attack] como el [conduit] de los aliados de este piso y 1 más de [health].",
+      "status": "retired",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+      "token_stats": {
+        "attack": 0,
+        "health": 10,
+        "size": 1
+      },
+      "serving_size": 1,
+      "retired_reason": "Retirada por petición del usuario."
+    }
+  ]
+}

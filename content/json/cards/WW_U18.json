@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U18_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U18_Character"
+    },
+    {
+      "id": "WW_U18_Ability_Effect",
+      "name": "CardEffectFreezeCard",
+      "should_fail_to_cast_if_test_fails": true
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U18_Ability",
+      "names": {
+        "english": "Frozen Enrollment",
+        "spanish": "Matrícula Congelada",
+        "french": "Inscription gelée",
+        "german": "Eingefrorene Einschreibung",
+        "portuguese": "Matrícula Congelada",
+        "russian": "Замороженная запись",
+        "chinese": "冻结注册",
+        "chinese_traditional": "凍結註冊",
+        "korean": "동결 등록",
+        "japanese": "凍結登録"
+      },
+      "descriptions": {
+        "english": "Apply [freeze] to a card in hand.",
+        "french": "Confère [freeze] à une carte en main.",
+        "german": "Wende [freeze] auf eine Karte auf deiner Hand an.",
+        "russian": "Накладывает <b>заморозку</b> на карту в руке.",
+        "portuguese": "Aplica [freeze] a uma carta na mão.",
+        "chinese": "使一张手牌获得[freeze]。",
+        "spanish": "Añade [freeze] a una carta de tu mano.",
+        "chinese_traditional": "對手牌中的一張牌施加[freeze]。",
+        "korean": "패에 있는 카드 하나에 [freeze] 효과를 적용합니다.",
+        "japanese": "手札のカードに[freeze]を付与する。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "starter",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 2,
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true,
+      "card_art": "@WW_U18CardArt",
+      "effects": [
+        "@WW_U18_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly"
+    },
+    {
+      "id": "WW_U18",
+      "names": {
+        "spanish": "Catedrática de Matrícula Congelada",
+        "english": "Professor of Frozen Tuition",
+        "french": "Professeur des frais gelés",
+        "german": "Professor für eingefrorene Studiengebühren",
+        "portuguese": "Professor de Mensalidades Congeladas",
+        "russian": "Профессор замороженной платы",
+        "chinese": "冻结学费教授",
+        "chinese_traditional": "凍結學費教授",
+        "korean": "동결 등록금 교수",
+        "japanese": "凍結授業料教授"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_U18CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U18_Spawn"
+      ],
+      "descriptions": {
+        "english": "Every 30 damage dealt reduces the cost of all [freeze] cards in hand by 1[ember].",
+        "spanish": "Por cada 30 de daño que inflija, reduce el coste de todas las cartas con [freeze] de tu mano en 1[ember].",
+        "french": "Tous les 30 dégâts infligés, réduit le coût de toutes les cartes avec [freeze] en main de 1[ember].",
+        "german": "Je 30 verursachten Schaden kosten alle Karten mit [freeze] auf deiner Hand 1[ember] weniger.",
+        "portuguese": "A cada 30 de dano causado, reduz o custo de todas as cartas com [freeze] na mão em 1[ember].",
+        "russian": "За каждые 30 нанесённого урона снижает стоимость всех карт с [freeze] в руке на 1[ember].",
+        "chinese": "每造成30点伤害，使手牌中所有具有[freeze]的卡牌费用降低1[ember]。",
+        "chinese_traditional": "每造成30點傷害，使手牌中所有具有[freeze]的卡牌費用降低1[ember]。",
+        "korean": "피해를 30 줄 때마다 손에 있는 모든 [freeze] 카드의 비용을 1[ember] 감소시킵니다.",
+        "japanese": "30ダメージを与えるたび、手札のすべての[freeze]カードのコストを1[ember]減らす。"
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U18_Character",
+      "names": {
+        "spanish": "Catedrática de Matrícula Congelada",
+        "english": "Professor of Frozen Tuition",
+        "french": "Professeur des frais gelés",
+        "german": "Professor für eingefrorene Studiengebühren",
+        "portuguese": "Professor de Mensalidades Congeladas",
+        "russian": "Профессор замороженной платы",
+        "chinese": "冻结学费教授",
+        "chinese_traditional": "凍結學費教授",
+        "korean": "동결 등록금 교수",
+        "japanese": "凍結授業料教授"
+      },
+      "character_art": "@WW_U18CharacterArt",
+      "size": 2,
+      "health": 25,
+      "attack_damage": 25,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_BannerUnit"
+      ],
+      "ability": "@WW_U18_Ability"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U18CardArt",
+      "path": "textures/cards/WW_U18CardArt.png"
+    },
+    {
+      "id": "WW_U18CharacterArt",
+      "path": "textures/characters/WW_U18CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U18CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U18CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U18CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U18CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 1.03,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

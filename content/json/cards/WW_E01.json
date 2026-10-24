@@ -1,0 +1,142 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_E01_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_E01_Upgrade"
+    },
+    {
+      "id": "WW_E01_Ability_Effect",
+      "name": "@CardEffectAcademicPurgePermit",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_card_filter": "@WW_E01_PurgeableMask"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_E01_Ability",
+      "names": {
+        "spanish": "Permiso de expulsión",
+        "english": "Expulsion Permit",
+        "french": "Permis d'expulsion",
+        "german": "Ausschlussgenehmigung",
+        "portuguese": "Permissão de Expulsão",
+        "russian": "Разрешение на исключение",
+        "chinese": "开除许可",
+        "chinese_traditional": "開除許可",
+        "korean": "퇴학 허가증",
+        "japanese": "退学許可証"
+      },
+      "descriptions": {
+        "english": "Once per ring: give a card in hand Purge.",
+        "spanish": "Una vez por ring: da Purge a una carta de la mano.",
+        "french": "Une fois par ring : donnez Purge à une carte en main.",
+        "german": "Einmal pro Ring: Gib einer Karte auf der Hand Purge.",
+        "portuguese": "Uma vez por ring: dê Purge a uma carta da mão.",
+        "russian": "Раз за ring: дайте Purge карте в руке.",
+        "chinese": "每个ring一次：给予一张手牌Purge。",
+        "chinese_traditional": "每個ring一次：給予一張手牌Purge。",
+        "korean": "Ring마다 한 번: 손의 카드 한 장에 Purge를 줍니다.",
+        "japanese": "各ringで1回：手札のカード1枚にPurgeを与える。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "starter",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 8,
+      "hide_in_logbook": true,
+      "card_art": "@WW_E01CardArt",
+      "effects": [
+        "@WW_E01_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly",
+      "initial_cooldown": 0
+    },
+    {
+      "id": "WW_E01",
+      "names": {
+        "english": "Withdrawal Stamp",
+        "spanish": "Sello de Baja",
+        "french": "Tampon d'exclusion",
+        "german": "Abmeldestempel",
+        "portuguese": "Carimbo de Retirada",
+        "russian": "Печать исключения",
+        "chinese": "退学印章",
+        "chinese_traditional": "退學印章",
+        "korean": "철회 도장",
+        "japanese": "退学の印"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_E01CardArt",
+      "pools": [
+        "MegaPool",
+        "EquipmentPool",
+        "EquipmentPoolNonEnemy",
+        "RoomAndEquipmentDraftPool",
+        "RoomAndEquipmentMerchant_EquipmentPool",
+        "RoomAndEquipmentMerchant_RoomAndEquipmentPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_E01_Equip"
+      ]
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_E01_Upgrade",
+      "titles": {
+        "english": "Withdrawal Stamp",
+        "spanish": "Sello de Baja",
+        "french": "Tampon d'exclusion",
+        "german": "Abmeldestempel",
+        "portuguese": "Carimbo de Retirada",
+        "russian": "Печать исключения",
+        "chinese": "退学印章",
+        "chinese_traditional": "退學印章",
+        "korean": "철회 도장",
+        "japanese": "退学の印"
+      },
+      "hide_icon_on_card": true,
+      "ability_upgrade": "@WW_E01_Ability",
+      "icon": "@WW_E01Icon"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_E01CardArt",
+      "path": "textures/cards/WW_E01CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_E01CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_E01CardArt"
+        }
+      }
+    }
+  ],
+  "upgrade_masks": [
+    {
+      "id": "WW_E01_PurgeableMask",
+      "card_type": "invalid",
+      "excluded_traits": [
+        "CardTraitUnpurgable"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S08",
+  "selection": "S08",
+  "type": "spell",
+  "names": {
+    "spanish": "Bibliografía Consumida",
+    "english": "Consumed Bibliography"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Inflige 10 de daño a una unidad. +10 de daño por cada carta consumida. Si la mata, devuelve un hechizo consumido a tu mano.",
+  "status": "retired",
+  "implementation_note": "Trait C# aditivo conserva daño entrante, incluido Power/Attuned, y suma 10 por carta consumida mediante estadística nativa. Corrige sustitución del daño base del trait PerCard. Compilado e instalado 0.1.47; pendiente verificación de combate.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirado por petición del usuario."
+}

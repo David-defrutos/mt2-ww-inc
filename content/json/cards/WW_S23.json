@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S23",
+      "names": {
+        "spanish": "Convalidación de Espacio",
+        "english": "Spatial Credit Transfer",
+        "french": "Transfert de crédits spatiaux",
+        "german": "Räumlicher Leistungspunkttransfer",
+        "portuguese": "Transferência de Créditos Espaciais",
+        "russian": "Перевод пространственных зачётов",
+        "chinese": "空间学分转换",
+        "chinese_traditional": "空間學分轉換",
+        "korean": "공간 학점 이전",
+        "japanese": "空間単位振替"
+      },
+      "descriptions": {
+        "english": "Apply [effect0.upgrade.bonussize][size] to a friendly unit.",
+        "spanish": "Añade [effect0.upgrade.bonussize][size] a una unidad aliada.",
+        "french": "Octroie [effect0.upgrade.bonussize][size] à un allié.",
+        "german": "Gewähre einem Verbündeten [effect0.upgrade.bonussize][size].",
+        "portuguese": "Aplica [effect0.upgrade.bonussize][size] a um aliado.",
+        "russian": "Дает союзнику [effect0.upgrade.bonussize][size].",
+        "chinese": "本场战斗给予一个友方单位 [effect0.upgrade.bonussize][size]。",
+        "chinese_traditional": "本場戰鬥給予一個友方單位 [effect0.upgrade.bonussize][size]。",
+        "korean": "아군 유닛에게 [effect0.upgrade.bonussize][size] 효과를 부여합니다.",
+        "japanese": "、味方ユニットに[effect0.upgrade.bonussize][size]を付与する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "effects": [
+        "@WW_S23_Shrink"
+      ],
+      "traits": [
+        "@WW_S23_Consume"
+      ],
+      "card_art": "@WW_S23CardArt",
+      "pools": [
+        "MegaPool"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S23_Shrink",
+      "name": "CardEffectAddTempCardUpgradeToUnits",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_S23_Upgrade",
+      "param_int_3": 0
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_S23_Upgrade",
+      "bonus_size": -1
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S23_Consume",
+      "name": "CardTraitExhaustState"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S23CardArt",
+      "path": "textures/cards/WW_S23CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S23CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S23CardArt"
+        }
+      }
+    }
+  ]
+}

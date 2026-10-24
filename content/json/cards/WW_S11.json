@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S11_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "recover_x"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S11",
+      "names": {
+        "spanish": "Recuperación de Créditos",
+        "english": "Credit Recovery",
+        "french": "Récupération de crédits",
+        "german": "Leistungspunktrückgewinnung",
+        "portuguese": "Recuperação de Créditos",
+        "russian": "Возврат зачётов",
+        "chinese": "学分补修",
+        "chinese_traditional": "學分補修",
+        "korean": "학점 회복",
+        "japanese": "単位回収"
+      },
+      "descriptions": {
+        "english": "Return up to [x] spells from your draw or discard pile to hand. Apply [attuned] and [consume]. They cost 0[ember] this turn.",
+        "spanish": "Devuelve hasta [x] hechizos de tu pila de robo o de descartes a tu mano. Añade [attuned] y [consume]. Cuestan 0[ember] este turno.",
+        "french": "Reprenez jusqu’à [x] sorts de la défausse ou de la pioche. Appliquez [attuned] et [consume]. Ils coûtent 0[ember] ce tour.",
+        "german": "Hole bis zu [x] Zauber aus der Ablage oder dem Nachziehstapel auf die Hand. Wende [attuned] und [consume] an. Sie kosten diese Runde 0[ember].",
+        "portuguese": "Devolve até [x] feitiços do descarte ou do monte de compra à mão. Aplica [attuned] e [consume]. Custam 0[ember] neste turno.",
+        "russian": "Возвращает до [x] заклинаний из сброса или колоды добора в руку. Даёт [attuned] и [consume]. В этот ход они стоят 0[ember].",
+        "chinese": "从抽牌堆或弃牌堆将至多[x]个法术返回手牌。施加[attuned]和[consume]。本回合费用为0[ember]。",
+        "chinese_traditional": "從抽牌堆或棄牌堆將至多[x]個法術返回手牌。施加[attuned]和[consume]。本回合費用為0[ember]。",
+        "korean": "뽑기 더미나 버린 카드 더미에서 주문을 최대 [x]개 손으로 되돌립니다. [attuned]와 [consume]을 부여합니다. 이번 턴 비용은 0[ember]입니다.",
+        "japanese": "山札か捨て札から最大[x]枚の呪文を手札に戻す。[attuned]と[consume]を与える。このターンはコスト0[ember]。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S11CardArt",
+      "pools": [],
+      "cost_type": "x",
+      "targetless": true,
+      "effects": [
+        "@WW_S11_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S11CardArt",
+      "path": "textures/cards/WW_S11CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S11CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S11CardArt"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "upgrades": [
+    {
+      "id": "WW_PublishOrIncant1",
+      "titles": {
+        "spanish": "Brujería Avanzada 1",
+        "english": "Advanced Spellwork 1",
+        "french": "Magie avancée 1",
+        "german": "Fortgeschrittene Zauberkunst 1",
+        "portuguese": "Feitiçaria Avançada 1",
+        "russian": "Высшая магия 1",
+        "chinese": "高等施法 1",
+        "chinese_traditional": "高等施法 1",
+        "korean": "고급 주문술 1",
+        "japanese": "上級呪文学 1"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant1_Trigger"
+      ],
+      "bonus_damage": 0,
+      "bonus_hp": 5,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: +5 de ataque.",
+        "english": "Incant: +5 Attack.",
+        "french": "Incant: +5 attaque.",
+        "german": "Incant: +5 Angriff.",
+        "portuguese": "Incant: +5 de Ataque.",
+        "russian": "Incant: +5 атаки.",
+        "chinese": "Incant: 攻击 +5。",
+        "chinese_traditional": "Incant: 攻擊 +5。",
+        "korean": "Incant: 공격력 +5.",
+        "japanese": "Incant: 攻撃+5。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant2",
+      "titles": {
+        "spanish": "Brujería Avanzada 2",
+        "english": "Advanced Spellwork 2",
+        "french": "Magie avancée 2",
+        "german": "Fortgeschrittene Zauberkunst 2",
+        "portuguese": "Feitiçaria Avançada 2",
+        "russian": "Высшая магия 2",
+        "chinese": "高等施法 2",
+        "chinese_traditional": "高等施法 2",
+        "korean": "고급 주문술 2",
+        "japanese": "上級呪文学 2"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant2_Trigger"
+      ],
+      "bonus_damage": 5,
+      "bonus_hp": 10,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: +10 de ataque.",
+        "english": "Incant: +10 Attack.",
+        "french": "Incant: +10 attaque.",
+        "german": "Incant: +10 Angriff.",
+        "portuguese": "Incant: +10 de Ataque.",
+        "russian": "Incant: +10 атаки.",
+        "chinese": "Incant: 攻击 +10。",
+        "chinese_traditional": "Incant: 攻擊 +10。",
+        "korean": "Incant: 공격력 +10.",
+        "japanese": "Incant: 攻撃+10。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant3",
+      "titles": {
+        "spanish": "Brujería Avanzada 3",
+        "english": "Advanced Spellwork 3",
+        "french": "Magie avancée 3",
+        "german": "Fortgeschrittene Zauberkunst 3",
+        "portuguese": "Feitiçaria Avançada 3",
+        "russian": "Высшая магия 3",
+        "chinese": "高等施法 3",
+        "chinese_traditional": "高等施法 3",
+        "korean": "고급 주문술 3",
+        "japanese": "上級呪文学 3"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant3_Trigger"
+      ],
+      "bonus_damage": 10,
+      "bonus_hp": 20,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: +20 de ataque.",
+        "english": "Incant: +20 Attack.",
+        "french": "Incant: +20 attaque.",
+        "german": "Incant: +20 Angriff.",
+        "portuguese": "Incant: +20 de Ataque.",
+        "russian": "Incant: +20 атаки.",
+        "chinese": "Incant: 攻击 +20。",
+        "chinese_traditional": "Incant: 攻擊 +20。",
+        "korean": "Incant: 공격력 +20.",
+        "japanese": "Incant: 攻撃+20。"
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection1",
+      "titles": {
+        "spanish": "Cátedra Protectora 1",
+        "english": "Protective Tenure 1",
+        "french": "Titularisation protectrice 1",
+        "german": "Schützende Amtszeit 1",
+        "portuguese": "Titularidade Protetora 1",
+        "russian": "Защитная постоянная должность 1",
+        "chinese": "防护终身教职 1",
+        "chinese_traditional": "防護終身教職 1",
+        "korean": "보호 종신직 1",
+        "japanese": "守護の終身在職 1"
+      },
+      "trigger_upgrades": [
+        "@WW_TenureOfProtection1_Trigger"
+      ],
+      "bonus_damage": 0,
+      "bonus_hp": 10,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: [armor] 5.",
+        "english": "Incant: [armor] 5.",
+        "french": "Incant: [armor] 5.",
+        "german": "Incant: [armor] 5.",
+        "portuguese": "Incant: [armor] 5.",
+        "russian": "Incant: [armor] 5.",
+        "chinese": "Incant: [armor] 5.",
+        "chinese_traditional": "Incant: [armor] 5.",
+        "korean": "Incant: [armor] 5.",
+        "japanese": "Incant: [armor] 5."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection2",
+      "titles": {
+        "spanish": "Cátedra Protectora 2",
+        "english": "Protective Tenure 2",
+        "french": "Titularisation protectrice 2",
+        "german": "Schützende Amtszeit 2",
+        "portuguese": "Titularidade Protetora 2",
+        "russian": "Защитная постоянная должность 2",
+        "chinese": "防护终身教职 2",
+        "chinese_traditional": "防護終身教職 2",
+        "korean": "보호 종신직 2",
+        "japanese": "守護の終身在職 2"
+      },
+      "trigger_upgrades": [
+        "@WW_TenureOfProtection2_Trigger"
+      ],
+      "bonus_damage": 5,
+      "bonus_hp": 25,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: [armor] 10.",
+        "english": "Incant: [armor] 10.",
+        "french": "Incant: [armor] 10.",
+        "german": "Incant: [armor] 10.",
+        "portuguese": "Incant: [armor] 10.",
+        "russian": "Incant: [armor] 10.",
+        "chinese": "Incant: [armor] 10.",
+        "chinese_traditional": "Incant: [armor] 10.",
+        "korean": "Incant: [armor] 10.",
+        "japanese": "Incant: [armor] 10."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection3",
+      "titles": {
+        "spanish": "Cátedra Protectora 3",
+        "english": "Protective Tenure 3",
+        "french": "Titularisation protectrice 3",
+        "german": "Schützende Amtszeit 3",
+        "portuguese": "Titularidade Protetora 3",
+        "russian": "Защитная постоянная должность 3",
+        "chinese": "防护终身教职 3",
+        "chinese_traditional": "防護終身教職 3",
+        "korean": "보호 종신직 3",
+        "japanese": "守護の終身在職 3"
+      },
+      "trigger_upgrades": [
+        "@WW_TenureOfProtection3_Trigger"
+      ],
+      "bonus_damage": 10,
+      "bonus_hp": 45,
+      "does_not_replace_ability": true,
+      "descriptions": {
+        "spanish": "Incant: [armor] 20.",
+        "english": "Incant: [armor] 20.",
+        "french": "Incant: [armor] 20.",
+        "german": "Incant: [armor] 20.",
+        "portuguese": "Incant: [armor] 20.",
+        "russian": "Incant: [armor] 20.",
+        "chinese": "Incant: [armor] 20.",
+        "chinese_traditional": "Incant: [armor] 20.",
+        "korean": "Incant: [armor] 20.",
+        "japanese": "Incant: [armor] 20."
+      }
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_PublishOrIncant1_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_PublishOrIncant1_Effect"
+      ],
+      "descriptions": {
+        "spanish": "+5 de ataque.",
+        "english": "+5 Attack.",
+        "french": "+5 attaque.",
+        "german": "+5 Angriff.",
+        "portuguese": "+5 de Ataque.",
+        "russian": "+5 атаки.",
+        "chinese": "攻击 +5。",
+        "chinese_traditional": "攻擊 +5。",
+        "korean": "공격력 +5.",
+        "japanese": "攻撃+5。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant2_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_PublishOrIncant2_Effect"
+      ],
+      "descriptions": {
+        "spanish": "+10 de ataque.",
+        "english": "+10 Attack.",
+        "french": "+10 attaque.",
+        "german": "+10 Angriff.",
+        "portuguese": "+10 de Ataque.",
+        "russian": "+10 атаки.",
+        "chinese": "攻击 +10。",
+        "chinese_traditional": "攻擊 +10。",
+        "korean": "공격력 +10.",
+        "japanese": "攻撃+10。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant3_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_PublishOrIncant3_Effect"
+      ],
+      "descriptions": {
+        "spanish": "+20 de ataque.",
+        "english": "+20 Attack.",
+        "french": "+20 attaque.",
+        "german": "+20 Angriff.",
+        "portuguese": "+20 de Ataque.",
+        "russian": "+20 атаки.",
+        "chinese": "攻击 +20。",
+        "chinese_traditional": "攻擊 +20。",
+        "korean": "공격력 +20.",
+        "japanese": "攻撃+20。"
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection1_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection1_Effect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 5.",
+        "english": "[armor] 5.",
+        "french": "[armor] 5.",
+        "german": "[armor] 5.",
+        "portuguese": "[armor] 5.",
+        "russian": "[armor] 5.",
+        "chinese": "[armor] 5.",
+        "chinese_traditional": "[armor] 5.",
+        "korean": "[armor] 5.",
+        "japanese": "[armor] 5."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection2_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection2_Effect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 10.",
+        "english": "[armor] 10.",
+        "french": "[armor] 10.",
+        "german": "[armor] 10.",
+        "portuguese": "[armor] 10.",
+        "russian": "[armor] 10.",
+        "chinese": "[armor] 10.",
+        "chinese_traditional": "[armor] 10.",
+        "korean": "[armor] 10.",
+        "japanese": "[armor] 10."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection3_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection3_Effect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 20.",
+        "english": "[armor] 20.",
+        "french": "[armor] 20.",
+        "german": "[armor] 20.",
+        "portuguese": "[armor] 20.",
+        "russian": "[armor] 20.",
+        "chinese": "[armor] 20.",
+        "chinese_traditional": "[armor] 20.",
+        "korean": "[armor] 20.",
+        "japanese": "[armor] 20."
+      }
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_PublishOrIncant1_Effect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 5
+    },
+    {
+      "id": "WW_PublishOrIncant2_Effect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 10
+    },
+    {
+      "id": "WW_PublishOrIncant3_Effect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 20
+    },
+    {
+      "id": "WW_TenureOfProtection1_Effect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "armor",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "WW_TenureOfProtection2_Effect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "armor",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": "WW_TenureOfProtection3_Effect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "armor",
+          "count": 20
+        }
+      ]
+    }
+  ]
+}

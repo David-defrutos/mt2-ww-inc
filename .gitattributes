@@ -1,0 +1,4 @@
+# Preserve the exact source/resource bytes used by the validated beta.
+* -text
+*.png binary
+# 2026-10-24-1624||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/.gitattributes||Conservar bytes y finales de línea del código y JSON validados

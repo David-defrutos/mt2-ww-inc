@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S03_Effect",
+      "name": "@CardEffectAcademicTransfer",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_str": "weakness"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S03",
+      "names": {
+        "spanish": "Centralización de Puntos Débiles",
+        "english": "Weakness Central Office",
+        "french": "Bureau central des faiblesses",
+        "german": "Zentralstelle für Schwäche",
+        "portuguese": "Central de Fraquezas",
+        "russian": "Центральное бюро слабостей",
+        "chinese": "弱点中央办公室",
+        "chinese_traditional": "弱點中央辦公室",
+        "korean": "약점 중앙 사무국",
+        "japanese": "弱点中央事務局"
+      },
+      "descriptions": {
+        "spanish": "Transfiere toda la [spellweakness] de los enemigos de todos los pisos a una unidad enemiga.",
+        "english": "Transfer all [spellweakness] on enemies on all floors to an enemy unit.",
+        "french": "Transfère toute la [spellweakness] des ennemis de tous les étages à l'ennemi ciblé.",
+        "german": "Übertrage alle [spellweakness] aller Gegner auf allen Etagen auf den Zielgegner.",
+        "portuguese": "Transfere toda a [spellweakness] dos inimigos de todos os andares ao inimigo escolhido.",
+        "russian": "Переносит всю [spellweakness] врагов всех этажей на выбранного врага.",
+        "chinese": "将所有层敌人的全部 [spellweakness] 转给目标敌人。",
+        "chinese_traditional": "將所有層敵人的全部 [spellweakness] 轉給目標敵人。",
+        "korean": "모든 층 적의 [spellweakness]를 대상 적에게 이전합니다.",
+        "japanese": "全階の敵の[spellweakness]をすべて対象の敵へ移す。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S03CardArt",
+      "pools": [],
+      "targetless": false,
+      "effects": [
+        "@WW_S03_Effect"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S03CardArt",
+      "path": "textures/cards/WW_S03CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S03CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S03CardArt"
+        }
+      }
+    }
+  ]
+}

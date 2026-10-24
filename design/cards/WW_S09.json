@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S09",
+  "selection": "S09",
+  "type": "spell",
+  "names": {
+    "spanish": "Beca por Contusión",
+    "english": "Concussion Scholarship"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Una unidad aliada obtiene: al recibir un golpe, reduce el coste de una carta aleatoria de tu pila de robo en 1[ember].",
+  "status": "implemented_unverified",
+  "implementation_note": "Estado visible ww_scholarship; al recibir golpe el hook elige cualquier carta de GetDrawPile con RNG nativo y aplica mejora temporal nativa de coste -1. Descuento conservado durante la batalla; no roba ni mezcla pilas. Icono provisional de seguro reutilizado. Pendiente partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S27_Effect",
+      "name": "@CardEffectAcademicCatering",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_Token_IceCreamStand"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S27",
+      "names": {
+        "spanish": "Puesto de Helados del Campus",
+        "english": "Campus Ice Cream Stand",
+        "french": "Stand de glaces du campus",
+        "german": "Campus-Eisstand",
+        "portuguese": "Barraca de Sorvetes do Campus",
+        "russian": "Ларёк мороженого в кампусе",
+        "chinese": "校园冰淇淋摊",
+        "chinese_traditional": "校園冰淇淋攤",
+        "korean": "캠퍼스 아이스크림 가판대",
+        "japanese": "キャンパスのアイス屋台"
+      },
+      "descriptions": {
+        "spanish": "Invoca un Puesto de Helados 0/10 de 1[size]. A partir del próximo turno, al comienzo de cada turno invoca un Helado de 1[size], con tanto [attack] como el [conduit] de los aliados de este piso y 1 más de [health].",
+        "english": "Summon a 0/10 Ice Cream Stand with 1[size]. Starting next turn, at turn start it summons an Ice Cream with 1[size], [attack] equal to allied [conduit] on this floor and 1 more [health].",
+        "french": "Invoque un stand de glaces 0/10 de capacité 1. Dès le tour suivant, à chaque début de tour, il invoque à son étage une glace de capacité 1 avec C attaque et 1+C PV. C est la [conduit] totale alliée de cet étage.",
+        "german": "Beschwöre einen 0/10-Eisstand mit Kapazität 1. Ab nächster Runde beschwört er zu Rundenbeginn auf seiner Etage ein Eis mit Kapazität 1, C Angriff und 1+C Gesundheit. C ist die gesamte verbündete [conduit] dieser Etage.",
+        "portuguese": "Invoca uma barraca de sorvete 0/10 de capacidade 1. A partir do próximo turno, no início de cada turno invoca no seu andar um sorvete de capacidade 1 com C de Ataque e 1+C de Vida. C é a [conduit] total aliada desse andar.",
+        "russian": "Призывает ларёк мороженого 0/10 вместимостью 1. Со следующего хода в начале каждого хода призывает на своём этаже мороженое вместимостью 1 с C атаки и 1+C здоровья. C — общая союзная [conduit] этого этажа.",
+        "chinese": "召唤0/10、占1空间的冰淇淋摊。从下回合起，每回合开始在其楼层召唤占1空间、攻击C、生命1+C的冰淇淋。C为该层盟友 [conduit] 总量。",
+        "chinese_traditional": "召喚0/10、佔1空間的冰淇淋攤。從下回合起，每回合開始在其樓層召喚佔1空間、攻擊C、生命1+C的冰淇淋。C為該層盟友 [conduit] 總量。",
+        "korean": "공간 1의 0/10 아이스크림 가판대를 소환합니다. 다음 턴부터 매 턴 시작에 해당 층에 공간 1, 공격력 C, 생명력 1+C인 아이스크림을 소환합니다. C는 해당 층 아군 [conduit]의 합계입니다.",
+        "japanese": "容量1の0/10アイス屋台を召喚。次のターンから毎ターン開始時、その階に容量1、攻撃C、HP1+Cのアイスを召喚する。Cはその階の味方の[conduit]合計。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S27CardArt",
+      "pools": [],
+      "targetless": true,
+      "effects": [
+        "@WW_S27_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S27CardArt",
+      "path": "textures/cards/WW_S27CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S27CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S27CardArt"
+        }
+      }
+    }
+  ]
+}

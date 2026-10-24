@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S15_Effect",
+      "name": "@CardEffectAcademicTransfer",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_str": "debuffs"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S15",
+      "names": {
+        "spanish": "Trabajo Negativo en Grupo",
+        "english": "Negative Group Assignment",
+        "french": "Travail de groupe négatif",
+        "german": "Negative Gruppenarbeit",
+        "portuguese": "Trabalho de Grupo Negativo",
+        "russian": "Негативное групповое задание",
+        "chinese": "负面小组作业",
+        "chinese_traditional": "負面小組作業",
+        "korean": "부정적 조별 과제",
+        "japanese": "負のグループ課題"
+      },
+      "descriptions": {
+        "spanish": "Transfiere todos los efectos de [debuff] de las demás unidades aliadas de este piso a una unidad aliada.",
+        "english": "Transfer all [debuff] effects from the other friendly units on this floor to a friendly unit.",
+        "french": "Transfère tous les états négatifs des autres alliés de cet étage à la cible.",
+        "german": "Übertrage alle negativen Zustände der anderen Verbündeten dieser Etage auf den Zielverbündeten.",
+        "portuguese": "Transfere todos os estados negativos dos outros aliados deste andar ao alvo.",
+        "russian": "Переносит все отрицательные состояния остальных союзников этажа на цель.",
+        "chinese": "将本层其他盟友全部负面状态转给目标盟友。",
+        "chinese_traditional": "將本層其他盟友全部負面狀態轉給目標盟友。",
+        "korean": "이 층 다른 아군의 모든 부정적 상태를 대상 아군에게 이전합니다.",
+        "japanese": "この階の他の味方の全負の状態を、対象の味方へ移す。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S15CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S15_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S15CardArt",
+      "path": "textures/cards/WW_S15CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S15CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S15CardArt"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S17",
+  "selection": "S17",
+  "type": "spell",
+  "names": {
+    "spanish": "Año Sabático de un Turno",
+    "english": "One Turn Sabbatical"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de la salud que le falte más [effect0.power].",
+  "status": "implemented_unverified",
+  "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10 con ApplyHeal nativo.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

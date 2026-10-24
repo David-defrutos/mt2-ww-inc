@@ -1,0 +1,11 @@
+﻿{
+  "id": "WW_A10",
+  "names": {
+    "spanish": "Prácticas de Medicina Ofensiva",
+    "english": "Offensive Medicine Practicum"
+  },
+  "effect": "El primer hechizo de curación de cada turno también inflige daño a las unidades enemigas de su piso igual a la salud restaurada.",
+  "status": "implemented_unverified",
+  "rarity": "common",
+  "implementation_note": "Reutiliza la conversión de curación contabilizada por hechizo del clan y ApplyDamageToTarget nativo. Clasificación CardEffectHeal/subclases y registro compartido de Conductor y cuota OnceTurn global reservada antes de resolver. No cuenta curaciones indirectas/abilities ni restaura en vez de dañar. Iconos provisionales WW_A03 reutilizados. Pendiente partida."
+}

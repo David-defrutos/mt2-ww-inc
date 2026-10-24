@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S24",
+  "selection": "S24",
+  "type": "spell",
+  "names": {
+    "spanish": "Devolución de Material Prestado",
+    "english": "Loaned Equipment Return"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Devuelve el equipo de una unidad aliada a tu mano con 0[ember] este turno. Añade [damageshield] 1 a esa unidad.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Sustituida por Trabajo en Pareja por petición del usuario."
+}

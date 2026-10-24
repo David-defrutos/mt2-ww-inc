@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_R02_Attach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_R02_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_R02_Upgrade",
+      "room_modifier_upgrades": [
+        "@WW_R02_Modifier"
+      ],
+      "hide_icon_on_card": true,
+      "icon": "@WW_R02Icon"
+    },
+    {
+      "id": "WW_PairPowerUpgrade",
+      "trait_upgrades": [
+        "@WW_PairPowerTrait"
+      ],
+      "magic_power_trait_scaling_only": true,
+      "icon": "@WW_R02Icon",
+      "titles": {
+        "spanish": "Awkward Silence",
+        "english": "Awkward Silence",
+        "french": "Silence gênant",
+        "german": "Peinliche Stille",
+        "portuguese": "Silêncio Constrangedor",
+        "russian": "Неловкое молчание",
+        "chinese": "尴尬沉默",
+        "chinese_traditional": "尷尬沉默",
+        "korean": "어색한 침묵",
+        "japanese": "気まずい沈黙"
+      },
+      "descriptions": {
+        "spanish": "Los hechizos de este piso obtienen +15 [magicpower] por cada pareja adyacente Mago–Bruja, en cualquier orden.",
+        "english": "Spells on this floor gain +15 [magicpower] per adjacent Wizard–Witch pair, in either order.",
+        "french": "Les sorts de cet étage ont +15 [magicpower] par paire sorcier–sorcière adjacente, dans les deux sens.",
+        "german": "Zauber dieser Etage erhalten +15 [magicpower] je benachbartem Magier-Hexen-Paar, in beiden Reihenfolgen.",
+        "portuguese": "Feitiços neste andar têm +15 [magicpower] por par adjacente Mago–Bruxa, em qualquer ordem.",
+        "russian": "Заклинания этажа получают +15 [magicpower] за каждую соседнюю пару маг–ведьма в любом порядке.",
+        "chinese": "本层每对相邻男巫与女巫，不论顺序，给予本层法术 +15 [magicpower]。",
+        "chinese_traditional": "本層每對相鄰男巫與女巫，不論順序，給予本層法術 +15 [magicpower]。",
+        "korean": "순서와 관계없이 인접한 마법사–마녀 쌍마다 이 층 주문에 [magicpower] +15.",
+        "japanese": "この階の呪文は、順序を問わず隣接する魔法使いと魔女のペアごとに[magicpower] +15。"
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_PairPowerTrait",
+      "name": "@CardTraitAcademicPairPower",
+      "effect_text_suppressed": true,
+      "tooltip_suppressed": true
+    }
+  ],
+  "room_modifiers": [
+    {
+      "id": "WW_R02_Modifier",
+      "name": "@RoomStateAcademicPower",
+      "titles": {
+        "spanish": "Awkward Silence",
+        "english": "Awkward Silence",
+        "french": "Silence gênant",
+        "german": "Peinliche Stille",
+        "portuguese": "Silêncio Constrangedor",
+        "russian": "Неловкое молчание",
+        "chinese": "尴尬沉默",
+        "chinese_traditional": "尷尬沉默",
+        "korean": "어색한 침묵",
+        "japanese": "気まずい沈黙"
+      },
+      "descriptions": {
+        "spanish": "El piso tiene +15 [magicpower] por cada pareja adyacente Mago–Bruja, en cualquier orientación.",
+        "english": "Spells on this floor have +15 [magicpower] per adjacent Wizard–Witch pair, in either order.",
+        "french": "Les sorts de cet étage ont +15 [magicpower] par paire sorcier–sorcière adjacente, dans les deux sens.",
+        "german": "Zauber dieser Etage erhalten +15 [magicpower] je benachbartem Magier-Hexen-Paar, in beiden Reihenfolgen.",
+        "portuguese": "Feitiços neste andar têm +15 [magicpower] por par adjacente Mago–Bruxa, em qualquer ordem.",
+        "russian": "Заклинания этажа получают +15 [magicpower] за каждую соседнюю пару маг–ведьма в любом порядке.",
+        "chinese": "本层每对相邻男巫与女巫，不论顺序，给予本层法术 +15 [magicpower]。",
+        "chinese_traditional": "本層每對相鄰男巫與女巫，不論順序，給予本層法術 +15 [magicpower]。",
+        "korean": "순서와 관계없이 인접한 마법사–마녀 쌍마다 이 층 주문에 [magicpower] +15.",
+        "japanese": "この階の呪文は、順序を問わず隣接する魔法使いと魔女のペアごとに[magicpower] +15。"
+      },
+      "in_play_descriptions": {
+        "spanish": "El piso tiene +15 Magic Power por cada pareja adyacente Wizard–Witch, en cualquier orientación.",
+        "english": "Spells on this floor have +15 Magic Power per adjacent Wizard–Witch pair, in either order.",
+        "french": "Les sorts de cet étage ont +15 Magic Power par paire sorcier–sorcière adjacente, dans les deux sens.",
+        "german": "Zauber dieser Etage erhalten +15 Magic Power je benachbartem Magier-Hexen-Paar, in beiden Reihenfolgen.",
+        "portuguese": "Feitiços neste andar têm +15 Magic Power por par adjacente Mago–Bruxa, em qualquer ordem.",
+        "russian": "Заклинания этажа получают +15 Magic Power за каждую соседнюю пару маг–ведьма в любом порядке.",
+        "chinese": "本层每对相邻男巫与女巫，不论顺序，给予本层法术 +15 Magic Power。",
+        "chinese_traditional": "本層每對相鄰男巫與女巫，不論順序，給予本層法術 +15 Magic Power。",
+        "korean": "순서와 관계없이 인접한 마법사–마녀 쌍마다 이 층 주문에 Magic Power +15.",
+        "japanese": "この階の呪文は、順序を問わず隣接する魔法使いと魔女のペアごとにMagic Power +15。"
+      },
+      "param_upgrade": "@WW_PairPowerUpgrade"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_R02",
+      "names": {
+        "spanish": "Awkward Silence",
+        "english": "Awkward Silence",
+        "french": "Silence gênant",
+        "german": "Peinliche Stille",
+        "portuguese": "Silêncio Constrangedor",
+        "russian": "Неловкое молчание",
+        "chinese": "尴尬沉默",
+        "chinese_traditional": "尷尬沉默",
+        "korean": "어색한 침묵",
+        "japanese": "気まずい沈黙"
+      },
+      "descriptions": {
+        "spanish": "Los hechizos de este piso obtienen +15 [magicpower] por cada pareja adyacente Mago–Bruja, en cualquier orden.",
+        "english": "Spells on this floor gain +15 [magicpower] per adjacent Wizard–Witch pair, in either order.",
+        "french": "Les sorts de cet étage ont +15 [magicpower] par paire sorcier–sorcière adjacente, dans les deux sens.",
+        "german": "Zauber dieser Etage erhalten +15 [magicpower] je benachbartem Magier-Hexen-Paar, in beiden Reihenfolgen.",
+        "portuguese": "Feitiços neste andar têm +15 [magicpower] por par adjacente Mago–Bruxa, em qualquer ordem.",
+        "russian": "Заклинания этажа получают +15 [magicpower] за каждую соседнюю пару маг–ведьма в любом порядке.",
+        "chinese": "本层每对相邻男巫与女巫，不论顺序，给予本层法术 +15 [magicpower]。",
+        "chinese_traditional": "本層每對相鄰男巫與女巫，不論順序，給予本層法術 +15 [magicpower]。",
+        "korean": "순서와 관계없이 인접한 마법사–마녀 쌍마다 이 층 주문에 [magicpower] +15.",
+        "japanese": "この階の呪文は、順序を問わず隣接する魔法使いと魔女のペアごとに[magicpower] +15。"
+      },
+      "class": "@WW_Class",
+      "card_type": "room",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_R02CardArt",
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentMerchant_RoomAndEquipmentPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_R02_Attach"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_R02CardArt",
+      "path": "textures/cards/WW_R02CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_R02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_R02CardArt"
+        }
+      }
+    }
+  ]
+}

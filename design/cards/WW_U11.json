@@ -1,0 +1,35 @@
+﻿{
+  "id": "WW_U11",
+  "selection": "U11",
+  "type": "unit",
+  "names": {
+    "spanish": "Archivera de Hechizos Extraviados",
+    "english": "Lost Spells Archivist"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Habilidad Recuperación de Hechizos: devuelve un hechizo consumido a tu mano.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 0,
+    "health": 25,
+    "size": 1
+  },
+  "banner": false,
+  "ability_cooldown": 3,
+  "ability_name": {
+    "english": "Spell Recovery",
+    "spanish": "Recuperación de Hechizos",
+    "french": "Récupération de sorts",
+    "german": "Zauberrückholung",
+    "portuguese": "Recuperação de Feitiços",
+    "russian": "Возвращение заклинаний",
+    "chinese": "法术回收",
+    "chinese_traditional": "法術回收",
+    "korean": "주문 회수",
+    "japanese": "呪文回収"
+  }
+}

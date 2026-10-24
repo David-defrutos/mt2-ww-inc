@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S24_Effect",
+      "name": "@CardEffectAcademicEquipmentReturn",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S24",
+      "names": {
+        "spanish": "Devolución de Material Prestado",
+        "english": "Loaned Equipment Return",
+        "french": "Retour d'équipement prêté",
+        "german": "Rückgabe geliehener Ausrüstung",
+        "portuguese": "Devolução de Equipamento Emprestado",
+        "russian": "Возврат выданного снаряжения",
+        "chinese": "借用装备归还",
+        "chinese_traditional": "借用裝備歸還",
+        "korean": "대여 장비 반납",
+        "japanese": "貸出装備返却"
+      },
+      "descriptions": {
+        "spanish": "Devuelve el equipo de una unidad aliada a tu mano con 0[ember] este turno. Añade [damageshield] 1 a esa unidad.",
+        "english": "Return a friendly unit’s equipment to hand with 0[ember] this turn. Apply [damageshield] 1 to that unit.",
+        "french": "Renvoie l'équipement de l'allié ciblé en main, avec ses améliorations. Il coûte 0 ce tour. L'allié gagne [damageshield] 1.",
+        "german": "Nimm die Ausrüstung des Zielverbündeten mit Verbesserungen auf die Hand; Kosten 0 diese Runde. Der Verbündete erhält [damageshield] 1.",
+        "portuguese": "Devolve à mão o equipamento do aliado com suas melhorias. Custa 0 neste turno. O aliado ganha [damageshield] 1.",
+        "russian": "Возвращает снаряжение союзника в руку с улучшениями и ценой 0 на ход. Союзник получает [damageshield] 1.",
+        "chinese": "目标盟友装备携带升级返回手牌，本回合费用0。盟友获得 [damageshield] 1。",
+        "chinese_traditional": "目標盟友裝備攜帶升級返回手牌，本回合費用0。盟友獲得 [damageshield] 1。",
+        "korean": "아군 장비를 강화와 함께 손에 돌려줍니다. 이번 턴 비용은 0이며 아군은 [damageshield] 1을 얻습니다.",
+        "japanese": "対象の味方の装備を強化付きで手札に戻す。このターンコスト0。味方は[damageshield] 1を得る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S24CardArt",
+      "pools": [],
+      "targetless": false,
+      "effects": [
+        "@WW_S24_Effect"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S24CardArt",
+      "path": "textures/cards/WW_S24CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S24CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S24CardArt"
+        }
+      }
+    }
+  ]
+}

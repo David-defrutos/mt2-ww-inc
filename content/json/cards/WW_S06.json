@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S06_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "defer_hand"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S06",
+      "names": {
+        "spanish": "Convocatoria Extraordinaria",
+        "english": "Extraordinary Exam Session",
+        "french": "Session d'examens extraordinaire",
+        "german": "Außerordentliche Prüfungsrunde",
+        "portuguese": "Exame Extraordinário",
+        "russian": "Внеочередная экзаменационная сессия",
+        "chinese": "特别考试场次",
+        "chinese_traditional": "特別考試場次",
+        "korean": "특별 시험 기간",
+        "japanese": "臨時試験期間"
+      },
+      "descriptions": {
+        "english": "Set aside up to three spells in hand. Return them to hand next turn with 0[ember].",
+        "spanish": "Aparta hasta tres hechizos de tu mano. Al comienzo del próximo turno, vuelven a la mano con 0[ember].",
+        "french": "Mettez de côté jusqu’à trois sorts en main. Ils reviennent au prochain tour avec un coût de 0.",
+        "german": "Lege bis zu drei Handzauber beiseite. Sie kehren nächste Runde mit Kosten 0 zurück.",
+        "portuguese": "Reserve até três feitiços da mão. Voltam no próximo turno com custo 0.",
+        "russian": "Отложите до трёх заклинаний из руки. В следующий ход они вернутся с ценой 0.",
+        "chinese": "暂存至多三个手牌法术。下回合返回，费用为0。",
+        "chinese_traditional": "暫存至多三個手牌法術。下回合返回，費用為0。",
+        "korean": "손의 주문을 최대 세 개 보관합니다. 다음 턴 비용 0으로 돌아옵니다.",
+        "japanese": "手札の呪文を最大3枚取り置く。次のターン、コスト0で戻る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S06CardArt",
+      "pools": [],
+      "targetless": true,
+      "effects": [
+        "@WW_S06_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S06CardArt",
+      "path": "textures/cards/WW_S06CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S06CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S06CardArt"
+        }
+      }
+    }
+  ]
+}

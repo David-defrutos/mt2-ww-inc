@@ -1,0 +1,36 @@
+﻿{
+  "id": "WW_U18",
+  "selection": "U18",
+  "type": "unit",
+  "names": {
+    "spanish": "Catedrática de Matrícula Congelada",
+    "english": "Professor of Frozen Tuition"
+  },
+  "cost": 2,
+  "rarity": "rare",
+  "effect": "Por cada 30 de daño que inflija, reduce el coste de todas las cartas con [freeze] de tu mano en 1[ember].",
+  "status": "implemented_unverified",
+  "implementation_note": "Habilidad usa CardEffectFreezeCard nativo de Freeze Ray/Cuttlehex, cooldown 2. Pasiva independiente acumula daño efectivo por unidad en tramos de 30 y conserva resto; cada tramo reduce en 1 el coste de todas las cartas que tengan CardTraitFreeze y estén en mano en ese momento. Sin vínculo a carta elegida ni reset al activar Freeze. Descuentos duran la batalla. Texto de habilidad solo Freeze; cuerpo y tooltip de unidad describen únicamente pasiva. Pendiente partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 25,
+    "health": 25,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": 2,
+  "ability_name": {
+    "english": "Frozen Enrollment",
+    "spanish": "Matrícula Congelada",
+    "french": "Inscription gelée",
+    "german": "Eingefrorene Einschreibung",
+    "portuguese": "Matrícula Congelada",
+    "russian": "Замороженная запись",
+    "chinese": "冻结注册",
+    "chinese_traditional": "凍結註冊",
+    "korean": "동결 등록",
+    "japanese": "凍結登録"
+  },
+  "ability_effect": "Añade [freeze] a una carta de tu mano."
+}

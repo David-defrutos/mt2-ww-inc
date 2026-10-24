@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S03",
+  "selection": "S03",
+  "type": "spell",
+  "names": {
+    "spanish": "Centralización de Puntos Débiles",
+    "english": "Weakness Central Office"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Transfiere toda la [spellweakness] de los enemigos de todos los pisos a una unidad enemiga.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirado por petición del usuario."
+}

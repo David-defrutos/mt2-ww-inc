@@ -1,0 +1,139 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U03_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U03_Character"
+    },
+    {
+      "id": "WW_U03_OverhealEffect",
+      "name": "@CardEffectOverhealDamage",
+      "target_mode": "room",
+      "target_team": "heroes",
+      "param_int": 1
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U03",
+      "names": {
+        "spanish": "Catedrático de Medicina Hostil",
+        "english": "Professor of Hostile Medicine",
+        "french": "Professeur de médecine hostile",
+        "german": "Professor für feindselige Medizin",
+        "portuguese": "Professor de Medicina Hostil",
+        "russian": "Профессор враждебной медицины",
+        "chinese": "敌意医学教授",
+        "chinese_traditional": "敵意醫學教授",
+        "korean": "적대 의학 교수",
+        "japanese": "敵対医学教授"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U03CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U03_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U03_Character",
+      "names": {
+        "spanish": "Catedrático de Medicina Hostil",
+        "english": "Professor of Hostile Medicine",
+        "french": "Professeur de médecine hostile",
+        "german": "Professor für feindselige Medizin",
+        "portuguese": "Professor de Medicina Hostil",
+        "russian": "Профессор враждебной медицины",
+        "chinese": "敌意医学教授",
+        "chinese_traditional": "敵意醫學教授",
+        "korean": "적대 의학 교수",
+        "japanese": "敵対医学教授"
+      },
+      "character_art": "@WW_U03CharacterArt",
+      "size": 2,
+      "health": 25,
+      "attack_damage": 10,
+      "subtypes": [
+        "@WW_Wizard",
+        "SubtypesData_BannerUnit"
+      ],
+      "triggers": [
+        "@WW_U03_Overheal"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U03CardArt",
+      "path": "textures/cards/WW_U03CardArt.png"
+    },
+    {
+      "id": "WW_U03CharacterArt",
+      "path": "textures/characters/WW_U03CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U03CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U03CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U03CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U03CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.81,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_U03_Overheal",
+      "trigger": "@WW_Overheal",
+      "descriptions": {
+        "english": "Deal damage to all enemies equal to the excess healing.",
+        "spanish": "Inflige daño a todos los enemigos igual a la curación sobrante.",
+        "french": "Inflige à tous les ennemis des dégâts égaux aux soins excédentaires.",
+        "german": "Füge allen Gegnern Schaden in Höhe der überschüssigen Heilung zu.",
+        "portuguese": "Causa dano a todos os inimigos igual à cura excedente.",
+        "russian": "Наносит всем врагам урон в размере избытка лечения.",
+        "chinese": "对所有敌人造成等于溢出治疗量的伤害。",
+        "chinese_traditional": "對所有敵人造成等於溢出治療量的傷害。",
+        "korean": "초과 치유량만큼 모든 적에게 피해를 줍니다.",
+        "japanese": "超過回復量と同じダメージをすべての敵に与える。"
+      },
+      "effects": [
+        "@WW_U03_OverhealEffect"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S18_Effect",
+      "name": "@CardEffectAcademicDeskSwap",
+      "target_mode": "room",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S18",
+      "names": {
+        "spanish": "Cambio de Pupitres",
+        "english": "Desk Swap",
+        "french": "Échange de bureaux",
+        "german": "Pulttausch",
+        "portuguese": "Troca de Mesas",
+        "russian": "Обмен партами",
+        "chinese": "课桌交换",
+        "chinese_traditional": "課桌交換",
+        "korean": "책상 교환",
+        "japanese": "机の交換"
+      },
+      "descriptions": {
+        "english": "Swap the front and rear friendly units. The new front unit attacks immediately.",
+        "spanish": "Intercambia la primera y la última unidad aliada. La nueva primera unidad ataca de inmediato.",
+        "french": "Échange les alliés de tête et de queue. Le nouvel allié de tête attaque immédiatement.",
+        "german": "Tausche den vordersten und hintersten Verbündeten. Der neue vorderste Verbündete greift sofort an.",
+        "portuguese": "Troca os aliados da frente e de trás. O novo aliado da frente ataca imediatamente.",
+        "russian": "Меняет местами переднего и заднего союзников. Новый передний союзник немедленно атакует.",
+        "chinese": "交换前排与后排盟友的位置。新的前排盟友立即攻击。",
+        "chinese_traditional": "交換前排與後排盟友的位置。新的前排盟友立即攻擊。",
+        "korean": "맨 앞과 맨 뒤 아군의 위치를 바꿉니다. 새로운 맨 앞 아군이 즉시 공격합니다.",
+        "japanese": "先頭と最後尾の味方を入れ替える。新しい先頭の味方が即座に攻撃する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "card_art": "@WW_S18CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S18_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S18CardArt",
+      "path": "textures/cards/WW_S18CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S18CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S18CardArt"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S31",
+      "names": {
+        "english": "General Examination",
+        "spanish": "Examen General",
+        "french": "Examen général",
+        "german": "Allgemeine Prüfung",
+        "portuguese": "Exame Geral",
+        "russian": "Общий экзамен",
+        "chinese": "综合考试",
+        "chinese_traditional": "綜合考試",
+        "korean": "종합 시험",
+        "japanese": "総合試験"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to all enemy units.",
+        "spanish": "Inflige [effect0.power] de daño a todas las unidades enemigas.",
+        "french": "Inflige [effect0.power] dégâts à toutes les unités ennemies.",
+        "german": "Füge allen gegnerischen Einheiten [effect0.power] Schaden zu.",
+        "portuguese": "Causa [effect0.power] de dano a todas as unidades inimigas.",
+        "russian": "Наносит [effect0.power] урона всем вражеским бойцам.",
+        "chinese": "对所有敌方单位造成[effect0.power]点伤害。",
+        "chinese_traditional": "對所有敵方單位造成[effect0.power]點傷害。",
+        "korean": "모든 적 유닛에게 [effect0.power]의 피해를 줍니다.",
+        "japanese": "すべての敵ユニットに[effect0.power]ダメージを与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "effects": [
+        "@WW_S31_Damage"
+      ],
+      "card_art": "@WW_S31CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "traits": [
+        "@WW_S31_Piercing"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S31_Damage",
+      "name": "CardEffectDamage",
+      "target_mode": "room",
+      "target_team": "heroes",
+      "param_int": 8
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S31CardArt",
+      "path": "textures/cards/WW_S31CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S31CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S31CardArt"
+        }
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S31_Piercing",
+      "name": "CardTraitIgnoreArmor"
+    }
+  ]
+}

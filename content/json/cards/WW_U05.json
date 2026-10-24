@@ -1,0 +1,193 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U05_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U05_Character"
+    },
+    {
+      "id": "WW_U05_ArcaneSlayEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "burst",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U05_Character",
+      "names": {
+        "spanish": "Ayudante de Laboratorio Explosivo",
+        "english": "Explosive Lab Assistant",
+        "french": "Assistant de laboratoire explosif",
+        "german": "Explosiver Laborassistent",
+        "portuguese": "Assistente de Laboratório Explosivo",
+        "russian": "Ассистент взрывной лаборатории",
+        "chinese": "爆炸实验室助教",
+        "chinese_traditional": "爆炸實驗室助教",
+        "korean": "폭발 실험실 조교",
+        "japanese": "爆発実験室助手"
+      },
+      "character_art": "@WW_U05CharacterArt",
+      "size": 2,
+      "health": 20,
+      "attack_damage": 15,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_BannerUnit"
+      ],
+      "starting_status_effects": [
+        {
+          "status": "trample",
+          "count": 1
+        }
+      ],
+      "triggers": [
+        "@WW_U05_ArcaneSlay"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U05",
+      "names": {
+        "spanish": "Ayudante de Laboratorio Explosivo",
+        "english": "Explosive Lab Assistant",
+        "french": "Assistant de laboratoire explosif",
+        "german": "Explosiver Laborassistent",
+        "portuguese": "Assistente de Laboratório Explosivo",
+        "russian": "Ассистент взрывной лаборатории",
+        "chinese": "爆炸实验室助教",
+        "chinese_traditional": "爆炸實驗室助教",
+        "korean": "폭발 실험실 조교",
+        "japanese": "爆発実験室助手"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U05CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U05_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U05CardArt",
+      "path": "textures/cards/WW_U05CardArt.png"
+    },
+    {
+      "id": "WW_U05CharacterArt",
+      "path": "textures/WW_U05CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U05CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U05CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U05CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U05CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.96,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "character_trigger_types": [
+    {
+      "id": "WW_ArcaneSlay",
+      "names": {
+        "english": "Arcane Slay",
+        "spanish": "Remate Arcano",
+        "french": "Exécution arcanique",
+        "german": "Arkanes Töten",
+        "portuguese": "Execução Arcana",
+        "russian": "Магическое убийство",
+        "chinese": "奥术击杀",
+        "chinese_traditional": "奧術擊殺",
+        "korean": "비전 처치",
+        "japanese": "秘術撃破"
+      },
+      "descriptions": {
+        "english": "Triggers when a spell kills an enemy on this floor.",
+        "spanish": "Se activa cuando un hechizo mata a un enemigo de este piso.",
+        "french": "Se déclenche quand un sort tue un ennemi à cet étage.",
+        "german": "Wird ausgelöst, wenn ein Zauber einen Gegner auf dieser Etage tötet.",
+        "portuguese": "Ativa quando um feitiço mata um inimigo neste andar.",
+        "russian": "Срабатывает, когда заклинание убивает врага на этом этаже.",
+        "chinese": "当法术击杀本层敌人时触发。",
+        "chinese_traditional": "當法術擊殺本層敵人時觸發。",
+        "korean": "주문이 이 층의 적을 처치하면 발동합니다.",
+        "japanese": "呪文がこの階の敵を倒すと発動する。"
+      },
+      "notifications": {
+        "english": "Arcane Slay",
+        "spanish": "Remate Arcano",
+        "french": "Exécution arcanique",
+        "german": "Arkanes Töten",
+        "portuguese": "Execução Arcana",
+        "russian": "Магическое убийство",
+        "chinese": "奥术击杀",
+        "chinese_traditional": "奧術擊殺",
+        "korean": "비전 처치",
+        "japanese": "秘術撃破"
+      },
+      "sprite": "Conductor-Sprite-trigger_followup",
+      "disallow_in_deployment": true
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_U05_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Gain [burst] [effect0.status0.power].",
+        "spanish": "Añade [burst] [effect0.status0.power].",
+        "french": "Gagne [burst] [effect0.status0.power].",
+        "german": "Erhalte [burst] [effect0.status0.power].",
+        "portuguese": "Ganha [burst] [effect0.status0.power].",
+        "russian": "Получает [burst] [effect0.status0.power].",
+        "chinese": "获得[burst] [effect0.status0.power]。",
+        "chinese_traditional": "獲得[burst] [effect0.status0.power]。",
+        "korean": "[burst] [effect0.status0.power]을 얻습니다.",
+        "japanese": "[burst] [effect0.status0.power]を得る。"
+      },
+      "effects": [
+        "@WW_U05_ArcaneSlayEffect"
+      ]
+    }
+  ]
+}

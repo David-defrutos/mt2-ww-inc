@@ -1,0 +1,127 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_R01_Attach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_R01_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_R01_Upgrade",
+      "room_modifier_upgrades": [
+        "@WW_R01_Modifier"
+      ],
+      "hide_icon_on_card": true,
+      "icon": "@WW_R01Icon"
+    }
+  ],
+  "room_modifiers": [
+    {
+      "id": "WW_R01_Modifier",
+      "name": "@RoomStateAcademicPlatonic",
+      "titles": {
+        "spanish": "Strictly Platonic",
+        "english": "Strictly Platonic",
+        "french": "Strictement platonique",
+        "german": "Streng platonisch",
+        "portuguese": "Estritamente Platônico",
+        "russian": "Строго платонически",
+        "chinese": "纯粹柏拉图式",
+        "chinese_traditional": "純粹柏拉圖式",
+        "korean": "엄격한 플라토닉",
+        "japanese": "厳密にプラトニック"
+      },
+      "descriptions": {
+        "english": "Adjacent Wizard–Witch pairs have 1 less base [cooldown], minimum 1.",
+        "spanish": "Las parejas adyacentes Mago–Bruja tienen 1 menos de [cooldown] base, mínimo 1.",
+        "french": "Les paires sorcier–sorcière adjacentes ont 1 de moins en [cooldown] de base, minimum 1.",
+        "german": "Benachbarte Magier-Hexen-Paare haben 1 weniger Basis-[cooldown], mindestens 1.",
+        "portuguese": "Pares adjacentes Mago–Bruxa têm 1 a menos de [cooldown] base, mínimo 1.",
+        "russian": "Соседние пары маг–ведьма имеют базовую [cooldown] на 1 меньше, минимум 1.",
+        "chinese": "相邻男巫与女巫的基础[cooldown]减少1，最低1。",
+        "chinese_traditional": "相鄰男巫與女巫的基礎[cooldown]減少1，最低1。",
+        "korean": "인접한 마법사–마녀 쌍의 기본 [cooldown]이 1 감소합니다. 최소 1.",
+        "japanese": "隣接する魔法使いと魔女の基本[cooldown]を1減らす。最低1。"
+      },
+      "in_play_descriptions": {
+        "english": "Adjacent Wizard–Witch pairs have 1 less base [cooldown], minimum 1.",
+        "spanish": "Las parejas adyacentes Mago–Bruja tienen 1 menos de [cooldown] base, mínimo 1.",
+        "french": "Les paires sorcier–sorcière adjacentes ont 1 de moins en [cooldown] de base, minimum 1.",
+        "german": "Benachbarte Magier-Hexen-Paare haben 1 weniger Basis-[cooldown], mindestens 1.",
+        "portuguese": "Pares adjacentes Mago–Bruxa têm 1 a menos de [cooldown] base, mínimo 1.",
+        "russian": "Соседние пары маг–ведьма имеют базовую [cooldown] на 1 меньше, минимум 1.",
+        "chinese": "相邻男巫与女巫的基础[cooldown]减少1，最低1。",
+        "chinese_traditional": "相鄰男巫與女巫的基礎[cooldown]減少1，最低1。",
+        "korean": "인접한 마법사–마녀 쌍의 기본 [cooldown]이 1 감소합니다. 최소 1.",
+        "japanese": "隣接する魔法使いと魔女の基本[cooldown]を1減らす。最低1。"
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_R01",
+      "names": {
+        "spanish": "Strictly Platonic",
+        "english": "Strictly Platonic",
+        "french": "Strictement platonique",
+        "german": "Streng platonisch",
+        "portuguese": "Estritamente Platônico",
+        "russian": "Строго платонически",
+        "chinese": "纯粹柏拉图式",
+        "chinese_traditional": "純粹柏拉圖式",
+        "korean": "엄격한 플라토닉",
+        "japanese": "厳密にプラトニック"
+      },
+      "descriptions": {
+        "english": "Adjacent Wizard–Witch pairs have 1 less base [cooldown], minimum 1.",
+        "spanish": "Las parejas adyacentes Mago–Bruja tienen 1 menos de [cooldown] base, mínimo 1.",
+        "french": "Les paires sorcier–sorcière adjacentes ont 1 de moins en [cooldown] de base, minimum 1.",
+        "german": "Benachbarte Magier-Hexen-Paare haben 1 weniger Basis-[cooldown], mindestens 1.",
+        "portuguese": "Pares adjacentes Mago–Bruxa têm 1 a menos de [cooldown] base, mínimo 1.",
+        "russian": "Соседние пары маг–ведьма имеют базовую [cooldown] на 1 меньше, минимум 1.",
+        "chinese": "相邻男巫与女巫的基础[cooldown]减少1，最低1。",
+        "chinese_traditional": "相鄰男巫與女巫的基礎[cooldown]減少1，最低1。",
+        "korean": "인접한 마법사–마녀 쌍의 기본 [cooldown]이 1 감소합니다. 최소 1.",
+        "japanese": "隣接する魔法使いと魔女の基本[cooldown]を1減らす。最低1。"
+      },
+      "class": "@WW_Class",
+      "card_type": "room",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_R01CardArt",
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentMerchant_RoomAndEquipmentPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_R01_Attach"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_R01CardArt",
+      "path": "textures/cards/WW_R01CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_R01CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_R01CardArt"
+        }
+      }
+    }
+  ]
+}

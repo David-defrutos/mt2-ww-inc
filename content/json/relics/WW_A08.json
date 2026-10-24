@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A08_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A08",
+      "type": "collectable",
+      "names": {
+        "spanish": "Minuto de Silencio Administrativo",
+        "english": "Administrative Minute of Silence",
+        "french": "Minute de silence administrative",
+        "german": "Verwaltungsschweigeminute",
+        "portuguese": "Minuto de Silêncio Administrativo",
+        "russian": "Административная минута молчания",
+        "chinese": "行政默哀一分钟",
+        "chinese_traditional": "行政默哀一分鐘",
+        "korean": "행정 묵념 시간",
+        "japanese": "事務局の黙祷"
+      },
+      "descriptions": {
+        "spanish": "La primera muerte de un chaperón o chaperona de cada turno reduce la [cooldown] actual de los aliados de su piso en 1.",
+        "english": "The first chaperone death each turn reduces friendly units’ current [cooldown] on its floor by 1.",
+        "french": "La première mort d'un chaperon par tour réduit de 1 la recharge actuelle des alliés de son étage, minimum 0.",
+        "german": "Der erste Tod einer Begleitperson jeder Runde verringert die aktuelle Abklingzeit der Verbündeten ihrer Etage um 1, mindestens 0.",
+        "portuguese": "A primeira morte de acompanhante a cada turno reduz em 1 a recarga atual dos aliados do andar, mínimo 0.",
+        "russian": "Первая смерть сопровождающего за ход снижает текущую перезарядку союзников его этажа на 1, минимум 0.",
+        "chinese": "每回合首次监督员死亡时，本层盟友当前技能冷却减少1，最低0。",
+        "chinese_traditional": "每回合首次監督員死亡時，本層盟友當前技能冷卻減少1，最低0。",
+        "korean": "매 턴 보호자가 처음 죽으면 해당 층 아군의 현재 재사용 대기시간이 1 줄어듭니다. 최소 0.",
+        "japanese": "毎ターン最初の付き添いの死亡時、その階の味方の現在クールダウンを1減らす。最低0。"
+      },
+      "icon": "@WW_A08Icon",
+      "icon_small": "@WW_A08IconSmall",
+      "relic_effects": [
+        "@WW_A08_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A08Icon",
+      "path": "textures/relics/WW_A08Icon.png"
+    },
+    {
+      "id": "WW_A08IconSmall",
+      "path": "textures/relics/WW_A08IconSmall.png"
+    }
+  ]
+}

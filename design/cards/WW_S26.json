@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S26",
+  "selection": "S26",
+  "type": "spell",
+  "names": {
+    "spanish": "Retirada de Matrícula",
+    "english": "Enrollment Recall"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Devuelve una unidad aliada no campeón y su equipo a tu mano.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

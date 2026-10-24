@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A09_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A09",
+      "type": "collectable",
+      "names": {
+        "spanish": "Oficina de Quejas y Maleficios",
+        "english": "Office of Complaints and Curses",
+        "french": "Bureau des plaintes et malédictions",
+        "german": "Beschwerde- und Fluchstelle",
+        "portuguese": "Departamento de Reclamações e Maldições",
+        "russian": "Бюро жалоб и проклятий",
+        "chinese": "投诉与诅咒办公室",
+        "chinese_traditional": "投訴與詛咒辦公室",
+        "korean": "불만 및 저주 사무국",
+        "japanese": "苦情と呪いの窓口"
+      },
+      "descriptions": {
+        "english": "At turn start, transfer all [debuff] effects from a Wizard and Witch to a Chaperone on their floor.",
+        "spanish": "Al comienzo del turno, transfiere todos los efectos de [debuff] de un Mago y una Bruja a un Chaperón de su piso.",
+        "french": "Début de tour : transférez tous les états négatifs d’un sorcier et d’une sorcière à un chaperon de leur étage.",
+        "german": "Rundenbeginn: Übertrage alle negativen Zustände eines Magiers und einer Hexe auf eine Begleitperson auf ihrer Ebene.",
+        "portuguese": "No início do turno, transfira todos os estados negativos de um Mago e uma Bruxa para um Acompanhante no mesmo andar.",
+        "russian": "В начале хода передайте все отрицательные состояния мага и ведьмы сопровождающему на их этаже.",
+        "chinese": "回合开始时，将同一层一名男巫和一名女巫的全部负面状态转给一名监督员。",
+        "chinese_traditional": "回合開始時，將同一層一名男巫和一名女巫的全部負面狀態轉給一名監督員。",
+        "korean": "턴 시작에 같은 층의 마법사와 마녀 한 명씩의 모든 부정적 상태를 보호자 한 명에게 이전합니다.",
+        "japanese": "ターン開始時、同じ階の魔法使いと魔女1体ずつの全負の状態を付き添い1体に移す。"
+      },
+      "icon": "@WW_A09Icon",
+      "icon_small": "@WW_A09IconSmall",
+      "relic_effects": [
+        "@WW_A09_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A09Icon",
+      "path": "textures/relics/WW_A09Icon.png"
+    },
+    {
+      "id": "WW_A09IconSmall",
+      "path": "textures/relics/WW_A09IconSmall.png"
+    }
+  ]
+}

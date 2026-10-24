@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_E03",
+  "selection": "E03",
+  "type": "equipment",
+  "names": {
+    "english": "Tenured Wand",
+    "spanish": "Varita Titular"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Arcane Slay: añade [conduit] 1 permanentemente.",
+  "status": "implemented_unverified",
+  "implementation_note": "CardEffectAttachEquipment concede WW_ArcaneSlay al portador. CardEffectAddCardUpgradeToUnits self con UnitUpgradeLifetime.Permanent (param_int_3=2) guarda Conduit 1 en la carta de la unidad, no en la varita. Sin C# adicional. Arte oficial Luna Cyclestaff provisional. Pendiente partida, guardar/reanudar y desequipar.",
+  "balance": "Propuesta inicial: rara, 1 Ember; ajuste posterior."
+}

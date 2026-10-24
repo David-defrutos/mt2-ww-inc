@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U17_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U17_Character"
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U17_Character",
+      "names": {
+        "spanish": "Delegada del Primer Hechizo",
+        "english": "First Spell Class Representative",
+        "french": "Délégué du premier sort",
+        "german": "Klassensprecher des ersten Zaubers",
+        "portuguese": "Representante do Primeiro Feitiço",
+        "russian": "Староста первого заклинания",
+        "chinese": "首个法术班长",
+        "chinese_traditional": "首個法術班長",
+        "korean": "첫 주문 반장",
+        "japanese": "最初の呪文の学級委員"
+      },
+      "character_art": "@WW_U17CharacterArt",
+      "size": 1,
+      "health": 35,
+      "attack_damage": 5,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_BannerUnit"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U17",
+      "names": {
+        "spanish": "Delegada del Primer Hechizo",
+        "english": "First Spell Class Representative",
+        "french": "Délégué du premier sort",
+        "german": "Klassensprecher des ersten Zaubers",
+        "portuguese": "Representante do Primeiro Feitiço",
+        "russian": "Староста первого заклинания",
+        "chinese": "首个法术班长",
+        "chinese_traditional": "首個法術班長",
+        "korean": "첫 주문 반장",
+        "japanese": "最初の呪文の学級委員"
+      },
+      "descriptions": {
+        "spanish": "El primer hechizo de daño de cada turno le otorga tanto [attack] como el daño total que inflija, durante ese turno.",
+        "english": "Gain [attack] equal to the total damage dealt by the first damage spell each turn, for that turn.",
+        "french": "Gagne ce tour une attaque égale aux dégâts du premier sort de dégâts joué ce tour.",
+        "german": "Erhält diese Runde Angriff in Höhe des en Schadens des ersten Schadenszaubers dieser Runde.",
+        "portuguese": "Neste turno ganha Ataque igual ao dano do primeiro feitiço de dano deste turno.",
+        "russian": "На этот ход получает атаку, равную урону первого заклинания урона этого хода.",
+        "chinese": "本回合获得首个伤害法术伤害总量的攻击加成。",
+        "chinese_traditional": "本回合獲得首個傷害法術傷害總量的攻擊加成。",
+        "korean": "이번 턴 처음 사용한 피해 주문의 피해만큼 이번 턴 공격력을 얻습니다.",
+        "japanese": "このターン最初のダメージ呪文のダメージ分、このターン攻撃を得る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U17CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U17_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U17CardArt",
+      "path": "textures/cards/WW_U17CardArt.png"
+    },
+    {
+      "id": "WW_U17CharacterArt",
+      "path": "textures/characters/WW_U17CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U17CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U17CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U17CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U17CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.97,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

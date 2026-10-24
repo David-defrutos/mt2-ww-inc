@@ -1,0 +1,241 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U11_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U11_Character"
+    },
+    {
+      "id": "WW_U11_Ability_Effect",
+      "name": "CardEffectRecursion",
+      "target_mode": "exhaust",
+      "target_team": "none",
+      "target_card_type": "spell",
+      "target_card_selection_mode": "choose_to_hand",
+      "param_int": 1
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U11_Ability",
+      "names": {
+        "english": "Spell Recovery",
+        "spanish": "Recuperación de Hechizos",
+        "french": "Récupération de sorts",
+        "german": "Zauberrückholung",
+        "portuguese": "Recuperação de Feitiços",
+        "russian": "Возвращение заклинаний",
+        "chinese": "法术回收",
+        "chinese_traditional": "法術回收",
+        "korean": "주문 회수",
+        "japanese": "呪文回収"
+      },
+      "descriptions": {
+        "english": "Return a consumed spell to your hand.",
+        "spanish": "Devuelve un hechizo consumido a tu mano.",
+        "french": "Reprend en main un sort consommé.",
+        "german": "Nimm einen verbrauchten Zauber auf die Hand.",
+        "portuguese": "Devolve um feitiço consumido à sua mão.",
+        "russian": "Возвращает израсходованное заклинание в руку.",
+        "chinese": "将一个已消耗法术返回手牌。",
+        "chinese_traditional": "將一個已消耗法術返回手牌。",
+        "korean": "소모된 주문 하나를 손으로 되돌립니다.",
+        "japanese": "消費済み呪文を手札に戻す。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "starter",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 3,
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true,
+      "card_art": "@WW_U11CardArt",
+      "effects": [
+        "@WW_U11_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly"
+    },
+    {
+      "id": "WW_U11",
+      "names": {
+        "spanish": "Archivera de Hechizos Extraviados",
+        "english": "Lost Spells Archivist",
+        "french": "Archiviste des sorts perdus",
+        "german": "Archivar verlorener Zauber",
+        "portuguese": "Arquivista de Feitiços Perdidos",
+        "russian": "Архивариус потерянных заклинаний",
+        "chinese": "遗失法术档案员",
+        "chinese_traditional": "遺失法術檔案員",
+        "korean": "분실 주문 기록관",
+        "japanese": "紛失呪文の記録係"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U11CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "effects": [
+        "@WW_U11_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U11_Character",
+      "names": {
+        "spanish": "Archivera de Hechizos Extraviados",
+        "english": "Lost Spells Archivist",
+        "french": "Archiviste des sorts perdus",
+        "german": "Archivar verlorener Zauber",
+        "portuguese": "Arquivista de Feitiços Perdidos",
+        "russian": "Архивариус потерянных заклинаний",
+        "chinese": "遗失法术档案员",
+        "chinese_traditional": "遺失法術檔案員",
+        "korean": "분실 주문 기록관",
+        "japanese": "紛失呪文の記録係"
+      },
+      "character_art": "@WW_U11CharacterArt",
+      "size": 1,
+      "health": 25,
+      "attack_damage": 0,
+      "subtypes": [
+        "@WW_Witch"
+      ],
+      "ability": "@WW_U11_Ability"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U11CardArt",
+      "path": "textures/cards/WW_U11CardArt.png"
+    },
+    {
+      "id": "WW_U11CharacterArt",
+      "path": "textures/WW_U11CharacterArt.png"
+    },
+    {
+      "id": "WW_ReservedSpellIcon",
+      "path": "textures/icons/WW_ReservedSpellIcon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U11CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U11CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U11CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U11CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.875,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.75,
+              "y": 1.75,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "localization_terms": [
+    {
+      "key": "david.wwinc.ReservedSpellsTitle",
+      "texts": {
+        "english": "Set-aside spells",
+        "spanish": "Hechizos apartados",
+        "french": "Sorts mis de côté",
+        "german": "Beiseitegelegte Zauber",
+        "portuguese": "Feitiços reservados",
+        "russian": "Отложенные заклинания",
+        "chinese": "暂存法术",
+        "chinese_traditional": "暫存法術",
+        "korean": "보관된 주문",
+        "japanese": "取り置き呪文"
+      }
+    },
+    {
+      "key": "david.wwinc.ReservedSpellsEmpty",
+      "texts": {
+        "english": "No spells set aside.",
+        "spanish": "Ningún hechizo apartado.",
+        "french": "Aucun sort mis de côté.",
+        "german": "Keine Zauber beiseitegelegt.",
+        "portuguese": "Nenhum feitiço reservado.",
+        "russian": "Нет отложенных заклинаний.",
+        "chinese": "没有暂存法术。",
+        "chinese_traditional": "沒有暫存法術。",
+        "korean": "보관된 주문이 없습니다.",
+        "japanese": "取り置き呪文なし。"
+      }
+    },
+    {
+      "key": "david.wwinc.ReservedAttacks",
+      "texts": {
+        "english": "Remaining attacks: {0}",
+        "spanish": "Ataques restantes: {0}",
+        "french": "Attaques restantes : {0}",
+        "german": "Verbleibende Angriffe: {0}",
+        "portuguese": "Ataques restantes: {0}",
+        "russian": "Осталось атак: {0}",
+        "chinese": "剩余攻击次数：{0}",
+        "chinese_traditional": "剩餘攻擊次數：{0}",
+        "korean": "남은 공격: {0}",
+        "japanese": "残り攻撃回数：{0}"
+      }
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_ReservedMarker",
+      "titles": {
+        "english": "Set aside",
+        "spanish": "Apartado",
+        "french": "Mis de côté",
+        "german": "Beiseitegelegt",
+        "portuguese": "Reservado",
+        "russian": "Отложено",
+        "chinese": "暂存",
+        "chinese_traditional": "暫存",
+        "korean": "보관됨",
+        "japanese": "取り置き"
+      },
+      "descriptions": {
+        "english": "This spell is set aside by an effect.",
+        "spanish": "Este hechizo está apartado por un efecto.",
+        "french": "Ce sort est mis de côté par un effet.",
+        "german": "Dieser Zauber wurde durch einen Effekt beiseitegelegt.",
+        "portuguese": "Este feitiço está reservado por um efeito.",
+        "russian": "Это заклинание отложено эффектом.",
+        "chinese": "此法术被效果暂存。",
+        "chinese_traditional": "此法術被效果暫存。",
+        "korean": "이 주문은 효과로 보관되어 있습니다.",
+        "japanese": "この呪文は効果によって取り置かれている。"
+      },
+      "icon": "@WW_ReservedSpellIcon",
+      "hide_icon_on_card": false
+    }
+  ]
+}

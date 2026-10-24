@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A07_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A07",
+      "type": "collectable",
+      "names": {
+        "spanish": "Comité de Relaciones Impropias",
+        "english": "Committee for Improper Relations",
+        "french": "Comité des relations inconvenantes",
+        "german": "Ausschuss für ungebührliche Beziehungen",
+        "portuguese": "Comitê de Relações Impróprias",
+        "russian": "Комитет неподобающих отношений",
+        "chinese": "不当关系委员会",
+        "chinese_traditional": "不當關係委員會",
+        "korean": "부적절한 관계 위원회",
+        "japanese": "不適切な関係委員会"
+      },
+      "descriptions": {
+        "spanish": "Al comienzo del turno, invoca un chaperón 0/1 de 1[size] y [conduit] 1 entre cada Mago y Bruja adyacentes. Usa la variante del mago de la izquierda. Recorre de abajo arriba y de izquierda a derecha. Ignora [capacity]; máximo 7 unidades por piso. Al morir, desaparece.",
+        "english": "At turn start, summon a 0/1 chaperone with 1[size] and [conduit] 1 between each adjacent Wizard and Witch. Use the left mage’s variant. Scan bottom to top, left to right. Ignore [capacity]; maximum 7 units per floor. Chaperones vanish on death.",
+        "french": "Début de tour : étages de bas en haut, paires de gauche à droite. Sépare chaque sorcier et sorcière adjacents par un chaperon 0/1, capacité 1, [conduit] 1, selon le mage de gauche. Ignore la capacité, limite 7 unités. Les chaperons invoqués disparaissent à la mort.",
+        "german": "Rundenbeginn: Etagen unten nach oben, Paare links nach rechts. Trennt jedes benachbarte Magier-Hexen-Paar mit einer 0/1-Begleitperson, Kapazität 1, [conduit] 1; Variante nach linkem Magier. Ignoriert Kapazität, maximal 7 Einheiten. Beschworene Begleiter verschwinden beim Tod.",
+        "portuguese": "Início do turno: andares de baixo para cima, pares da esquerda para a direita. Separa cada Mago e Bruxa adjacentes com acompanhante 0/1, capacidade 1, [conduit] 1, conforme o mago à esquerda. Ignora capacidade; máximo 7 unidades. Acompanhantes invocados desaparecem ao morrer.",
+        "russian": "Начало хода: этажи снизу вверх, пары слева направо. Разделяет соседних мага и ведьму сопровождающим 0/1, вместимость 1, [conduit] 1; вариант по левому магу. Игнорирует вместимость, максимум 7 единиц. Призванные сопровождающие исчезают при смерти.",
+        "chinese": "回合开始从下到上、从左到右检查。每对相邻男巫和女巫之间召唤0/1、占1空间、[conduit] 1监督员，性别按左侧施法者。忽略空间上限，最多7单位。召唤监督员死亡后消失。",
+        "chinese_traditional": "回合開始從下到上、從左到右檢查。每對相鄰男巫和女巫之間召喚0/1、佔1空間、[conduit] 1監督員，性別按左側施法者。忽略空間上限，最多7單位。召喚監督員死亡後消失。",
+        "korean": "턴 시작에 아래층부터 위로, 왼쪽부터 오른쪽으로 검사합니다. 인접한 마법사와 마녀 사이에 왼쪽 시전자에 따른 0/1, 공간 1, [conduit] 1 보호자를 소환합니다. 공간 제한을 무시하되 최대 7유닛입니다. 소환된 보호자는 죽으면 사라집니다.",
+        "japanese": "ターン開始時、階を下から上、ペアを左から右に調べる。隣接した魔法使いと魔女の間に、左の術者に応じた0/1、容量1、[conduit] 1の付き添いを召喚。容量を無視し最大7ユニット。召喚された付き添いは死亡時消滅。"
+      },
+      "icon": "@WW_A07Icon",
+      "icon_small": "@WW_A07IconSmall",
+      "relic_effects": [
+        "@WW_A07_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A07Icon",
+      "path": "textures/relics/WW_A07Icon.png"
+    },
+    {
+      "id": "WW_A07IconSmall",
+      "path": "textures/relics/WW_A07IconSmall.png"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_E03",
+      "names": {
+        "english": "Tenured Wand",
+        "spanish": "Varita Titular",
+        "french": "Baguette titulaire",
+        "german": "Zauberstab auf Lebenszeit",
+        "portuguese": "Varinha Titular",
+        "russian": "Жезл штатного преподавателя",
+        "chinese": "终身教职魔杖",
+        "chinese_traditional": "終身教職魔杖",
+        "korean": "종신 교수 지팡이",
+        "japanese": "終身教授の杖"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_E03CardArt",
+      "pools": [
+        "MegaPool",
+        "EquipmentPool",
+        "EquipmentPoolNonEnemy",
+        "RoomAndEquipmentDraftPool",
+        "RoomAndEquipmentMerchant_EquipmentPool",
+        "RoomAndEquipmentMerchant_RoomAndEquipmentPool"
+      ],
+      "effects": [
+        "@WW_E03_Equip"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_E03_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_E03_Upgrade"
+    },
+    {
+      "id": "WW_E03_GrowthEffect",
+      "name": "CardEffectAddCardUpgradeToUnits",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_E03_Growth",
+      "param_int_3": 2
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_E03_Upgrade",
+      "titles": {
+        "english": "Tenured Wand",
+        "spanish": "Varita Titular",
+        "french": "Baguette titulaire",
+        "german": "Zauberstab auf Lebenszeit",
+        "portuguese": "Varinha Titular",
+        "russian": "Жезл штатного преподавателя",
+        "chinese": "终身教职魔杖",
+        "chinese_traditional": "終身教職魔杖",
+        "korean": "종신 교수 지팡이",
+        "japanese": "終身教授の杖"
+      },
+      "hide_icon_on_card": true,
+      "trigger_upgrades": [
+        "@WW_E03_ArcaneSlay"
+      ],
+      "icon": "@WW_E03Icon"
+    },
+    {
+      "id": "WW_E03_Growth",
+      "hide_icon_on_card": true,
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_E03_ArcaneSlay",
+      "trigger": "@WW_ArcaneSlay",
+      "descriptions": {
+        "english": "Gain [conduit] [effect0.upgrade.status0.power] permanently.",
+        "spanish": "Añade [conduit] [effect0.upgrade.status0.power] permanentemente.",
+        "french": "Gagne [conduit] [effect0.upgrade.status0.power] de façon permanente.",
+        "german": "Erhalte dauerhaft [conduit] [effect0.upgrade.status0.power].",
+        "portuguese": "Ganha [conduit] [effect0.upgrade.status0.power] permanentemente.",
+        "russian": "Навсегда получает [conduit] [effect0.upgrade.status0.power].",
+        "chinese": "永久获得[conduit] [effect0.upgrade.status0.power]。",
+        "chinese_traditional": "永久獲得[conduit] [effect0.upgrade.status0.power]。",
+        "korean": "[conduit] [effect0.upgrade.status0.power]을 영구적으로 얻습니다.",
+        "japanese": "[conduit] [effect0.upgrade.status0.power]を永続的に得る。"
+      },
+      "effects": [
+        "@WW_E03_GrowthEffect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_E03CardArt",
+      "path": "textures/cards/WW_E03CardArt.png"
+    },
+    {
+      "id": "WW_E03Icon",
+      "path": "textures/equipment/WW_E03Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_E03CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_E03CardArt"
+        }
+      }
+    }
+  ]
+}

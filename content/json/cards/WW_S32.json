@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S32",
+      "names": {
+        "english": "Pair Assignment",
+        "spanish": "Trabajo en Pareja",
+        "french": "Travail en binôme",
+        "german": "Partnerarbeit",
+        "portuguese": "Trabalho em Dupla",
+        "russian": "Парная работа",
+        "chinese": "双人作业",
+        "chinese_traditional": "雙人作業",
+        "korean": "짝 과제",
+        "japanese": "ペア課題"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to an enemy unit. If a Wizard and a Witch are adjacent on this floor, gain [explosive] and [attuned] for this cast.",
+        "spanish": "Inflige [effect0.power] de daño a una unidad enemiga. Si hay un Mago y una Bruja adyacentes en este piso, gana [explosive] y [attuned] solo al jugarlo.",
+        "french": "Inflige [effect0.power] dégâts à une unité ennemie. Si un sorcier et une sorcière sont adjacents à cet étage, gagne [explosive] et [attuned] pour ce lancement.",
+        "german": "Füge einer feindlichen Einheit [effect0.power] Schaden zu. Sind ein Zauberer und eine Hexe auf dieser Ebene benachbart, erhält dieser Zauber [explosive] und [attuned] für dieses Wirken.",
+        "portuguese": "Causa [effect0.power] de dano a uma unidade inimiga. Se um Mago e uma Bruxa estiverem adjacentes neste andar, ganha [explosive] e [attuned] apenas neste lançamento.",
+        "russian": "Наносит [effect0.power] урона врагу. Если волшебник и ведьма стоят рядом на этом этаже, получает [explosive] и [attuned] на время этого применения.",
+        "chinese": "对一个敌方单位造成[effect0.power]点伤害。若本层有相邻的男巫和女巫，获得[explosive]和[attuned]，仅限本次施放。",
+        "chinese_traditional": "對一個敵方單位造成[effect0.power]點傷害。若本層有相鄰的男巫和女巫，獲得[explosive]和[attuned]，僅限本次施放。",
+        "korean": "적 유닛 하나에게 [effect0.power]의 피해를 줍니다. 이 층에서 마법사와 마녀가 서로 인접하면 [explosive] 및 [attuned] 효과를 이번 시전에만 얻습니다.",
+        "japanese": "敵ユニット1体に[effect0.power]ダメージを与える。この階で魔法使いと魔女が隣接している場合、[explosive]と[attuned]をこの発動中のみ得る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "effects": [
+        "@WW_S32_Damage"
+      ],
+      "card_art": "@WW_S32CardArt",
+      "pools": [],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S32_Damage",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_int": 5
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S32CardArt",
+      "path": "textures/cards/WW_S32CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S32CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S32CardArt"
+        }
+      }
+    }
+  ]
+}

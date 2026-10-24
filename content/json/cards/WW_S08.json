@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S08",
+      "names": {
+        "spanish": "Bibliografía Consumida",
+        "english": "Consumed Bibliography",
+        "french": "Bibliographie consommée",
+        "german": "Verbrauchte Bibliografie",
+        "portuguese": "Bibliografia Consumida",
+        "russian": "Израсходованная библиография",
+        "chinese": "已消耗参考文献",
+        "chinese_traditional": "已消耗參考文獻",
+        "korean": "소모된 참고 문헌",
+        "japanese": "消費済み参考文献"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to a unit.<br>+[trait0.power] damage per consumed card.<br>If it kills, return a consumed spell to your hand.",
+        "spanish": "Inflige [effect0.power] de daño a una unidad.<br>+[trait0.power] de daño por cada carta consumida.<br>Si la mata, devuelve un hechizo consumido a tu mano.",
+        "french": "Inflige [effect0.power] dégâts à une unité.<br>+[trait0.power] dégâts par carte consommée.<br>Si elle meurt, reprend en main un sort consommé.",
+        "german": "Füge einer Einheit [effect0.power] Schaden zu.<br>+[trait0.power] Schaden je verbrauchter Karte.<br>Bei einem Kill nimm einen verbrauchten Zauber auf die Hand.",
+        "portuguese": "Causa [effect0.power] de dano a uma unidade.<br>+[trait0.power] de dano por carta consumida.<br>Se matar, devolve um feitiço consumido à mão.",
+        "russian": "Наносит бойцу [effect0.power] урона.<br>+[trait0.power] урона за каждую израсходованную карту.<br>При убийстве возвращает израсходованное заклинание в руку.",
+        "chinese": "对单位造成[effect0.power]点伤害。<br>每张已消耗卡牌额外造成[trait0.power]点伤害。<br>若击杀，将一个已消耗法术返回手牌。",
+        "chinese_traditional": "對單位造成[effect0.power]點傷害。<br>每張已消耗卡牌額外造成[trait0.power]點傷害。<br>若擊殺，將一個已消耗法術返回手牌。",
+        "korean": "유닛에게 [effect0.power]의 피해를 줍니다.<br>소모된 카드마다 피해 +[trait0.power].<br>처치하면 소모된 주문을 손으로 되돌립니다.",
+        "japanese": "ユニットに[effect0.power]ダメージを与える。<br>消費済みカード1枚ごとにダメージ+[trait0.power]。<br>倒した場合、消費済み呪文を手札に戻す。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "effects": [
+        "@WW_S08_Damage"
+      ],
+      "traits": [
+        "@WW_S08_Scaling"
+      ],
+      "triggers": [
+        "@WW_S08_Kill"
+      ],
+      "card_art": "@WW_S08CardArt",
+      "pools": [],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S08_Damage",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "both",
+      "param_int": 10
+    },
+    {
+      "id": "WW_S08_Recover",
+      "name": "CardEffectRecursion",
+      "target_mode": "exhaust",
+      "target_team": "none",
+      "target_card_type": "spell",
+      "target_card_selection_mode": "choose_to_hand",
+      "param_int": 1,
+      "should_test": false
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S08_Scaling",
+      "name": "@CardTraitAcademicConsumedDamage",
+      "param_tracked_value": "type_in_exhaust_pile",
+      "param_card_type": "any",
+      "param_entry_duration": "this_battle",
+      "param_int": 10,
+      "param_float": 1.0
+    }
+  ],
+  "card_triggers": [
+    {
+      "id": "WW_S08_Kill",
+      "trigger": "on_kill",
+      "effects": [
+        "@WW_S08_Recover"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S08CardArt",
+      "path": "textures/cards/WW_S08CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S08CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S08CardArt"
+        }
+      }
+    }
+  ]
+}

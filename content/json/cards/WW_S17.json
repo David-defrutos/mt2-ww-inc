@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S17_Effect",
+      "name": "@CardEffectAcademicSabbatical",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_int": 10
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S17",
+      "names": {
+        "spanish": "Año Sabático de un Turno",
+        "english": "One Turn Sabbatical",
+        "french": "Congé sabbatique d'un tour",
+        "german": "Einrundiges Sabbatjahr",
+        "portuguese": "Licença de um Turno",
+        "russian": "Отпуск на один ход",
+        "chinese": "一回合学术休假",
+        "chinese_traditional": "一回合學術休假",
+        "korean": "한 턴 연구 휴가",
+        "japanese": "1ターンの研究休暇"
+      },
+      "descriptions": {
+        "english": "Apply [stasis] to a friendly unit until next turn. When it ends, restore half its missing health plus [effect0.power].",
+        "spanish": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de la salud que le falte más [effect0.power].",
+        "french": "Appliquez [stasis] à un allié jusqu’au prochain tour. À la fin, restaurez la moitié de ses PV manquants plus [effect0.power].",
+        "german": "Wende [stasis] auf einen Verbündeten bis zur nächsten Runde an. Stelle danach die Hälfte seines fehlenden Lebens plus [effect0.power] wieder her.",
+        "portuguese": "Aplica [stasis] a um aliado até o próximo turno. Ao terminar, restaura metade da vida que falta mais [effect0.power].",
+        "russian": "Накладывает [stasis] на союзника до следующего хода. По окончании восстанавливает половину недостающего здоровья плюс [effect0.power].",
+        "chinese": "对一个友方单位施加[stasis]直到下一回合。结束时，恢复其损失生命值的一半加[effect0.power]。",
+        "chinese_traditional": "對一個友方單位施加[stasis]直到下一回合。結束時，恢復其損失生命值的一半加[effect0.power]。",
+        "korean": "아군 유닛에 다음 턴까지 [stasis]를 부여합니다. 끝나면 잃은 체력의 절반에 [effect0.power]을 더해 회복합니다.",
+        "japanese": "味方ユニットに次のターンまで[stasis]を付与する。終了時、失った体力の半分に[effect0.power]を加えた量を回復する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S17CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S17_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S17CardArt",
+      "path": "textures/cards/WW_S17CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S17CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S17CardArt"
+        }
+      }
+    }
+  ]
+}

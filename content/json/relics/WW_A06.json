@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A06_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A06",
+      "type": "collectable",
+      "names": {
+        "spanish": "Extensión de Convocatoria",
+        "english": "Extended Exam Session",
+        "french": "Session d'examens prolongée",
+        "german": "Verlängerte Prüfungsrunde",
+        "portuguese": "Exame Prolongado",
+        "russian": "Продлённая экзаменационная сессия",
+        "chinese": "延长考试场次",
+        "chinese_traditional": "延長考試場次",
+        "korean": "연장 시험 기간",
+        "japanese": "延長試験期間"
+      },
+      "descriptions": {
+        "spanish": "El primer hechizo dirigido a un único enemigo de cada turno también afecta al enemigo que tiene detrás.",
+        "english": "The first spell targeting one enemy each turn also affects the enemy behind it.",
+        "french": "Le premier sort ciblant un ennemi par tour se résout aussi sur l'ennemi juste derrière.",
+        "german": "Der erste Zauber gegen einen einzelnen Gegner jeder Runde wirkt auch auf den Gegner direkt dahinter.",
+        "portuguese": "O primeiro feitiço contra um único inimigo de cada turno também se resolve no inimigo logo atrás.",
+        "russian": "Первое заклинание по одному врагу за ход также действует на врага сразу за ним.",
+        "chinese": "每回合首个单体对敌法术，也对其紧后方敌人结算。",
+        "chinese_traditional": "每回合首個單體對敵法術，也對其緊後方敵人結算。",
+        "korean": "매 턴 첫 단일 적 대상 주문은 바로 뒤 적에게도 적용됩니다.",
+        "japanese": "毎ターン最初の単体敵対象呪文は、すぐ後ろの敵にも解決する。"
+      },
+      "icon": "@WW_A06Icon",
+      "icon_small": "@WW_A06IconSmall",
+      "relic_effects": [
+        "@WW_A06_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "uncommon"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A06Icon",
+      "path": "textures/relics/WW_A06Icon.png"
+    },
+    {
+      "id": "WW_A06IconSmall",
+      "path": "textures/relics/WW_A06IconSmall.png"
+    }
+  ]
+}

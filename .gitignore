@@ -1,0 +1,23 @@
+# Rebuildable output and local deployment records
+/dist/
+**/bin/
+**/obj/
+/.vs/
+/.idea/
+*.user
+*.suo
+*.dll
+*.pdb
+*.zip
+*.bak
+*.log
+/design/build-summary.json
+/design/deployment-*.json
+/design/validation-*.json
+/design/thunderstore-beta-*.json
+# Credentials and local environment
+.env
+.env.*
+*.pfx
+*.key
+# 2026-10-24-1624||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/.gitignore||Excluir salidas, bibliotecas, informes locales y credenciales del repositorio propio

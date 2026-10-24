@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S10",
+  "selection": "S10",
+  "type": "spell",
+  "names": {
+    "spanish": "Publicación por Duplicado",
+    "english": "Double Publication"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "El siguiente hechizo de daño inflige el doble de daño. Apártalo y devuélvelo a la mano al comienzo del próximo turno.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirado por petición del usuario."
+}

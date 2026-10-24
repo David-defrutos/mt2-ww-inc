@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A07",
+  "names": {
+    "spanish": "Comité de Relaciones Impropias",
+    "english": "Committee for Improper Relations"
+  },
+  "effect": "Al comienzo del turno, invoca un chaperón 0/1 de 1[size] y [conduit] 1 entre cada Mago y Bruja adyacentes. Usa la variante del mago de la izquierda. Recorre de abajo arriba y de izquierda a derecha. Ignora [capacity]; máximo 7 unidades por piso. Al morir, desaparece.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "common"
+}

@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S05",
+  "selection": "S05",
+  "type": "spell",
+  "names": {
+    "spanish": "Consume y Sigue Matriculado",
+    "english": "Consume and Re-enroll"
+  },
+  "cost": 1,
+  "rarity": "rare",
+  "effect": "Elige un hechizo con [consume] de tu mano. Si mata a un enemigo, vuelve a la mano en lugar de consumirse.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirada del mazo del clan por petición del usuario; sin recompensas."
+}

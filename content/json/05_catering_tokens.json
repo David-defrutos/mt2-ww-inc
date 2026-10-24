@@ -1,0 +1,99 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "characters": [
+    {
+      "id": "WW_Token_IceCreamStand",
+      "names": {
+        "spanish": "Puesto de Helados",
+        "english": "Ice Cream Stand",
+        "french": "Stand de glaces",
+        "german": "Eisstand",
+        "portuguese": "Barraca de Sorvetes",
+        "russian": "Ларёк мороженого",
+        "chinese": "冰淇淋摊",
+        "chinese_traditional": "冰淇淋攤",
+        "korean": "아이스크림 가판대",
+        "japanese": "アイス屋台"
+      },
+      "character_art": "@WW_Token_IceCreamStandCharacterArt",
+      "size": 1,
+      "health": 10,
+      "attack_damage": 0,
+      "hide_in_logbook": true
+    },
+    {
+      "id": "WW_Token_IceCream",
+      "names": {
+        "spanish": "Helado de Prácticas",
+        "english": "Training Ice Cream",
+        "french": "Glace de stage",
+        "german": "Praktikumseis",
+        "portuguese": "Sorvete de Estágio",
+        "russian": "Практикантское мороженое",
+        "chinese": "实习冰淇淋",
+        "chinese_traditional": "實習冰淇淋",
+        "korean": "실습 아이스크림",
+        "japanese": "実習アイス"
+      },
+      "character_art": "@WW_Token_IceCreamCharacterArt",
+      "size": 1,
+      "health": 1,
+      "attack_damage": 0,
+      "hide_in_logbook": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_Token_IceCreamStandCharacterArt",
+      "path": "textures/characters/WW_Token_IceCreamStandCharacterArt.png"
+    },
+    {
+      "id": "WW_Token_IceCreamCharacterArt",
+      "path": "textures/characters/WW_Token_IceCreamCharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_Token_IceCreamStandCharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_Token_IceCreamStandCharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.25,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "WW_Token_IceCreamCharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_Token_IceCreamCharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.19,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

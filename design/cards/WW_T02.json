@@ -1,0 +1,25 @@
+﻿{
+  "id": "WW_T02",
+  "selection": "T02",
+  "type": "starter",
+  "names": {
+    "spanish": "Chaperona de Inconducta",
+    "english": "Witch Affairs Chaperone"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Aura: otorga Conduit 5 a los Wizards y Witches de su piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Chaperone",
+  "beneficiaries": [
+    "Wizard",
+    "Witch"
+  ],
+  "stats": {
+    "attack": 0,
+    "health": 10,
+    "size": 1
+  }
+}

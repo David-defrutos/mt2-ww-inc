@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S30",
+  "selection": "S30",
+  "type": "spell",
+  "names": {
+    "spanish": "Tomo de Evaluación Destructiva",
+    "english": "Tome of Destructive Assessment"
+  },
+  "cost": 2,
+  "rarity": "rare",
+  "effect": "Añade [attuned] y +10 [magicpower] a un hechizo de daño de tu mano.",
+  "status": "implemented_unverified",
+  "implementation_note": "Selector mínimo de mano; filtros nativos OnlyDamageCard/OnlySpells y helper nativo aplican Attuned y +10 Power sin cambiar coste. Pendiente prueba en partida.",
+  "balance": "Valores de prueba aprobados para implementar; pendiente balance en partidas."
+}

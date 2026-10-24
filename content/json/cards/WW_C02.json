@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_C02_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_C02_Character"
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_C02_Character",
+      "names": {
+        "spanish": "Catedrática de Brujería Avanzada",
+        "english": "Professor of Advanced Witchcraft",
+        "french": "Professeure de sorcellerie avancée",
+        "german": "Professorin für höhere Hexenkunst",
+        "portuguese": "Professora de Bruxaria Avançada",
+        "russian": "Профессор высшего колдовства",
+        "chinese": "高等巫术教授",
+        "chinese_traditional": "高等巫術教授",
+        "korean": "고급 마녀술 교수",
+        "japanese": "上級魔女術教授"
+      },
+      "character_art": "@WW_C02CharacterArt",
+      "size": 2,
+      "health": 20,
+      "attack_damage": 10,
+      "subtypes": [
+        "@WW_Witch",
+        "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_C02",
+      "names": {
+        "spanish": "Catedrática de Brujería Avanzada",
+        "english": "Professor of Advanced Witchcraft",
+        "french": "Professeure de sorcellerie avancée",
+        "german": "Professorin für höhere Hexenkunst",
+        "portuguese": "Professora de Bruxaria Avançada",
+        "russian": "Профессор высшего колдовства",
+        "chinese": "高等巫术教授",
+        "chinese_traditional": "高等巫術教授",
+        "korean": "고급 마녀술 교수",
+        "japanese": "上級魔女術教授"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 0,
+      "rarity": "champion",
+      "targets_room": true,
+      "card_art": "@WW_C02CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_C02_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_C02CardArt",
+      "path": "textures/cards/WW_C02CardArt.png"
+    },
+    {
+      "id": "WW_C02CharacterArt",
+      "path": "textures/WW_C02CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_C02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_C02CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_C02CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_C02CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 1.05,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

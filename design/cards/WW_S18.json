@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S18",
+  "selection": "S18",
+  "type": "spell",
+  "names": {
+    "spanish": "Cambio de Pupitres",
+    "english": "Desk Swap"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Intercambia la primera y la última unidad aliada. La nueva primera unidad ataca de inmediato.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

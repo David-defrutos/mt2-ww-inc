@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S05_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "kill_return"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S05",
+      "names": {
+        "spanish": "Consume y Sigue Matriculado",
+        "english": "Consume and Re-enroll",
+        "french": "Consommer et se réinscrire",
+        "german": "Verbrauchen und neu einschreiben",
+        "portuguese": "Consumir e Rematricular",
+        "russian": "Расход и повторное зачисление",
+        "chinese": "消耗与重新入学",
+        "chinese_traditional": "消耗與重新入學",
+        "korean": "소모 후 재등록",
+        "japanese": "消費して再入学"
+      },
+      "descriptions": {
+        "spanish": "Elige un hechizo con [consume] de tu mano. Si mata a un enemigo, vuelve a la mano en lugar de consumirse.",
+        "english": "Choose a [consume] spell in hand. Return it to hand instead of consuming it when it kills an enemy.",
+        "french": "Choisissez un sort [consume] en main. S'il tue un ennemi, il revient en main au lieu d'être consommé.",
+        "german": "Wähle einen [consume]-Zauber auf der Hand. Tötet er einen Gegner, kehrt er statt Verbrauch auf die Hand zurück.",
+        "portuguese": "Escolha um feitiço [consume] da mão. Se matar um inimigo, volta à mão em vez de ser consumido.",
+        "russian": "Выберите заклинание [consume] в руке. при убийстве врага возвращается в руку вместо расхода.",
+        "chinese": "选择手牌 [consume] 法术。击杀敌人则返回手牌而非消耗。",
+        "chinese_traditional": "選擇手牌 [consume] 法術。擊殺敵人則返回手牌而非消耗。",
+        "korean": "손의 [consume] 주문을 선택합니다. 에서 적을 죽이면 소모되지 않고 손에 돌아옵니다.",
+        "japanese": "手札の[consume]呪文を選ぶ。で敵を倒すと消費せず手札へ戻る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S05CardArt",
+      "pools": [],
+      "targetless": true,
+      "effects": [
+        "@WW_S05_Effect"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S05CardArt",
+      "path": "textures/cards/WW_S05CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S05CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S05CardArt"
+        }
+      }
+    }
+  ]
+}

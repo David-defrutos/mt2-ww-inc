@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S16_Effect",
+      "name": "@CardEffectAcademicHealthExchange",
+      "target_mode": "room",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S16",
+      "names": {
+        "spanish": "Intercambio de Expedientes Vitales",
+        "english": "Vital Records Exchange",
+        "french": "Échange de dossiers vitaux",
+        "german": "Austausch der Lebensakten",
+        "portuguese": "Troca de Registros Vitais",
+        "russian": "Обмен записями здоровья",
+        "chinese": "生命档案交换",
+        "chinese_traditional": "生命檔案交換",
+        "korean": "생명 기록 교환",
+        "japanese": "生命記録交換"
+      },
+      "descriptions": {
+        "spanish": "Intercambia la salud actual de la primera y la última unidad aliada. La salud que exceda su máximo se convierte en [armor].",
+        "english": "Swap the current health of the front and rear friendly units. Health exceeding their maximum becomes [armor].",
+        "french": "Échange les PV actuels des alliés de tête et de queue. L'excédent devient [armor].",
+        "german": "Tausche die aktuelle Gesundheit des vordersten und hintersten Verbündeten. Überschuss wird zu [armor].",
+        "portuguese": "Troca a vida atual dos aliados da frente e de trás. Vida excedente vira [armor].",
+        "russian": "Меняет текущее здоровье переднего и заднего союзников. Излишек превращается в [armor].",
+        "chinese": "交换前排与后排盟友当前生命，超出上限的部分转为 [armor]。",
+        "chinese_traditional": "交換前排與後排盟友當前生命，超出上限的部分轉為 [armor]。",
+        "korean": "맨 앞과 맨 뒤 아군의 현재 생명력을 교환합니다. 초과 생명력은 [armor]가 됩니다.",
+        "japanese": "先頭と最後尾の味方の現在HPを交換する。上限超過分は[armor]になる。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "card_art": "@WW_S16CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S16_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S16CardArt",
+      "path": "textures/cards/WW_S16CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S16CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S16CardArt"
+        }
+      }
+    }
+  ]
+}

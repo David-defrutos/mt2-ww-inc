@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S25",
+  "selection": "S25",
+  "type": "spell",
+  "names": {
+    "spanish": "Seguro de Responsabilidad Arcana",
+    "english": "Arcane Liability Insurance"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige tanto daño al atacante como la [health] actual de esta unidad.",
+  "status": "implemented_unverified",
+  "implementation_note": "C# compilado. Marcador insured visible en unidad con icono de póliza y tooltip localizado, ligado a la retirada de Retribution al próximo turno. Pendiente comprobación en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

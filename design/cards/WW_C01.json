@@ -1,0 +1,110 @@
+﻿{
+  "id": "WW_C01",
+  "selection": "C01",
+  "type": "champion",
+  "names": {
+    "spanish": "Decano del Departamento de Sombreros",
+    "english": "Dean of the Hat Department"
+  },
+  "cost": 0,
+  "rarity": "champion",
+  "effect": "Roba un hechizo de daño. Otórgale [explosive] para su próximo uso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Habilidad común roba un hechizo de daño y añade Explosive solo para próximo uso. Mejora nativa identificada WW_C01_NextUseUpgrade con avoidClobberingExistingTraits=true; marcador propio OnCardPlayed retira únicamente esa mejora tras resolver hechizo. No caduca por fin de turno o descarte sin jugar; copias llevan su propio marcador. Conduit y sendas conservados. Sin migración que retire Explosive antiguo no identificado. Pendiente partida.",
+  "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 5,
+    "health": 20,
+    "size": 2
+  },
+  "ability_cooldown": 3,
+  "appearance": "Brujo con sombrero azul puntiagudo; arte pendiente.",
+  "paths": [
+    {
+      "name": "Frat Bro",
+      "ranks": [
+        "[conduit] +5 por Bruja en juego",
+        "[conduit] +10 por Bruja en juego",
+        "[conduit] +15 por Bruja en juego"
+      ],
+      "mode": "Aura dinámica; desaparece al salir las Witches. No acumulación cada turno.",
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 5
+        },
+        {
+          "attack": 5,
+          "health": 15
+        },
+        {
+          "attack": 10,
+          "health": 30
+        }
+      ]
+    },
+    {
+      "name": "Department of Practical Magic",
+      "ranks": [
+        "Arcane Slay: añade [conduit] 1.",
+        "Arcane Slay: añade [conduit] 2.",
+        "Arcane Slay: añade [conduit] 3."
+      ],
+      "note": "Gana Conduit por cada baja de hechizo en su piso.",
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 5
+        },
+        {
+          "attack": 5,
+          "health": 10
+        },
+        {
+          "attack": 10,
+          "health": 20
+        }
+      ]
+    },
+    {
+      "name": "Department of Spell Tuning",
+      "ranks": [
+        "Arcane Slay: Otorga +1 [magicpower] permanente al hechizo que causó la muerte.",
+        "Arcane Slay: Otorga +2 [magicpower] permanente al hechizo que causó la muerte.",
+        "Arcane Slay: Otorga +3 [magicpower] permanente al hechizo que causó la muerte."
+      ],
+      "stat_bonuses": [
+        {
+          "attack": 0,
+          "health": 5
+        },
+        {
+          "attack": 5,
+          "health": 10
+        },
+        {
+          "attack": 10,
+          "health": 20
+        }
+      ]
+    }
+  ],
+  "ability_name": {
+    "english": "Explosive Requisition",
+    "spanish": "Solicitud Explosiva",
+    "french": "Demande explosive",
+    "german": "Explosive Anforderung",
+    "portuguese": "Requisição Explosiva",
+    "russian": "Взрывной запрос",
+    "chinese": "爆炸申请",
+    "chinese_traditional": "爆炸申請",
+    "korean": "폭발 신청",
+    "japanese": "爆発申請"
+  },
+  "baseline_conduit_by_level": [
+    5,
+    10,
+    15
+  ]
+}

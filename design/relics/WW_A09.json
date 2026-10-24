@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A09",
+  "names": {
+    "spanish": "Oficina de Quejas y Maleficios",
+    "english": "Office of Complaints and Curses"
+  },
+  "effect": "Al comienzo del turno, transfiere todos los efectos de [debuff] de un Mago y una Bruja a un Chaperón de su piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Al comienzo del turno, el primer piso válido de abajo arriba con Wizard, Witch y Chaperone transfiere los estados negativos del primer Wizard y la primera Witch al primer Chaperone de izquierda a derecha. No exige adyacencia; una sola transferencia por turno. Incluye campeones por subtipos. Pendiente partida.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "common"
+}

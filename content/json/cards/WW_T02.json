@@ -1,0 +1,157 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_T02",
+      "names": {
+        "spanish": "Chaperona de Inconducta",
+        "english": "Witch Affairs Chaperone",
+        "french": "Chaperonne des sorcières",
+        "german": "Hexenbetreuerin",
+        "portuguese": "Acompanhante das Bruxas",
+        "russian": "Сопровождающая ведьм",
+        "chinese": "女巫事务监督员",
+        "chinese_traditional": "女巫事務監督員",
+        "korean": "마녀 담당 보호자",
+        "japanese": "魔女担当の付き添い"
+      },
+      "card_type": "monster",
+      "cost": 1,
+      "rarity": "common",
+      "class": "@WW_Class",
+      "targets_room": true,
+      "effects": [
+        "@WW_T02_Spawn"
+      ],
+      "card_art": "@WW_T02CardArt",
+      "pools": [
+        "StarterCardsOnly"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_T02_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "param_character": "@WW_T02_Character"
+    },
+    {
+      "id": "WW_T02_Aura",
+      "name": "CardEffectEnchant",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "target_subtype": "@WW_Witch",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "WW_T02_AuraWizard",
+      "name": "CardEffectEnchant",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "target_subtype": "@WW_Wizard",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 5
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_T02_Character",
+      "names": {
+        "spanish": "Chaperona de Inconducta",
+        "english": "Witch Affairs Chaperone",
+        "french": "Chaperonne des sorcières",
+        "german": "Hexenbetreuerin",
+        "portuguese": "Acompanhante das Bruxas",
+        "russian": "Сопровождающая ведьм",
+        "chinese": "女巫事务监督员",
+        "chinese_traditional": "女巫事務監督員",
+        "korean": "마녀 담당 보호자",
+        "japanese": "魔女担当の付き添い"
+      },
+      "size": 1,
+      "attack_damage": 0,
+      "health": 10,
+      "subtypes": [
+        "@WW_Chaperone"
+      ],
+      "character_art": "@WW_T02CharacterArt",
+      "triggers": [
+        "@WW_T02_Enchant"
+      ]
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_T02_Enchant",
+      "trigger": "after_spawn_enchant",
+      "effects": [
+        "@WW_T02_Aura",
+        "@WW_T02_AuraWizard"
+      ],
+      "descriptions": {
+        "spanish": "Otorga [conduit] 5 a los Magos y Brujas de este piso.",
+        "english": "Grant [conduit] 5 to Wizards and Witches on this floor.",
+        "french": "Donne [conduit] 5 aux sorciers et sorcières de cet étage.",
+        "german": "Gewährt Magiern und Hexen dieser Etage [conduit] 5.",
+        "portuguese": "Concede [conduit] 5 aos Magos e Bruxas deste andar.",
+        "russian": "Даёт [conduit] 5 магам и ведьмам этого этажа.",
+        "chinese": "给予本层男巫和女巫 [conduit] 5。",
+        "chinese_traditional": "給予本層男巫和女巫 [conduit] 5。",
+        "korean": "이 층의 마법사와 마녀에게 [conduit] 5를 줍니다.",
+        "japanese": "この階の魔法使いと魔女に[conduit] 5を与える。"
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_T02CardArt",
+      "path": "textures/cards/WW_T02CardArt.png"
+    },
+    {
+      "id": "WW_T02CharacterArt",
+      "path": "textures/characters/WW_T02CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_T02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_T02CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_T02CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_T02CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.928,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.75,
+              "y": 1.75,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

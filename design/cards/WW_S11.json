@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_S11",
+  "selection": "S11",
+  "type": "spell",
+  "names": {
+    "spanish": "Recuperación de Créditos",
+    "english": "Credit Recovery"
+  },
+  "cost": "X",
+  "rarity": "rare",
+  "effect": "Devuelve hasta [x] hechizos de tu pila de robo o de descartes a tu mano. Añade [attuned] y [consume]. Cuestan 0[ember] este turno.",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "retired_reason": "Retirada por petición del usuario."
+}

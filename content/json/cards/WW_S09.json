@@ -1,0 +1,148 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S09_Effect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "@ww_scholarship",
+          "count": 1
+        }
+      ],
+      "disallow_status_effect_modifiers": true
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S09",
+      "names": {
+        "spanish": "Beca por Contusión",
+        "english": "Concussion Scholarship",
+        "french": "Bourse de commotion",
+        "german": "Gehirnerschütterungsstipendium",
+        "portuguese": "Bolsa de Concussão",
+        "russian": "Стипендия за сотрясение",
+        "chinese": "脑震荡奖学金",
+        "chinese_traditional": "腦震盪獎學金",
+        "korean": "뇌진탕 장학금",
+        "japanese": "脳震盪奨学金"
+      },
+      "descriptions": {
+        "english": "Give a friendly unit: when hit, reduce the cost of a random card in your draw pile by 1[ember].",
+        "spanish": "Una unidad aliada obtiene: al recibir un golpe, reduce el coste de una carta aleatoria de tu pila de robo en 1[ember].",
+        "french": "Un allié gagne : à chaque coup reçu, réduisez le coût d’une carte aléatoire de votre pioche de 1[ember].",
+        "german": "Ein Verbündeter erhält: Bei einem Treffer kostet eine zufällige Karte in deinem Nachziehstapel 1[ember] weniger.",
+        "portuguese": "Um aliado ganha: ao receber um golpe, reduz o custo de uma carta aleatória na sua pilha de compra em 1[ember].",
+        "russian": "Союзник получает: при ударе стоимость случайной карты в стопке добора снижается на 1[ember].",
+        "chinese": "赋予一个友方单位：受击时，使抽牌堆中随机卡牌的费用降低1[ember]。",
+        "chinese_traditional": "賦予一個友方單位：受擊時，使抽牌堆中隨機卡牌的費用降低1[ember]。",
+        "korean": "아군 유닛에 부여: 피격 시 뽑기 더미에 있는 무작위 카드 비용을 1[ember] 감소시킵니다.",
+        "japanese": "味方ユニットに付与：被弾時、ドローパイルにあるランダムなカードのコストを1[ember]減らす。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S09CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": false,
+      "effects": [
+        "@WW_S09_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S09CardArt",
+      "path": "textures/cards/WW_S09CardArt.png"
+    },
+    {
+      "id": "WW_ScholarshipIcon",
+      "path": "textures/icons/WW_InsuranceTooltip.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S09CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S09CardArt"
+        }
+      }
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_S09_Discount",
+      "cost_reduction": 1,
+      "hide_icon_on_card": true
+    }
+  ],
+  "status_effects": [
+    {
+      "id": "ww_scholarship",
+      "class_name": "@StatusEffectAcademicScholarship",
+      "names": {
+        "spanish": "Beca por Contusión",
+        "english": "Concussion Scholarship",
+        "french": "Bourse de commotion",
+        "german": "Gehirnerschütterungsstipendium",
+        "portuguese": "Bolsa de Concussão",
+        "russian": "Стипендия за сотрясение",
+        "chinese": "脑震荡奖学金",
+        "chinese_traditional": "腦震盪獎學金",
+        "korean": "뇌진탕 장학금",
+        "japanese": "脳震盪奨学金"
+      },
+      "card_tooltips": {
+        "english": "When hit, reduce the cost of a random card in your draw pile by 1[ember].",
+        "spanish": "Al recibir un golpe, reduce el coste de una carta aleatoria de tu pila de robo en 1[ember].",
+        "french": "À chaque coup reçu, réduisez le coût d’une carte aléatoire de votre pioche de 1[ember].",
+        "german": "Bei einem Treffer kostet eine zufällige Karte in deinem Nachziehstapel 1[ember] weniger.",
+        "portuguese": "Ao receber um golpe, reduz o custo de uma carta aleatória na sua pilha de compra em 1[ember].",
+        "russian": "При ударе стоимость случайной карты в стопке добора снижается на 1[ember].",
+        "chinese": "受击时，使抽牌堆中随机卡牌的费用降低1[ember]。",
+        "chinese_traditional": "受擊時，使抽牌堆中隨機卡牌的費用降低1[ember]。",
+        "korean": "피격 시 뽑기 더미에 있는 무작위 카드 비용을 1[ember] 감소시킵니다.",
+        "japanese": "被弾時、ドローパイルにあるランダムなカードのコストを1[ember]減らす。"
+      },
+      "character_tooltips": {
+        "english": "When hit, reduce the cost of a random card in your draw pile by 1[ember].",
+        "spanish": "Al recibir un golpe, reduce el coste de una carta aleatoria de tu pila de robo en 1[ember].",
+        "french": "À chaque coup reçu, réduisez le coût d’une carte aléatoire de votre pioche de 1[ember].",
+        "german": "Bei einem Treffer kostet eine zufällige Karte in deinem Nachziehstapel 1[ember] weniger.",
+        "portuguese": "Ao receber um golpe, reduz o custo de uma carta aleatória na sua pilha de compra em 1[ember].",
+        "russian": "При ударе стоимость случайной карты в стопке добора снижается на 1[ember].",
+        "chinese": "受击时，使抽牌堆中随机卡牌的费用降低1[ember]。",
+        "chinese_traditional": "受擊時，使抽牌堆中隨機卡牌的費用降低1[ember]。",
+        "korean": "피격 시 뽑기 더미에 있는 무작위 카드 비용을 1[ember] 감소시킵니다.",
+        "japanese": "被弾時、ドローパイルにあるランダムなカードのコストを1[ember]減らす。"
+      },
+      "trigger_stage": "none",
+      "remove_when_triggered": false,
+      "is_propagatable": false,
+      "exclude_hero_propagation": true,
+      "exclude_monster_propagation": true,
+      "display_category": "persistent",
+      "is_stackable": false,
+      "hidden": false,
+      "icon": "@WW_ScholarshipIcon"
+    }
+  ],
+  "atlas_icons": [
+    {
+      "id": "WW_ScholarshipIcon",
+      "path": "textures/icons/WW_InsuranceTooltip.png"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S23",
+  "selection": "S23",
+  "type": "spell",
+  "names": {
+    "spanish": "Convalidación de Espacio",
+    "english": "Spatial Credit Transfer"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Añade [effect0.upgrade.bonussize][size] a una unidad aliada.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

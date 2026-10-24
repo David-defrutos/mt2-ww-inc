@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S10_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "double"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S10",
+      "names": {
+        "spanish": "Publicación por Duplicado",
+        "english": "Double Publication",
+        "french": "Double publication",
+        "german": "Doppelveröffentlichung",
+        "portuguese": "Publicação Dupla",
+        "russian": "Двойная публикация",
+        "chinese": "双重发表",
+        "chinese_traditional": "雙重發表",
+        "korean": "이중 출판",
+        "japanese": "二重発表"
+      },
+      "descriptions": {
+        "english": "Your next damage spell deals double damage. Set it aside and return it to hand next turn.",
+        "spanish": "El siguiente hechizo de daño inflige el doble de daño. Apártalo y devuélvelo a la mano al comienzo del próximo turno.",
+        "french": "Votre prochain sort de dégâts inflige le double, puis revient au prochain tour.",
+        "german": "Dein nächster Schadenszauber verursacht doppelten Schaden und kehrt nächste Runde zurück.",
+        "portuguese": "Seu próximo feitiço de dano causa dano dobrado e volta no próximo turno.",
+        "russian": "Следующее заклинание урона наносит двойной урон и возвращается в следующий ход.",
+        "chinese": "下个伤害法术造成双倍伤害，然后下回合返回。",
+        "chinese_traditional": "下個傷害法術造成雙倍傷害，然後下回合返回。",
+        "korean": "다음 피해 주문은 두 배 피해를 주고 다음 턴 돌아옵니다.",
+        "japanese": "次のダメージ呪文はダメージが2倍になり、次のターン戻る。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_S10CardArt",
+      "pools": [],
+      "targetless": true,
+      "effects": [
+        "@WW_S10_Effect"
+      ],
+      "traits": [
+        "@WW_Consume"
+      ],
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S10CardArt",
+      "path": "textures/cards/WW_S10CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S10CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S10CardArt"
+        }
+      }
+    }
+  ]
+}

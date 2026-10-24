@@ -1,0 +1,41 @@
+﻿{
+  "id": "WW_U10",
+  "selection": "U10",
+  "type": "unit",
+  "names": {
+    "spanish": "Becario de Créditos Consumibles",
+    "english": "Consumable Credits Intern"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "[consume] un hechizo de tu mano sin jugarlo. Añade tanto [conduit] como cinco veces su coste base en [ember].",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 5,
+    "health": 20,
+    "size": 1
+  },
+  "banner": false,
+  "ability_cooldown": 3,
+  "ability_name": {
+    "english": "Credit Conversion",
+    "spanish": "Conversión de Créditos",
+    "french": "Conversion de crédits",
+    "german": "Leistungspunkteumwandlung",
+    "portuguese": "Conversão de Créditos",
+    "russian": "Обмен зачётных единиц",
+    "chinese": "学分转换",
+    "chinese_traditional": "學分轉換",
+    "korean": "학점 전환",
+    "japanese": "単位変換"
+  },
+  "starting_status_effects": [
+    {
+      "status": "mageblade",
+      "count": 2
+    }
+  ]
+}

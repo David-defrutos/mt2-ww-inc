@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S07",
+  "selection": "S07",
+  "type": "spell",
+  "names": {
+    "spanish": "Convalidación de Conduit",
+    "english": "Conduit Credit Transfer"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Elimina todo el [conduit] de las unidades aliadas de todos los pisos. Un hechizo de tu mano obtiene esa cantidad de [magicpower] y Explosive.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

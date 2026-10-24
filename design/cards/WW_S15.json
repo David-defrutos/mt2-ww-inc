@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S15",
+  "selection": "S15",
+  "type": "spell",
+  "names": {
+    "spanish": "Trabajo Negativo en Grupo",
+    "english": "Negative Group Assignment"
+  },
+  "cost": 1,
+  "rarity": "uncommon",
+  "effect": "Transfiere todos los efectos de [debuff] de las demás unidades aliadas de este piso a una unidad aliada.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
+}

@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U10_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U10_Character"
+    },
+    {
+      "id": "WW_U10_Ability_Effect",
+      "name": "@CardEffectAcademicConsumeCredits",
+      "target_mode": "self",
+      "target_team": "monsters"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U10_Ability",
+      "names": {
+        "english": "Credit Conversion",
+        "spanish": "Conversión de Créditos",
+        "french": "Conversion de crédits",
+        "german": "Leistungspunkteumwandlung",
+        "portuguese": "Conversão de Créditos",
+        "russian": "Обмен зачётных единиц",
+        "chinese": "学分转换",
+        "chinese_traditional": "學分轉換",
+        "korean": "학점 전환",
+        "japanese": "単位変換"
+      },
+      "descriptions": {
+        "spanish": "[consume] un hechizo de tu mano sin jugarlo. Añade tanto [conduit] como cinco veces su coste base en [ember].",
+        "english": "[consume] a spell in hand without playing it. Gain [conduit] equal to five times its base [ember] cost.",
+        "french": "Consommez un sort choisi en main sans le résoudre. Gagnez [conduit] égal à cinq fois son coût de base.",
+        "german": "Verbrauche einen gewählten Handzauber ohne Wirkung. Erhalte [conduit] in Höhe seines fünffachen Grundpreises.",
+        "portuguese": "Consuma um feitiço escolhido da mão sem resolvê-lo. Ganhe [conduit] igual a cinco vezes seu custo base.",
+        "russian": "расходует выбранное заклинание в руке без применения. Получает [conduit], равный пятикратной базовой цене.",
+        "chinese": "消耗选中手牌法术，不结算效果。获得基础费用五倍的 [conduit]。",
+        "chinese_traditional": "消耗選中手牌法術，不結算效果。獲得基礎費用五倍的 [conduit]。",
+        "korean": "손의 주문을 효과 없이 소모합니다. 기본 비용의 5배만큼 [conduit]를 얻습니다.",
+        "japanese": "選んだ手札の呪文を解決せずに消費する。基本コストの5倍の[conduit]を得る。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "starter",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 2,
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true,
+      "card_art": "@WW_U10CardArt",
+      "effects": [
+        "@WW_U10_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly"
+    },
+    {
+      "id": "WW_U10",
+      "names": {
+        "spanish": "Becario de Créditos Consumibles",
+        "english": "Consumable Credits Intern",
+        "french": "Stagiaire des crédits consommables",
+        "german": "Praktikant für verbrauchbare Leistungspunkte",
+        "portuguese": "Estagiário de Créditos Consumíveis",
+        "russian": "Стажёр расходуемых зачётов",
+        "chinese": "消耗学分实习生",
+        "chinese_traditional": "消耗學分實習生",
+        "korean": "소모 학점 인턴",
+        "japanese": "消費単位インターン"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U10CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "effects": [
+        "@WW_U10_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U10_Character",
+      "names": {
+        "spanish": "Becario de Créditos Consumibles",
+        "english": "Consumable Credits Intern",
+        "french": "Stagiaire des crédits consommables",
+        "german": "Praktikant für verbrauchbare Leistungspunkte",
+        "portuguese": "Estagiário de Créditos Consumíveis",
+        "russian": "Стажёр расходуемых зачётов",
+        "chinese": "消耗学分实习生",
+        "chinese_traditional": "消耗學分實習生",
+        "korean": "소모 학점 인턴",
+        "japanese": "消費単位インターン"
+      },
+      "character_art": "@WW_U10CharacterArt",
+      "size": 1,
+      "health": 20,
+      "attack_damage": 5,
+      "subtypes": [
+        "@WW_Wizard"
+      ],
+      "ability": "@WW_U10_Ability",
+      "starting_status_effects": [
+        {
+          "status": "mageblade",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U10CardArt",
+      "path": "textures/cards/WW_U10CardArt.png"
+    },
+    {
+      "id": "WW_U10CharacterArt",
+      "path": "textures/characters/WW_U10CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U10CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U10CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U10CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U10CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.98,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.75,
+              "y": 1.75,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U03",
+  "selection": "U03",
+  "type": "unit",
+  "names": {
+    "spanish": "Catedrático de Medicina Hostil",
+    "english": "Professor of Hostile Medicine"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+  "status": "implemented_unverified",
+  "implementation_note": "Trigger WW_Overheal compartido: paramInt transporta el exceso en la cola nativa. Adaptador escala una copia del estado y delega daño en área a CardEffectDamage. Pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 10,
+    "health": 25,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

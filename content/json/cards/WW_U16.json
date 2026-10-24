@@ -1,0 +1,157 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_U16_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_U16_Character"
+    },
+    {
+      "id": "WW_U16_StrikeEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "last_attacked_character",
+      "target_team": "heroes",
+      "param_status_effects": [
+        {
+          "status": "spell weakness",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_U16_Character",
+      "names": {
+        "spanish": "Inspector de Debilidades Aplicadas",
+        "english": "Applied Weakness Inspector",
+        "french": "Inspecteur de faiblesse appliquée",
+        "german": "Inspektor für angewandte Schwäche",
+        "portuguese": "Inspetor de Fraqueza Aplicada",
+        "russian": "Инспектор прикладной слабости",
+        "chinese": "应用弱点督察",
+        "chinese_traditional": "應用弱點督察",
+        "korean": "응용 약점 감독관",
+        "japanese": "応用弱点検査官"
+      },
+      "character_art": "@WW_U16CharacterArt",
+      "size": 2,
+      "health": 12,
+      "attack_damage": 5,
+      "subtypes": [
+        "@WW_Wizard",
+        "SubtypesData_BannerUnit"
+      ],
+      "starting_status_effects": [
+        {
+          "status": {
+            "id": "@pierce",
+            "mod_reference": "Conductor"
+          },
+          "count": 1
+        },
+        {
+          "status": "multistrike",
+          "count": 1
+        }
+      ],
+      "triggers": [
+        "@WW_U16_Strike"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_U16",
+      "names": {
+        "spanish": "Inspector de Debilidades Aplicadas",
+        "english": "Applied Weakness Inspector",
+        "french": "Inspecteur de faiblesse appliquée",
+        "german": "Inspektor für angewandte Schwäche",
+        "portuguese": "Inspetor de Fraqueza Aplicada",
+        "russian": "Инспектор прикладной слабости",
+        "chinese": "应用弱点督察",
+        "chinese_traditional": "應用弱點督察",
+        "korean": "응용 약점 감독관",
+        "japanese": "応用弱点検査官"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 2,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "card_art": "@WW_U16CardArt",
+      "pools": [
+        "UnitsAllBanner"
+      ],
+      "effects": [
+        "@WW_U16_Spawn"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_U16CardArt",
+      "path": "textures/cards/WW_U16CardArt.png"
+    },
+    {
+      "id": "WW_U16CharacterArt",
+      "path": "textures/characters/WW_U16CharacterArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_U16CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_U16CardArt"
+        }
+      }
+    },
+    {
+      "id": "WW_U16CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_U16CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 1.05,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_U16_Strike",
+      "trigger": "on_attacking",
+      "effects": [
+        "@WW_U16_StrikeEffect"
+      ],
+      "descriptions": {
+        "spanish": "Aplica [spellweakness] [effect0.status0.power].",
+        "english": "Apply [spellweakness] [effect0.status0.power].",
+        "french": "Applique [spellweakness] [effect0.status0.power].",
+        "german": "Wende [spellweakness] [effect0.status0.power] an.",
+        "portuguese": "Aplica [spellweakness] [effect0.status0.power].",
+        "russian": "Накладывает [spellweakness] [effect0.status0.power].",
+        "chinese": "施加 [spellweakness] [effect0.status0.power]。",
+        "chinese_traditional": "施加 [spellweakness] [effect0.status0.power]。",
+        "korean": "[spellweakness] [effect0.status0.power] 효과를 적용합니다.",
+        "japanese": "[spellweakness] [effect0.status0.power]を付与する。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+﻿{
+  "id": "WW_U06",
+  "selection": "U06",
+  "type": "unit",
+  "names": {
+    "spanish": "Catedrática de Daños Compartidos",
+    "english": "Professor of Shared Damages"
+  },
+  "cost": 2,
+  "rarity": "rare",
+  "effect": "Elige un hechizo de daño de tu mano. Este turno, inflige la mitad de daño, a todos los enemigos de su piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 10,
+    "health": 30,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": 2,
+  "ability_name": {
+    "english": "Collective Assessment",
+    "spanish": "Evaluación Colectiva",
+    "french": "Évaluation collective",
+    "german": "Gemeinschaftsprüfung",
+    "portuguese": "Avaliação Coletiva",
+    "russian": "Коллективная оценка",
+    "chinese": "集体考核",
+    "chinese_traditional": "集體考核",
+    "korean": "공동 평가",
+    "japanese": "合同評価"
+  }
+}

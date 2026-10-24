@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U02",
+  "selection": "U02",
+  "type": "unit",
+  "names": {
+    "spanish": "Doctorado en Primeros Auxilios Arcanos",
+    "english": "PhD in Arcane First Aid"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "El primer hechizo de cada turno que dañe a enemigos de este piso también restaura salud igual al daño infligido, repartida por igual entre los aliados de este piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "Primer hechizo de daño apto por turno y piso: curación por aliado = daño efectivo total / aliados vivos, redondeo entero habitual. Incluye al PhD y aliados con vida completa; no redistribuye exceso. Usa ApplyHeal nativo y conserva interacciones de excedente con Emeritus/Hostile Medicine. Pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Witch",
+  "stats": {
+    "attack": 5,
+    "health": 30,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

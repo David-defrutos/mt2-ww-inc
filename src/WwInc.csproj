@@ -1,0 +1,641 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>WwInc.Plugin</AssemblyName>
+    <RootNamespace>WwInc</RootNamespace>
+    <Version>0.1.132</Version>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <RestoreSources />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Conductor">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\Conductor-Conductor\Conductor.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ContentLoadModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.PropertiesModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleCore">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.AppleCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleMacosStub">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.AppleMacosStub.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.AppleStub">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.AppleStub.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.Codeless.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityStub">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Stores">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.Stores.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.WinRTCore">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.WinRTCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.WinRTStub">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.Purchasing.WinRTStub.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:\Juegos\Steam\steamapps\common\Monster Train 2\MonsterTrain2_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\CsvHelper.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.Configuration.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Microsoft.Extensions.Primitives.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="NVorbis">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\NVorbis.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SimpleInjector">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\SimpleInjector.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TrainworksReloaded.Base">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\TrainworksReloaded.Base.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TrainworksReloaded.Core">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\TrainworksReloaded.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TrainworksReloaded.Plugin">
+      <HintPath>C:\Users\david\AppData\Roaming\Thunderstore Mod Manager\DataFolder\MonsterTrain2\profiles\Default\BepInEx\plugins\MT2-Trainworks_Reloaded\TrainworksReloaded.Plugin.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
+
+<!-- 2026-10-10-0024||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Proyecto netstandard2.1 con referencias locales de juego, Trainworks y Conductor -->
+<!-- 2026-10-10-0109||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de ensamblado 0.1.1 -->
+<!-- 2026-10-11-0010||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Sincronizar versión de ensamblado con BepInEx 0.1.5 -->
+
+<!-- 2026-10-11-0019||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión local de corrección 0.1.5 -->
+
+<!-- 2026-10-11-0023||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión local 0.1.5 para soporte seguro de preview -->
+
+<!-- 2026-10-11-0030||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.6 -->
+
+<!-- 2026-10-11-0038||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.7 -->
+
+<!-- 2026-10-11-0943||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.8 -->
+
+<!-- 2026-10-11-1032||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.9 -->
+
+<!-- 2026-10-11-1039||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.10 -->
+
+<!-- 2026-10-11-1104||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.24 -->
+
+<!-- 2026-10-11-1117||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.24 -->
+
+<!-- 2026-10-11-1442||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.24 por revisión de textos -->
+
+<!-- 2026-10-11-1445||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de tooltips a 0.1.24 -->
+
+<!-- 2026-10-11-1503||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de redirección a 0.1.24 -->
+
+<!-- 2026-10-11-1510||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de filtro de bando a 0.1.24 -->
+
+<!-- 2026-10-11-1552||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión Credit Recovery a 0.1.24 -->
+
+<!-- 2026-10-11-1554||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión del retorno sin coste extra a 0.1.24 -->
+
+<!-- 2026-10-11-1609||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar balance y rarezas a versión 0.1.24 -->
+
+<!-- 2026-10-11-1618||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa de 0.1.19 a 0.1.24 -->
+
+<!-- 2026-10-11-1622||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa de 0.1.20 a 0.1.24 -->
+
+<!-- 2026-10-11-1623||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa de 0.1.21 a 0.1.24 -->
+
+<!-- 2026-10-11-1629||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.24 por corrección de rarezas de unidades -->
+
+<!-- 2026-10-11-1631||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.24 por Archivera de tres mazos -->
+
+<!-- 2026-10-11-1633||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa de ensamblado a 0.1.25 -->
+
+<!-- 2026-10-11-1637||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión del ensamblado a 0.1.26 -->
+
+<!-- 2026-10-11-1651||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa de ensamblado a 0.1.27 -->
+
+<!-- 2026-10-11-1652||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa del ensamblado a 0.1.28 -->
+
+<!-- 2026-10-11-1656||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa del ensamblado a 0.1.29 -->
+
+<!-- 2026-10-11-1700||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de compilación a 0.1.30 -->
+
+<!-- 2026-10-11-1701||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de compilación a 0.1.31 -->
+
+<!-- 2026-10-11-1734||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de compilación a 0.1.32 -->
+
+<!-- 2026-10-11-1742||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de compilación a 0.1.33 -->
+
+<!-- 2026-10-11-1800||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión de compilación a 0.1.34 -->
+
+<!-- 2026-10-11-1813||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.35 para corrección de tooltip de Awkward Silence -->
+
+<!-- 2026-10-11-1816||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.36 para copia de Postdoc -->
+
+<!-- 2026-10-11-1829||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.37 con terminología de tamaño oficial -->
+
+<!-- 2026-10-11-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.38 con U17 de 1 pip y texto E02 -->
+
+<!-- 2026-10-11-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.39 con filtro de mejora e icono de sala -->
+
+<!-- 2026-10-11-2108||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión a 0.1.40 con marcador de Arcane Liability Insurance -->
+
+<!-- 2026-10-11-2127||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.41 con cambios aprobados en tres hechizos -->
+
+<!-- 2026-10-11-2130||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.42 con Conduit del Dean y medicina adicional -->
+
+<!-- 2026-10-12-0021||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.43 con estadísticas y Trample aprobados -->
+
+<!-- 2026-10-12-0036||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.44 con Desk Swap aprobado -->
+
+<!-- 2026-10-12-0037||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.45 con limpieza de actually y equivalentes -->
+
+<!-- 2026-10-12-0053||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.46 con guardia de bono cero en Chair -->
+
+<!-- 2026-10-12-0055||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.47 con corrección de daño base de Consumed Bibliography -->
+
+<!-- 2026-10-12-0100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.48 con revisión editorial y S22 recarga 1 -->
+
+<!-- 2026-10-12-0105||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.49 con bono de Bibliography en línea separada -->
+
+<!-- 2026-10-12-0111||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.50 con redirección de hechizos Both -->
+
+<!-- 2026-10-12-0915||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.51 con cinco cambios aprobados -->
+
+<!-- 2026-10-12-0920||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.52 con Harvest del Emérito -->
+
+<!-- 2026-10-12-0923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.53 con pasivas médicas del primer hechizo apto -->
+
+<!-- 2026-10-12-0925||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.54 con Desk Swap sin Dazed -->
+
+<!-- 2026-10-12-0927||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.55 con Reserve +5 Power conservado al jugar -->
+
+<!-- 2026-10-12-0932||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.56 con omisión de comportamientos por defecto -->
+
+<!-- 2026-10-12-0938||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.57 con carta retirada y control de defaults -->
+
+<!-- 2026-10-12-0946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.58 -->
+
+<!-- 2026-10-12-1021||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.59 por corrección del texto de Archivera -->
+
+<!-- 2026-10-12-1022||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.60 con nombres propios de habilidades -->
+
+<!-- 2026-10-12-1303||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.61 por vista previa de Trabajo en Pareja -->
+
+<!-- 2026-10-12-1427||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.62 por espera y resolución de selectores de mano -->
+
+<!-- 2026-10-12-1430||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.63 por duración de propiedades S32 -->
+
+<!-- 2026-10-12-1438||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.64 por Faculty Robe libre y Postdoc global -->
+
+<!-- 2026-10-12-1543||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.65 por Postdoc de hechizo común -->
+
+<!-- 2026-10-12-1554||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.66 por Postdoc Extinguish y Undying -->
+
+<!-- 2026-10-12-1637||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.67 por simplificación de sendas -->
+
+<!-- 2026-10-12-1639||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.68 sin Conduit repetido en sendas -->
+
+<!-- 2026-10-12-1656||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.69 por selección nativa sin bloqueo -->
+
+<!-- 2026-10-12-1712||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.70 -->
+
+<!-- 2026-10-12-1740||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.71 -->
+
+<!-- 2026-10-12-1758||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.72 -->
+
+<!-- 2026-10-12-1808||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.73 -->
+
+<!-- 2026-10-12-1815||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.74 -->
+
+<!-- 2026-10-12-2053||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.75 -->
+
+<!-- 2026-10-12-2056||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.76 -->
+
+<!-- 2026-10-12-2058||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.77 -->
+
+<!-- 2026-10-12-2102||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.78 -->
+
+<!-- 2026-10-12-2103||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.79 -->
+
+<!-- 2026-10-12-2105||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.80 -->
+
+<!-- 2026-10-12-2115||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.81 -->
+
+<!-- 2026-10-12-2200||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa 0.1.82 -->
+<!-- 2026-10-12-2211||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.83 con Overheal reutilizable -->
+<!-- 2026-10-12-2232||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.84 con sendas Dean Arcane Slay -->
+<!-- 2026-10-12-2235||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.85: habilidades sin descripción duplicada en portadores -->
+<!-- 2026-10-12-2237||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.86: Consumable Credits Intern Mageblade 2 -->
+<!-- 2026-10-12-2242||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.87 con tercer equipo Tenured Wand -->
+<!-- 2026-10-12-2245||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.88 con Faculty Robe retirada y 51 cartas activas -->
+<!-- 2026-10-12-2255||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.89 con cambios S09/S10 -->
+<!-- 2026-10-12-2258||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.90 con retirada Credit Recovery y Spike nativo -->
+<!-- 2026-10-12-2300||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.91 tras retirar seis hechizos y convertir Practicum a reliquia -->
+<!-- 2026-10-12-2313||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.92: Arcane Liability Insurance infrecuente -->
+<!-- 2026-10-12-2322||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.93 con rarezas y efectos aprobados -->
+<!-- 2026-10-12-2330||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.94 con ocho reliquias comunes y dos infrecuentes -->
+<!-- 2026-10-13-0023||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.95 con marca y contador de Dissertation -->
+<!-- 2026-10-13-0031||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.96 con estado visible de Concussion Scholarship -->
+<!-- 2026-10-13-0033||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.97 con IDs registrados de estados personalizados -->
+<!-- 2026-10-13-0051||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.98 con Scholarship dirigido a pila de robo -->
+<!-- 2026-10-13-0054||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión activa 0.1.99 por corrección de sprites de estados personalizados -->
+<!-- 2026-10-13-0106||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.100: retorno de hechizo vinculado -->
+<!-- 2026-10-13-0108||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.101: Scholarship rebaja cualquier carta -->
+<!-- 2026-10-13-2124||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.102: tomo coste 2 y reliquia sin adyacencia -->
+<!-- 2026-10-13-2131||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.103: simplificar texto de Office of Complaints -->
+<!-- 2026-10-13-2134||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.104: General Examination solo enemigos -->
+<!-- 2026-10-13-2138||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.105: Spell Tuning permanente al hechizo que mata -->
+<!-- 2026-10-13-2144||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.106: corregir activación de Spell Tuning -->
+<!-- 2026-10-13-2257||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.107: coste 0 de Postdoc persiste entre turnos -->
+<!-- 2026-10-13-2353||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.108: separar Freeze y pasiva de Frozen Tuition -->
+<!-- 2026-10-14-0021||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.109: Awkward Silence +15 -->
+<!-- 2026-10-14-0022||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.110: renombrar Explosive Requisition -->
+<!-- 2026-10-14-0038||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.111: Triple Impact Exam infrecuente con Trample -->
+<!-- 2026-10-14-2150||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.112: Triple Impact Exam daño 1 -->
+<!-- 2026-10-14-2156||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.113: Inspector aplica Spell Weakness con Strike -->
+<!-- 2026-10-14-2216||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.114: Inspector ataque 5 -->
+<!-- 2026-10-14-2237||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.115: mover Trample a Dissertation y Triple Impact común -->
+<!-- 2026-10-15-2142||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.118: Explosive Requisition solo siguiente uso -->
+<!-- 2026-10-15-2226||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.118 para vista previa de Education en mano -->
+<!-- 2026-10-15-2239||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.118 con nuevo nombre de U13 -->
+<!-- 2026-10-17-0910||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.119 con Lethal Tuition Refund repetible cada cinco hechizos letales -->
+<!-- 2026-10-17-0922||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.120 con PhD de 1 pip -->
+<!-- 2026-10-17-1317||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.121 con PhD restablecido a 2 pips -->
+<!-- 2026-10-17-1448||script-corregir-trample-explosive.py||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Assembly 0.1.121 a 0.1.122 -->
+<!-- 2026-10-19-2239||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.123: Course Withdrawal Spell/Blight y doble Ember conservando parche Trample/Explosive -->
+<!-- 2026-10-19-2254||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.124 con filtro de Permanent Withdrawal Stamp corregido -->
+<!-- 2026-10-19-2259||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.125 con Withdrawal Stamp y recargas 0/2 -->
+<!-- 2026-10-19-2359||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.126 con Withdrawal Stamp solo Purge -->
+<!-- 2026-10-20-0000||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.127: Withdrawal Stamp sin recargas, solo Purge por ring -->
+<!-- 2026-10-20-0012||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.128: Withdrawal Stamp con recarga inicial 0 y posterior 8 -->
+<!-- 2026-10-20-0017||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.129: Withdrawal Stamp permite un Purge independiente por copia y ring -->
+<!-- 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.130 -->
+<!-- 2026-10-21-2059||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.131: límite de armadura por Overheal -->
+<!-- 2026-10-21-2245||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.132: Course Withdrawal acepta Scourge -->

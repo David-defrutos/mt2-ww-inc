@@ -1,0 +1,21 @@
+﻿{
+  "id": "WW_T01",
+  "selection": "T01",
+  "type": "starter",
+  "names": {
+    "spanish": "Chaperón de Inconducta",
+    "english": "Wizard Affairs Chaperon"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Impact: aplica Spell Weakness 1 al enemigo golpeado. Ocupa capacidad normal.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Chaperone",
+  "stats": {
+    "attack": 1,
+    "health": 10,
+    "size": 1
+  }
+}

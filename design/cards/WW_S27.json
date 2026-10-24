@@ -1,0 +1,22 @@
+﻿{
+  "id": "WW_S27",
+  "selection": "S27",
+  "type": "spell",
+  "names": {
+    "spanish": "Puesto de Helados del Campus",
+    "english": "Campus Ice Cream Stand"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Invoca un Puesto de Helados 0/10 de 1[size]. A partir del próximo turno, al comienzo de cada turno invoca un Helado de 1[size], con tanto [attack] como el [conduit] de los aliados de este piso y 1 más de [health].",
+  "status": "retired",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "token_stats": {
+    "attack": 0,
+    "health": 10,
+    "size": 1
+  },
+  "serving_size": 1,
+  "retired_reason": "Retirada por petición del usuario."
+}

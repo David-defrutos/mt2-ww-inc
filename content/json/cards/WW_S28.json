@@ -1,0 +1,151 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S28",
+      "names": {
+        "spanish": "Proyecto Aplazado",
+        "english": "Deferred Project",
+        "french": "Projet reporté",
+        "german": "Aufgeschobenes Projekt",
+        "portuguese": "Projeto Adiado",
+        "russian": "Отложенный проект",
+        "chinese": "延期项目",
+        "chinese_traditional": "延期專案",
+        "korean": "연기된 과제",
+        "japanese": "延期された課題"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to a unit.",
+        "spanish": "Inflige [effect0.power] de daño a una unidad.",
+        "french": "Inflige [effect0.power] dégâts à une unité.",
+        "german": "Füge einer Einheit [effect0.power] Schaden zu.",
+        "portuguese": "Causa [effect0.power] de dano a uma unidade.",
+        "russian": "Наносит бойцу [effect0.power] урона.",
+        "chinese": "对单位造成[effect0.power]点伤害。",
+        "chinese_traditional": "對單位造成[effect0.power]點傷害。",
+        "korean": "유닛에게 [effect0.power]의 피해를 줍니다.",
+        "japanese": "ユニットに[effect0.power]ダメージを与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "effects": [
+        "@WW_S28_Effect"
+      ],
+      "card_art": "@WW_S28CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@WW_S28_Freeze"
+      ],
+      "triggers": [
+        "@WW_S28_Reserve",
+        "@WW_S28_Slay"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S28_Effect",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "both",
+      "param_int": 10
+    },
+    {
+      "id": "WW_S28_ReserveEffect",
+      "name": {
+        "id": "@CardEffectAddCardUpgradeToTargetCards",
+        "mod_reference": "Conductor"
+      },
+      "target_mode": {
+        "id": "@played_card",
+        "mod_reference": "Conductor"
+      },
+      "target_team": "none",
+      "param_upgrade": "@WW_S28_Charge",
+      "param_bool": false
+    },
+    {
+      "id": "WW_S28_Return",
+      "name": "@CardEffectAcademicReturnFrozen",
+      "target_mode": "room",
+      "target_team": "none"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S28CardArt",
+      "path": "textures/cards/WW_S28CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S28CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S28CardArt"
+        }
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S28_Freeze",
+      "name": "CardTraitFreeze"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_S28_Charge",
+      "bonus_damage": 5,
+      "bonus_heal": 5
+    }
+  ],
+  "card_triggers": [
+    {
+      "id": "WW_S28_Reserve",
+      "trigger": "on_unplayed_positive",
+      "effects": [
+        "@WW_S28_ReserveEffect"
+      ],
+      "descriptions": {
+        "english": "+5 [magicpower].",
+        "spanish": "+5 [magicpower].",
+        "french": "+5 [magicpower].",
+        "german": "+5 [magicpower].",
+        "portuguese": "+5 [magicpower].",
+        "russian": "+5 [magicpower].",
+        "chinese": "+5 [magicpower]。",
+        "chinese_traditional": "+5 [magicpower]。",
+        "korean": "[magicpower] +5.",
+        "japanese": "[magicpower] +5。"
+      }
+    },
+    {
+      "id": "WW_S28_Slay",
+      "trigger": "on_kill",
+      "effects": [
+        "@WW_S28_Return"
+      ],
+      "descriptions": {
+        "english": "Return to hand with [freeze]. <b>Unplayable</b> until next turn.",
+        "spanish": "Vuelve a la mano con [freeze]. <b>No jugable</b> hasta el próximo turno.",
+        "french": "Revient en main avec [freeze]. <b>Injouable</b> jusqu’au prochain tour.",
+        "german": "Kehre mit [freeze] auf die Hand zurück. Bis zum nächsten Zug <b>Unspielbar</b>.",
+        "portuguese": "Volta à mão com [freeze]. <b>Não jogável</b> até o próximo turno.",
+        "russian": "Возвращается в руку с [freeze]. <b>Нельзя сыграть</b> до следующего хода.",
+        "chinese": "获得[freeze]并返回手牌。下回合前<b>无法打出</b>。",
+        "chinese_traditional": "獲得[freeze]並返回手牌。下回合前<b>無法打出</b>。",
+        "korean": "[freeze] 상태로 손에 돌아옵니다. 다음 턴까지 <b>사용 불가</b>.",
+        "japanese": "[freeze]を得て手札に戻る。次のターンまで<b>プレイ不可</b>。"
+      }
+    }
+  ]
+}

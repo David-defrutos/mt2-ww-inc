@@ -1,0 +1,23 @@
+﻿{
+  "id": "WW_U13",
+  "selection": "U13",
+  "type": "unit",
+  "names": {
+    "spanish": "Profesor Emérito de Medicina Defensiva",
+    "english": "Emeritus Professor of Defensive Medicine"
+  },
+  "cost": 2,
+  "rarity": "uncommon",
+  "effect": "Sobrecuración: Añade [armor] igual a la curación sobrante, hasta tu salud máxima.",
+  "status": "implemented_unverified",
+  "implementation_note": "Trigger WW_Overheal compartido: paramInt transporta el exceso en la cola nativa. Adaptador escala una copia del estado y delega Armor a CardEffectAddStatusEffect. Pendiente prueba en partida.",
+  "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
+  "subtype": "Wizard",
+  "stats": {
+    "attack": 20,
+    "health": 30,
+    "size": 2
+  },
+  "banner": true,
+  "ability_cooldown": null
+}

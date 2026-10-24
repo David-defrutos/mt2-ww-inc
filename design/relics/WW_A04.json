@@ -1,0 +1,12 @@
+﻿{
+  "id": "WW_A04",
+  "names": {
+    "spanish": "Certificado de Buena Conducta",
+    "english": "Certificate of Good Conduct"
+  },
+  "effect": "Si no juegas hechizos de daño este turno, roba +1 en el próximo turno.",
+  "status": "implemented_unverified",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
+  "rarity": "common"
+}

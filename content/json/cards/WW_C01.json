@@ -1,0 +1,179 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_C01_Spawn",
+      "name": "CardEffectSpawnMonster",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_character": "@WW_C01_Character"
+    },
+    {
+      "id": "WW_C01_Ability_Effect",
+      "name": "@CardEffectAcademicWizardDraw",
+      "param_card_filter": "OnlyDamageCardExcludeSpellsFromMagicPower",
+      "param_int": 1,
+      "target_card_type": "spell"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_C01_Ability",
+      "names": {
+        "english": "Explosive Requisition",
+        "spanish": "Solicitud Explosiva",
+        "french": "Demande explosive",
+        "german": "Explosive Anforderung",
+        "portuguese": "Requisição Explosiva",
+        "russian": "Взрывной запрос",
+        "chinese": "爆炸申请",
+        "chinese_traditional": "爆炸申請",
+        "korean": "폭발 신청",
+        "japanese": "爆発申請"
+      },
+      "descriptions": {
+        "english": "Draw a damage spell. Give it [explosive] for its next play.",
+        "spanish": "Roba un hechizo de daño. Otórgale [explosive] para su próximo uso.",
+        "french": "Piochez un sort de dégâts. Donnez-lui [explosive] pour sa prochaine utilisation.",
+        "german": "Ziehe einen Schadenszauber. Gib ihm [explosive] für seinen nächsten Einsatz.",
+        "portuguese": "Compre um feitiço de dano. Conceda-lhe [explosive] para o próximo uso.",
+        "russian": "Возьмите заклинание урона. Дайте ему [explosive] до следующего применения.",
+        "chinese": "抽取一张伤害法术。使其下次使用时获得[explosive]。",
+        "chinese_traditional": "抽取一張傷害法術。使其下次使用時獲得[explosive]。",
+        "korean": "피해 주문을 뽑습니다. 다음 사용에 [explosive]을 부여합니다.",
+        "japanese": "ダメージ呪文を引く。次に使用するときの[explosive]を付与する。"
+      },
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "common",
+      "class": "@WW_Class",
+      "is_an_ability": true,
+      "targetless": true,
+      "targets_room": false,
+      "cooldown": 3,
+      "hide_in_logbook": true,
+      "ignore_when_counting_mastery": true,
+      "card_art": "@WW_C01CardArt",
+      "effects": [
+        "@WW_C01_Ability_Effect"
+      ],
+      "initial_keyboard_target": "front_friendly"
+    },
+    {
+      "id": "WW_C01",
+      "names": {
+        "spanish": "Decano del Departamento de Sombreros",
+        "english": "Dean of the Hat Department",
+        "french": "Doyen du département des chapeaux",
+        "german": "Dekan der Hutabteilung",
+        "portuguese": "Decano do Departamento de Chapéus",
+        "russian": "Декан кафедры шляп",
+        "chinese": "帽子系主任",
+        "chinese_traditional": "帽子系主任",
+        "korean": "모자 학과장",
+        "japanese": "帽子学科長"
+      },
+      "class": "@WW_Class",
+      "card_type": "monster",
+      "cost": 0,
+      "rarity": "champion",
+      "targets_room": true,
+      "card_art": "@WW_C01CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_C01_Spawn"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "WW_C01_Character",
+      "names": {
+        "spanish": "Decano del Departamento de Sombreros",
+        "english": "Dean of the Hat Department",
+        "french": "Doyen du département des chapeaux",
+        "german": "Dekan der Hutabteilung",
+        "portuguese": "Decano do Departamento de Chapéus",
+        "russian": "Декан кафедры шляп",
+        "chinese": "帽子系主任",
+        "chinese_traditional": "帽子系主任",
+        "korean": "모자 학과장",
+        "japanese": "帽子学科長"
+      },
+      "character_art": "@WW_C01CharacterArt",
+      "size": 2,
+      "health": 20,
+      "attack_damage": 5,
+      "subtypes": [
+        "@WW_Wizard",
+        "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"
+      ],
+      "ability": "@WW_C01_Ability"
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_C01CharacterArt",
+      "path": "textures/WW_C01CharacterArt.png"
+    },
+    {
+      "id": "WW_C01CardArt",
+      "path": "textures/cards/WW_C01CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_C01CharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_C01CharacterArt",
+          "transform": {
+            "position": {
+              "x": 0,
+              "y": 0.94,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "WW_C01CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_C01CardArt"
+        }
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_C01_NextUseExplosive",
+      "name": "CardTraitDamageOverflow",
+      "param_int": 2
+    },
+    {
+      "id": "WW_C01_NextUseExpiry",
+      "name": "@CardTraitAcademicNextUseUpgrade",
+      "effect_text_suppressed": true,
+      "tooltip_suppressed": true
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_C01_NextUseUpgrade",
+      "trait_upgrades": [
+        "@WW_C01_NextUseExplosive",
+        "@WW_C01_NextUseExpiry"
+      ],
+      "hide_icon_on_card": true
+    }
+  ]
+}

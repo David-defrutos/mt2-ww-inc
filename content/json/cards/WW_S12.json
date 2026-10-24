@@ -1,0 +1,72 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_S12",
+      "names": {
+        "spanish": "Examen de Triple Impacto",
+        "english": "Triple Impact Exam",
+        "french": "Examen à triple impact",
+        "german": "Dreifachtrefferprüfung",
+        "portuguese": "Exame de Impacto Triplo",
+        "russian": "Экзамен тройного удара",
+        "chinese": "三重冲击考试",
+        "chinese_traditional": "三重衝擊考試",
+        "korean": "삼중 충격 시험",
+        "japanese": "三連撃試験"
+      },
+      "descriptions": {
+        "spanish": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
+        "english": "Deal [effect0.power] damage to the same enemy three times.",
+        "french": "Inflige [effect0.power] dégâts trois fois au même ennemi.",
+        "german": "Füge demselben Gegner dreimal [effect0.power] Schaden zu.",
+        "portuguese": "Causa [effect0.power] de dano três vezes ao mesmo inimigo.",
+        "russian": "Трижды наносит одному врагу [effect0.power] урона.",
+        "chinese": "对同一个敌人造成三次 [effect0.power] 伤害。",
+        "chinese_traditional": "對同一個敵人造成三次 [effect0.power] 傷害。",
+        "korean": "같은 적에게 [effect0.power] 피해를 세 번 줍니다.",
+        "japanese": "同じ敵に[effect0.power]ダメージを3回与える。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "effects": [
+        "@WW_S12_Damage",
+        "@WW_S12_Damage",
+        "@WW_S12_Damage"
+      ],
+      "card_art": "@WW_S12CardArt",
+      "pools": [
+        "MegaPool"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_S12_Damage",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_int": 1
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S12CardArt",
+      "path": "textures/cards/WW_S12CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S12CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S12CardArt"
+        }
+      }
+    }
+  ]
+}

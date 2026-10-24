@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "effects": [
+    {
+      "id": "WW_S01_Effect",
+      "name": "@CardEffectAcademicSpellRule",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_str": "floors"
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_S01",
+      "names": {
+        "spanish": "Circular de Daños Interdepartamentales",
+        "english": "Interdepartmental Damage Memo",
+        "french": "Note de dégâts interdépartementale",
+        "german": "Abteilungsübergreifende Schadensmitteilung",
+        "portuguese": "Memorando de Danos Interdepartamentais",
+        "russian": "Межкафедральная записка об уроне",
+        "chinese": "跨系伤害备忘录",
+        "chinese_traditional": "跨系傷害備忘錄",
+        "korean": "학과 간 피해 공문",
+        "japanese": "学科間ダメージ通知"
+      },
+      "descriptions": {
+        "spanish": "El siguiente hechizo dirigido a un único enemigo también afecta al primer enemigo de los demás pisos.",
+        "english": "Your next spell targeting one enemy also affects the front enemy on the other floors.",
+        "french": "Votre prochain sort ciblant un ennemi se résout aussi sur l'ennemi de tête des autres étages.",
+        "german": "Dein nächster Zauber gegen einen Gegner wirkt auch auf den vordersten Gegner der anderen Etagen.",
+        "portuguese": "Seu próximo feitiço contra um único inimigo também se resolve no inimigo da frente dos outros andares.",
+        "russian": "Следующее заклинание по одному врагу также действует на переднего врага остальных этажей.",
+        "chinese": "下个单体对敌法术也对其他层前排敌人结算。",
+        "chinese_traditional": "下個單體對敵法術也對其他層前排敵人結算。",
+        "korean": "다음 단일 적 대상 주문을 다른 층 맨 앞 적에게도 적용합니다.",
+        "japanese": "次の単体敵対象呪文は他の階の先頭の敵にも解決する。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 2,
+      "rarity": "rare",
+      "targets_room": true,
+      "card_art": "@WW_S01CardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "targetless": true,
+      "effects": [
+        "@WW_S01_Effect"
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_S01CardArt",
+      "path": "textures/cards/WW_S01CardArt.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_S01CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_S01CardArt"
+        }
+      }
+    }
+  ]
+}

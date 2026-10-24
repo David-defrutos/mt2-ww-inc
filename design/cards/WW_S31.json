@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_S31",
+  "selection": "S31",
+  "type": "spell",
+  "names": {
+    "english": "General Examination",
+    "spanish": "Examen General"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "effect": "Inflige 8 de daño a todas las unidades enemigas del piso.",
+  "status": "implemented_unverified",
+  "implementation_note": "CardEffectDamage nativo Room/Heroes; daño 8, coste 1 y Piercing conservados. Pendiente partida.",
+  "balance": "Valores vigentes: 1 Ember, 8 de daño, común."
+}

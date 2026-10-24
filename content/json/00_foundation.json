@@ -1,0 +1,451 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "classes": [
+    {
+      "id": "WW_Class",
+      "titles": {
+        "english": "W&W Inc.",
+        "spanish": "W&W Inc.",
+        "french": "W&W Inc.",
+        "german": "W&W Inc.",
+        "portuguese": "W&W Inc.",
+        "russian": "W&W Inc.",
+        "chinese": "W&W Inc.",
+        "chinese_traditional": "W&W Inc.",
+        "korean": "W&W Inc.",
+        "japanese": "W&W Inc."
+      },
+      "descriptions": {
+        "english": "Wizards, witches and wildly questionable academic standards.",
+        "spanish": "Magos, brujas y estándares académicos sumamente discutibles.",
+        "french": "Sorciers, sorcières et normes universitaires très douteuses.",
+        "german": "Magier, Hexen und höchst fragwürdige akademische Standards.",
+        "portuguese": "Magos, bruxas e padrões acadêmicos muito questionáveis.",
+        "russian": "Маги, ведьмы и крайне сомнительные академические стандарты.",
+        "chinese": "男巫、女巫以及极其可疑的学术标准。",
+        "chinese_traditional": "男巫、女巫以及極其可疑的學術標準。",
+        "korean": "마법사, 마녀 그리고 매우 의심스러운 학문 기준.",
+        "japanese": "魔法使い、魔女、そして大いに疑わしい学術基準。"
+      },
+      "ui_color": {
+        "r": 0.45,
+        "g": 0.3,
+        "b": 0.9
+      },
+      "ui_color_dark": {
+        "r": 0.2,
+        "g": 0.1,
+        "b": 0.4
+      },
+      "subclass_descriptions": {
+        "english": "Wizards, witches and wildly questionable academic standards.",
+        "spanish": "Magos, brujas y estándares académicos sumamente discutibles.",
+        "french": "Sorciers, sorcières et normes universitaires très douteuses.",
+        "german": "Magier, Hexen und höchst fragwürdige akademische Standards.",
+        "portuguese": "Magos, bruxas e padrões acadêmicos muito questionáveis.",
+        "russian": "Маги, ведьмы и крайне сомнительные академические стандарты.",
+        "chinese": "男巫、女巫以及极其可疑的学术标准。",
+        "chinese_traditional": "男巫、女巫以及極其可疑的學術標準。",
+        "korean": "마법사, 마녀 그리고 매우 의심스러운 학문 기준.",
+        "japanese": "魔法使い、魔女、そして大いに疑わしい学術基準。"
+      },
+      "is_launch_clan": true,
+      "class_select_character_displays": [
+        "@WW_WizardDisplay",
+        "@WW_WitchDisplay"
+      ],
+      "icons": {
+        "small": "@WW_ClanIconSmall",
+        "medium": "@WW_ClanIconMedium",
+        "large": "@WW_ClanIconLarge",
+        "silhouette": "@WW_ClanSilhouette"
+      },
+      "card_draft_icon": "@WW_CardDraftIcon",
+      "card_style": "@WW_Style",
+      "champions": [
+        {
+          "id": "WW_Champion1",
+          "card_data": "@WW_C01",
+          "starter_card": "@WW_T01",
+          "upgrade_tree": [
+            [
+              "@WW_FratBro1",
+              "@WW_FratBro2",
+              "@WW_FratBro3"
+            ],
+            [
+              "@WW_Explosive1",
+              "@WW_Explosive2",
+              "@WW_Explosive3"
+            ],
+            [
+              "@WW_Attuned1",
+              "@WW_Attuned2",
+              "@WW_Attuned3"
+            ]
+          ],
+          "icon": "@WW_C01Bust",
+          "locked_icon": "@WW_C01LockedIcon",
+          "portrait": "@WW_C01Portrait"
+        },
+        {
+          "id": "WW_Champion2",
+          "card_data": "@WW_C02",
+          "starter_card": "@WW_T02",
+          "upgrade_tree": [
+            [
+              "@WW_QueenBee1",
+              "@WW_QueenBee2",
+              "@WW_QueenBee3"
+            ],
+            [
+              "@WW_PublishOrIncant1",
+              "@WW_PublishOrIncant2",
+              "@WW_PublishOrIncant3"
+            ],
+            [
+              "@WW_TenureOfProtection1",
+              "@WW_TenureOfProtection2",
+              "@WW_TenureOfProtection3"
+            ]
+          ],
+          "icon": "@WW_C02Bust",
+          "locked_icon": "@WW_C02LockedIcon",
+          "portrait": "@WW_C02Portrait"
+        }
+      ]
+    }
+  ],
+  "subtypes": [
+    {
+      "id": "WW_Wizard",
+      "names": {
+        "english": "Wizard",
+        "spanish": "Mago",
+        "french": "Sorcier",
+        "german": "Magier",
+        "portuguese": "Mago",
+        "russian": "Маг",
+        "chinese": "男巫",
+        "chinese_traditional": "男巫",
+        "korean": "마법사",
+        "japanese": "魔法使い"
+      }
+    },
+    {
+      "id": "WW_Witch",
+      "names": {
+        "english": "Witch",
+        "spanish": "Bruja",
+        "french": "Sorcière",
+        "german": "Hexe",
+        "portuguese": "Bruxa",
+        "russian": "Ведьма",
+        "chinese": "女巫",
+        "chinese_traditional": "女巫",
+        "korean": "마녀",
+        "japanese": "魔女"
+      }
+    },
+    {
+      "id": "WW_Chaperone",
+      "names": {
+        "english": "Chaperone",
+        "spanish": "Chaperón",
+        "french": "Chaperon",
+        "german": "Begleitperson",
+        "portuguese": "Acompanhante",
+        "russian": "Сопровождающий",
+        "chinese": "监督员",
+        "chinese_traditional": "監督員",
+        "korean": "보호자",
+        "japanese": "付き添い"
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_BannerDisabled",
+      "path": "textures/ui/WW_BannerDisabled.png"
+    },
+    {
+      "id": "WW_BannerEnabled",
+      "path": "textures/ui/WW_BannerEnabled.png"
+    },
+    {
+      "id": "WW_BannerFrozen",
+      "path": "textures/ui/WW_BannerFrozen.png"
+    },
+    {
+      "id": "WW_BannerVisited",
+      "path": "textures/ui/WW_BannerVisited.png"
+    },
+    {
+      "id": "WW_BorderEquipment",
+      "path": "textures/ui/WW_BorderEquipment.png"
+    },
+    {
+      "id": "WW_BorderRoom",
+      "path": "textures/ui/WW_BorderRoom.png"
+    },
+    {
+      "id": "WW_BorderSpell",
+      "path": "textures/ui/WW_BorderSpell.png"
+    },
+    {
+      "id": "WW_BorderUnit",
+      "path": "textures/ui/WW_BorderUnit.png"
+    },
+    {
+      "id": "WW_C01Bust",
+      "path": "textures/ui/WW_C01Bust.png"
+    },
+    {
+      "id": "WW_C01LockedIcon",
+      "path": "textures/ui/WW_C01LockedIcon.png"
+    },
+    {
+      "id": "WW_C02Bust",
+      "path": "textures/ui/WW_C02Bust.png"
+    },
+    {
+      "id": "WW_C02LockedIcon",
+      "path": "textures/ui/WW_C02LockedIcon.png"
+    },
+    {
+      "id": "WW_CardDraftIcon",
+      "path": "textures/ui/WW_CardDraftIcon.png"
+    },
+    {
+      "id": "WW_ClanEmblem",
+      "path": "textures/ui/WW_ClanEmblem.png"
+    },
+    {
+      "id": "WW_ClanSilhouette",
+      "path": "textures/ui/WW_ClanSilhouette.png"
+    },
+    {
+      "id": "WW_ClanIconSmall",
+      "path": "textures/ui/WW_ClanIconSmall.png"
+    },
+    {
+      "id": "WW_ClanIconMedium",
+      "path": "textures/ui/WW_ClanIconMedium.png"
+    },
+    {
+      "id": "WW_ClanIconLarge",
+      "path": "textures/ui/WW_ClanIconLarge.png"
+    },
+    {
+      "id": "WW_PackageIcon",
+      "path": "textures/ui/WW_PackageIcon.png"
+    },
+    {
+      "id": "WW_C01Portrait",
+      "path": "textures/ui/WW_C01Portrait.png"
+    },
+    {
+      "id": "WW_C02Portrait",
+      "path": "textures/ui/WW_C02Portrait.png"
+    },
+    {
+      "id": "WW_C01Display",
+      "path": "textures/ui/WW_C01Display.png"
+    },
+    {
+      "id": "WW_C02Display",
+      "path": "textures/ui/WW_C02Display.png"
+    },
+    {
+      "id": "WW_E01Icon",
+      "path": "textures/ui/WW_E01Icon.png"
+    },
+    {
+      "id": "WW_E02Icon",
+      "path": "textures/ui/WW_E02Icon.png"
+    },
+    {
+      "id": "WW_R01Icon",
+      "path": "textures/ui/WW_R01Icon.png"
+    },
+    {
+      "id": "WW_R02Icon",
+      "path": "textures/ui/WW_R02Icon.png"
+    }
+  ],
+  "class_card_styles": [
+    {
+      "id": "WW_Style",
+      "equipment_card_frame_sprite": "@WW_BorderEquipment",
+      "unit_card_frame_sprite": "@WW_BorderUnit",
+      "room_card_frame_sprite": "@WW_BorderRoom",
+      "spell_card_frame_sprite": "@WW_BorderSpell"
+    }
+  ],
+  "card_pools": [
+    {
+      "id": "WW_BannerPool",
+      "cards": [
+        "@WW_U01",
+        "@WW_U02",
+        "@WW_U03",
+        "@WW_U05",
+        "@WW_U06",
+        "@WW_U13",
+        "@WW_U16",
+        "@WW_U17",
+        "@WW_U18"
+      ]
+    }
+  ],
+  "map_nodes": [
+    {
+      "id": "WW_BannerNode",
+      "type": "reward",
+      "map_icon": "@WW_ClanIconSmall",
+      "minimap_icon": "@WW_ClanIconSmall",
+      "prefab": "@WW_BannerIcon",
+      "titles": {
+        "spanish": "Estandarte de W&W Inc.",
+        "english": "W&W Inc. Banner",
+        "french": "Bannière W&W Inc.",
+        "german": "W&W Inc.-Banner",
+        "portuguese": "Estandarte W&W Inc.",
+        "russian": "Знамя W&W Inc.",
+        "chinese": "W&W Inc. 旗帜",
+        "chinese_traditional": "W&W Inc. 旗幟",
+        "korean": "W&W Inc. 깃발",
+        "japanese": "W&W Inc.の旗"
+      },
+      "descriptions": {
+        "spanish": "Obtén una unidad de W&W Inc.",
+        "english": "Gain a W&W Inc. Unit.",
+        "french": "Obtenez une unité W&W Inc.",
+        "german": "Erhalte eine W&W Inc.-Einheit.",
+        "portuguese": "Obtenha uma unidade de W&W Inc.",
+        "russian": "Получите единицу W&W Inc.",
+        "chinese": "获得一个 W&W Inc. 单位。",
+        "chinese_traditional": "獲得一個 W&W Inc. 單位。",
+        "korean": "W&W Inc. 유닛을 얻습니다.",
+        "japanese": "W&W Inc.のユニットを獲得する。"
+      },
+      "pools": [
+        "RandomChosenMainClassUnit",
+        "RandomChosenSubClassUnit"
+      ],
+      "is_banner_node": true,
+      "extensions": [
+        {
+          "reward": {
+            "class": "@WW_Class",
+            "rewards": [
+              {
+                "id": "@WW_BannerReward"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_BannerIcon",
+      "type": "map_node_icon",
+      "extensions": {
+        "map_node_icon": {
+          "disabled_sprite": "@WW_BannerDisabled",
+          "enabled_sprite": "@WW_BannerEnabled",
+          "frozen_sprite": "@WW_BannerFrozen",
+          "visited_sprite_disabled": "@WW_BannerVisited",
+          "visited_sprite_enabled": "@WW_BannerVisited"
+        }
+      }
+    },
+    {
+      "id": "WW_WizardDisplay",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_C01Display",
+          "transform": {
+            "scale": {
+              "x": 0.6,
+              "y": 0.6,
+              "z": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "WW_WitchDisplay",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@WW_C02Display",
+          "transform": {
+            "scale": {
+              "x": 0.6,
+              "y": 0.6,
+              "z": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "rewards": [
+    {
+      "id": "WW_BannerReward",
+      "type": "draft",
+      "costs": [
+        100
+      ],
+      "extensions": [
+        {
+          "draft": {
+            "draft_pool": "@WW_BannerPool",
+            "class_type": "main|subclass|nonclass",
+            "draft_options_count": 2,
+            "rarity_floor": "uncommon",
+            "ignore_relic_rarity_override": true,
+            "is_service_merchant_reward": true
+          }
+        }
+      ]
+    }
+  ],
+  "localization_terms": [
+    {
+      "key": "david.wwinc.ChooseCard",
+      "texts": {
+        "english": "Choose a card.",
+        "spanish": "Elige una carta.",
+        "french": "Choisissez une carte.",
+        "german": "Wähle eine Karte.",
+        "portuguese": "Escolha uma carta.",
+        "russian": "Выберите карту.",
+        "chinese": "选择一张卡牌。",
+        "chinese_traditional": "選擇一張卡牌。",
+        "korean": "카드를 선택하세요.",
+        "japanese": "カードを選ぶ。"
+      }
+    },
+    {
+      "key": "david.wwinc.ChooseSpell",
+      "texts": {
+        "english": "Choose a spell.",
+        "spanish": "Elige un hechizo.",
+        "french": "Choisissez un sort.",
+        "german": "Wähle einen Zauber.",
+        "portuguese": "Escolha um feitiço.",
+        "russian": "Выберите заклинание.",
+        "chinese": "选择一个法术。",
+        "chinese_traditional": "選擇一個法術。",
+        "korean": "주문을 선택하세요.",
+        "japanese": "呪文を選ぶ。"
+      }
+    }
+  ]
+}

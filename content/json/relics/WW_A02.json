@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relic_effects": [
+    {
+      "id": "WW_A02_Effect",
+      "name": "@RelicEffectAcademic"
+    }
+  ],
+  "relics": [
+    {
+      "id": "WW_A02",
+      "type": "collectable",
+      "names": {
+        "spanish": "Fotocopiadora de Hechizos Consumibles",
+        "english": "Consumable Spell Photocopier",
+        "french": "Photocopieuse de sorts consommables",
+        "german": "Kopierer für verbrauchbare Zauber",
+        "portuguese": "Fotocopiadora de Feitiços Consumíveis",
+        "russian": "Копир расходуемых заклинаний",
+        "chinese": "消耗法术复印机",
+        "chinese_traditional": "消耗法術影印機",
+        "korean": "소모 주문 복사기",
+        "japanese": "消費呪文コピー機"
+      },
+      "descriptions": {
+        "spanish": "El primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
+        "english": "The first [consume] spell each turn gains Spellchain. Its copy costs 1[ember].",
+        "french": "Le premier sort [consume] joué par tour gagne Spellchain. Sa copie coûte 1.",
+        "german": "Der erste [consume]-Zauber jeder Runde erhält Spellchain. Seine Kopie kostet 1.",
+        "portuguese": "O primeiro feitiço [consume] jogado a cada turno ganha Spellchain. A cópia custa 1.",
+        "russian": "Первое сыгранное заклинание [consume] каждого хода получает Spellchain. Копия стоит 1.",
+        "chinese": "每回合首个使用的 [consume] 法术获得 Spellchain，复制品费用1。",
+        "chinese_traditional": "每回合首個使用的 [consume] 法術獲得 Spellchain，複製品費用1。",
+        "korean": "매 턴 처음 사용한 [consume] 주문은 Spellchain을 얻으며 복사본 비용은 1입니다.",
+        "japanese": "毎ターン最初に使う[consume]呪文はSpellchainを得る。コピーのコストは1。"
+      },
+      "icon": "@WW_A02Icon",
+      "icon_small": "@WW_A02IconSmall",
+      "relic_effects": [
+        "@WW_A02_Effect"
+      ],
+      "extensions": [
+        {
+          "collectable": {
+            "class": "@WW_Class",
+            "pools": [
+              "MegaRelicPool"
+            ],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_A02Icon",
+      "path": "textures/relics/WW_A02Icon.png"
+    },
+    {
+      "id": "WW_A02IconSmall",
+      "path": "textures/relics/WW_A02IconSmall.png"
+    }
+  ]
+}

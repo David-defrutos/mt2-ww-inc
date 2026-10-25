@@ -23,16 +23,16 @@
         "japanese": "消費呪文コピー機"
       },
       "descriptions": {
-        "spanish": "El primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
-        "english": "The first [consume] spell each turn gains Spellchain. Its copy costs 1[ember].",
-        "french": "Le premier sort [consume] joué par tour gagne Spellchain. Sa copie coûte 1.",
-        "german": "Der erste [consume]-Zauber jeder Runde erhält Spellchain. Seine Kopie kostet 1.",
-        "portuguese": "O primeiro feitiço [consume] jogado a cada turno ganha Spellchain. A cópia custa 1.",
-        "russian": "Первое сыгранное заклинание [consume] каждого хода получает Spellchain. Копия стоит 1.",
-        "chinese": "每回合首个使用的 [consume] 法术获得 Spellchain，复制品费用1。",
-        "chinese_traditional": "每回合首個使用的 [consume] 法術獲得 Spellchain，複製品費用1。",
-        "korean": "매 턴 처음 사용한 [consume] 주문은 Spellchain을 얻으며 복사본 비용은 1입니다.",
-        "japanese": "毎ターン最初に使う[consume]呪文はSpellchainを得る。コピーのコストは1。"
+        "english": "Your first [consume] spell each turn gains Spellchain. Its copy costs 1[ember].",
+        "spanish": "Tu primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
+        "french": "Votre premier sort avec [consume] chaque tour gagne Spellchain. Sa copie coûte 1[ember].",
+        "german": "Dein erster Zauber mit [consume] jeder Runde erhält Spellchain. Seine Kopie kostet 1[ember].",
+        "portuguese": "Seu primeiro feitiço com [consume] de cada turno ganha Spellchain. Sua cópia custa 1[ember].",
+        "russian": "Ваше первое заклинание с [consume] каждого хода получает Spellchain. Его копия стоит 1[ember].",
+        "chinese": "每回合你的首个[consume]法术获得Spellchain。其复制品费用为1[ember]。",
+        "chinese_traditional": "每回合你的首個[consume]法術獲得Spellchain。其複製品費用為1[ember]。",
+        "korean": "매 턴 첫 [consume] 주문이 Spellchain을 얻습니다. 복사본 비용은 1[ember]입니다.",
+        "japanese": "毎ターン最初の[consume]呪文はSpellchainを得る。そのコピーのコストは1[ember]。"
       },
       "icon": "@WW_A02Icon",
       "icon_small": "@WW_A02IconSmall",

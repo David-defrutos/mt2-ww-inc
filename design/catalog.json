@@ -19,7 +19,7 @@
       "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
       "subtype": "Wizard",
       "stats": {
-        "attack": 5,
+        "attack": 6,
         "health": 20,
         "size": 2
       },
@@ -40,7 +40,7 @@
               "health": 5
             },
             {
-              "attack": 5,
+              "attack": 4,
               "health": 15
             },
             {
@@ -63,7 +63,7 @@
               "health": 5
             },
             {
-              "attack": 5,
+              "attack": 4,
               "health": 10
             },
             {
@@ -85,7 +85,7 @@
               "health": 5
             },
             {
-              "attack": 5,
+              "attack": 4,
               "health": 10
             },
             {
@@ -123,7 +123,7 @@
       },
       "cost": 0,
       "rarity": "champion",
-      "effect": "Tres sendas pasivas combinables. La senda Queen Bee escala con Wizards; las otras reaccionan a hechizos jugados en su piso.",
+      "effect": "MíoMíoMío en todas las sendas: reclama las bajas de hechizos del piso si es el primer portador desde delante. Queen Bee escala Mageblade con Wizards; Advanced Spellwork acumula daño de Overdamage en Crédito Extra; Protective Tenure tiene Incant Armor/Spikes y es la única senda con Sobrecuración de daño.",
       "status": "implemented_unverified",
       "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
       "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
@@ -138,9 +138,9 @@
         {
           "name": "Queen Bee",
           "ranks": [
-            "Mageblade +5 por Wizard en juego",
-            "Mageblade +10 por Wizard en juego",
-            "Mageblade +15 por Wizard en juego"
+            "Mageblade +1 por Wizard en juego",
+            "Mageblade +2 por Wizard en juego",
+            "Mageblade +3 por Wizard en juego"
           ],
           "mode": "Aura dinámica, sin acumulación por turnos.",
           "stat_bonuses": [
@@ -161,18 +161,18 @@
         {
           "name": "Advanced Spellwork",
           "ranks": [
-            "Incant: +5 de ataque",
-            "Incant: +10 de ataque",
-            "Incant: +20 de ataque"
+            "Incant: +5 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo.",
+            "Incant: +10 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Dale Attuned.",
+            "Incant: +20 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Dale Attuned y Explosive."
           ],
-          "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectBuffDamage.",
+          "implementation": "Overdamage acumula el 100% del exceso en todos los niveles. Rango I sin traits añadidos; II mejora nativa permanente Attuned; III Attuned+Explosive. Se aplica también a Crédito Extra ya en mano, sin duplicar upgrades ni retirar traits anteriores. Coste 0, Frozen y Purge conservados. Incant original restaurado con card_spell_played y CardEffectBuffDamage +5/+10/+20, como segundo trigger independiente de Overdamage.",
           "stat_bonuses": [
             {
               "attack": 0,
               "health": 5
             },
             {
-              "attack": 5,
+              "attack": 6,
               "health": 10
             },
             {
@@ -184,18 +184,18 @@
         {
           "name": "Protective Tenure",
           "ranks": [
-            "Incant: Armor 5",
-            "Incant: Armor 10",
-            "Incant: Armor 20"
+            "Incant: Armor 3, Spikes 1. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+            "Incant: Armor 6, Spikes 2. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+            "Incant: Armor 12, Spikes 4. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante."
           ],
-          "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectAddStatusEffect.",
+          "implementation": "Incant card_spell_played ejecuta dos CardEffectAddStatusEffect independientes, cada uno con un único estado: Armor 3/6/12 y Spikes 1/2/4. No agrupar ambos en param_status_effects, pues el motor elige uno al azar. Cada nivel también concede @WW_U03_Overheal. MineMineMine es común en el personaje base.",
           "stat_bonuses": [
             {
               "attack": 0,
               "health": 10
             },
             {
-              "attack": 5,
+              "attack": 6,
               "health": 25
             },
             {
@@ -222,7 +222,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Chaperone",
       "stats": {
-        "attack": 1,
+        "attack": 2,
         "health": 10,
         "size": 1
       }
@@ -264,7 +264,7 @@
       "rarity": "rare",
       "effect": "Los hechizos dirigidos a enemigos pueden seleccionar esta unidad. Redirígelos al primer enemigo de su piso, o a todos si son de área. Recupera las [ember] gastadas. Sufre 10 de daño por cada [dazed] y después añade [dazed] 1.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "LightningRodSafety comparte elegibilidad de efecto enemigo raíz (no LastTargetedCharacters/Both aliado), UI y resolución. Feedback real: daño 10×Dazed previo, +Dazed 1 si sobrevive, devolución coste pagado. Preview: sin AddEnergy, daño/estados solo con TemporaryPreviewsEnabled. Managers del caller y restauración en finally. Regresiones CombatSafety; pendiente hover, fin de turno y Undo en Unity.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Wizard",
       "stats": {
@@ -291,7 +291,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Witch",
       "stats": {
-        "attack": 5,
+        "attack": 6,
         "health": 30,
         "size": 2
       },
@@ -337,7 +337,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Wizard",
       "stats": {
-        "attack": 15,
+        "attack": 16,
         "health": 15,
         "size": 1
       },
@@ -360,7 +360,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Witch",
       "stats": {
-        "attack": 15,
+        "attack": 16,
         "health": 20,
         "size": 2
       },
@@ -441,7 +441,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Wizard",
       "stats": {
-        "attack": 5,
+        "attack": 6,
         "health": 20,
         "size": 1
       },
@@ -540,7 +540,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Wizard",
       "stats": {
-        "attack": 5,
+        "attack": 6,
         "health": 12,
         "size": 2
       },
@@ -557,13 +557,13 @@
       },
       "cost": 2,
       "rarity": "uncommon",
-      "effect": "El primer hechizo de daño de cada turno le otorga tanto [attack] como el daño total que inflija, durante ese turno.",
+      "effect": "Obtiene [attack] igual al daño total que el primer hechizo de daño de cada turno inflija a enemigos, en cualquier piso, durante ese turno.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Daño total del primer hechizo de daño del turno a enemigos en cualquier piso; daño postmitigación nativo antes del límite de HP más armadura consumida. Incluye exceso; Damage Shield bloqueado cuenta 0. Contador independiente de daño efectivo de PhD/otras conversiones. Duración un turno. Pendiente partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Witch",
       "stats": {
-        "attack": 5,
+        "attack": 6,
         "health": 35,
         "size": 1
       },
@@ -586,7 +586,7 @@
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
       "subtype": "Witch",
       "stats": {
-        "attack": 25,
+        "attack": 26,
         "health": 25,
         "size": 2
       },
@@ -631,9 +631,9 @@
       },
       "cost": 2,
       "rarity": "rare",
-      "effect": "Aparta un hechizo de tu mano que pueda dirigirse a enemigos y elige una unidad aliada. Sus próximos tres ataques también juegan ese hechizo sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
+      "effect": "Aparta un hechizo de tu mano. Los próximos 3 ataques de esta unidad también lo lanzan: los perjudiciales al enemigo atacado y los beneficiosos a esta unidad. Elige bando para los ambiguos. Devuélvelo al descarte cuando termine el efecto.",
       "status": "implemented_unverified",
-      "implementation_note": "Selecciona hechizos cuyo equipo objetivo nativo incluya Heroes (incluye Both y área); no exige daño. OnlySpells nativo y GetTargetedTeamType se comprueban al validar, mostrar y confirmar. Pendiente prueba en partida. Marca visible ww_dissertation: cuenta ataques restantes (máximo entre vínculos); tooltip nativo del estado lista cada hechizo y su contador. Icono existente de reserva reutilizado, sin arte nuevo. Pendiente partida. Devuelve el original al descarte tras el tercer ataque completo o al morir la unidad. Usa RemoveFromStandByCondition y CheckStandByConditions nativos (puente a coroutine privada), sin cambiar coste, mejoras o rasgos. Sweep/Multistrike liberan después de la secuencia; ataques directos alternativos después de repetir. Sin mutación de pilas en preview. Pendiente partida.",
+      "implementation_note": "Admite hechizos aliados y enemigos con OnlySpells nativo. Los efectos de objetivo único con bando exclusivo mantienen ese bando. Los efectos Both se infieren con clases nativas de daño/curación, registro Conductor y DisplayCategory de estados; si son desconocidos o mezclan beneficio y perjuicio, DeckScreen nativo elige Allies/Enemies con dos CardState auxiliares fuera de cualquier pila. CheckTargetsOverride nativo recibe el portador o enemigo por efecto; áreas mantienen target_mode/team. Permite beneficios tras baja del enemigo. Tres ataques, retorno nativo al descarte y marca con hechizo/contador/bando. Pendiente prueba en partida, selección, replay y preview.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
     },
     {
@@ -753,7 +753,7 @@
       "rarity": "uncommon",
       "effect": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de la salud que le falte más [effect0.power].",
       "status": "implemented_unverified",
-      "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10 con ApplyHeal nativo.",
+      "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10. Hereda CardEffectHeal y se registra mediante Conductor.Utilities.MarkEffectAsHealEffect en Railend.ConfigurePostAction: piedras de poder aumentan solo la parte fija por GetParamInt nativo. La fracción de salud faltante no escala. Pendiente partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
     },
     {
@@ -873,7 +873,7 @@
       "rarity": "uncommon",
       "effect": "Devuelve una unidad aliada no campeón y su equipo a tu mano.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "CardEffectReturnUnitToHand nativo con los tres parámetros de retorno, exclusión de campeones y hide_tooltip=true como Magnetic Relay. Evita claves internas de tooltip sin traducir, sin alterar objetivos o retorno. Pendiente confirmación visual en partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
     },
     {

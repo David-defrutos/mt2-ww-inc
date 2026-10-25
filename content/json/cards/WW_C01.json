@@ -13,7 +13,8 @@
       "name": "@CardEffectAcademicWizardDraw",
       "param_card_filter": "OnlyDamageCardExcludeSpellsFromMagicPower",
       "param_int": 1,
-      "target_card_type": "spell"
+      "target_card_type": "spell",
+      "param_upgrade": "@WW_C01_NextUseUpgrade"
     }
   ],
   "cards": [
@@ -103,7 +104,7 @@
       "character_art": "@WW_C01CharacterArt",
       "size": 2,
       "health": 20,
-      "attack_damage": 5,
+      "attack_damage": 6,
       "subtypes": [
         "@WW_Wizard",
         "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"

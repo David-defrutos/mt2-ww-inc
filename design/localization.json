@@ -1843,13 +1843,13 @@
       "japanese": "毎ターン開始時、装備者が1[size]より大きければ-1[size]を付与し、攻撃と最大HPを10減らす。"
     },
     "Deal [effect0.power] damage.": {
-      "french": "Inflige [effect0.power] dégâts.",
-      "german": "Füge [effect0.power] Schaden zu.",
+      "french": "Infligez [effect0.power] dégâts.",
+      "german": "Verursache [effect0.power] Schaden.",
       "portuguese": "Causa [effect0.power] de dano.",
-      "russian": "Наносит [effect0.power] урона.",
+      "russian": "Нанесите [effect0.power] урона.",
       "chinese": "造成[effect0.power]点伤害。",
       "chinese_traditional": "造成[effect0.power]點傷害。",
-      "korean": "[effect0.power]의 피해를 줍니다.",
+      "korean": "[effect0.power] 피해를 줍니다.",
       "japanese": "[effect0.power]ダメージを与える。"
     },
     "Increase damage by [triggereffect0.power] permanently.": {
@@ -3752,6 +3752,1004 @@
       "chinese_traditional": "棄掉一張手牌中的法術、禍害或瘟疫。獲得等於其目前費用兩倍的[ember]。抽[effect1.power]張牌。",
       "korean": "손의 주문, 저주 또는 재앙를 버립니다. 현재 비용의 두 배만큼 [ember]를 얻습니다. [effect1.power]장을 뽑습니다.",
       "japanese": "手札の呪文、災厄、または災難を捨てる。現在のコストの2倍の[ember]を得る。[effect1.power]枚引く。"
+    },
+    "Incant: [armor] 3. [spikes] 1.": {
+      "french": "Incant: [armor] 3. [spikes] 1.",
+      "german": "Incant: [armor] 3. [spikes] 1.",
+      "portuguese": "Incant: [armor] 3. [spikes] 1.",
+      "russian": "Incant: [armor] 3. [spikes] 1.",
+      "chinese": "Incant: [armor] 3. [spikes] 1.",
+      "chinese_traditional": "Incant: [armor] 3. [spikes] 1.",
+      "korean": "Incant: [armor] 3. [spikes] 1.",
+      "japanese": "Incant: [armor] 3. [spikes] 1."
+    },
+    "[armor] 3. [spikes] 1.": {
+      "french": "[armor] 3. [spikes] 1.",
+      "german": "[armor] 3. [spikes] 1.",
+      "portuguese": "[armor] 3. [spikes] 1.",
+      "russian": "[armor] 3. [spikes] 1.",
+      "chinese": "[armor] 3. [spikes] 1.",
+      "chinese_traditional": "[armor] 3. [spikes] 1.",
+      "korean": "[armor] 3. [spikes] 1.",
+      "japanese": "[armor] 3. [spikes] 1."
+    },
+    "Incant: [armor] 6. [spikes] 2.": {
+      "french": "Incant: [armor] 6. [spikes] 2.",
+      "german": "Incant: [armor] 6. [spikes] 2.",
+      "portuguese": "Incant: [armor] 6. [spikes] 2.",
+      "russian": "Incant: [armor] 6. [spikes] 2.",
+      "chinese": "Incant: [armor] 6. [spikes] 2.",
+      "chinese_traditional": "Incant: [armor] 6. [spikes] 2.",
+      "korean": "Incant: [armor] 6. [spikes] 2.",
+      "japanese": "Incant: [armor] 6. [spikes] 2."
+    },
+    "[armor] 6. [spikes] 2.": {
+      "french": "[armor] 6. [spikes] 2.",
+      "german": "[armor] 6. [spikes] 2.",
+      "portuguese": "[armor] 6. [spikes] 2.",
+      "russian": "[armor] 6. [spikes] 2.",
+      "chinese": "[armor] 6. [spikes] 2.",
+      "chinese_traditional": "[armor] 6. [spikes] 2.",
+      "korean": "[armor] 6. [spikes] 2.",
+      "japanese": "[armor] 6. [spikes] 2."
+    },
+    "Incant: [armor] 12. [spikes] 4.": {
+      "french": "Incant: [armor] 12. [spikes] 4.",
+      "german": "Incant: [armor] 12. [spikes] 4.",
+      "portuguese": "Incant: [armor] 12. [spikes] 4.",
+      "russian": "Incant: [armor] 12. [spikes] 4.",
+      "chinese": "Incant: [armor] 12. [spikes] 4.",
+      "chinese_traditional": "Incant: [armor] 12. [spikes] 4.",
+      "korean": "Incant: [armor] 12. [spikes] 4.",
+      "japanese": "Incant: [armor] 12. [spikes] 4."
+    },
+    "[armor] 12. [spikes] 4.": {
+      "french": "[armor] 12. [spikes] 4.",
+      "german": "[armor] 12. [spikes] 4.",
+      "portuguese": "[armor] 12. [spikes] 4.",
+      "russian": "[armor] 12. [spikes] 4.",
+      "chinese": "[armor] 12. [spikes] 4.",
+      "chinese_traditional": "[armor] 12. [spikes] 4.",
+      "korean": "[armor] 12. [spikes] 4.",
+      "japanese": "[armor] 12. [spikes] 4."
+    },
+    "[mageblade] +1 per Wizard in the train.": {
+      "french": "[mageblade] +1 par sorcier vivant dans le train.",
+      "german": "[mageblade] +1 je lebendem Magier im Zug.",
+      "portuguese": "[mageblade] +1 por Mago vivo no trem.",
+      "russian": "[mageblade] +1 за каждого живого мага в поезде.",
+      "chinese": "列车每个男巫提供 [mageblade] +1。",
+      "chinese_traditional": "列車每個男巫提供 [mageblade] +1。",
+      "korean": "열차의 마법사당 [mageblade] +1.",
+      "japanese": "列車内の魔法使いごとに[mageblade] +1。"
+    },
+    "[mageblade] +2 per Wizard in the train.": {
+      "french": "[mageblade] +2 par sorcier vivant dans le train.",
+      "german": "[mageblade] +2 je lebendem Magier im Zug.",
+      "portuguese": "[mageblade] +2 por Mago vivo no trem.",
+      "russian": "[mageblade] +2 за каждого живого мага в поезде.",
+      "chinese": "列车每个男巫提供 [mageblade] +2。",
+      "chinese_traditional": "列車每個男巫提供 [mageblade] +2。",
+      "korean": "열차의 마법사당 [mageblade] +2.",
+      "japanese": "列車内の魔法使いごとに[mageblade] +2。"
+    },
+    "[mageblade] +3 per Wizard in the train.": {
+      "french": "[mageblade] +3 par sorcier vivant dans le train.",
+      "german": "[mageblade] +3 je lebendem Magier im Zug.",
+      "portuguese": "[mageblade] +3 por Mago vivo no trem.",
+      "russian": "[mageblade] +3 за каждого живого мага в поезде.",
+      "chinese": "列车每个男巫提供 [mageblade] +3。",
+      "chinese_traditional": "列車每個男巫提供 [mageblade] +3。",
+      "korean": "열차의 마법사당 [mageblade] +3.",
+      "japanese": "列車内の魔法使いごとに[mageblade] +3。"
+    },
+    "Extra Credit": {
+      "french": "Crédit supplémentaire",
+      "german": "Zusatzleistung",
+      "portuguese": "Crédito Extra",
+      "russian": "Дополнительный зачёт",
+      "chinese": "额外学分",
+      "chinese_traditional": "額外學分",
+      "korean": "추가 학점",
+      "japanese": "追加単位"
+    },
+    "Deal [effect0.power] damage to an enemy unit. Kills count as kills by its creator.": {
+      "french": "Inflige [effect0.power] dégâts à une unité ennemie. Les éliminations sont attribuées à sa créatrice.",
+      "german": "Füge einer gegnerischen Einheit [effect0.power] Schaden zu. Tötungen zählen für seine Erschafferin.",
+      "portuguese": "Causa [effect0.power] de dano a uma unidade inimiga. As eliminações contam para sua criadora.",
+      "russian": "Наносит врагу [effect0.power] урона. Убийства засчитываются создательнице.",
+      "chinese": "对一个敌方单位造成[effect0.power]点伤害。 击杀归于创造者。",
+      "chinese_traditional": "對一個敵方單位造成[effect0.power]點傷害。 擊殺歸於創造者。",
+      "korean": "적 유닛 하나에게 [effect0.power]의 피해를 줍니다. 처치는 생성자의 처치로 계산됩니다.",
+      "japanese": "敵ユニット1体に[effect0.power]ダメージを与える。 撃破は作成者の撃破として扱われる。"
+    },
+    "Slay: Add an Extra Credit with 100% of the excess damage to your hand.": {
+      "french": "Slay : Ajoutez en main un Crédit supplémentaire avec 100% des dégâts excédentaires.",
+      "german": "Slay: Füge deiner Hand eine Zusatzleistung mit 100% des überschüssigen Schadens hinzu.",
+      "portuguese": "Slay: Adiciona à mão um Crédito Extra com 100% do dano excedente.",
+      "russian": "Slay: Добавьте в руку Дополнительный зачёт с 100% избыточного урона.",
+      "chinese": "Slay：将一张伤害为溢出伤害100%的额外学分加入手牌。",
+      "chinese_traditional": "Slay：將一張傷害為溢出傷害100%的額外學分加入手牌。",
+      "korean": "Slay: 초과 피해의 100%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Slay: 超過ダメージの100%の威力を持つ追加単位を手札に加える。"
+    },
+    "Slay: Add an Extra Credit with 150% of the excess damage to your hand.": {
+      "french": "Slay : Ajoutez en main un Crédit supplémentaire avec 150% des dégâts excédentaires.",
+      "german": "Slay: Füge deiner Hand eine Zusatzleistung mit 150% des überschüssigen Schadens hinzu.",
+      "portuguese": "Slay: Adiciona à mão um Crédito Extra com 150% do dano excedente.",
+      "russian": "Slay: Добавьте в руку Дополнительный зачёт с 150% избыточного урона.",
+      "chinese": "Slay：将一张伤害为溢出伤害150%的额外学分加入手牌。",
+      "chinese_traditional": "Slay：將一張傷害為溢出傷害150%的額外學分加入手牌。",
+      "korean": "Slay: 초과 피해의 150%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Slay: 超過ダメージの150%の威力を持つ追加単位を手札に加える。"
+    },
+    "Slay: Add an Extra Credit with 200% of the excess damage to your hand.": {
+      "french": "Slay : Ajoutez en main un Crédit supplémentaire avec 200% des dégâts excédentaires.",
+      "german": "Slay: Füge deiner Hand eine Zusatzleistung mit 200% des überschüssigen Schadens hinzu.",
+      "portuguese": "Slay: Adiciona à mão um Crédito Extra com 200% do dano excedente.",
+      "russian": "Slay: Добавьте в руку Дополнительный зачёт с 200% избыточного урона.",
+      "chinese": "Slay：将一张伤害为溢出伤害200%的额外学分加入手牌。",
+      "chinese_traditional": "Slay：將一張傷害為溢出傷害200%的額外學分加入手牌。",
+      "korean": "Slay: 초과 피해의 200%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Slay: 超過ダメージの200%の威力を持つ追加単位を手札に加える。"
+    },
+    "Add an Extra Credit with 100% of the excess damage to your hand.": {
+      "french": "Ajoutez en main un Crédit supplémentaire avec 100% des dégâts excédentaires.",
+      "german": "Füge deiner Hand eine Zusatzleistung mit 100% des überschüssigen Schadens hinzu.",
+      "portuguese": "Adiciona à mão um Crédito Extra com 100% do dano excedente.",
+      "russian": "Добавьте в руку Дополнительный зачёт с 100% избыточного урона.",
+      "chinese": "将一张伤害为溢出伤害100%的额外学分加入手牌。",
+      "chinese_traditional": "將一張傷害為溢出傷害100%的額外學分加入手牌。",
+      "korean": "초과 피해의 100%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "超過ダメージの100%の威力を持つ追加単位を手札に加える。"
+    },
+    "Overdamage: Add an Extra Credit with 100% of the excess damage to your hand.": {
+      "french": "Overdamage: Ajoutez en main un Crédit supplémentaire avec 100% des dégâts excédentaires.",
+      "german": "Overdamage: Füge deiner Hand eine Zusatzleistung mit 100% des überschüssigen Schadens hinzu.",
+      "portuguese": "Overdamage: Adiciona à mão um Crédito Extra com 100% do dano excedente.",
+      "russian": "Overdamage: Добавьте в руку Дополнительный зачёт с 100% избыточного урона.",
+      "chinese": "Overdamage: 将一张伤害为溢出伤害100%的额外学分加入手牌。",
+      "chinese_traditional": "Overdamage: 將一張傷害為溢出傷害100%的額外學分加入手牌。",
+      "korean": "Overdamage: 초과 피해의 100%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Overdamage: 超過ダメージの100%の威力を持つ追加単位を手札に加える。"
+    },
+    "Add an Extra Credit with 150% of the excess damage to your hand.": {
+      "french": "Ajoutez en main un Crédit supplémentaire avec 150% des dégâts excédentaires.",
+      "german": "Füge deiner Hand eine Zusatzleistung mit 150% des überschüssigen Schadens hinzu.",
+      "portuguese": "Adiciona à mão um Crédito Extra com 150% do dano excedente.",
+      "russian": "Добавьте в руку Дополнительный зачёт с 150% избыточного урона.",
+      "chinese": "将一张伤害为溢出伤害150%的额外学分加入手牌。",
+      "chinese_traditional": "將一張傷害為溢出傷害150%的額外學分加入手牌。",
+      "korean": "초과 피해의 150%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "超過ダメージの150%の威力を持つ追加単位を手札に加える。"
+    },
+    "Overdamage: Add an Extra Credit with 150% of the excess damage to your hand.": {
+      "french": "Overdamage: Ajoutez en main un Crédit supplémentaire avec 150% des dégâts excédentaires.",
+      "german": "Overdamage: Füge deiner Hand eine Zusatzleistung mit 150% des überschüssigen Schadens hinzu.",
+      "portuguese": "Overdamage: Adiciona à mão um Crédito Extra com 150% do dano excedente.",
+      "russian": "Overdamage: Добавьте в руку Дополнительный зачёт с 150% избыточного урона.",
+      "chinese": "Overdamage: 将一张伤害为溢出伤害150%的额外学分加入手牌。",
+      "chinese_traditional": "Overdamage: 將一張傷害為溢出傷害150%的額外學分加入手牌。",
+      "korean": "Overdamage: 초과 피해의 150%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Overdamage: 超過ダメージの150%の威力を持つ追加単位を手札に加える。"
+    },
+    "Add an Extra Credit with 200% of the excess damage to your hand.": {
+      "french": "Ajoutez en main un Crédit supplémentaire avec 200% des dégâts excédentaires.",
+      "german": "Füge deiner Hand eine Zusatzleistung mit 200% des überschüssigen Schadens hinzu.",
+      "portuguese": "Adiciona à mão um Crédito Extra com 200% do dano excedente.",
+      "russian": "Добавьте в руку Дополнительный зачёт с 200% избыточного урона.",
+      "chinese": "将一张伤害为溢出伤害200%的额外学分加入手牌。",
+      "chinese_traditional": "將一張傷害為溢出傷害200%的額外學分加入手牌。",
+      "korean": "초과 피해의 200%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "超過ダメージの200%の威力を持つ追加単位を手札に加える。"
+    },
+    "Overdamage: Add an Extra Credit with 200% of the excess damage to your hand.": {
+      "french": "Overdamage: Ajoutez en main un Crédit supplémentaire avec 200% des dégâts excédentaires.",
+      "german": "Overdamage: Füge deiner Hand eine Zusatzleistung mit 200% des überschüssigen Schadens hinzu.",
+      "portuguese": "Overdamage: Adiciona à mão um Crédito Extra com 200% do dano excedente.",
+      "russian": "Overdamage: Добавьте в руку Дополнительный зачёт с 200% избыточного урона.",
+      "chinese": "Overdamage: 将一张伤害为溢出伤害200%的额外学分加入手牌。",
+      "chinese_traditional": "Overdamage: 將一張傷害為溢出傷害200%的額外學分加入手牌。",
+      "korean": "Overdamage: 초과 피해의 200%만큼 피해를 주는 추가 학점을 손에 추가합니다.",
+      "japanese": "Overdamage: 超過ダメージの200%の威力を持つ追加単位を手札に加える。"
+    },
+    "Overdamage": {
+      "french": "Dégâts excédentaires",
+      "german": "Überschaden",
+      "portuguese": "Dano excedente",
+      "russian": "Избыточный урон",
+      "chinese": "溢出伤害",
+      "chinese_traditional": "溢出傷害",
+      "korean": "초과 피해",
+      "japanese": "超過ダメージ"
+    },
+    "Triggers when this unit kills an enemy with an attack that deals excess damage. The effect uses the excess damage.": {
+      "french": "Se déclenche quand cette unité tue un ennemi avec des dégâts d’attaque excédentaires. L’effet utilise les dégâts excédentaires.",
+      "german": "Wird ausgelöst, wenn diese Einheit einen Gegner mit überschüssigem Angriffsschaden tötet. Der Effekt nutzt den überschüssigen Schaden.",
+      "portuguese": "Ativa quando esta unidade mata um inimigo com dano de ataque excedente. O efeito usa o dano excedente.",
+      "russian": "Срабатывает, когда боец убивает врага атакой с избыточным уроном. Эффект использует избыточный урон.",
+      "chinese": "此单位以攻击击杀敌人并造成溢出伤害时触发。效果使用溢出伤害量。",
+      "chinese_traditional": "此單位以攻擊擊殺敵人並造成溢出傷害時觸發。效果使用溢出傷害量。",
+      "korean": "이 유닛이 공격으로 적을 처치하고 피해가 남으면 발동합니다. 효과는 초과 피해량을 사용합니다.",
+      "japanese": "このユニットが攻撃で敵を倒し、ダメージが超過すると発動する。効果には超過ダメージを使う。"
+    },
+    "Add 100% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "手札の追加単位に超過ダメージの100%を加える。なければ作成する。"
+    },
+    "Overdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Overdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Overdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Overdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Overdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "Overdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "Overdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "Overdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "Overdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。"
+    },
+    "Add 150% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Ajoutez 150% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Füge 150% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Adiciona 150% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Добавьте 150% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "将溢出伤害的150%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "將溢出傷害的150%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "초과 피해의 150%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "手札の追加単位に超過ダメージの150%を加える。なければ作成する。"
+    },
+    "Overdamage: Add 150% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Overdamage: Ajoutez 150% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Overdamage: Füge 150% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Overdamage: Adiciona 150% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Overdamage: Добавьте 150% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "Overdamage: 将溢出伤害的150%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "Overdamage: 將溢出傷害的150%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "Overdamage: 초과 피해의 150%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "Overdamage: 手札の追加単位に超過ダメージの150%を加える。なければ作成する。"
+    },
+    "Add 200% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Ajoutez 200% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Füge 200% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Adiciona 200% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Добавьте 200% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "将溢出伤害的200%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "將溢出傷害的200%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "초과 피해의 200%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "手札の追加単位に超過ダメージの200%を加える。なければ作成する。"
+    },
+    "Overdamage: Add 200% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Overdamage: Ajoutez 200% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Overdamage: Füge 200% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Overdamage: Adiciona 200% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Overdamage: Добавьте 200% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "Overdamage: 将溢出伤害的200%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "Overdamage: 將溢出傷害的200%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "Overdamage: 초과 피해의 200%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "Overdamage: 手札の追加単位に超過ダメージの200%を加える。なければ作成する。"
+    },
+    "MineMineMine": {
+      "french": "ÀMoiÀMoi",
+      "german": "MeinsMeinsMeins",
+      "portuguese": "MeuMeuMeu",
+      "russian": "МоёМоёМоё",
+      "chinese": "我的我的我的",
+      "chinese_traditional": "我的我的我的",
+      "korean": "내꺼내꺼",
+      "japanese": "私の私の私の"
+    },
+    "Spell kills on this floor count as this unit’s kills. If multiple units have MineMineMine, the frontmost one claims them.": {
+      "french": "Les éliminations par sorts à cet étage comptent pour cette unité. Si plusieurs unités ont ÀMoiÀMoi, celle de devant les réclame.",
+      "german": "Zaubertötungen auf dieser Ebene zählen für diese Einheit. Bei mehreren Einheiten mit MeinsMeinsMeins erhält sie die vorderste.",
+      "portuguese": "As eliminações por feitiços neste piso contam para esta unidade. Se várias unidades tiverem MeuMeuMeu, a mais à frente recebe as eliminações.",
+      "russian": "Убийства заклинаниями на этом этаже засчитываются этому бойцу. Если таких бойцов несколько, убийство получает первый спереди.",
+      "chinese": "本层法术击杀归于此单位。若多个单位拥有此能力，则归于其中最靠前的单位。",
+      "chinese_traditional": "本層法術擊殺歸於此單位。若多個單位擁有此能力，則歸於其中最靠前的單位。",
+      "korean": "이 층의 주문 처치는 이 유닛의 처치로 계산됩니다. 여러 유닛이 보유하면 가장 앞에 있는 보유자가 차지합니다.",
+      "japanese": "この階の呪文による撃破はこのユニットの撃破として扱う。複数の所持者がいる場合、最前列の所持者が獲得する。"
+    },
+    "Claim spell kills on this floor.": {
+      "french": "Réclame les éliminations par sorts à cet étage.",
+      "german": "Beanspruche Zaubertötungen auf dieser Ebene.",
+      "portuguese": "Reivindica as eliminações por feitiços neste piso.",
+      "russian": "Присваивает убийства заклинаниями на этом этаже.",
+      "chinese": "获得本层法术击杀的归属。",
+      "chinese_traditional": "獲得本層法術擊殺的歸屬。",
+      "korean": "이 층의 주문 처치를 차지합니다.",
+      "japanese": "この階の呪文による撃破を獲得する。"
+    },
+    "Incant: [armor] 3. [spikes] 1.\nOverheal: Deal damage to all enemies equal to the excess healing.": {
+      "french": "Incant: [armor] 3. [spikes] 1.\nSursoin: Inflige à tous les ennemis des dégâts égaux aux soins excédentaires.",
+      "german": "Incant: [armor] 3. [spikes] 1.\nÜberheilung: Füge allen Gegnern Schaden in Höhe der überschüssigen Heilung zu.",
+      "portuguese": "Incant: [armor] 3. [spikes] 1.\nSobrecura: Causa dano a todos os inimigos igual à cura excedente.",
+      "russian": "Incant: [armor] 3. [spikes] 1.\nИзбыточное лечение: Наносит всем врагам урон в размере избытка лечения.",
+      "chinese": "Incant: [armor] 3. [spikes] 1.\n过量治疗: 对所有敌人造成等于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 3. [spikes] 1.\n過量治療: 對所有敵人造成等於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 3. [spikes] 1.\n초과 치유: 초과 치유량만큼 모든 적에게 피해를 줍니다.",
+      "japanese": "Incant: [armor] 3. [spikes] 1.\n過剰回復: 超過回復量と同じダメージをすべての敵に与える。"
+    },
+    "Incant: [armor] 6. [spikes] 2.\nOverheal: Deal damage to all enemies equal to the excess healing.": {
+      "french": "Incant: [armor] 6. [spikes] 2.\nSursoin: Inflige à tous les ennemis des dégâts égaux aux soins excédentaires.",
+      "german": "Incant: [armor] 6. [spikes] 2.\nÜberheilung: Füge allen Gegnern Schaden in Höhe der überschüssigen Heilung zu.",
+      "portuguese": "Incant: [armor] 6. [spikes] 2.\nSobrecura: Causa dano a todos os inimigos igual à cura excedente.",
+      "russian": "Incant: [armor] 6. [spikes] 2.\nИзбыточное лечение: Наносит всем врагам урон в размере избытка лечения.",
+      "chinese": "Incant: [armor] 6. [spikes] 2.\n过量治疗: 对所有敌人造成等于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 6. [spikes] 2.\n過量治療: 對所有敵人造成等於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 6. [spikes] 2.\n초과 치유: 초과 치유량만큼 모든 적에게 피해를 줍니다.",
+      "japanese": "Incant: [armor] 6. [spikes] 2.\n過剰回復: 超過回復量と同じダメージをすべての敵に与える。"
+    },
+    "Incant: [armor] 12. [spikes] 4.\nOverheal: Deal damage to all enemies equal to the excess healing.": {
+      "french": "Incant: [armor] 12. [spikes] 4.\nSursoin: Inflige à tous les ennemis des dégâts égaux aux soins excédentaires.",
+      "german": "Incant: [armor] 12. [spikes] 4.\nÜberheilung: Füge allen Gegnern Schaden in Höhe der überschüssigen Heilung zu.",
+      "portuguese": "Incant: [armor] 12. [spikes] 4.\nSobrecura: Causa dano a todos os inimigos igual à cura excedente.",
+      "russian": "Incant: [armor] 12. [spikes] 4.\nИзбыточное лечение: Наносит всем врагам урон в размере избытка лечения.",
+      "chinese": "Incant: [armor] 12. [spikes] 4.\n过量治疗: 对所有敌人造成等于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 12. [spikes] 4.\n過量治療: 對所有敵人造成等於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 12. [spikes] 4.\n초과 치유: 초과 치유량만큼 모든 적에게 피해를 줍니다.",
+      "japanese": "Incant: [armor] 12. [spikes] 4.\n過剰回復: 超過回復量と同じダメージをすべての敵に与える。"
+    },
+    "Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.": {
+      "french": "Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned.",
+      "german": "Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned.",
+      "portuguese": "Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned.",
+      "russian": "Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+      "chinese": "将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned。",
+      "chinese_traditional": "將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned。",
+      "korean": "초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+      "japanese": "手札の追加単位に超過ダメージの100%を加える。なければ作成する。Attunedを付与する。"
+    },
+    "Overdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.": {
+      "french": "Overdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned.",
+      "german": "Overdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned.",
+      "portuguese": "Overdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned.",
+      "russian": "Overdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+      "chinese": "Overdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned。",
+      "chinese_traditional": "Overdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned。",
+      "korean": "Overdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+      "japanese": "Overdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。Attunedを付与する。"
+    },
+    "Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.": {
+      "french": "Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned et Explosive.",
+      "german": "Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned und Explosive.",
+      "portuguese": "Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned e Explosive.",
+      "russian": "Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+      "chinese": "将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned和Explosive。",
+      "chinese_traditional": "將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned和Explosive。",
+      "korean": "초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+      "japanese": "手札の追加単位に超過ダメージの100%を加える。なければ作成する。AttunedとExplosiveを付与する。"
+    },
+    "Overdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.": {
+      "french": "Overdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned et Explosive.",
+      "german": "Overdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned und Explosive.",
+      "portuguese": "Overdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned e Explosive.",
+      "russian": "Overdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+      "chinese": "Overdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned和Explosive。",
+      "chinese_traditional": "Overdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned和Explosive。",
+      "korean": "Overdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+      "japanese": "Overdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。AttunedとExplosiveを付与する。"
+    },
+    "Incant: +5 Attack.\nOverdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Incant: +5 attaque.\nOverdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Incant: +5 Angriff.\nOverdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Incant: +5 de Ataque.\nOverdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Incant: +5 атаки.\nOverdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "Incant: 攻击 +5。\nOverdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "Incant: 攻擊 +5。\nOverdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "Incant: 공격력 +5.\nOverdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "Incant: 攻撃+5。\nOverdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。"
+    },
+    "Incant: +10 Attack.\nOverdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.": {
+      "french": "Incant: +10 attaque.\nOverdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned.",
+      "german": "Incant: +10 Angriff.\nOverdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned.",
+      "portuguese": "Incant: +10 de Ataque.\nOverdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned.",
+      "russian": "Incant: +10 атаки.\nOverdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+      "chinese": "Incant: 攻击 +10。\nOverdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned。",
+      "chinese_traditional": "Incant: 攻擊 +10。\nOverdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned。",
+      "korean": "Incant: 공격력 +10.\nOverdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+      "japanese": "Incant: 攻撃+10。\nOverdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。Attunedを付与する。"
+    },
+    "Incant: +20 Attack.\nOverdamage: Add 100% of the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.": {
+      "french": "Incant: +20 attaque.\nOverdamage: Ajoutez 100% des dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Confère-lui Attuned et Explosive.",
+      "german": "Incant: +20 Angriff.\nOverdamage: Füge 100% des überschüssigen Schadens einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Verleihe ihr Attuned und Explosive.",
+      "portuguese": "Incant: +20 de Ataque.\nOverdamage: Adiciona 100% do dano excedente a Crédito Extra na mão. Cria um se necessário. Concede Attuned e Explosive.",
+      "russian": "Incant: +20 атаки.\nOverdamage: Добавьте 100% избыточного урона к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+      "chinese": "Incant: 攻击 +20。\nOverdamage: 将溢出伤害的100%加到手牌中额外学分的伤害上。若没有，则创建一张。使其获得Attuned和Explosive。",
+      "chinese_traditional": "Incant: 攻擊 +20。\nOverdamage: 將溢出傷害的100%加到手牌中額外學分的傷害上。若沒有，則建立一張。使其獲得Attuned和Explosive。",
+      "korean": "Incant: 공격력 +20.\nOverdamage: 초과 피해의 100%를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+      "japanese": "Incant: 攻撃+20。\nOverdamage: 手札の追加単位に超過ダメージの100%を加える。なければ作成する。AttunedとExplosiveを付与する。"
+    },
+    "Set aside a spell in hand. This unit’s next 3 attacks also cast it: harmful spells on the attacked enemy, beneficial spells on this unit. Choose a side for ambiguous spells. Return it to the discard pile when the effect ends.": {
+      "spanish": "Aparta un hechizo de tu mano. Los próximos 3 ataques de esta unidad también lo lanzan: los perjudiciales al enemigo atacado y los beneficiosos a esta unidad. Elige bando para los ambiguos. Devuélvelo al descarte cuando termine el efecto.",
+      "french": "Mettez de côté un sort en main. Les 3 prochaines attaques de cette unité le lancent aussi : les sorts nuisibles sur l’ennemi attaqué, les bénéfiques sur cette unité. Choisissez le camp des sorts ambigus. Remettez-le dans la défausse lorsque l’effet prend fin.",
+      "german": "Lege einen Handzauber beiseite. Die nächsten 3 Angriffe dieser Einheit wirken ihn zusätzlich: schädliche Zauber auf den angegriffenen Gegner, hilfreiche auf diese Einheit. Wähle bei unklaren Zaubern eine Seite. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
+      "portuguese": "Reserve um feitiço da mão. Os próximos 3 ataques desta unidade também o lançam: os nocivos no inimigo atacado e os benéficos nesta unidade. Escolha um lado para os ambíguos. Devolva-o à pilha de descarte quando o efeito terminar.",
+      "russian": "Отложите заклинание из руки. Следующие 3 атаки этой единицы также применяют его: вредное — к атакуемому врагу, полезное — к этой единице. Для неоднозначных выберите сторону. Верните его в сброс, когда эффект закончится.",
+      "chinese": "暂存一个手牌法术。此单位接下来的3次攻击也会施放该法术：有害法术作用于被攻击的敌人，有益法术作用于此单位。模糊法术可选择目标阵营。效果结束后，将其放回弃牌堆。",
+      "chinese_traditional": "暫存一個手牌法術。此單位接下來的3次攻擊也會施放該法術：有害法術作用於被攻擊的敵人，有益法術作用於此單位。模糊法術可選擇目標陣營。效果結束後，將其放回棄牌堆。",
+      "korean": "손의 주문 하나를 보관합니다. 이 유닛의 다음 공격 3회는 해로운 주문을 공격한 적에게, 이로운 주문을 이 유닛에게 추가로 사용합니다. 모호한 주문은 진영을 선택합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+      "japanese": "手札の呪文を取り置く。このユニットの次の3回の攻撃は、有害な呪文を攻撃した敵に、有益な呪文をこのユニットに追加で使用する。曖昧な呪文は対象陣営を選ぶ。効果が終わると、その呪文を捨て札に戻す。"
+    },
+    "Each attack also casts the bound spells. Harmful spells target the attacked enemy; beneficial spells target this unit. Ambiguous spells use the chosen side. Area effects keep their original targets. Return the spells to the discard pile when the effect ends.": {
+      "spanish": "Cada ataque también lanza los hechizos vinculados. Los perjudiciales van al enemigo atacado y los beneficiosos a esta unidad. Los ambiguos usan el bando elegido. Los efectos de área conservan sus objetivos. Devuelve los hechizos al descarte cuando termine el efecto.",
+      "french": "Chaque attaque lance aussi les sorts liés. Les nuisibles ciblent l’ennemi attaqué, les bénéfiques cette unité. Les ambigus utilisent le camp choisi. Les effets de zone conservent leurs cibles. Remettez les sorts dans la défausse lorsque l’effet prend fin.",
+      "german": "Jeder Angriff wirkt auch die gebundenen Zauber. Schädliche zielen auf den angegriffenen Gegner, hilfreiche auf diese Einheit. Unklare nutzen die gewählte Seite. Flächeneffekte behalten ihre Ziele. Lege die Zauber auf den Ablagestapel zurück, wenn der Effekt endet.",
+      "portuguese": "Cada ataque também lança os feitiços vinculados. Os nocivos visam o inimigo atacado, os benéficos esta unidade. Os ambíguos usam o lado escolhido. Efeitos de área mantêm seus alvos. Devolva os feitiços ao descarte quando o efeito terminar.",
+      "russian": "Каждая атака также применяет привязанные заклинания. Вредные выбирают атакуемого врага, полезные — эту единицу. Неоднозначные используют выбранную сторону. Массовые эффекты сохраняют свои цели. Верните заклинания в сброс, когда эффект закончится.",
+      "chinese": "每次攻击也会施放绑定的法术。有害法术指定被攻击的敌人，有益法术指定此单位，模糊法术使用所选阵营。范围效果保留原本的目标。效果结束后，将法术放回弃牌堆。",
+      "chinese_traditional": "每次攻擊也會施放綁定的法術。有害法術指定被攻擊的敵人，有益法術指定此單位，模糊法術使用所選陣營。範圍效果保留原本的目標。效果結束後，將法術放回棄牌堆。",
+      "korean": "각 공격은 연결된 주문도 사용합니다. 해로운 주문은 공격한 적을, 이로운 주문은 이 유닛을 대상으로 합니다. 모호한 주문은 선택한 진영을 사용합니다. 광역 효과는 원래 대상을 유지합니다. 효과가 끝나면 주문을 버린 카드 더미로 돌려보냅니다.",
+      "japanese": "各攻撃は結び付けた呪文も使用する。有害な呪文は攻撃した敵、有益な呪文はこのユニット、曖昧な呪文は選んだ陣営を対象にする。範囲効果は元の対象を保つ。効果が終わると、呪文を捨て札に戻す。"
+    },
+    "Allies": {
+      "spanish": "Aliados",
+      "french": "Alliés",
+      "german": "Verbündete",
+      "portuguese": "Aliados",
+      "russian": "Союзники",
+      "chinese": "友方",
+      "chinese_traditional": "友方",
+      "korean": "아군",
+      "japanese": "味方"
+    },
+    "Enemies": {
+      "spanish": "Enemigos",
+      "french": "Ennemis",
+      "german": "Gegner",
+      "portuguese": "Inimigos",
+      "russian": "Враги",
+      "chinese": "敌方",
+      "chinese_traditional": "敵方",
+      "korean": "적",
+      "japanese": "敵"
+    },
+    "Choose a side for the bound spell.": {
+      "spanish": "Elige un bando para el hechizo vinculado.",
+      "french": "Choisissez un camp pour le sort lié.",
+      "german": "Wähle eine Seite für den gebundenen Zauber.",
+      "portuguese": "Escolha um lado para o feitiço vinculado.",
+      "russian": "Выберите сторону для привязанного заклинания.",
+      "chinese": "选择绑定法术的目标阵营。",
+      "chinese_traditional": "選擇綁定法術的目標陣營。",
+      "korean": "연결된 주문의 대상 진영을 선택하세요.",
+      "japanese": "結び付けた呪文の対象陣営を選ぶ。"
+    },
+    "Use this unit as the target for effects that can target either side.": {
+      "spanish": "Usa esta unidad como objetivo de los efectos que admitan ambos bandos.",
+      "french": "Les effets pouvant cibler les deux camps ciblent cette unité.",
+      "german": "Effekte, die beide Seiten anvisieren können, zielen auf diese Einheit.",
+      "portuguese": "Use esta unidade como alvo de efeitos que aceitam ambos os lados.",
+      "russian": "Эффекты, допускающие обе стороны, выбирают целью эту единицу.",
+      "chinese": "可指定任意阵营的效果以此单位为目标。",
+      "chinese_traditional": "可指定任意陣營的效果以此單位為目標。",
+      "korean": "양쪽 진영을 대상으로 할 수 있는 효과가 이 유닛을 대상으로 합니다.",
+      "japanese": "両陣営を対象にできる効果は、このユニットを対象にする。"
+    },
+    "Use the attacked enemy as the target for effects that can target either side.": {
+      "spanish": "Usa al enemigo atacado como objetivo de los efectos que admitan ambos bandos.",
+      "french": "Les effets pouvant cibler les deux camps ciblent l’ennemi attaqué.",
+      "german": "Effekte, die beide Seiten anvisieren können, zielen auf den angegriffenen Gegner.",
+      "portuguese": "Use o inimigo atacado como alvo de efeitos que aceitam ambos os lados.",
+      "russian": "Эффекты, допускающие обе стороны, выбирают целью атакуемого врага.",
+      "chinese": "可指定任意阵营的效果以被攻击的敌人为目标。",
+      "chinese_traditional": "可指定任意陣營的效果以被攻擊的敵人為目標。",
+      "korean": "양쪽 진영을 대상으로 할 수 있는 효과가 공격한 적을 대상으로 합니다.",
+      "japanese": "両陣営を対象にできる効果は、攻撃した敵を対象にする。"
+    },
+    "Gain [attack] equal to the total damage dealt to enemies by the first damage spell each turn, on any floor, for that turn.": {
+      "spanish": "Obtiene [attack] igual al daño total que el primer hechizo de daño de cada turno inflija a enemigos, en cualquier piso, durante ese turno.",
+      "french": "Gagne pour ce tour une [attack] égale aux dégâts totaux infligés aux ennemis par le premier sort de dégâts du tour, à n’importe quel étage.",
+      "german": "Erhält für diese Runde [attack] in Höhe des gesamten Schadens, den der erste Schadenszauber dieser Runde Gegnern auf beliebigen Ebenen zufügt.",
+      "portuguese": "Ganha [attack] igual ao dano total causado a inimigos pelo primeiro feitiço de dano de cada turno, em qualquer andar, durante esse turno.",
+      "russian": "На этот ход получает [attack], равную суммарному урону врагам от первого заклинания урона за ход на любом этаже.",
+      "chinese": "本回合获得[attack]，数值等于本回合首个伤害法术在任意楼层对敌人造成的总伤害。",
+      "chinese_traditional": "本回合獲得[attack]，數值等於本回合首個傷害法術在任意樓層對敵人造成的總傷害。",
+      "korean": "매 턴 첫 피해 주문이 어느 층에서든 적에게 준 총 피해만큼 이번 턴 [attack]을 얻습니다.",
+      "japanese": "毎ターン最初のダメージ呪文が、いずれかの階で敵に与えた合計ダメージに等しい[attack]をそのターン得る。"
+    },
+    "Spells have +15 [magicpower] per adjacent Wizard–Witch pair.": {
+      "french": "Les sorts ont +15 [magicpower] par paire adjacente de sorcier et sorcière.",
+      "german": "Zauber haben +15 [magicpower] pro benachbartem Magier-Hexen-Paar.",
+      "portuguese": "Feitiços têm +15 [magicpower] por par adjacente de Mago e Bruxa.",
+      "russian": "Заклинания получают +15 [magicpower] за каждую соседнюю пару мага и ведьмы.",
+      "chinese": "每对相邻男巫和女巫使法术获得+15 [magicpower]。",
+      "chinese_traditional": "每對相鄰男巫和女巫使法術獲得+15 [magicpower]。",
+      "korean": "인접한 마법사와 마녀 쌍마다 주문이 +15 [magicpower]를 얻습니다.",
+      "japanese": "隣接する魔法使いと魔女のペアごとに、呪文は+15[magicpower]を得る。"
+    },
+    "Set aside a spell in hand. This unit’s next 3 attacks also cast it. Return it to the discard pile when the effect ends.": {
+      "french": "Mettez de côté un sort en main. Les 3 prochaines attaques de cette unité le lancent aussi. Remettez-le dans la défausse à la fin de l'effet.",
+      "german": "Lege einen Zauber auf der Hand beiseite. Die nächsten 3 Angriffe dieser Einheit wirken ihn ebenfalls. Lege ihn nach Ende des Effekts auf den Ablagestapel zurück.",
+      "portuguese": "Separa um feitiço da mão. Os próximos 3 ataques desta unidade também o lançam. Devolve-o ao descarte quando o efeito terminar.",
+      "russian": "Отложите заклинание из руки. Следующие 3 атаки этого бойца также применяют его. Верните его в сброс, когда эффект закончится.",
+      "chinese": "暂存一张手牌法术。此单位接下来的3次攻击也会施放它。效果结束时，将其放回弃牌堆。",
+      "chinese_traditional": "暫存一張手牌法術。此單位接下來的3次攻擊也會施放它。效果結束時，將其放回棄牌堆。",
+      "korean": "손의 주문을 따로 보관합니다. 이 유닛의 다음 3번 공격이 그 주문도 시전합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+      "japanese": "手札の呪文1枚を取り置く。このユニットの次の3回の攻撃は、その呪文も唱える。効果終了時に捨て札に戻す。"
+    },
+    "Remove all [conduit] from friendly units on all floors. Give a spell in hand that much [magicpower] and Explosive.": {
+      "french": "Retirez tout le [conduit] des alliés de tous les étages. Donnez autant de [magicpower] et Explosive à un sort en main.",
+      "german": "Entferne sämtliches [conduit] von Verbündeten auf allen Etagen. Gib einem Zauber auf der Hand ebenso viel [magicpower] und Explosive.",
+      "portuguese": "Remove todo o [conduit] dos aliados de todos os andares. Dá essa quantidade de [magicpower] e Explosive a um feitiço na mão.",
+      "russian": "Уберите весь [conduit] у союзников на всех этажах. Дайте заклинанию в руке столько же [magicpower] и Explosive.",
+      "chinese": "移除所有楼层友军的全部[conduit]。使一张手牌法术获得等量[magicpower]和Explosive。",
+      "chinese_traditional": "移除所有樓層友軍的全部[conduit]。使一張手牌法術獲得等量[magicpower]和Explosive。",
+      "korean": "모든 층 아군의 [conduit]를 전부 제거합니다. 손의 주문 하나에 그만큼 [magicpower]와 Explosive를 부여합니다.",
+      "japanese": "全階の味方の[conduit]をすべて取り除く。手札の呪文1枚に同量の[magicpower]とExplosiveを与える。"
+    },
+    "Deal [effect0.power] damage 3 times.": {
+      "french": "Infligez [effect0.power] dégâts 3 fois.",
+      "german": "Verursache 3-mal [effect0.power] Schaden.",
+      "portuguese": "Causa [effect0.power] de dano 3 vezes.",
+      "russian": "Нанесите [effect0.power] урона 3 раза.",
+      "chinese": "造成[effect0.power]点伤害，重复3次。",
+      "chinese_traditional": "造成[effect0.power]點傷害，重複3次。",
+      "korean": "[effect0.power] 피해를 3번 줍니다.",
+      "japanese": "[effect0.power]ダメージを3回与える。"
+    },
+    "Deal [effect0.power] damage. Restore [effect1.power] health to friendly units.": {
+      "french": "Infligez [effect0.power] dégâts. Restaurez [effect1.power] PV aux alliés.",
+      "german": "Verursache [effect0.power] Schaden. Stelle bei Verbündeten [effect1.power] Leben wieder her.",
+      "portuguese": "Causa [effect0.power] de dano. Restaura [effect1.power] de saúde aos aliados.",
+      "russian": "Нанесите [effect0.power] урона. Восстановите союзникам [effect1.power] здоровья.",
+      "chinese": "造成[effect0.power]点伤害。为友军恢复[effect1.power]点生命。",
+      "chinese_traditional": "造成[effect0.power]點傷害。為友軍恢復[effect1.power]點生命。",
+      "korean": "[effect0.power] 피해를 줍니다. 아군의 체력을 [effect1.power] 회복합니다.",
+      "japanese": "[effect0.power]ダメージを与える。味方の体力を[effect1.power]回復する。"
+    },
+    "Transfer all [debuff] effects from other friendly units to a friendly unit.": {
+      "french": "Transférez tous les effets de [debuff] des autres alliés à une unité alliée.",
+      "german": "Übertrage alle [debuff]-Effekte anderer Verbündeter auf einen Verbündeten.",
+      "portuguese": "Transfere todos os efeitos de [debuff] dos outros aliados para uma unidade aliada.",
+      "russian": "Перенесите все эффекты [debuff] с остальных союзников на одного союзника.",
+      "chinese": "将其他友军的全部[debuff]效果转移给一个友军。",
+      "chinese_traditional": "將其他友軍的全部[debuff]效果轉移給一個友軍。",
+      "korean": "다른 아군의 모든 [debuff] 효과를 아군 하나에게 옮깁니다.",
+      "japanese": "他の味方の[debuff]効果をすべて味方1体に移す。"
+    },
+    "Swap the front and rear friendly units’ health. Convert health above their maximum to [armor].": {
+      "french": "Échangez les PV des alliés de tête et de queue. Convertissez les PV au-delà de leur maximum en [armor].",
+      "german": "Tausche das Leben des vordersten und hintersten Verbündeten. Wandle Leben über ihrem Maximum in [armor] um.",
+      "portuguese": "Troca a saúde do primeiro e do último aliado. Converte a saúde acima do máximo em [armor].",
+      "russian": "Поменяйте местами здоровье переднего и заднего союзников. Здоровье сверх максимума превращается в [armor].",
+      "chinese": "交换最前方与最后方友军的生命。超过各自生命上限的部分转化为[armor]。",
+      "chinese_traditional": "交換最前方與最後方友軍的生命。超過各自生命上限的部分轉化為[armor]。",
+      "korean": "맨 앞과 맨 뒤 아군의 체력을 맞바꿉니다. 최대치를 넘는 체력은 [armor]로 전환합니다.",
+      "japanese": "先頭と最後尾の味方の体力を入れ替える。各自の最大値を超えた体力は[armor]に変換する。"
+    },
+    "Apply [stasis] until next turn. When it ends, restore half its missing health plus [effect0.power].": {
+      "french": "Appliquez [stasis] jusqu'au prochain tour. À sa fin, restaurez la moitié des PV manquants plus [effect0.power].",
+      "german": "Wende [stasis] bis zur nächsten Runde an. Stelle danach die Hälfte des fehlenden Lebens plus [effect0.power] wieder her.",
+      "portuguese": "Aplica [stasis] até o próximo turno. Ao terminar, restaura metade da saúde perdida mais [effect0.power].",
+      "russian": "Примените [stasis] до следующего хода. После этого восстановите половину недостающего здоровья плюс [effect0.power].",
+      "chinese": "施加[stasis]直到下回合。结束时，恢复其已损失生命的一半，再加[effect0.power]。",
+      "chinese_traditional": "施加[stasis]直到下回合。結束時，恢復其已損失生命的一半，再加[effect0.power]。",
+      "korean": "다음 턴까지 [stasis]를 부여합니다. 끝나면 잃은 체력의 절반에 [effect0.power]을 더해 회복합니다.",
+      "japanese": "次のターンまで[stasis]を付与する。終了時、失った体力の半分に[effect0.power]を加えた量を回復する。"
+    },
+    "Discard a spell, Blight, or Scourge. Gain twice its cost as [ember]. Draw [effect1.power].": {
+      "french": "Défaussez un sort, un Fléau ou une Plaie. Gagnez le double de son coût en [ember]. Piochez [effect1.power].",
+      "german": "Wirf einen Zauber, einen Fluch oder eine Geißel ab. Erhalte das Doppelte seiner Kosten als [ember]. Ziehe [effect1.power].",
+      "portuguese": "Descarta um feitiço, Praga ou Flagelo. Ganha o dobro do custo em [ember]. Compra [effect1.power].",
+      "russian": "Сбросьте заклинание, Пагубник или Плеть. Получите удвоенную стоимость в [ember]. Возьмите [effect1.power].",
+      "chinese": "弃掉一张法术、祸患或天灾卡牌。获得其费用两倍的[ember]。抽[effect1.power]张牌。",
+      "chinese_traditional": "棄掉一張法術、禍害或瘟疫卡牌。獲得其費用兩倍的[ember]。抽[effect1.power]張牌。",
+      "korean": "주문, 저주 또는 재앙 카드 하나를 버립니다. 비용의 두 배만큼 [ember]를 얻습니다. [effect1.power]장 뽑습니다.",
+      "japanese": "呪文、劣化、または災難カード1枚を捨てる。そのコストの2倍の[ember]を得る。[effect1.power]枚引く。"
+    },
+    "Apply [armor] equal to [attack]. Set [attack] to 0 this turn. Apply [dazed] 1.": {
+      "french": "Appliquez autant de [armor] que d'[attack]. Fixez l'[attack] à 0 ce tour. Appliquez [dazed] 1.",
+      "german": "Wende [armor] in Höhe von [attack] an. Setze [attack] diese Runde auf 0. Wende [dazed] 1 an.",
+      "portuguese": "Aplica [armor] igual ao [attack]. Define o [attack] como 0 neste turno. Aplica [dazed] 1.",
+      "russian": "Дайте [armor] в размере [attack]. Установите [attack] на 0 до конца хода. Примените [dazed] 1.",
+      "chinese": "施加等同于[attack]的[armor]。本回合将[attack]设为0。施加[dazed] 1。",
+      "chinese_traditional": "施加等同於[attack]的[armor]。本回合將[attack]設為0。施加[dazed] 1。",
+      "korean": "[attack]만큼 [armor]를 부여합니다. 이번 턴 [attack]을 0으로 만듭니다. [dazed] 1을 부여합니다.",
+      "japanese": "[attack]に等しい[armor]を付与する。このターン[attack]を0にする。[dazed] 1を付与する。"
+    },
+    "Reduce a friendly unit’s [cooldown] by [effect0.status0.power]. Apply [dazed] [effect1.status0.power].": {
+      "french": "Réduisez le [cooldown] d'un allié de [effect0.status0.power]. Appliquez [dazed] [effect1.status0.power].",
+      "german": "Verringere den [cooldown] eines Verbündeten um [effect0.status0.power]. Wende [dazed] [effect1.status0.power] an.",
+      "portuguese": "Reduz o [cooldown] de uma unidade aliada em [effect0.status0.power]. Aplica [dazed] [effect1.status0.power].",
+      "russian": "Уменьшите [cooldown] союзника на [effect0.status0.power]. Примените [dazed] [effect1.status0.power].",
+      "chinese": "使一个友军的[cooldown]减少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
+      "chinese_traditional": "使一個友軍的[cooldown]減少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
+      "korean": "아군 하나의 [cooldown]을 [effect0.status0.power] 줄입니다. [dazed] [effect1.status0.power]을 부여합니다.",
+      "japanese": "味方1体の[cooldown]を[effect0.status0.power]減らす。[dazed] [effect1.status0.power]を付与する。"
+    },
+    "Restore [effect0.power] health. Until next turn, when hit, deal this unit’s [health] as damage to the attacker.": {
+      "french": "Restaurez [effect0.power] PV. Jusqu'au prochain tour, quand cette unité est touchée, infligez ses [health] en dégâts à l'attaquant.",
+      "german": "Stelle [effect0.power] Leben wieder her. Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihre [health] als Schaden zu.",
+      "portuguese": "Restaura [effect0.power] de saúde. Até o próximo turno, ao sofrer um golpe, causa a [health] desta unidade como dano ao atacante.",
+      "russian": "Восстановите [effect0.power] здоровья. До следующего хода при получении удара наносите атакующему урон в размере [health] этого бойца.",
+      "chinese": "恢复[effect0.power]点生命。直到下回合，此单位受击时，对攻击者造成等同于自身[health]的伤害。",
+      "chinese_traditional": "恢復[effect0.power]點生命。直到下回合，此單位受擊時，對攻擊者造成等同於自身[health]的傷害。",
+      "korean": "체력을 [effect0.power] 회복합니다. 다음 턴까지 피격 시 공격자에게 이 유닛의 [health]만큼 피해를 줍니다.",
+      "japanese": "体力を[effect0.power]回復する。次のターンまで、被弾時にこのユニットの[health]に等しいダメージを攻撃者に与える。"
+    },
+    "Enemy-targeting spells can target this unit. Redirect them to the front enemy, or all enemies for area spells, and refund their [ember] cost. Take 10 damage per [dazed], then gain [dazed] 1.": {
+      "french": "Les sorts visant les ennemis peuvent cibler cette unité. Redirigez-les vers l'ennemi de tête, ou tous les ennemis pour les sorts de zone, et remboursez leur coût en [ember]. Subissez 10 dégâts par [dazed], puis gagnez [dazed] 1.",
+      "german": "Zauber gegen Feinde können diese Einheit anvisieren. Leite sie zum vordersten Feind um, bei Flächenzaubern zu allen Feinden, und erstatte ihre [ember]-Kosten. Erleide 10 Schaden pro [dazed], dann erhalte [dazed] 1.",
+      "portuguese": "Feitiços que visam inimigos podem escolher esta unidade. Redireciona-os ao primeiro inimigo, ou a todos se forem de área, e devolve seu custo em [ember]. Sofre 10 de dano por [dazed], depois ganha [dazed] 1.",
+      "russian": "Заклинания против врагов могут выбирать этого бойца. Перенаправьте их на переднего врага, а площадные — на всех врагов, и верните стоимость в [ember]. Получите 10 урона за каждый [dazed], затем [dazed] 1.",
+      "chinese": "可对敌人施放的法术也能选择此单位。将其转向最前方敌人，范围法术则转向所有敌人，并返还[ember]费用。每层[dazed]受到10点伤害，然后获得[dazed] 1。",
+      "chinese_traditional": "可對敵人施放的法術也能選擇此單位。將其轉向最前方敵人，範圍法術則轉向所有敵人，並返還[ember]費用。每層[dazed]受到10點傷害，然後獲得[dazed] 1。",
+      "korean": "적 대상 주문이 이 유닛을 선택할 수 있습니다. 맨 앞 적에게, 광역 주문은 모든 적에게 전환하고 [ember] 비용을 돌려줍니다. [dazed] 중첩당 10 피해를 받은 뒤 [dazed] 1을 얻습니다.",
+      "japanese": "敵を対象とする呪文はこのユニットも選べる。先頭の敵へ、範囲呪文は敵全体へ転送し、[ember]コストを返す。[dazed]1ごとに10ダメージを受け、その後[dazed] 1を得る。"
+    },
+    "The first spell each turn that damages enemies also restores that much health, split evenly among friendly units.": {
+      "french": "Le premier sort de chaque tour qui blesse des ennemis restaure aussi autant de PV, répartis également entre les alliés.",
+      "german": "Der erste Zauber jeder Runde, der Feinden Schaden zufügt, stellt ebenso viel Leben wieder her, gleichmäßig auf Verbündete verteilt.",
+      "portuguese": "O primeiro feitiço de cada turno que causar dano a inimigos também restaura essa quantidade de saúde, dividida igualmente entre os aliados.",
+      "russian": "Первое заклинание каждого хода, наносящее урон врагам, также восстанавливает столько же здоровья, поровну разделённого между союзниками.",
+      "chinese": "每回合首个对敌人造成伤害的法术也会恢复等量生命，由友军均分。",
+      "chinese_traditional": "每回合首個對敵人造成傷害的法術也會恢復等量生命，由友軍均分。",
+      "korean": "매 턴 처음 적에게 피해를 주는 주문은 그만큼 체력도 회복하며, 아군에게 균등하게 나눕니다.",
+      "japanese": "毎ターン最初に敵へダメージを与える呪文は、同量の体力も回復し、味方で均等に分ける。"
+    },
+    "The first spell each turn has bonus [magicpower] equal to half the front friendly unit’s [attack].": {
+      "french": "Le premier sort de chaque tour a un bonus de [magicpower] égal à la moitié de l'[attack] de l'allié de tête.",
+      "german": "Der erste Zauber jeder Runde hat zusätzliche [magicpower] in Höhe der halben [attack] des vordersten Verbündeten.",
+      "portuguese": "O primeiro feitiço de cada turno tem [magicpower] adicional igual à metade do [attack] do aliado da frente.",
+      "russian": "Первое заклинание каждого хода получает дополнительную [magicpower] в размере половины [attack] переднего союзника.",
+      "chinese": "每回合首个法术拥有等同于最前方友军[attack]一半的额外[magicpower]。",
+      "chinese_traditional": "每回合首個法術擁有等同於最前方友軍[attack]一半的額外[magicpower]。",
+      "korean": "매 턴 첫 주문은 맨 앞 아군 [attack]의 절반만큼 추가 [magicpower]를 가집니다.",
+      "japanese": "毎ターン最初の呪文は、先頭の味方の[attack]の半分に等しい追加[magicpower]を持つ。"
+    },
+    "Choose a damage spell in hand. This turn, it deals half damage to all enemies.": {
+      "french": "Choisissez un sort de dégâts en main. Ce tour, il inflige la moitié de ses dégâts à tous les ennemis.",
+      "german": "Wähle einen Schadenszauber auf der Hand. Diese Runde fügt er allen Feinden halben Schaden zu.",
+      "portuguese": "Escolhe um feitiço de dano na mão. Neste turno, causa metade do dano a todos os inimigos.",
+      "russian": "Выберите заклинание урона в руке. В этом ходу оно наносит половину урона всем врагам.",
+      "chinese": "选择一张手牌伤害法术。本回合，它对所有敌人造成一半伤害。",
+      "chinese_traditional": "選擇一張手牌傷害法術。本回合，它對所有敵人造成一半傷害。",
+      "korean": "손의 피해 주문 하나를 선택합니다. 이번 턴 모든 적에게 절반의 피해를 줍니다.",
+      "japanese": "手札のダメージ呪文1枚を選ぶ。このターン、敵全体に半分のダメージを与える。"
+    },
+    "Add a copy of the last common spell played to hand. It costs 0[ember] and has [ephemeral].": {
+      "french": "Ajoutez en main une copie du dernier sort commun joué. Elle coûte 0[ember] et a [ephemeral].",
+      "german": "Füge der Hand eine Kopie des zuletzt gespielten gewöhnlichen Zaubers hinzu. Sie kostet 0[ember] und hat [ephemeral].",
+      "portuguese": "Adiciona à mão uma cópia do último feitiço comum jogado. Custa 0[ember] e tem [ephemeral].",
+      "russian": "Добавьте в руку копию последнего сыгранного обычного заклинания. Она стоит 0[ember] и имеет [ephemeral].",
+      "chinese": "将最后打出的普通法术的复制品加入手牌。它费用为0[ember]，并具有[ephemeral]。",
+      "chinese_traditional": "將最後打出的普通法術的複製品加入手牌。它費用為0[ember]，並具有[ephemeral]。",
+      "korean": "마지막으로 사용한 일반 주문의 복사본을 손에 추가합니다. 비용은 0[ember]이며 [ephemeral]을 가집니다.",
+      "japanese": "最後にプレイしたコモン呪文のコピーを手札に加える。コストは0[ember]で、[ephemeral]を持つ。"
+    },
+    "[consume] a spell in hand without playing it. Gain [conduit] equal to 5 times its base cost.": {
+      "french": "[consume] un sort en main sans le jouer. Gagnez [conduit] égal à 5 fois son coût de base.",
+      "german": "[consume] einen Zauber auf der Hand, ohne ihn zu spielen. Erhalte [conduit] in Höhe des 5-Fachen seiner Grundkosten.",
+      "portuguese": "[consume] um feitiço na mão sem jogá-lo. Ganha [conduit] igual a 5 vezes seu custo base.",
+      "russian": "Примените [consume] к заклинанию в руке, не разыгрывая его. Получите [conduit] в размере 5 его базовых стоимостей.",
+      "chinese": "不打出一张手牌法术，而是将其[consume]。获得其基础费用5倍的[conduit]。",
+      "chinese_traditional": "不打出一張手牌法術，而是將其[consume]。獲得其基礎費用5倍的[conduit]。",
+      "korean": "손의 주문 하나를 사용하지 않고 [consume]합니다. 기본 비용의 5배만큼 [conduit]를 얻습니다.",
+      "japanese": "手札の呪文1枚をプレイせず[consume]する。基本コストの5倍の[conduit]を得る。"
+    },
+    "This turn, gain [attack] equal to the damage your first damage spell deals to enemies on any floor.": {
+      "french": "Ce tour, gagnez autant d'[attack] que les dégâts infligés aux ennemis par votre premier sort de dégâts, quel que soit l'étage.",
+      "german": "Erhalte diese Runde so viel [attack], wie dein erster Schadenszauber Feinden auf beliebigen Etagen zufügt.",
+      "portuguese": "Neste turno, ganha [attack] igual ao dano que seu primeiro feitiço de dano causar a inimigos em qualquer andar.",
+      "russian": "В этом ходу получите [attack] в размере урона, нанесённого врагам вашим первым заклинанием урона на любом этаже.",
+      "chinese": "本回合获得等同于你的首个伤害法术对任意楼层敌人造成伤害的[attack]。",
+      "chinese_traditional": "本回合獲得等同於你的首個傷害法術對任意樓層敵人造成傷害的[attack]。",
+      "korean": "이번 턴 첫 피해 주문이 어느 층이든 적에게 준 피해만큼 [attack]을 얻습니다.",
+      "japanese": "このターン、最初のダメージ呪文がいずれかの階の敵に与えたダメージに等しい[attack]を得る。"
+    },
+    "Your first damage spell each turn has bonus [magicpower] equal to half the front friendly unit’s [attack] on its floor.": {
+      "french": "Votre premier sort de dégâts de chaque tour a un bonus de [magicpower] égal à la moitié de l'[attack] de l'allié de tête de son étage.",
+      "german": "Dein erster Schadenszauber jeder Runde hat zusätzliche [magicpower] in Höhe der halben [attack] des vordersten Verbündeten auf seiner Etage.",
+      "portuguese": "Seu primeiro feitiço de dano de cada turno tem [magicpower] adicional igual à metade do [attack] do aliado da frente do seu andar.",
+      "russian": "Ваше первое заклинание урона каждого хода получает дополнительную [magicpower] в размере половины [attack] переднего союзника на его этаже.",
+      "chinese": "每回合你的首个伤害法术拥有等同于其所在楼层最前方友军[attack]一半的额外[magicpower]。",
+      "chinese_traditional": "每回合你的首個傷害法術擁有等同於其所在樓層最前方友軍[attack]一半的額外[magicpower]。",
+      "korean": "매 턴 첫 피해 주문은 해당 층 맨 앞 아군 [attack]의 절반만큼 추가 [magicpower]를 가집니다.",
+      "japanese": "毎ターン最初のダメージ呪文は、その階の先頭の味方の[attack]の半分に等しい追加[magicpower]を持つ。"
+    },
+    "Draw 1 when you first play a [freeze] card each turn.": {
+      "french": "Piochez 1 quand vous jouez votre première carte avec [freeze] chaque tour.",
+      "german": "Ziehe 1, wenn du jede Runde deine erste Karte mit [freeze] spielst.",
+      "portuguese": "Compra 1 ao jogar sua primeira carta com [freeze] de cada turno.",
+      "russian": "Возьмите 1 при розыгрыше первой карты с [freeze] в каждом ходу.",
+      "chinese": "每回合首次打出[freeze]卡牌时，抽1张牌。",
+      "chinese_traditional": "每回合首次打出[freeze]卡牌時，抽1張牌。",
+      "korean": "매 턴 처음 [freeze] 카드를 사용하면 1장 뽑습니다.",
+      "japanese": "毎ターン最初に[freeze]を持つカードをプレイしたとき、1枚引く。"
+    },
+    "Your first healing spell each turn also deals the health restored as damage to enemies on its floor.": {
+      "french": "Votre premier sort de soin de chaque tour inflige aussi les PV restaurés en dégâts aux ennemis de son étage.",
+      "german": "Dein erster Heilzauber jeder Runde fügt Feinden auf seiner Etage die wiederhergestellte Lebensmenge als Schaden zu.",
+      "portuguese": "Seu primeiro feitiço de cura de cada turno também causa aos inimigos do seu andar dano igual à saúde restaurada.",
+      "russian": "Ваше первое заклинание лечения каждого хода также наносит врагам на его этаже урон в размере восстановленного здоровья.",
+      "chinese": "每回合你的首个治疗法术也会对其所在楼层的敌人造成等同于恢复生命的伤害。",
+      "chinese_traditional": "每回合你的首個治療法術也會對其所在樓層的敵人造成等同於恢復生命的傷害。",
+      "korean": "매 턴 첫 치유 주문은 회복한 체력만큼 해당 층 적들에게 피해도 줍니다.",
+      "japanese": "毎ターン最初の回復呪文は、回復した体力量に等しいダメージもその階の敵に与える。"
+    },
+    "Triggers when an attack kills an enemy with excess damage.": {
+      "french": "Se déclenche quand une attaque tue un ennemi avec des dégâts excédentaires.",
+      "german": "Wird ausgelöst, wenn ein Angriff einen Feind mit überschüssigem Schaden tötet.",
+      "portuguese": "Ativa quando um ataque mata um inimigo com dano excedente.",
+      "russian": "Срабатывает, когда атака убивает врага с избыточным уроном.",
+      "chinese": "攻击以溢出伤害击杀敌人时触发。",
+      "chinese_traditional": "攻擊以溢出傷害擊殺敵人時觸發。",
+      "korean": "공격이 초과 피해로 적을 처치하면 발동합니다.",
+      "japanese": "攻撃が超過ダメージで敵を倒したときに発動する。"
+    },
+    "Incant: +5 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Incant: +5 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Incant: +5 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Incant: +5 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Incant: +5 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "Incant: 攻击 +5。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "Incant: 攻擊 +5。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "Incant: 공격력 +5.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "Incant: 攻撃+5。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。"
+    },
+    "Incant: +10 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.": {
+      "french": "Incant: +10 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned.",
+      "german": "Incant: +10 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned.",
+      "portuguese": "Incant: +10 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned.",
+      "russian": "Incant: +10 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+      "chinese": "Incant: 攻击 +10。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned。",
+      "chinese_traditional": "Incant: 攻擊 +10。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned。",
+      "korean": "Incant: 공격력 +10.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+      "japanese": "Incant: 攻撃+10。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。Attunedを与える。"
+    },
+    "Incant: +20 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.": {
+      "french": "Incant: +20 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned et Explosive.",
+      "german": "Incant: +20 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned und Explosive.",
+      "portuguese": "Incant: +20 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned e Explosive.",
+      "russian": "Incant: +20 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+      "chinese": "Incant: 攻击 +20。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned和Explosive。",
+      "chinese_traditional": "Incant: 攻擊 +20。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned和Explosive。",
+      "korean": "Incant: 공격력 +20.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+      "japanese": "Incant: 攻撃+20。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。AttunedとExplosiveを与える。"
+    },
+    "Incant: [armor] 3. [spikes] 1.\nOverheal: Deal the excess healing as damage to all enemies.": {
+      "french": "Incant: [armor] 3. [spikes] 1.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+      "german": "Incant: [armor] 3. [spikes] 1.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+      "portuguese": "Incant: [armor] 3. [spikes] 1.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+      "russian": "Incant: [armor] 3. [spikes] 1.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+      "chinese": "Incant: [armor] 3. [spikes] 1.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 3. [spikes] 1.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 3. [spikes] 1.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+      "japanese": "Incant: [armor] 3. [spikes] 1.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
+    },
+    "Incant: [armor] 6. [spikes] 2.\nOverheal: Deal the excess healing as damage to all enemies.": {
+      "french": "Incant: [armor] 6. [spikes] 2.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+      "german": "Incant: [armor] 6. [spikes] 2.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+      "portuguese": "Incant: [armor] 6. [spikes] 2.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+      "russian": "Incant: [armor] 6. [spikes] 2.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+      "chinese": "Incant: [armor] 6. [spikes] 2.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 6. [spikes] 2.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 6. [spikes] 2.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+      "japanese": "Incant: [armor] 6. [spikes] 2.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
+    },
+    "Incant: [armor] 12. [spikes] 4.\nOverheal: Deal the excess healing as damage to all enemies.": {
+      "french": "Incant: [armor] 12. [spikes] 4.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+      "german": "Incant: [armor] 12. [spikes] 4.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+      "portuguese": "Incant: [armor] 12. [spikes] 4.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+      "russian": "Incant: [armor] 12. [spikes] 4.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+      "chinese": "Incant: [armor] 12. [spikes] 4.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+      "chinese_traditional": "Incant: [armor] 12. [spikes] 4.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+      "korean": "Incant: [armor] 12. [spikes] 4.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+      "japanese": "Incant: [armor] 12. [spikes] 4.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
+    },
+    "Add the excess damage to Extra Credit in hand. Create one if needed.": {
+      "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+      "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+      "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário.",
+      "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте.",
+      "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。",
+      "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+      "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+      "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。"
+    },
+    "Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.": {
+      "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned.",
+      "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned.",
+      "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned.",
+      "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+      "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned。",
+      "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned。",
+      "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+      "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。Attunedを与える。"
+    },
+    "Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.": {
+      "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned et Explosive.",
+      "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned und Explosive.",
+      "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned e Explosive.",
+      "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+      "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned和Explosive。",
+      "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned和Explosive。",
+      "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+      "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。AttunedとExplosiveを与える。"
+    },
+    "Spell kills count as this unit’s kills. Only the frontmost unit with MineMineMine claims them.": {
+      "french": "Les ennemis tués par des sorts comptent pour cette unité. Seule l'unité de tête avec MineMineMine les revendique.",
+      "german": "Zaubertötungen zählen als Tötungen dieser Einheit. Nur die vorderste Einheit mit MineMineMine beansprucht sie.",
+      "portuguese": "Mortes por feitiços contam como mortes desta unidade. Só a unidade mais à frente com MineMineMine as reivindica.",
+      "russian": "Убийства заклинаниями засчитываются этому бойцу. Их получает только передний боец с MineMineMine.",
+      "chinese": "法术击杀归属于此单位。只有最前方拥有MineMineMine的单位获得归属。",
+      "chinese_traditional": "法術擊殺歸屬於此單位。只有最前方擁有MineMineMine的單位獲得歸屬。",
+      "korean": "주문 처치를 이 유닛의 처치로 계산합니다. MineMineMine를 가진 맨 앞 유닛만 처치를 가져갑니다.",
+      "japanese": "呪文による撃破をこのユニットの撃破として扱う。MineMineMineを持つ最前方のユニットだけが取得する。"
+    },
+    "Claim spell kills.": {
+      "french": "Revendiquer les ennemis tués par des sorts.",
+      "german": "Beanspruche Zaubertötungen.",
+      "portuguese": "Reivindica mortes por feitiços.",
+      "russian": "Получайте убийства заклинаниями.",
+      "chinese": "取得法术击杀归属。",
+      "chinese_traditional": "取得法術擊殺歸屬。",
+      "korean": "주문 처치를 가져갑니다.",
+      "japanese": "呪文による撃破を取得する。"
+    },
+    "Until next turn, when hit, deal this unit’s health as damage to the attacker.": {
+      "french": "Jusqu'au prochain tour, quand cette unité est touchée, infligez ses PV en dégâts à l'attaquant.",
+      "german": "Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihr Leben als Schaden zu.",
+      "portuguese": "Até o próximo turno, ao sofrer um golpe, causa a saúde desta unidade como dano ao atacante.",
+      "russian": "До следующего хода при получении удара наносите атакующему урон в размере здоровья этого бойца.",
+      "chinese": "直到下回合，此单位受击时，对攻击者造成等同于自身生命的伤害。",
+      "chinese_traditional": "直到下回合，此單位受擊時，對攻擊者造成等同於自身生命的傷害。",
+      "korean": "다음 턴까지 피격 시 공격자에게 이 유닛의 체력만큼 피해를 줍니다.",
+      "japanese": "次のターンまで、被弾時にこのユニットの体力に等しいダメージを攻撃者に与える。"
+    },
+    "Apply [spellweakness] [x] to enemy units.": {
+      "french": "Appliquez [spellweakness] [x] aux ennemis.",
+      "german": "Wende [spellweakness] [x] auf Feinde an.",
+      "portuguese": "Aplica [spellweakness] [x] aos inimigos.",
+      "russian": "Примените [spellweakness] [x] к врагам.",
+      "chinese": "对敌人施加[spellweakness] [x]。",
+      "chinese_traditional": "對敵人施加[spellweakness] [x]。",
+      "korean": "적에게 [spellweakness] [x]를 부여합니다.",
+      "japanese": "敵に[spellweakness] [x]を付与する。"
+    },
+    "Give a damage spell in hand [attuned] and +10 [magicpower].": {
+      "french": "Donnez [attuned] et +10 [magicpower] à un sort de dégâts en main.",
+      "german": "Gib einem Schadenszauber auf der Hand [attuned] und +10 [magicpower].",
+      "portuguese": "Dá [attuned] e +10 [magicpower] a um feitiço de dano na mão.",
+      "russian": "Дайте заклинанию урона в руке [attuned] и +10 [magicpower].",
+      "chinese": "使一张手牌伤害法术获得[attuned]和+10 [magicpower]。",
+      "chinese_traditional": "使一張手牌傷害法術獲得[attuned]和+10 [magicpower]。",
+      "korean": "손의 피해 주문 하나에 [attuned]과 +10 [magicpower]를 부여합니다.",
+      "japanese": "手札のダメージ呪文1枚に[attuned]と+10[magicpower]を与える。"
+    },
+    "Deal [effect0.power] damage to enemy units.": {
+      "french": "Infligez [effect0.power] dégâts aux ennemis.",
+      "german": "Füge Feinden [effect0.power] Schaden zu.",
+      "portuguese": "Causa [effect0.power] de dano aos inimigos.",
+      "russian": "Нанесите врагам [effect0.power] урона.",
+      "chinese": "对敌人造成[effect0.power]点伤害。",
+      "chinese_traditional": "對敵人造成[effect0.power]點傷害。",
+      "korean": "적에게 [effect0.power] 피해를 줍니다.",
+      "japanese": "敵に[effect0.power]ダメージを与える。"
+    },
+    "Grant [conduit] 5 to Wizards and Witches.": {
+      "french": "Accordez [conduit] 5 aux sorciers et sorcières.",
+      "german": "Gewähre Magiern und Hexen [conduit] 5.",
+      "portuguese": "Concede [conduit] 5 a Magos e Bruxas.",
+      "russian": "Дайте магам и ведьмам [conduit] 5.",
+      "chinese": "使男巫和女巫获得[conduit] 5。",
+      "chinese_traditional": "使男巫和女巫獲得[conduit] 5。",
+      "korean": "마법사와 마녀에게 [conduit] 5를 부여합니다.",
+      "japanese": "魔法使いと魔女に[conduit] 5を与える。"
+    },
+    "Deal the excess healing as damage to all enemies.": {
+      "french": "Infligez les soins excédentaires en dégâts à tous les ennemis.",
+      "german": "Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+      "portuguese": "Causa a cura excedente como dano a todos os inimigos.",
+      "russian": "Нанесите всем врагам урон в размере избыточного лечения.",
+      "chinese": "对所有敌人造成等同于溢出治疗量的伤害。",
+      "chinese_traditional": "對所有敵人造成等同於溢出治療量的傷害。",
+      "korean": "모든 적에게 초과 치유량만큼 피해를 줍니다.",
+      "japanese": "回復の超過分に等しいダメージを敵全体に与える。"
+    },
+    "Triggers when a spell kills an enemy.": {
+      "french": "Se déclenche quand un sort tue un ennemi.",
+      "german": "Wird ausgelöst, wenn ein Zauber einen Feind tötet.",
+      "portuguese": "Ativa quando um feitiço mata um inimigo.",
+      "russian": "Срабатывает, когда заклинание убивает врага.",
+      "chinese": "法术击杀敌人时触发。",
+      "chinese_traditional": "法術擊殺敵人時觸發。",
+      "korean": "주문이 적을 처치하면 발동합니다.",
+      "japanese": "呪文が敵を倒したときに発動する。"
+    },
+    "Triggers when healing exceeds this unit’s missing health.": {
+      "french": "Se déclenche quand les soins dépassent les PV manquants de cette unité.",
+      "german": "Wird ausgelöst, wenn Heilung das fehlende Leben dieser Einheit übersteigt.",
+      "portuguese": "Ativa quando a cura excede a saúde perdida desta unidade.",
+      "russian": "Срабатывает, когда лечение превышает недостающее здоровье этого бойца.",
+      "chinese": "治疗量超过此单位已损失的生命时触发。",
+      "chinese_traditional": "治療量超過此單位已損失的生命時觸發。",
+      "korean": "치유량이 이 유닛의 잃은 체력을 초과하면 발동합니다.",
+      "japanese": "回復量がこのユニットの失った体力を超えたときに発動する。"
+    },
+    "For every 30 damage dealt, reduce the cost of all [freeze] cards in hand by 1[ember].": {
+      "french": "Tous les 30 dégâts infligés, réduisez le coût de toutes les cartes avec [freeze] en main de 1[ember].",
+      "german": "Verringere für je 30 verursachten Schaden die Kosten aller Karten mit [freeze] auf der Hand um 1[ember].",
+      "portuguese": "A cada 30 de dano causado, reduz o custo de todas as cartas com [freeze] na mão em 1[ember].",
+      "russian": "За каждые 30 нанесённого урона уменьшайте стоимость всех карт с [freeze] в руке на 1[ember].",
+      "chinese": "每造成30点伤害，使手牌中所有[freeze]卡牌的费用降低1[ember]。",
+      "chinese_traditional": "每造成30點傷害，使手牌中所有[freeze]卡牌的費用降低1[ember]。",
+      "korean": "피해를 30 줄 때마다 손의 모든 [freeze] 카드 비용을 1[ember] 줄입니다.",
+      "japanese": "30ダメージを与えるごとに、手札の[freeze]を持つ全カードのコストを1[ember]減らす。"
+    },
+    "Your first [consume] spell each turn gains Spellchain. Its copy costs 1[ember].": {
+      "french": "Votre premier sort avec [consume] chaque tour gagne Spellchain. Sa copie coûte 1[ember].",
+      "german": "Dein erster Zauber mit [consume] jeder Runde erhält Spellchain. Seine Kopie kostet 1[ember].",
+      "portuguese": "Seu primeiro feitiço com [consume] de cada turno ganha Spellchain. Sua cópia custa 1[ember].",
+      "russian": "Ваше первое заклинание с [consume] каждого хода получает Spellchain. Его копия стоит 1[ember].",
+      "chinese": "每回合你的首个[consume]法术获得Spellchain。其复制品费用为1[ember]。",
+      "chinese_traditional": "每回合你的首個[consume]法術獲得Spellchain。其複製品費用為1[ember]。",
+      "korean": "매 턴 첫 [consume] 주문이 Spellchain을 얻습니다. 복사본 비용은 1[ember]입니다.",
+      "japanese": "毎ターン最初の[consume]呪文はSpellchainを得る。そのコピーのコストは1[ember]。"
+    },
+    "If you play no damage spells, draw +1 next turn.": {
+      "french": "Si vous ne jouez aucun sort de dégâts, piochez +1 au prochain tour.",
+      "german": "Wenn du keine Schadenszauber spielst, ziehe nächste Runde +1.",
+      "portuguese": "Se não jogar feitiços de dano, compra +1 no próximo turno.",
+      "russian": "Если вы не играете заклинания урона, возьмите +1 в следующем ходу.",
+      "chinese": "若未打出伤害法术，下回合多抽1张牌。",
+      "chinese_traditional": "若未打出傷害法術，下回合多抽1張牌。",
+      "korean": "피해 주문을 사용하지 않으면 다음 턴 +1장 뽑습니다.",
+      "japanese": "ダメージ呪文をプレイしなければ、次のターンに+1枚引く。"
+    },
+    "The first Chaperone death each turn reduces friendly units’ [cooldown] on its floor by 1.": {
+      "french": "La première mort d'un chaperon chaque tour réduit de 1 le [cooldown] des alliés de son étage.",
+      "german": "Der erste Tod einer Begleitperson jeder Runde verringert den [cooldown] der Verbündeten auf ihrer Etage um 1.",
+      "portuguese": "A primeira morte de um Acompanhante de cada turno reduz em 1 o [cooldown] dos aliados do seu andar.",
+      "russian": "Первая смерть сопровождающего за ход уменьшает [cooldown] союзников на его этаже на 1.",
+      "chinese": "每回合首个监督员死亡时，使其所在楼层友军的[cooldown]减少1。",
+      "chinese_traditional": "每回合首個監督員死亡時，使其所在樓層友軍的[cooldown]減少1。",
+      "korean": "매 턴 첫 보호자 사망 시 해당 층 아군의 [cooldown]이 1 줄어듭니다.",
+      "japanese": "毎ターン最初に付き添いが死亡したとき、その階の味方の[cooldown]を1減らす。"
+    },
+    "At turn start, summon a Chaperone between each adjacent Wizard and Witch, ignoring [capacity].": {
+      "french": "Au début du tour, invoquez un chaperon entre chaque sorcier et sorcière adjacents, en ignorant la [capacity].",
+      "german": "Beschwöre zu Rundenbeginn eine Begleitperson zwischen jedem benachbarten Magier und jeder Hexe und ignoriere [capacity].",
+      "portuguese": "No início do turno, invoca um Acompanhante entre cada Mago e Bruxa adjacentes, ignorando [capacity].",
+      "russian": "В начале хода призовите сопровождающего между каждыми соседними магом и ведьмой, игнорируя [capacity].",
+      "chinese": "回合开始时，在每对相邻男巫和女巫之间召唤一个监督员，无视[capacity]。",
+      "chinese_traditional": "回合開始時，在每對相鄰男巫和女巫之間召喚一個監督員，無視[capacity]。",
+      "korean": "턴 시작에 인접한 마법사와 마녀 사이마다 [capacity]를 무시하고 보호자를 소환합니다.",
+      "japanese": "ターン開始時、隣接する魔法使いと魔女の間に[capacity]を無視して付き添いを召喚する。"
+    },
+    "Chaperones": {
+      "french": "Chaperons",
+      "german": "Begleitpersonen",
+      "portuguese": "Acompanhantes",
+      "russian": "Сопровождающие",
+      "chinese": "监督员",
+      "chinese_traditional": "監督員",
+      "korean": "보호자",
+      "japanese": "付き添い"
+    },
+    "0/1, 1[size], [conduit] 1. Uses the left mage’s variant. Vanishes on death.": {
+      "french": "0/1, 1[size], [conduit] 1. Utilise la variante du mage de gauche. Disparaît à la mort.",
+      "german": "0/1, 1[size], [conduit] 1. Verwendet die Variante des linken Magiers. Verschwindet beim Tod.",
+      "portuguese": "0/1, 1[size], [conduit] 1. Usa a variante do conjurador à esquerda. Desaparece ao morrer.",
+      "russian": "0/1, 1[size], [conduit] 1. Вариант определяется заклинателем слева. Исчезает при смерти.",
+      "chinese": "0/1，1[size]，[conduit] 1。种类由左侧施法者决定。死亡时消失。",
+      "chinese_traditional": "0/1，1[size]，[conduit] 1。種類由左側施法者決定。死亡時消失。",
+      "korean": "0/1, 1[size], [conduit] 1. 왼쪽 시전자에 따른 유형을 사용합니다. 죽으면 사라집니다.",
+      "japanese": "0/1、1[size]、[conduit] 1。左の術者に応じた種類になる。死亡時に消滅する。"
+    },
+    "Set aside a non-random spell in hand. This unit’s next 3 attacks also cast it. Return it to the discard pile when the effect ends.": {
+      "french": "Mettez de côté un sort non aléatoire en main. Les 3 prochaines attaques de cette unité le lancent aussi. Remettez-le dans la défausse à la fin de l'effet.",
+      "german": "Lege einen nicht zufälligen Zauber auf der Hand beiseite. Die nächsten 3 Angriffe dieser Einheit wirken ihn ebenfalls. Lege ihn nach Ende des Effekts auf den Ablagestapel zurück.",
+      "portuguese": "Separa um feitiço não aleatório da mão. Os próximos 3 ataques desta unidade também o lançam. Devolve-o ao descarte quando o efeito terminar.",
+      "russian": "Отложите неслучайное заклинание из руки. Следующие 3 атаки этого бойца также применяют его. Верните его в сброс, когда эффект закончится.",
+      "chinese": "暂存一张非随机的手牌法术。此单位接下来的3次攻击也会施放它。效果结束时，将其放回弃牌堆。",
+      "chinese_traditional": "暫存一張非隨機的手牌法術。此單位接下來的3次攻擊也會施放它。效果結束時，將其放回棄牌堆。",
+      "korean": "손의 무작위가 아닌 주문을 따로 보관합니다. 이 유닛의 다음 3번 공격이 그 주문도 시전합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+      "japanese": "手札のランダムでない呪文1枚を取り置く。このユニットの次の3回の攻撃は、その呪文も唱える。効果終了時に捨て札に戻す。"
     }
   },
   "review": "Traducciones de trabajo; terminología técnica se conserva en inglés para consistencia."

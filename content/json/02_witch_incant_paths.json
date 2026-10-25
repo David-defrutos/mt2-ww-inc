@@ -15,24 +15,25 @@
         "korean": "고급 주문술 1",
         "japanese": "上級呪文学 1"
       },
-      "trigger_upgrades": [
-        "@WW_PublishOrIncant1_Trigger"
-      ],
       "bonus_damage": 0,
       "bonus_hp": 5,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: +5 de ataque.",
-        "english": "Incant: +5 Attack.",
-        "french": "Incant: +5 attaque.",
-        "german": "Incant: +5 Angriff.",
-        "portuguese": "Incant: +5 de Ataque.",
-        "russian": "Incant: +5 атаки.",
-        "chinese": "Incant: 攻击 +5。",
-        "chinese_traditional": "Incant: 攻擊 +5。",
-        "korean": "Incant: 공격력 +5.",
-        "japanese": "Incant: 攻撃+5。"
-      }
+        "english": "Incant: +5 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed.",
+        "spanish": "Incant: +5 de ataque.\nOverdamage: Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo.",
+        "french": "Incant: +5 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+        "german": "Incant: +5 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+        "portuguese": "Incant: +5 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário.",
+        "russian": "Incant: +5 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте.",
+        "chinese": "Incant: 攻击 +5。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。",
+        "chinese_traditional": "Incant: 攻擊 +5。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+        "korean": "Incant: 공격력 +5.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+        "japanese": "Incant: 攻撃+5。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant1_IncantTrigger",
+        "@WW_PublishOrIncant1_Trigger"
+      ]
     },
     {
       "id": "WW_PublishOrIncant2",
@@ -48,24 +49,25 @@
         "korean": "고급 주문술 2",
         "japanese": "上級呪文学 2"
       },
-      "trigger_upgrades": [
-        "@WW_PublishOrIncant2_Trigger"
-      ],
-      "bonus_damage": 5,
+      "bonus_damage": 6,
       "bonus_hp": 10,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: +10 de ataque.",
-        "english": "Incant: +10 Attack.",
-        "french": "Incant: +10 attaque.",
-        "german": "Incant: +10 Angriff.",
-        "portuguese": "Incant: +10 de Ataque.",
-        "russian": "Incant: +10 атаки.",
-        "chinese": "Incant: 攻击 +10。",
-        "chinese_traditional": "Incant: 攻擊 +10。",
-        "korean": "Incant: 공격력 +10.",
-        "japanese": "Incant: 攻撃+10。"
-      }
+        "english": "Incant: +10 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.",
+        "spanish": "Incant: +10 de ataque.\nOverdamage: Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Otórgale Attuned.",
+        "french": "Incant: +10 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned.",
+        "german": "Incant: +10 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned.",
+        "portuguese": "Incant: +10 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned.",
+        "russian": "Incant: +10 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+        "chinese": "Incant: 攻击 +10。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned。",
+        "chinese_traditional": "Incant: 攻擊 +10。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned。",
+        "korean": "Incant: 공격력 +10.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+        "japanese": "Incant: 攻撃+10。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。Attunedを与える。"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant2_IncantTrigger",
+        "@WW_PublishOrIncant2_Trigger"
+      ]
     },
     {
       "id": "WW_PublishOrIncant3",
@@ -81,24 +83,25 @@
         "korean": "고급 주문술 3",
         "japanese": "上級呪文学 3"
       },
-      "trigger_upgrades": [
-        "@WW_PublishOrIncant3_Trigger"
-      ],
       "bonus_damage": 10,
       "bonus_hp": 20,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: +20 de ataque.",
-        "english": "Incant: +20 Attack.",
-        "french": "Incant: +20 attaque.",
-        "german": "Incant: +20 Angriff.",
-        "portuguese": "Incant: +20 de Ataque.",
-        "russian": "Incant: +20 атаки.",
-        "chinese": "Incant: 攻击 +20。",
-        "chinese_traditional": "Incant: 攻擊 +20。",
-        "korean": "Incant: 공격력 +20.",
-        "japanese": "Incant: 攻撃+20。"
-      }
+        "english": "Incant: +20 Attack.\nOverdamage: Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.",
+        "spanish": "Incant: +20 de ataque.\nOverdamage: Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Otórgale Attuned y Explosive.",
+        "french": "Incant: +20 attaque.\nOverdamage: Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned et Explosive.",
+        "german": "Incant: +20 Angriff.\nOverdamage: Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned und Explosive.",
+        "portuguese": "Incant: +20 de Ataque.\nOverdamage: Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned e Explosive.",
+        "russian": "Incant: +20 атаки.\nOverdamage: Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+        "chinese": "Incant: 攻击 +20。\nOverdamage: 将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned和Explosive。",
+        "chinese_traditional": "Incant: 攻擊 +20。\nOverdamage: 將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned和Explosive。",
+        "korean": "Incant: 공격력 +20.\nOverdamage: 초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+        "japanese": "Incant: 攻撃+20。\nOverdamage: 手札の追加単位に超過ダメージを加える。なければ作成する。AttunedとExplosiveを与える。"
+      },
+      "trigger_upgrades": [
+        "@WW_PublishOrIncant3_IncantTrigger",
+        "@WW_PublishOrIncant3_Trigger"
+      ]
     },
     {
       "id": "WW_TenureOfProtection1",
@@ -115,22 +118,23 @@
         "japanese": "守護の終身在職 1"
       },
       "trigger_upgrades": [
-        "@WW_TenureOfProtection1_Trigger"
+        "@WW_TenureOfProtection1_Trigger",
+        "@WW_U03_Overheal"
       ],
       "bonus_damage": 0,
       "bonus_hp": 10,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: [armor] 5.",
-        "english": "Incant: [armor] 5.",
-        "french": "Incant: [armor] 5.",
-        "german": "Incant: [armor] 5.",
-        "portuguese": "Incant: [armor] 5.",
-        "russian": "Incant: [armor] 5.",
-        "chinese": "Incant: [armor] 5.",
-        "chinese_traditional": "Incant: [armor] 5.",
-        "korean": "Incant: [armor] 5.",
-        "japanese": "Incant: [armor] 5."
+        "english": "Incant: [armor] 3. [spikes] 1.\nOverheal: Deal the excess healing as damage to all enemies.",
+        "spanish": "Incant: [armor] 3. [spikes] 1.\nOverheal: Inflige la curación sobrante como daño a todos los enemigos.",
+        "french": "Incant: [armor] 3. [spikes] 1.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+        "german": "Incant: [armor] 3. [spikes] 1.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+        "portuguese": "Incant: [armor] 3. [spikes] 1.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+        "russian": "Incant: [armor] 3. [spikes] 1.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+        "chinese": "Incant: [armor] 3. [spikes] 1.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+        "chinese_traditional": "Incant: [armor] 3. [spikes] 1.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+        "korean": "Incant: [armor] 3. [spikes] 1.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+        "japanese": "Incant: [armor] 3. [spikes] 1.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
       }
     },
     {
@@ -148,22 +152,23 @@
         "japanese": "守護の終身在職 2"
       },
       "trigger_upgrades": [
-        "@WW_TenureOfProtection2_Trigger"
+        "@WW_TenureOfProtection2_Trigger",
+        "@WW_U03_Overheal"
       ],
-      "bonus_damage": 5,
+      "bonus_damage": 6,
       "bonus_hp": 25,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: [armor] 10.",
-        "english": "Incant: [armor] 10.",
-        "french": "Incant: [armor] 10.",
-        "german": "Incant: [armor] 10.",
-        "portuguese": "Incant: [armor] 10.",
-        "russian": "Incant: [armor] 10.",
-        "chinese": "Incant: [armor] 10.",
-        "chinese_traditional": "Incant: [armor] 10.",
-        "korean": "Incant: [armor] 10.",
-        "japanese": "Incant: [armor] 10."
+        "english": "Incant: [armor] 6. [spikes] 2.\nOverheal: Deal the excess healing as damage to all enemies.",
+        "spanish": "Incant: [armor] 6. [spikes] 2.\nOverheal: Inflige la curación sobrante como daño a todos los enemigos.",
+        "french": "Incant: [armor] 6. [spikes] 2.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+        "german": "Incant: [armor] 6. [spikes] 2.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+        "portuguese": "Incant: [armor] 6. [spikes] 2.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+        "russian": "Incant: [armor] 6. [spikes] 2.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+        "chinese": "Incant: [armor] 6. [spikes] 2.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+        "chinese_traditional": "Incant: [armor] 6. [spikes] 2.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+        "korean": "Incant: [armor] 6. [spikes] 2.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+        "japanese": "Incant: [armor] 6. [spikes] 2.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
       }
     },
     {
@@ -181,31 +186,164 @@
         "japanese": "守護の終身在職 3"
       },
       "trigger_upgrades": [
-        "@WW_TenureOfProtection3_Trigger"
+        "@WW_TenureOfProtection3_Trigger",
+        "@WW_U03_Overheal"
       ],
       "bonus_damage": 10,
       "bonus_hp": 45,
       "does_not_replace_ability": true,
       "descriptions": {
-        "spanish": "Incant: [armor] 20.",
-        "english": "Incant: [armor] 20.",
-        "french": "Incant: [armor] 20.",
-        "german": "Incant: [armor] 20.",
-        "portuguese": "Incant: [armor] 20.",
-        "russian": "Incant: [armor] 20.",
-        "chinese": "Incant: [armor] 20.",
-        "chinese_traditional": "Incant: [armor] 20.",
-        "korean": "Incant: [armor] 20.",
-        "japanese": "Incant: [armor] 20."
+        "english": "Incant: [armor] 12. [spikes] 4.\nOverheal: Deal the excess healing as damage to all enemies.",
+        "spanish": "Incant: [armor] 12. [spikes] 4.\nOverheal: Inflige la curación sobrante como daño a todos los enemigos.",
+        "french": "Incant: [armor] 12. [spikes] 4.\nOverheal: Infligez les soins excédentaires en dégâts à tous les ennemis.",
+        "german": "Incant: [armor] 12. [spikes] 4.\nOverheal: Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+        "portuguese": "Incant: [armor] 12. [spikes] 4.\nOverheal: Causa a cura excedente como dano a todos os inimigos.",
+        "russian": "Incant: [armor] 12. [spikes] 4.\nOverheal: Нанесите всем врагам урон в размере избыточного лечения.",
+        "chinese": "Incant: [armor] 12. [spikes] 4.\nOverheal: 对所有敌人造成等同于溢出治疗量的伤害。",
+        "chinese_traditional": "Incant: [armor] 12. [spikes] 4.\nOverheal: 對所有敵人造成等同於溢出治療量的傷害。",
+        "korean": "Incant: [armor] 12. [spikes] 4.\nOverheal: 모든 적에게 초과 치유량만큼 피해를 줍니다.",
+        "japanese": "Incant: [armor] 12. [spikes] 4.\nOverheal: 回復の超過分に等しいダメージを敵全体に与える。"
       }
+    },
+    {
+      "id": "WW_ExtraCredit_AttunedUpgrade",
+      "trait_upgrades": [
+        "@WW_ExtraCredit_AttunedTrait"
+      ],
+      "hide_icon_on_card": true
+    },
+    {
+      "id": "WW_ExtraCredit_AttunedExplosiveUpgrade",
+      "trait_upgrades": [
+        "@WW_ExtraCredit_AttunedTrait",
+        "@WW_ExtraCredit_ExplosiveTrait"
+      ],
+      "hide_icon_on_card": true
     }
   ],
   "character_triggers": [
     {
       "id": "WW_PublishOrIncant1_Trigger",
-      "trigger": "card_spell_played",
+      "trigger": "@WW_Overdamage",
       "effects": [
         "@WW_PublishOrIncant1_Effect"
+      ],
+      "descriptions": {
+        "english": "Add the excess damage to Extra Credit in hand. Create one if needed.",
+        "spanish": "Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo.",
+        "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire.",
+        "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine.",
+        "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário.",
+        "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте.",
+        "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。",
+        "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。",
+        "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다.",
+        "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant2_Trigger",
+      "trigger": "@WW_Overdamage",
+      "effects": [
+        "@WW_PublishOrIncant2_Effect"
+      ],
+      "descriptions": {
+        "english": "Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned.",
+        "spanish": "Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Otórgale Attuned.",
+        "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned.",
+        "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned.",
+        "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned.",
+        "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned.",
+        "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned。",
+        "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned。",
+        "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned를 부여합니다.",
+        "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。Attunedを与える。"
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant3_Trigger",
+      "trigger": "@WW_Overdamage",
+      "effects": [
+        "@WW_PublishOrIncant3_Effect"
+      ],
+      "descriptions": {
+        "english": "Add the excess damage to Extra Credit in hand. Create one if needed. Give it Attuned and Explosive.",
+        "spanish": "Añade el daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Otórgale Attuned y Explosive.",
+        "french": "Ajoutez les dégâts excédentaires à un Crédit supplémentaire en main. Créez-en un si nécessaire. Donnez-lui Attuned et Explosive.",
+        "german": "Füge den überschüssigen Schaden einer Zusatzleistung auf der Hand hinzu. Erschaffe bei Bedarf eine. Gib ihr Attuned und Explosive.",
+        "portuguese": "Adiciona o dano excedente a Crédito Extra na mão. Cria um se necessário. Dá-lhe Attuned e Explosive.",
+        "russian": "Добавьте избыточный урон к Дополнительному зачёту в руке. Если его нет, создайте. Дайте ему Attuned и Explosive.",
+        "chinese": "将溢出伤害加到手牌中额外学分的伤害上。若没有，则创建一张。赋予其Attuned和Explosive。",
+        "chinese_traditional": "將溢出傷害加到手牌中額外學分的傷害上。若沒有，則建立一張。賦予其Attuned和Explosive。",
+        "korean": "초과 피해를 손의 추가 학점 피해에 더합니다. 없으면 생성합니다. Attuned와 Explosive를 부여합니다.",
+        "japanese": "手札の追加単位に超過ダメージを加える。なければ作成する。AttunedとExplosiveを与える。"
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection1_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection1_Effect",
+        "@WW_TenureOfProtection1_SpikesEffect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 3. [spikes] 1.",
+        "english": "[armor] 3. [spikes] 1.",
+        "french": "[armor] 3. [spikes] 1.",
+        "german": "[armor] 3. [spikes] 1.",
+        "portuguese": "[armor] 3. [spikes] 1.",
+        "russian": "[armor] 3. [spikes] 1.",
+        "chinese": "[armor] 3. [spikes] 1.",
+        "chinese_traditional": "[armor] 3. [spikes] 1.",
+        "korean": "[armor] 3. [spikes] 1.",
+        "japanese": "[armor] 3. [spikes] 1."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection2_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection2_Effect",
+        "@WW_TenureOfProtection2_SpikesEffect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 6. [spikes] 2.",
+        "english": "[armor] 6. [spikes] 2.",
+        "french": "[armor] 6. [spikes] 2.",
+        "german": "[armor] 6. [spikes] 2.",
+        "portuguese": "[armor] 6. [spikes] 2.",
+        "russian": "[armor] 6. [spikes] 2.",
+        "chinese": "[armor] 6. [spikes] 2.",
+        "chinese_traditional": "[armor] 6. [spikes] 2.",
+        "korean": "[armor] 6. [spikes] 2.",
+        "japanese": "[armor] 6. [spikes] 2."
+      }
+    },
+    {
+      "id": "WW_TenureOfProtection3_Trigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_TenureOfProtection3_Effect",
+        "@WW_TenureOfProtection3_SpikesEffect"
+      ],
+      "descriptions": {
+        "spanish": "[armor] 12. [spikes] 4.",
+        "english": "[armor] 12. [spikes] 4.",
+        "french": "[armor] 12. [spikes] 4.",
+        "german": "[armor] 12. [spikes] 4.",
+        "portuguese": "[armor] 12. [spikes] 4.",
+        "russian": "[armor] 12. [spikes] 4.",
+        "chinese": "[armor] 12. [spikes] 4.",
+        "chinese_traditional": "[armor] 12. [spikes] 4.",
+        "korean": "[armor] 12. [spikes] 4.",
+        "japanese": "[armor] 12. [spikes] 4."
+      }
+    },
+    {
+      "id": "WW_PublishOrIncant1_IncantTrigger",
+      "trigger": "card_spell_played",
+      "effects": [
+        "@WW_PublishOrIncant1_IncantEffect"
       ],
       "descriptions": {
         "spanish": "+5 de ataque.",
@@ -221,10 +359,10 @@
       }
     },
     {
-      "id": "WW_PublishOrIncant2_Trigger",
+      "id": "WW_PublishOrIncant2_IncantTrigger",
       "trigger": "card_spell_played",
       "effects": [
-        "@WW_PublishOrIncant2_Effect"
+        "@WW_PublishOrIncant2_IncantEffect"
       ],
       "descriptions": {
         "spanish": "+10 de ataque.",
@@ -240,10 +378,10 @@
       }
     },
     {
-      "id": "WW_PublishOrIncant3_Trigger",
+      "id": "WW_PublishOrIncant3_IncantTrigger",
       "trigger": "card_spell_played",
       "effects": [
-        "@WW_PublishOrIncant3_Effect"
+        "@WW_PublishOrIncant3_IncantEffect"
       ],
       "descriptions": {
         "spanish": "+20 de ataque.",
@@ -257,86 +395,34 @@
         "korean": "공격력 +20.",
         "japanese": "攻撃+20。"
       }
-    },
-    {
-      "id": "WW_TenureOfProtection1_Trigger",
-      "trigger": "card_spell_played",
-      "effects": [
-        "@WW_TenureOfProtection1_Effect"
-      ],
-      "descriptions": {
-        "spanish": "[armor] 5.",
-        "english": "[armor] 5.",
-        "french": "[armor] 5.",
-        "german": "[armor] 5.",
-        "portuguese": "[armor] 5.",
-        "russian": "[armor] 5.",
-        "chinese": "[armor] 5.",
-        "chinese_traditional": "[armor] 5.",
-        "korean": "[armor] 5.",
-        "japanese": "[armor] 5."
-      }
-    },
-    {
-      "id": "WW_TenureOfProtection2_Trigger",
-      "trigger": "card_spell_played",
-      "effects": [
-        "@WW_TenureOfProtection2_Effect"
-      ],
-      "descriptions": {
-        "spanish": "[armor] 10.",
-        "english": "[armor] 10.",
-        "french": "[armor] 10.",
-        "german": "[armor] 10.",
-        "portuguese": "[armor] 10.",
-        "russian": "[armor] 10.",
-        "chinese": "[armor] 10.",
-        "chinese_traditional": "[armor] 10.",
-        "korean": "[armor] 10.",
-        "japanese": "[armor] 10."
-      }
-    },
-    {
-      "id": "WW_TenureOfProtection3_Trigger",
-      "trigger": "card_spell_played",
-      "effects": [
-        "@WW_TenureOfProtection3_Effect"
-      ],
-      "descriptions": {
-        "spanish": "[armor] 20.",
-        "english": "[armor] 20.",
-        "french": "[armor] 20.",
-        "german": "[armor] 20.",
-        "portuguese": "[armor] 20.",
-        "russian": "[armor] 20.",
-        "chinese": "[armor] 20.",
-        "chinese_traditional": "[armor] 20.",
-        "korean": "[armor] 20.",
-        "japanese": "[armor] 20."
-      }
     }
   ],
   "effects": [
     {
       "id": "WW_PublishOrIncant1_Effect",
-      "name": "CardEffectBuffDamage",
+      "name": "@CardEffectOverdamageExtraCredit",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_int": 5
+      "param_int": 100,
+      "param_card_pool": "@WW_ExtraCredit_GeneratedPool"
     },
     {
       "id": "WW_PublishOrIncant2_Effect",
-      "name": "CardEffectBuffDamage",
+      "name": "@CardEffectOverdamageExtraCredit",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_int": 10
+      "param_int": 100,
+      "param_upgrade": "@WW_ExtraCredit_AttunedUpgrade",
+      "param_card_pool": "@WW_ExtraCredit_GeneratedPool"
     },
     {
       "id": "WW_PublishOrIncant3_Effect",
-      "name": "CardEffectBuffDamage",
+      "name": "@CardEffectOverdamageExtraCredit",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_int": 20
+      "param_int": 100,
+      "param_upgrade": "@WW_ExtraCredit_AttunedExplosiveUpgrade",
+      "param_card_pool": "@WW_ExtraCredit_GeneratedPool"
     },
     {
       "id": "WW_TenureOfProtection1_Effect",
@@ -346,7 +432,7 @@
       "param_status_effects": [
         {
           "status": "armor",
-          "count": 5
+          "count": 3
         }
       ]
     },
@@ -358,7 +444,7 @@
       "param_status_effects": [
         {
           "status": "armor",
-          "count": 10
+          "count": 6
         }
       ]
     },
@@ -370,8 +456,86 @@
       "param_status_effects": [
         {
           "status": "armor",
-          "count": 20
+          "count": 12
         }
+      ]
+    },
+    {
+      "id": "WW_PublishOrIncant1_IncantEffect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 5
+    },
+    {
+      "id": "WW_PublishOrIncant2_IncantEffect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 10
+    },
+    {
+      "id": "WW_PublishOrIncant3_IncantEffect",
+      "name": "CardEffectBuffDamage",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_int": 20
+    },
+    {
+      "id": "WW_TenureOfProtection1_SpikesEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "spikes",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "WW_TenureOfProtection2_SpikesEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "spikes",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "WW_TenureOfProtection3_SpikesEffect",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "self",
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "spikes",
+          "count": 4
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_ExtraCredit_AttunedTrait",
+      "name": "CardTraitStrongerMagicPower",
+      "stack_mode": "none"
+    },
+    {
+      "id": "WW_ExtraCredit_ExplosiveTrait",
+      "name": "CardTraitDamageOverflow",
+      "param_int": 2,
+      "stack_mode": "none"
+    }
+  ],
+  "card_pools": [
+    {
+      "id": "WW_ExtraCredit_GeneratedPool",
+      "cards": [
+        "@WW_Token_ExtraCredit"
       ]
     }
   ]

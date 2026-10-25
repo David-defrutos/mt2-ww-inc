@@ -3,10 +3,9 @@
   "effects": [
     {
       "id": "WW_S01_Effect",
-      "name": "@CardEffectAcademicSpellRule",
+      "name": "@CardEffectAcademicInterdepartmentalMemo",
       "target_mode": "room",
-      "target_team": "monsters",
-      "param_str": "floors"
+      "target_team": "monsters"
     }
   ],
   "cards": [

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework><Nullable>enable</Nullable><LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <MonsterTrain2Managed Condition="'$(MonsterTrain2Managed)' == ''">C:/Juegos/Steam/steamapps/common/Monster Train 2/MonsterTrain2_Data/Managed</MonsterTrain2Managed>
+    <BepInExCore Condition="'$(BepInExCore)' == ''">C:/Users/david/AppData/Roaming/Thunderstore Mod Manager/DataFolder/MonsterTrain2/profiles/Default/BepInEx/core</BepInExCore>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/OverhealEvent.cs" Link="OverhealEvent.cs"/>
+    <Compile Include="../../src/ArcaneSlayEvent.cs" Link="ArcaneSlayEvent.cs"/>
+    <Reference Include="Assembly-CSharp"><HintPath>$(MonsterTrain2Managed)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp-firstpass"><HintPath>$(MonsterTrain2Managed)/Assembly-CSharp-firstpass.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(MonsterTrain2Managed)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(BepInExCore)/0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>
+<!-- 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/shared/Triggers/SharedTriggers.csproj||Añadir compilación independiente de los dos núcleos sin enlazar código del clan ni Conductor -->

@@ -99,16 +99,16 @@
         "@WW_T02_AuraWizard"
       ],
       "descriptions": {
-        "spanish": "Otorga [conduit] 5 a los Magos y Brujas de este piso.",
-        "english": "Grant [conduit] 5 to Wizards and Witches on this floor.",
-        "french": "Donne [conduit] 5 aux sorciers et sorcières de cet étage.",
-        "german": "Gewährt Magiern und Hexen dieser Etage [conduit] 5.",
-        "portuguese": "Concede [conduit] 5 aos Magos e Bruxas deste andar.",
-        "russian": "Даёт [conduit] 5 магам и ведьмам этого этажа.",
-        "chinese": "给予本层男巫和女巫 [conduit] 5。",
-        "chinese_traditional": "給予本層男巫和女巫 [conduit] 5。",
-        "korean": "이 층의 마법사와 마녀에게 [conduit] 5를 줍니다.",
-        "japanese": "この階の魔法使いと魔女に[conduit] 5を与える。"
+        "english": "Grant [conduit] 5 to Wizards and Witches.",
+        "spanish": "Otorga [conduit] 5 a Magos y Brujas.",
+        "french": "Accordez [conduit] 5 aux sorciers et sorcières.",
+        "german": "Gewähre Magiern und Hexen [conduit] 5.",
+        "portuguese": "Concede [conduit] 5 a Magos e Bruxas.",
+        "russian": "Дайте магам и ведьмам [conduit] 5.",
+        "chinese": "使男巫和女巫获得[conduit] 5。",
+        "chinese_traditional": "使男巫和女巫獲得[conduit] 5。",
+        "korean": "마법사와 마녀에게 [conduit] 5를 부여합니다.",
+        "japanese": "魔法使いと魔女に[conduit] 5を与える。"
       }
     }
   ],

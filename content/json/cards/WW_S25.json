@@ -43,16 +43,16 @@
       "id": "WW_RetributionHit",
       "trigger": "on_hit",
       "descriptions": {
-        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
-        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
-        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
-        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
-        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
-        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
-        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
-        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
-        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
-        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+        "english": "Until next turn, when hit, deal this unit’s health as damage to the attacker.",
+        "spanish": "Hasta el próximo turno, al recibir un golpe, inflige la salud de esta unidad como daño al atacante.",
+        "french": "Jusqu'au prochain tour, quand cette unité est touchée, infligez ses PV en dégâts à l'attaquant.",
+        "german": "Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihr Leben als Schaden zu.",
+        "portuguese": "Até o próximo turno, ao sofrer um golpe, causa a saúde desta unidade como dano ao atacante.",
+        "russian": "До следующего хода при получении удара наносите атакующему урон в размере здоровья этого бойца.",
+        "chinese": "直到下回合，此单位受击时，对攻击者造成等同于自身生命的伤害。",
+        "chinese_traditional": "直到下回合，此單位受擊時，對攻擊者造成等同於自身生命的傷害。",
+        "korean": "다음 턴까지 피격 시 공격자에게 이 유닛의 체력만큼 피해를 줍니다.",
+        "japanese": "次のターンまで、被弾時にこのユニットの体力に等しいダメージを攻撃者に与える。"
       },
       "effects": [
         "@WW_RetributionDamage"
@@ -75,16 +75,16 @@
         "japanese": "秘術賠償責任保険"
       },
       "descriptions": {
-        "spanish": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige tanto daño al atacante como la [health] actual de esta unidad.",
-        "english": "Restore [effect0.power] health. Until next turn, deal damage to the attacker equal to this unit’s current [health] when hit.",
-        "french": "Restaure [effect0.power] PV. Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
-        "german": "Stelle [effect0.power] Gesundheit wieder her. Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
-        "portuguese": "Restaura [effect0.power] de vida. Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
-        "russian": "Восстанавливает [effect0.power] здоровья. До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
-        "chinese": "恢复[effect0.power]点生命值。直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
-        "chinese_traditional": "恢復[effect0.power]點生命值。直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
-        "korean": "생명력을 [effect0.power] 회복합니다. 다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
-        "japanese": "HPを[effect0.power]回復する。次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+        "spanish": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige la [health] de esta unidad como daño al atacante.",
+        "french": "Restaurez [effect0.power] PV. Jusqu'au prochain tour, quand cette unité est touchée, infligez ses [health] en dégâts à l'attaquant.",
+        "german": "Stelle [effect0.power] Leben wieder her. Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihre [health] als Schaden zu.",
+        "portuguese": "Restaura [effect0.power] de saúde. Até o próximo turno, ao sofrer um golpe, causa a [health] desta unidade como dano ao atacante.",
+        "russian": "Восстановите [effect0.power] здоровья. До следующего хода при получении удара наносите атакующему урон в размере [health] этого бойца.",
+        "chinese": "恢复[effect0.power]点生命。直到下回合，此单位受击时，对攻击者造成等同于自身[health]的伤害。",
+        "chinese_traditional": "恢復[effect0.power]點生命。直到下回合，此單位受擊時，對攻擊者造成等同於自身[health]的傷害。",
+        "korean": "체력을 [effect0.power] 회복합니다. 다음 턴까지 피격 시 공격자에게 이 유닛의 [health]만큼 피해를 줍니다.",
+        "japanese": "体力を[effect0.power]回復する。次のターンまで、被弾時にこのユニットの[health]に等しいダメージを攻撃者に与える。",
+        "english": "Restore [effect0.power] health. Until next turn, when hit, deal this unit’s [health] as damage to the attacker."
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -109,7 +109,7 @@
     },
     {
       "id": "WW_InsuranceIcon",
-      "path": "textures/icons/WW_InsuranceIcon.png"
+      "path": "textures/icons/WW_Insurance_Character50.png"
     }
   ],
   "game_objects": [
@@ -140,28 +140,28 @@
         "japanese": "秘術賠償責任保険"
       },
       "card_tooltips": {
-        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
-        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
-        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
-        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
-        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
-        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
-        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
-        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
-        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
-        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+        "english": "Until next turn, when hit, deal this unit’s health as damage to the attacker.",
+        "spanish": "Hasta el próximo turno, al recibir un golpe, inflige la salud de esta unidad como daño al atacante.",
+        "french": "Jusqu'au prochain tour, quand cette unité est touchée, infligez ses PV en dégâts à l'attaquant.",
+        "german": "Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihr Leben als Schaden zu.",
+        "portuguese": "Até o próximo turno, ao sofrer um golpe, causa a saúde desta unidade como dano ao atacante.",
+        "russian": "До следующего хода при получении удара наносите атакующему урон в размере здоровья этого бойца.",
+        "chinese": "直到下回合，此单位受击时，对攻击者造成等同于自身生命的伤害。",
+        "chinese_traditional": "直到下回合，此單位受擊時，對攻擊者造成等同於自身生命的傷害。",
+        "korean": "다음 턴까지 피격 시 공격자에게 이 유닛의 체력만큼 피해를 줍니다.",
+        "japanese": "次のターンまで、被弾時にこのユニットの体力に等しいダメージを攻撃者に与える。"
       },
       "character_tooltips": {
-        "spanish": "Hasta el próximo turno, al recibir un golpe este aliado inflige al atacante daño igual a su vida actual.",
-        "english": "Until next turn, when this ally is hit, deal damage equal to its current health to the attacker.",
-        "french": "Jusqu'au prochain tour, quand cet allié est touché, inflige à l'attaquant des dégâts égaux à ses PV actuels.",
-        "german": "Bis nächste Runde fügt dieser Verbündete bei einem Treffer dem Angreifer Schaden in Höhe seiner aktuellen Gesundheit zu.",
-        "portuguese": "Até o próximo turno, ao ser atingido, este aliado causa ao atacante dano igual à sua vida atual.",
-        "russian": "До следующего хода при получении удара этот союзник наносит атакующему урон, равный своему текущему здоровью.",
-        "chinese": "直到下回合，此盟友受击时对攻击者造成自身当前生命等量伤害。",
-        "chinese_traditional": "直到下回合，此盟友受擊時對攻擊者造成自身當前生命等量傷害。",
-        "korean": "다음 턴까지 이 아군은 피격 시 자신의 현재 생명력만큼 공격자에게 피해를 줍니다.",
-        "japanese": "次のターンまで、この味方は被弾時に現在HPと同量のダメージを攻撃者へ与える。"
+        "english": "Until next turn, when hit, deal this unit’s health as damage to the attacker.",
+        "spanish": "Hasta el próximo turno, al recibir un golpe, inflige la salud de esta unidad como daño al atacante.",
+        "french": "Jusqu'au prochain tour, quand cette unité est touchée, infligez ses PV en dégâts à l'attaquant.",
+        "german": "Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihr Leben als Schaden zu.",
+        "portuguese": "Até o próximo turno, ao sofrer um golpe, causa a saúde desta unidade como dano ao atacante.",
+        "russian": "До следующего хода при получении удара наносите атакующему урон в размере здоровья этого бойца.",
+        "chinese": "直到下回合，此单位受击时，对攻击者造成等同于自身生命的伤害。",
+        "chinese_traditional": "直到下回合，此單位受擊時，對攻擊者造成等同於自身生命的傷害。",
+        "korean": "다음 턴까지 피격 시 공격자에게 이 유닛의 체력만큼 피해를 줍니다.",
+        "japanese": "次のターンまで、被弾時にこのユニットの体力に等しいダメージを攻撃者に与える。"
       },
       "trigger_stage": "none",
       "remove_when_triggered": false,
@@ -177,7 +177,7 @@
   "atlas_icons": [
     {
       "id": "WW_InsuranceIcon",
-      "path": "textures/icons/WW_InsuranceTooltip.png"
+      "path": "textures/icons/WW_Insurance_Tooltip50.png"
     }
   ]
 }

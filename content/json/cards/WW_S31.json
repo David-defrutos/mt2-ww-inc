@@ -16,16 +16,16 @@
         "japanese": "総合試験"
       },
       "descriptions": {
-        "english": "Deal [effect0.power] damage to all enemy units.",
-        "spanish": "Inflige [effect0.power] de daño a todas las unidades enemigas.",
-        "french": "Inflige [effect0.power] dégâts à toutes les unités ennemies.",
-        "german": "Füge allen gegnerischen Einheiten [effect0.power] Schaden zu.",
-        "portuguese": "Causa [effect0.power] de dano a todas as unidades inimigas.",
-        "russian": "Наносит [effect0.power] урона всем вражеским бойцам.",
-        "chinese": "对所有敌方单位造成[effect0.power]点伤害。",
-        "chinese_traditional": "對所有敵方單位造成[effect0.power]點傷害。",
-        "korean": "모든 적 유닛에게 [effect0.power]의 피해를 줍니다.",
-        "japanese": "すべての敵ユニットに[effect0.power]ダメージを与える。"
+        "english": "Deal [effect0.power] damage to enemy units.",
+        "spanish": "Inflige [effect0.power] de daño a los enemigos.",
+        "french": "Infligez [effect0.power] dégâts aux ennemis.",
+        "german": "Füge Feinden [effect0.power] Schaden zu.",
+        "portuguese": "Causa [effect0.power] de dano aos inimigos.",
+        "russian": "Нанесите врагам [effect0.power] урона.",
+        "chinese": "对敌人造成[effect0.power]点伤害。",
+        "chinese_traditional": "對敵人造成[effect0.power]點傷害。",
+        "korean": "적에게 [effect0.power] 피해를 줍니다.",
+        "japanese": "敵に[effect0.power]ダメージを与える。"
       },
       "class": "@WW_Class",
       "card_type": "spell",

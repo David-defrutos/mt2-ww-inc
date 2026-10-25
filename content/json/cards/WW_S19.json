@@ -29,16 +29,16 @@
         "japanese": "履修取消"
       },
       "descriptions": {
-        "english": "Discard a spell, Blight, or Scourge in hand. Gain [ember] equal to twice its current cost. Draw [effect1.power].",
-        "spanish": "Descarta un hechizo, Blight o Scourge de la mano. Obtén el doble de su coste actual en [ember]. Roba [effect1.power].",
-        "french": "Défaussez un sort, un Fléau ou une Plaie en main. Gagnez [ember] égal au double de son coût actuel. Piochez [effect1.power].",
-        "german": "Wirf einen Zauber, eine Plage oder eine Geißel auf der Hand ab. Erhalte [ember] in Höhe des Doppelten seiner aktuellen Kosten. Ziehe [effect1.power].",
-        "portuguese": "Descarta um feitiço, Praga ou Flagelo da mão. Ganha [ember] igual ao dobro do seu custo atual. Compra [effect1.power].",
-        "russian": "Сбросьте заклинание, Скверну или Плеть из руки. Получите [ember] в размере удвоенной текущей стоимости карты. Возьмите [effect1.power].",
-        "chinese": "弃掉一张手牌中的法术、祸害或天灾。获得等于其当前费用两倍的[ember]。抽[effect1.power]张牌。",
-        "chinese_traditional": "棄掉一張手牌中的法術、禍害或瘟疫。獲得等於其目前費用兩倍的[ember]。抽[effect1.power]張牌。",
-        "korean": "손의 주문, 저주 또는 재앙를 버립니다. 현재 비용의 두 배만큼 [ember]를 얻습니다. [effect1.power]장을 뽑습니다.",
-        "japanese": "手札の呪文、災厄、または災難を捨てる。現在のコストの2倍の[ember]を得る。[effect1.power]枚引く。"
+        "spanish": "Descarta un hechizo, Ruina o Azote. Obtén el doble de su coste como [ember]. Roba [effect1.power].",
+        "french": "Défaussez un sort, un Fléau ou une Plaie. Gagnez le double de son coût en [ember]. Piochez [effect1.power].",
+        "german": "Wirf einen Zauber, einen Fluch oder eine Geißel ab. Erhalte das Doppelte seiner Kosten als [ember]. Ziehe [effect1.power].",
+        "portuguese": "Descarta um feitiço, Praga ou Flagelo. Ganha o dobro do custo em [ember]. Compra [effect1.power].",
+        "russian": "Сбросьте заклинание, Пагубник или Плеть. Получите удвоенную стоимость в [ember]. Возьмите [effect1.power].",
+        "chinese": "弃掉一张法术、祸患或天灾卡牌。获得其费用两倍的[ember]。抽[effect1.power]张牌。",
+        "chinese_traditional": "棄掉一張法術、禍害或瘟疫卡牌。獲得其費用兩倍的[ember]。抽[effect1.power]張牌。",
+        "korean": "주문, 저주 또는 재앙 카드 하나를 버립니다. 비용의 두 배만큼 [ember]를 얻습니다. [effect1.power]장 뽑습니다.",
+        "japanese": "呪文、劣化、または災難カード1枚を捨てる。そのコストの2倍の[ember]を得る。[effect1.power]枚引く。",
+        "english": "Discard a spell, Blight, or Scourge. Gain twice its cost as [ember]. Draw [effect1.power]."
       },
       "class": "@WW_Class",
       "card_type": "spell",

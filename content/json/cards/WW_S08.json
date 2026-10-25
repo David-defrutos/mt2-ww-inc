@@ -63,7 +63,8 @@
       "target_card_type": "spell",
       "target_card_selection_mode": "choose_to_hand",
       "param_int": 1,
-      "should_test": false
+      "should_test": false,
+      "hide_tooltip": true
     }
   ],
   "traits": [

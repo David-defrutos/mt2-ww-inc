@@ -3,10 +3,9 @@
   "effects": [
     {
       "id": "WW_S02_Effect",
-      "name": "@CardEffectAcademicSpellRule",
+      "name": "@CardEffectAcademicDissertation",
       "target_mode": "drop_target_character",
       "target_team": "monsters",
-      "param_str": "bind_attack",
       "param_card_filter": "OnlySpells"
     }
   ],
@@ -26,16 +25,16 @@
         "japanese": "魔法の学位論文"
       },
       "descriptions": {
-        "english": "Set aside a spell in hand that can target enemies and choose a friendly unit. Its next three attacks also play that spell on the enemy attacked. Return it to the discard pile when the effect ends.",
-        "spanish": "Aparta un hechizo de tu mano que pueda dirigirse a enemigos y elige una unidad aliada. Sus próximos tres ataques también juegan ese hechizo sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
-        "french": "Mettez de côté un sort en main pouvant cibler les ennemis et choisissez un allié. Ses trois prochaines attaques jouent aussi ce sort sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
-        "german": "Lege einen Handzauber beiseite, der Gegner anvisieren kann, und wähle einen Verbündeten. Seine nächsten drei Angriffe spielen auch diesen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
-        "portuguese": "Reserve um feitiço da mão que possa ter inimigos como alvo e escolha um aliado. Seus próximos três ataques também lançam esse feitiço no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
-        "russian": "Отложите заклинание из руки, способное выбирать врагов целью, и выберите союзника. Следующие три его атаки также применяют это заклинание к атакуемому врагу. Верните его в сброс, когда эффект закончится.",
-        "chinese": "暂存一个可指定敌人为目标的手牌法术，并选择一个友方单位。其接下来三次攻击也会对被攻击的敌人施放该法术。效果结束后，将其放回弃牌堆。",
-        "chinese_traditional": "暫存一個可指定敵人為目標的手牌法術，並選擇一個友方單位。其接下來三次攻擊也會對被攻擊的敵人施放該法術。效果結束後，將其放回棄牌堆。",
-        "korean": "적을 대상으로 할 수 있는 손의 주문을 보관하고 아군을 선택합니다. 다음 세 번의 공격 때 공격한 적에게 그 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
-        "japanese": "敵を対象にできる手札の呪文を取り置き、味方を選ぶ。その味方の次の3回の攻撃は、攻撃した敵にその呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+        "spanish": "Aparta un hechizo no aleatorio de tu mano. Los próximos 3 ataques de esta unidad también lo lanzan. Devuélvelo a la pila de descartes al terminar el efecto.",
+        "french": "Mettez de côté un sort non aléatoire en main. Les 3 prochaines attaques de cette unité le lancent aussi. Remettez-le dans la défausse à la fin de l'effet.",
+        "german": "Lege einen nicht zufälligen Zauber auf der Hand beiseite. Die nächsten 3 Angriffe dieser Einheit wirken ihn ebenfalls. Lege ihn nach Ende des Effekts auf den Ablagestapel zurück.",
+        "portuguese": "Separa um feitiço não aleatório da mão. Os próximos 3 ataques desta unidade também o lançam. Devolve-o ao descarte quando o efeito terminar.",
+        "russian": "Отложите неслучайное заклинание из руки. Следующие 3 атаки этого бойца также применяют его. Верните его в сброс, когда эффект закончится.",
+        "chinese": "暂存一张非随机的手牌法术。此单位接下来的3次攻击也会施放它。效果结束时，将其放回弃牌堆。",
+        "chinese_traditional": "暫存一張非隨機的手牌法術。此單位接下來的3次攻擊也會施放它。效果結束時，將其放回棄牌堆。",
+        "korean": "손의 무작위가 아닌 주문을 따로 보관합니다. 이 유닛의 다음 3번 공격이 그 주문도 시전합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "手札のランダムでない呪文1枚を取り置く。このユニットの次の3回の攻撃は、その呪文も唱える。効果終了時に捨て札に戻す。",
+        "english": "Set aside a non-random spell in hand. This unit’s next 3 attacks also cast it. Return it to the discard pile when the effect ends."
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -53,6 +52,80 @@
       "traits": [
         "@WW_Consume"
       ]
+    },
+    {
+      "id": "WW_Dissertation_Allies",
+      "names": {
+        "english": "Allies",
+        "spanish": "Aliados",
+        "french": "Alliés",
+        "german": "Verbündete",
+        "portuguese": "Aliados",
+        "russian": "Союзники",
+        "chinese": "友方",
+        "chinese_traditional": "友方",
+        "korean": "아군",
+        "japanese": "味方"
+      },
+      "descriptions": {
+        "english": "Use this unit as the target for effects that can target either side.",
+        "spanish": "Usa esta unidad como objetivo de los efectos que admitan ambos bandos.",
+        "french": "Les effets pouvant cibler les deux camps ciblent cette unité.",
+        "german": "Effekte, die beide Seiten anvisieren können, zielen auf diese Einheit.",
+        "portuguese": "Use esta unidade como alvo de efeitos que aceitam ambos os lados.",
+        "russian": "Эффекты, допускающие обе стороны, выбирают целью эту единицу.",
+        "chinese": "可指定任意阵营的效果以此单位为目标。",
+        "chinese_traditional": "可指定任意陣營的效果以此單位為目標。",
+        "korean": "양쪽 진영을 대상으로 할 수 있는 효과가 이 유닛을 대상으로 합니다.",
+        "japanese": "両陣営を対象にできる効果は、このユニットを対象にする。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": true,
+      "card_art": "@WW_S02CardArt",
+      "pools": [],
+      "hide_in_logbook": true,
+      "effects": []
+    },
+    {
+      "id": "WW_Dissertation_Enemies",
+      "names": {
+        "english": "Enemies",
+        "spanish": "Enemigos",
+        "french": "Ennemis",
+        "german": "Gegner",
+        "portuguese": "Inimigos",
+        "russian": "Враги",
+        "chinese": "敌方",
+        "chinese_traditional": "敵方",
+        "korean": "적",
+        "japanese": "敵"
+      },
+      "descriptions": {
+        "english": "Use the attacked enemy as the target for effects that can target either side.",
+        "spanish": "Usa al enemigo atacado como objetivo de los efectos que admitan ambos bandos.",
+        "french": "Les effets pouvant cibler les deux camps ciblent l’ennemi attaqué.",
+        "german": "Effekte, die beide Seiten anvisieren können, zielen auf den angegriffenen Gegner.",
+        "portuguese": "Use o inimigo atacado como alvo de efeitos que aceitam ambos os lados.",
+        "russian": "Эффекты, допускающие обе стороны, выбирают целью атакуемого врага.",
+        "chinese": "可指定任意阵营的效果以被攻击的敌人为目标。",
+        "chinese_traditional": "可指定任意陣營的效果以被攻擊的敵人為目標。",
+        "korean": "양쪽 진영을 대상으로 할 수 있는 효과가 공격한 적을 대상으로 합니다.",
+        "japanese": "両陣営を対象にできる効果は、攻撃した敵を対象にする。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": true,
+      "card_art": "@WW_S02CardArt",
+      "pools": [],
+      "hide_in_logbook": true,
+      "effects": []
     }
   ],
   "sprites": [
@@ -62,7 +135,7 @@
     },
     {
       "id": "WW_DissertationIcon",
-      "path": "textures/icons/WW_ReservedSpellIcon.png"
+      "path": "textures/icons/WW_Dissertation_Character50.png"
     }
   ],
   "game_objects": [
@@ -93,28 +166,28 @@
         "japanese": "魔法の学位論文"
       },
       "card_tooltips": {
-        "english": "Each attack also plays the bound spells on the enemy attacked. Return it to the discard pile when the effect ends.",
-        "spanish": "Cada ataque también juega los hechizos vinculados sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
-        "french": "Chaque attaque joue aussi les sorts liés sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
-        "german": "Jeder Angriff spielt auch die gebundenen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
-        "portuguese": "Cada ataque também lança os feitiços vinculados no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
-        "russian": "Каждая атака также применяет привязанные заклинания к атакованному врагу. Верните его в сброс, когда эффект закончится.",
-        "chinese": "每次攻击也会对被攻击的敌人施放绑定的法术。效果结束后，将其放回弃牌堆。",
-        "chinese_traditional": "每次攻擊也會對被攻擊的敵人施放綁定的法術。效果結束後，將其放回棄牌堆。",
-        "korean": "각 공격은 공격한 적에게 연결된 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
-        "japanese": "各攻撃は、攻撃した敵に結び付けられた呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+        "english": "Each attack also casts the bound spells. Harmful spells target the attacked enemy; beneficial spells target this unit. Ambiguous spells use the chosen side. Area effects keep their original targets. Return the spells to the discard pile when the effect ends.",
+        "spanish": "Cada ataque también lanza los hechizos vinculados. Los perjudiciales van al enemigo atacado y los beneficiosos a esta unidad. Los ambiguos usan el bando elegido. Los efectos de área conservan sus objetivos. Devuelve los hechizos al descarte cuando termine el efecto.",
+        "french": "Chaque attaque lance aussi les sorts liés. Les nuisibles ciblent l’ennemi attaqué, les bénéfiques cette unité. Les ambigus utilisent le camp choisi. Les effets de zone conservent leurs cibles. Remettez les sorts dans la défausse lorsque l’effet prend fin.",
+        "german": "Jeder Angriff wirkt auch die gebundenen Zauber. Schädliche zielen auf den angegriffenen Gegner, hilfreiche auf diese Einheit. Unklare nutzen die gewählte Seite. Flächeneffekte behalten ihre Ziele. Lege die Zauber auf den Ablagestapel zurück, wenn der Effekt endet.",
+        "portuguese": "Cada ataque também lança os feitiços vinculados. Os nocivos visam o inimigo atacado, os benéficos esta unidade. Os ambíguos usam o lado escolhido. Efeitos de área mantêm seus alvos. Devolva os feitiços ao descarte quando o efeito terminar.",
+        "russian": "Каждая атака также применяет привязанные заклинания. Вредные выбирают атакуемого врага, полезные — эту единицу. Неоднозначные используют выбранную сторону. Массовые эффекты сохраняют свои цели. Верните заклинания в сброс, когда эффект закончится.",
+        "chinese": "每次攻击也会施放绑定的法术。有害法术指定被攻击的敌人，有益法术指定此单位，模糊法术使用所选阵营。范围效果保留原本的目标。效果结束后，将法术放回弃牌堆。",
+        "chinese_traditional": "每次攻擊也會施放綁定的法術。有害法術指定被攻擊的敵人，有益法術指定此單位，模糊法術使用所選陣營。範圍效果保留原本的目標。效果結束後，將法術放回棄牌堆。",
+        "korean": "각 공격은 연결된 주문도 사용합니다. 해로운 주문은 공격한 적을, 이로운 주문은 이 유닛을 대상으로 합니다. 모호한 주문은 선택한 진영을 사용합니다. 광역 효과는 원래 대상을 유지합니다. 효과가 끝나면 주문을 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "各攻撃は結び付けた呪文も使用する。有害な呪文は攻撃した敵、有益な呪文はこのユニット、曖昧な呪文は選んだ陣営を対象にする。範囲効果は元の対象を保つ。効果が終わると、呪文を捨て札に戻す。"
       },
       "character_tooltips": {
-        "english": "Each attack also plays the bound spells on the enemy attacked. Return it to the discard pile when the effect ends.",
-        "spanish": "Cada ataque también juega los hechizos vinculados sobre el enemigo atacado. Devuélvelo al descarte cuando termine el efecto.",
-        "french": "Chaque attaque joue aussi les sorts liés sur l’ennemi attaqué. Remettez-le dans la défausse lorsque l’effet prend fin.",
-        "german": "Jeder Angriff spielt auch die gebundenen Zauber auf den angegriffenen Gegner. Lege ihn auf den Ablagestapel zurück, wenn der Effekt endet.",
-        "portuguese": "Cada ataque também lança os feitiços vinculados no inimigo atacado. Devolva-o à pilha de descarte quando o efeito terminar.",
-        "russian": "Каждая атака также применяет привязанные заклинания к атакованному врагу. Верните его в сброс, когда эффект закончится.",
-        "chinese": "每次攻击也会对被攻击的敌人施放绑定的法术。效果结束后，将其放回弃牌堆。",
-        "chinese_traditional": "每次攻擊也會對被攻擊的敵人施放綁定的法術。效果結束後，將其放回棄牌堆。",
-        "korean": "각 공격은 공격한 적에게 연결된 주문도 사용합니다. 효과가 끝나면 버린 카드 더미로 돌려보냅니다.",
-        "japanese": "各攻撃は、攻撃した敵に結び付けられた呪文も使用する。効果が終わると、その呪文を捨て札に戻す。"
+        "english": "Each attack also casts the bound spells. Harmful spells target the attacked enemy; beneficial spells target this unit. Ambiguous spells use the chosen side. Area effects keep their original targets. Return the spells to the discard pile when the effect ends.",
+        "spanish": "Cada ataque también lanza los hechizos vinculados. Los perjudiciales van al enemigo atacado y los beneficiosos a esta unidad. Los ambiguos usan el bando elegido. Los efectos de área conservan sus objetivos. Devuelve los hechizos al descarte cuando termine el efecto.",
+        "french": "Chaque attaque lance aussi les sorts liés. Les nuisibles ciblent l’ennemi attaqué, les bénéfiques cette unité. Les ambigus utilisent le camp choisi. Les effets de zone conservent leurs cibles. Remettez les sorts dans la défausse lorsque l’effet prend fin.",
+        "german": "Jeder Angriff wirkt auch die gebundenen Zauber. Schädliche zielen auf den angegriffenen Gegner, hilfreiche auf diese Einheit. Unklare nutzen die gewählte Seite. Flächeneffekte behalten ihre Ziele. Lege die Zauber auf den Ablagestapel zurück, wenn der Effekt endet.",
+        "portuguese": "Cada ataque também lança os feitiços vinculados. Os nocivos visam o inimigo atacado, os benéficos esta unidade. Os ambíguos usam o lado escolhido. Efeitos de área mantêm seus alvos. Devolva os feitiços ao descarte quando o efeito terminar.",
+        "russian": "Каждая атака также применяет привязанные заклинания. Вредные выбирают атакуемого врага, полезные — эту единицу. Неоднозначные используют выбранную сторону. Массовые эффекты сохраняют свои цели. Верните заклинания в сброс, когда эффект закончится.",
+        "chinese": "每次攻击也会施放绑定的法术。有害法术指定被攻击的敌人，有益法术指定此单位，模糊法术使用所选阵营。范围效果保留原本的目标。效果结束后，将法术放回弃牌堆。",
+        "chinese_traditional": "每次攻擊也會施放綁定的法術。有害法術指定被攻擊的敵人，有益法術指定此單位，模糊法術使用所選陣營。範圍效果保留原本的目標。效果結束後，將法術放回棄牌堆。",
+        "korean": "각 공격은 연결된 주문도 사용합니다. 해로운 주문은 공격한 적을, 이로운 주문은 이 유닛을 대상으로 합니다. 모호한 주문은 선택한 진영을 사용합니다. 광역 효과는 원래 대상을 유지합니다. 효과가 끝나면 주문을 버린 카드 더미로 돌려보냅니다.",
+        "japanese": "各攻撃は結び付けた呪文も使用する。有害な呪文は攻撃した敵、有益な呪文はこのユニット、曖昧な呪文は選んだ陣営を対象にする。範囲効果は元の対象を保つ。効果が終わると、呪文を捨て札に戻す。"
       },
       "trigger_stage": "none",
       "remove_when_triggered": false,
@@ -130,7 +203,7 @@
   "atlas_icons": [
     {
       "id": "WW_DissertationIcon",
-      "path": "textures/icons/WW_ReservedSpellIcon.png"
+      "path": "textures/icons/WW_Dissertation_Tooltip50.png"
     }
   ]
 }

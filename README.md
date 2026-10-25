@@ -1,39 +1,54 @@
 <!-- Documento generado el 2026-10-10-0024 -->
 # W&W Inc.
 
-## Repositorio de desarrollo
+## Development source — 0.1.154 beta
 
-Fuentes de **W&W Inc. 0.1.132 (beta)**. Incluye código C#, pruebas, diseño, JSON y texturas del clan, además de los metadatos de Thunderstore. Las compilaciones, DLL de dependencias, ZIP e informes locales quedan fuera de Git.
+Source code and assets for **W&W Inc.**, a Monster Train 2 clan. The latest changes have passed code and data validation; their behavior and presentation still need in-game verification.
 
-- `src/`: plugin .NET Standard 2.1.
-- `content/`: datos JSON, icono y texturas que se distribuyen con el plugin.
-- `tests/`: pruebas de reglas, contratos y regresiones de daño; requieren .NET 10.
-- `design/`: catálogo y fichas de diseño.
-- `thunderstore/`: manifiesto, README público bilingüe y changelog.
+- `src/`: plugin, card effects and integration hooks.
+- `content/`: runtime JSON and artwork.
+- `tests/`: seven suites covering rules, native API contracts, damage traits, kill attribution, Dissertation, combat safety and shared trigger events.
+- `design/`: card/relic design catalog and original icon sources.
+- `shared/Triggers/`: [independent Overheal and Arcane Slay event transport](shared/Triggers/README.md), with a standalone compilation project and a data-side consumer example. Clan-specific detection and reward policies remain in W&W.
+- `thunderstore/`: package metadata and changelog.
 
-Para compilar desde un clon independiente, instala Monster Train 2, BepInEx, Trainworks Reloaded 0.7.33 y Conductor 0.5.15. Ajusta los `HintPath` de `src/WwInc.csproj` y `tests/Contracts/Contracts.csproj` a tus rutas locales; las DLL del juego y de las bibliotecas se obtienen de tu instalación.
+### Building from a clone
+
+Requires .NET SDK 10, Monster Train 2, BepInEx, Trainworks Reloaded 0.7.33 and Conductor 0.5.15. Set the local assembly paths in `src/WwInc.csproj` and `tests/Contracts/Contracts.csproj`, and the assembly resolver paths at the top of `tests/Contracts/Program.cs`, to your installation. Game and dependency DLLs are not included.
+
+From the repository root:
 
 ```powershell
 dotnet build src/WwInc.csproj -c Release
 dotnet run --project tests/Rules/Rules.csproj
 dotnet run --project tests/Contracts/Contracts.csproj -- .
 dotnet run --project tests/DamageTraits/DamageTraits.csproj
+dotnet run --project tests/KillClaims/KillClaims.csproj
+dotnet run --project tests/Dissertation/Dissertation.csproj
+dotnet run --project tests/CombatSafety/CombatSafety.csproj
+dotnet run --project tests/TriggerEvents/TriggerEvents.csproj
 ```
+
+The shared-trigger project accepts `MonsterTrain2Managed` and `BepInExCore` MSBuild properties to override its default local paths. It compiles independently of W&W and Conductor; it is not a Conductor plugin or a second DLL to install alongside W&W.
+
+Latest local validation: **1,264 checks**, valid runtime JSON, and both compilation projects finish without errors or warnings. Automated checks do not replace in-game testing. Compiled output, game libraries, local reports and tester feedback notes are excluded from Git.
+
+## Workspace notes
 
 Las secciones siguientes conservan el flujo del workspace original. Sus enlaces a `docs/`, scripts de operaciones y rutas absolutas requieren ese workspace y no se resuelven en un clon independiente. No son pasos necesarios para las pruebas de reglas y daño.
 
 
-Versión local 0.1.132 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
+Versión local 0.1.154 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
 
 [Estado y pruebas pendientes](../../../../docs/clanes/ww-inc/hechizos-starter-2026-10-11-1106.md) · [Catálogo seleccionado](design/catalog.json).
 
-Los 242 términos runtime cubren los diez idiomas admitidos. El generador aplica `scripts/operaciones/localizar-ww-inc-2026-10-10.py` automáticamente; el validador comprueba cobertura y parámetros. S27 añade el puesto de helados y sus tokens.
+Los 263 bloques localizados runtime cubren los diez idiomas admitidos. El validador comprueba cobertura y parámetros; las definiciones retiradas se conservan como compatibilidad. No ejecutar los generadores históricos para reconstruir el contenido vigente.
 
 El runtime está en `content/json` y el código C# en `src`. Las fichas `design/cards` y `design/relics` son documentación y no se cargan en Trainworks.
 
 ## Arte
 
-48 ilustraciones y tres hechizos nuevos con arte provisional pendiente (S28/S29/S30), 9 habilidades con arte de su unidad/equipo, 21 sprites de combate, 9 reliquias y 27 recursos de identidad e interfaz. Incluye estandartes por estado, cuatro recuadros, retratos y versiones bloqueadas de campeones, iconos de equipos/salas e icono de publicación. Originales y reducciones conservados en `arte/ww-inc/identidad-interfaz-2026-10-11-1005` del workspace.
+Los recursos distribuidos están en `content/textures`, incluidos cartas, sprites, reliquias e interfaz. Los maestros y variantes del workspace se conservan fuera de este repositorio. El informe enlazado conserva entregas históricas y no sustituye una comprobación actual del encaje dentro de Unity.
 
 [Informe de arte](../../../../docs/clanes/ww-inc/arte-completo-2026-10-11-1019.md).
 
@@ -60,7 +75,7 @@ python scripts/operaciones/empaquetar-ww-inc-2026-10-10.py --install
 
 La instalación usa únicamente la carpeta `Local-WWInc` del perfil Default. El proceso comprueba rutas y hashes, conserva otros mods y no reinicia el juego. Si el juego está abierto, el plugin se cargará en el siguiente arranque de ese perfil.
 
-**Validado fuera de Unity:** compilación sin errores ni advertencias; JSON, 810 contratos, 95 casos de reglas y 38 pruebas de daño. **Pendiente:** carga y combate dentro del juego, pruebas de balance v2, revisión lingüística y encaje visual del arte dentro de Unity.
+**Validado fuera de Unity:** compilación del clan y núcleos independientes sin errores ni advertencias; JSON válidos y 1.264 comprobaciones: 1.004 contratos, 124 reglas, 38 de daño, 16 de autoría, 32 de Dissertation, 25 de CombatSafety y 25 de TriggerEvents. **Pendiente:** carga y combate dentro del juego, pruebas de balance v2, revisión lingüística y encaje visual del arte dentro de Unity.
 
 <!-- 2026-10-10-0024||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||README actualizado con compilación, pruebas y despliegue local -->
 
@@ -317,3 +332,26 @@ Fuentes de la ficha pública en [thunderstore/README.md](thunderstore/README.md)
 El empaquetador específico es `scripts/operaciones/empaquetar-ww-inc-thunderstore-2026-10-24.py` en la raíz del workspace. Recibe `--report` con el informe deployment de un build validado. El ZIP beta preparado el 24-10-2026, sus hashes y las comprobaciones pendientes están enlazados en la ficha de estado del clan. No se ha publicado ni probado la importación en un perfil limpio.
 <!-- 2026-10-24-1621||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar README de desarrollo y enlazar fuentes y flujo del paquete beta -->
 <!-- 2026-10-24-1624||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Añadir estructura del repositorio y compilación desde clon; documentar rutas locales -->
+<!-- 2026-10-24-1824||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión vigente del código a 0.1.133 -->
+<!-- 2026-10-24-1826||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión vigente 0.1.134 -->
+<!-- 2026-10-24-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión vigente 0.1.135 -->
+<!-- 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.136 -->
+<!-- 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.137 -->
+<!-- 2026-10-24-1900||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.138 -->
+<!-- 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.139 -->
+<!-- 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.140 -->
+<!-- 2026-10-24-1943||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.141 -->
+<!-- 2026-10-24-1946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.142 -->
+<!-- 2026-10-24-1959||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.143 -->
+<!-- 2026-10-24-2025||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión vigente 0.1.149 -->
+<!-- 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión 0.1.149: Dissertation admite hechizos de soporte -->
+<!-- 2026-10-25-1547||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión 0.1.149: corregir tooltips repetidos y claves internas sin traducir -->
+<!-- 2026-10-25-1557||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión 0.1.149: presentación de clan, iconos y compatibilidad de mejoras -->
+<!-- 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión 0.1.149: seguridad de preview de Intern y daño total de Representative -->
+<!-- 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Versión 0.1.149: tooltips de cartas generadas y keywords concedidas -->
+<!-- 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.150 sin reescribir comentarios históricos -->
+<!-- 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa editorial a 0.1.151 sin reescribir historial -->
+<!-- 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.152 por filtro no aleatorio -->
+<!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
+<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->
+<!-- 2026-10-25-1908||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Preparar README público bilingüe con rutas de fuentes actuales, compilación independiente y siete suites; corregir recuentos obsoletos -->

@@ -65,7 +65,7 @@
         "japanese": "魔法使い担当の付き添い"
       },
       "size": 1,
-      "attack_damage": 1,
+      "attack_damage": 2,
       "health": 10,
       "subtypes": [
         "@WW_Chaperone"

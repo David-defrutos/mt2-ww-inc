@@ -16,16 +16,16 @@
         "japanese": "三連撃試験"
       },
       "descriptions": {
-        "spanish": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
-        "english": "Deal [effect0.power] damage to the same enemy three times.",
-        "french": "Inflige [effect0.power] dégâts trois fois au même ennemi.",
-        "german": "Füge demselben Gegner dreimal [effect0.power] Schaden zu.",
-        "portuguese": "Causa [effect0.power] de dano três vezes ao mesmo inimigo.",
-        "russian": "Трижды наносит одному врагу [effect0.power] урона.",
-        "chinese": "对同一个敌人造成三次 [effect0.power] 伤害。",
-        "chinese_traditional": "對同一個敵人造成三次 [effect0.power] 傷害。",
-        "korean": "같은 적에게 [effect0.power] 피해를 세 번 줍니다.",
-        "japanese": "同じ敵に[effect0.power]ダメージを3回与える。"
+        "spanish": "Inflige [effect0.power] de daño 3 veces.",
+        "french": "Infligez [effect0.power] dégâts 3 fois.",
+        "german": "Verursache 3-mal [effect0.power] Schaden.",
+        "portuguese": "Causa [effect0.power] de dano 3 vezes.",
+        "russian": "Нанесите [effect0.power] урона 3 раза.",
+        "chinese": "造成[effect0.power]点伤害，重复3次。",
+        "chinese_traditional": "造成[effect0.power]點傷害，重複3次。",
+        "korean": "[effect0.power] 피해를 3번 줍니다.",
+        "japanese": "[effect0.power]ダメージを3回与える。",
+        "english": "Deal [effect0.power] damage 3 times."
       },
       "class": "@WW_Class",
       "card_type": "spell",

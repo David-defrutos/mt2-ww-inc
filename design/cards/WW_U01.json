@@ -10,7 +10,7 @@
   "rarity": "rare",
   "effect": "Los hechizos dirigidos a enemigos pueden seleccionar esta unidad. Redirígelos al primer enemigo de su piso, o a todos si son de área. Recupera las [ember] gastadas. Sufre 10 de daño por cada [dazed] y después añade [dazed] 1.",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "LightningRodSafety comparte elegibilidad de efecto enemigo raíz (no LastTargetedCharacters/Both aliado), UI y resolución. Feedback real: daño 10×Dazed previo, +Dazed 1 si sobrevive, devolución coste pagado. Preview: sin AddEnergy, daño/estados solo con TemporaryPreviewsEnabled. Managers del caller y restauración en finally. Regresiones CombatSafety; pendiente hover, fin de turno y Undo en Unity.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
   "subtype": "Wizard",
   "stats": {

@@ -1,3 +1,4 @@
+using MonsterTrain2.SharedTriggers;
 using System;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ using TrainworksReloaded.Base;
 
 namespace WwInc;
 
-[BepInPlugin(Guid, "W&W Inc.", "0.1.132")]
+[BepInPlugin(Guid, "W&W Inc.", "0.1.154")]
 [BepInDependency("TrainworksReloaded.Plugin")]
 [BepInDependency("Conductor")]
 public sealed class Plugin : BaseUnityPlugin
@@ -19,12 +20,18 @@ public sealed class Plugin : BaseUnityPlugin
     public void Awake()
     {
         Instance = this;
+        Conductor.Data.Registers.SaveDataRegistry.Register(Guid,new ExcessCreditSave());
         string root = Path.GetDirectoryName(Info.Location)!;
         var files = Directory.GetFiles(Path.Combine(root, "json"), "*.json", SearchOption.AllDirectories)
             .OrderBy(p => p, StringComparer.Ordinal)
             .Select(p => p.Substring(root.Length + 1).Replace('\\', '/')).ToArray();
         if(files.Length==0) throw new InvalidOperationException("W&W Inc. has no JSON content.");
         Railhead.GetBuilder().Configure(Guid, c => c.AddMergedJsonFile(files.ToList()));
+        // Conductor extends the native exact-name upgrade masks; inheritance alone is insufficient.
+        Railend.ConfigurePostAction(_=> {
+            Conductor.Utilities.MarkEffectAsADamageEffect(typeof(CardEffectAcademicAuthoredDamage));
+            Conductor.Utilities.MarkEffectAsHealEffect(typeof(CardEffectAcademicSabbatical));
+        });
         Roundhouse.WhenReady(Guid,ctx=> {
             var missingCards=new[]{"WW_C01","WW_C02","WW_T01","WW_T02","WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08","WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18","WW_S01","WW_S02","WW_S03","WW_S04","WW_S05","WW_S06","WW_S07","WW_S08","WW_S09","WW_S10","WW_S11","WW_S12","WW_S13","WW_S14","WW_S15","WW_S16","WW_S17","WW_S18","WW_S19","WW_S20","WW_S21","WW_S22","WW_S23","WW_S24","WW_S25","WW_S26","WW_E01","WW_E02","WW_E03","WW_R01","WW_R02","WW_S27","WW_S28","WW_S29","WW_S30","WW_S31","WW_S32"}.Where(id=>ctx.GetCard(id)==null).ToArray();
             var missingRelics=new[]{"WW_A01","WW_A02","WW_A03","WW_A04","WW_A05","WW_A06","WW_A07","WW_A08","WW_A09","WW_A10"}.Where(id=>ctx.GetRelic(id)==null).ToArray();
@@ -35,12 +42,15 @@ public sealed class Plugin : BaseUnityPlugin
             if(purgeMask==null||permitEffect.GetParamCardFilter()!=purgeMask)
                 throw new InvalidOperationException("W&W Inc.: Expulsion Permit card filters were not resolved.");
             Logger.LogInfo("W&W Inc. DATA READY: 43 active cards, 10 relics, 4 tokens; localized content finalized.");
-            AcademicRuntime.ArcaneSlay=ctx.GetCharacterTriggerEnum("WW_ArcaneSlay");
+            ArcaneSlayEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_ArcaneSlay");
+            MineMineMine.Trigger=ctx.GetCharacterTriggerEnum("WW_MineMineMine");
+            OverdamageEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overdamage");
             OverhealEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overheal");
             SpellRules.HitDiscountUpgrade=ctx.GetCardUpgrade("WW_S09_Discount");
-            CardEffectAcademicWizardDraw.NextUseUpgrade=ctx.GetCardUpgrade("WW_C01_NextUseUpgrade");
             StatusEffectAcademicScholarship.Id=ctx.GetStatusEffect("ww_scholarship").GetStatusId();
             DissertationMarker.StatusId=ctx.GetStatusEffect("ww_dissertation").GetStatusId();
+            DissertationTargeting.AllyChoice=ctx.GetCard("WW_Dissertation_Allies");
+            DissertationTargeting.EnemyChoice=ctx.GetCard("WW_Dissertation_Enemies");
             CateringRules.Stand=ctx.GetCharacter("WW_Token_IceCreamStand");
             CateringRules.Serving=ctx.GetCharacter("WW_Token_IceCream");
             SocialRules.Chaperon=ctx.GetCharacter("WW_Token_Chaperon");
@@ -48,7 +58,7 @@ public sealed class Plugin : BaseUnityPlugin
             SocialRules.Wizard=ctx.GetSubtype("WW_Wizard");SocialRules.Witch=ctx.GetSubtype("WW_Witch");SocialRules.Chaperone=ctx.GetSubtype("WW_Chaperone");
         });
         new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
-        Logger.LogInfo("W&W Inc.: academic mechanics 0.1.132 loaded; local Trample/Explosive guard enabled");
+        Logger.LogInfo("W&W Inc.: academic mechanics 0.1.154 loaded; local Trample/Explosive guard enabled");
     }
     internal static void Log(string message) => Instance.Logger.LogInfo(message);
 }
@@ -270,3 +280,31 @@ public sealed class Plugin : BaseUnityPlugin
 // 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.130: ignorar curaciones >=9999 para Overheal
 // 2026-10-21-2059||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.131: límite de armadura por Overheal
 // 2026-10-21-2245||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.132: Course Withdrawal acepta Scourge
+// 2026-10-24-1824||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.133: campeona Witch recibe Overheal de daño
+// 2026-10-24-1826||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.134: Protective Tenure otorga Armor y Spikes
+// 2026-10-24-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.135: escala Queen Bee +1/+2/+3
+// 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Resolver plantilla de Extra Credit mediante Trainworks
+// 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.136: Advanced Spellwork genera Extra Credit atribuido a la campeona
+// 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Registrar enum Overdamage mediante Trainworks
+// 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.137: trigger Overdamage reutilizable
+// 2026-10-24-1900||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.138: ilustración propia de Extra Credit
+// 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Registrar persistencia de autoría con API Conductor instalada
+// 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.139: Crédito Extra acumulable de coste 0 Frozen/Purge
+// 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Registrar trigger MineMineMine mediante Trainworks
+// 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.140: trigger MineMineMine reutilizable de autoría de bajas
+// 2026-10-24-1943||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.141: MineMineMine en todas las sendas Witch y Overheal solo en protección
+// 2026-10-24-1946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.142: Advanced Spellwork 100% con progresión de keywords
+// 2026-10-24-1959||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.143: restaurar Incant de ataque junto a Overdamage
+// 2026-10-24-2025||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.149: corregir Spikes del Incant de protección
+// 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.149 y resolver dos opciones auxiliares de destino de Dissertation
+// 2026-10-25-1547||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.149: corregir tooltips repetidos y claves internas sin traducir
+// 2026-10-25-1557||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Registrar daño de Extra Credit y curación Sabbatical con helpers Conductor en postaction; versión 0.1.149
+// 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.149: seguridad de preview de Intern y daño total de Representative
+// 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión 0.1.149 y retirar dependencia global de plantilla de Extra Credit
+// 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.150 sin reescribir comentarios históricos
+// 2026-10-25-1643||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Eliminar referencia global de mejora de Requisition ya declarada en su efecto
+// 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa editorial a 0.1.151 sin reescribir historial
+// 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.152 por filtro no aleatorio
+// 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education
+// 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas
+// 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño

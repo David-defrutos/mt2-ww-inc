@@ -1,3 +1,4 @@
+using MonsterTrain2.SharedTriggers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ internal static class AcademicRuntime
 {
     internal static ICoreGameManagers Core = null!;
     internal static int Turn;
-    internal static CharacterTriggerData.Trigger ArcaneSlay;
     internal static int ConversionDepth;
     internal static int HostileHealingDepth;
     internal static int EquipmentPreviewDepth;
@@ -40,6 +40,7 @@ internal static class AcademicRuntime
         internal readonly List<Action> Cleanup = new();
         internal CharacterState? Target;
         internal CharacterState? EnemyBehind;
+        internal int RepresentativeDamage;
         internal readonly Dictionary<int,int> Damage = new();
         internal readonly Dictionary<int,int> Healing = new();
         internal readonly Dictionary<int,int> Kills = new();
@@ -62,6 +63,7 @@ internal static class AcademicRuntime
     {
         Core = ((AllGameManagers)AccessTools.Field(typeof(CardManager), "allGameManagers").GetValue(manager)).GetCoreManagers();
         SocialRules.AuraBonuses.Clear(); ZeroAttack.Clear(); FixedCosts.Clear();BoundForAttack.Clear(); Turn=0; ConversionDepth=0; HostileHealingDepth=0; EquipmentPreviewDepth=0; Frames.Clear(); LastPlayedCommonSpell=null; HealingModes.Clear();SpellRules.Reset();
+        MineMineMine.Claimed.Clear();
         DamageCredits.Clear(); EndTurnActions.Clear(); NextTurnActions.Clear();
         DamageSpellPlayed=false; FirstDamageSpell=null;
         CardEffectAcademicPurgePermit.BeginBattle(Core);
@@ -115,7 +117,7 @@ internal static class AcademicRuntime
         bool first=frame.FirstDamage;
         if(first)
         {
-            int amount=frame.Damage.Values.Sum();
+            int amount=frame.RepresentativeDamage;
             foreach(var unit in AllAllies().Where(u=>Is(u,"WW_U17")))
             {
                 unit.SetAttackDamage(unit.GetAttackDamageWithoutStatusEffectBuffs()+amount);
@@ -123,7 +125,7 @@ internal static class AcademicRuntime
             }
         }
         foreach(var pair in frame.Kills)
-            if(pair.Value>0)yield return ArcaneSlayEvent.Dispatch(frame.Card,pair.Key,pair.Value);
+            if(pair.Value>0)yield return ArcaneSlayEvent.Dispatch(Core,frame.Card,pair.Key,pair.Value);
         ConversionDepth++;
         try
         {
@@ -191,7 +193,8 @@ internal static class AcademicRuntime
         yield return manager.SelectCardFromHand(new HandSelectionUI.Params {
             descriptionKey="david.wwinc.ChooseCard",
             filterCallback=c=>c==source||!eligible(c),
-            cardChosenCallback=(c,m)=>ApplyChoice(c,source,eligible,apply,m),disableIneligibleCards=true },
+            cardChosenCallback=(c,m)=>ApplyChoice(c,source,eligible,apply,m),disableIneligibleCards=true,
+            selectionHandState=CardUI.CardUIState.HandDiscardCard },
             automaticallySelectLastCard:false);
     }
     private static IEnumerator ApplyChoice(CardState card,CardState? source,Func<CardState,bool> eligible,
@@ -244,3 +247,9 @@ internal static class AcademicRuntime
 // 2026-10-12-2211||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Retirar efectos de exceso ligados a IDs U03/U13; usar trigger reutilizable Overheal
 // 2026-10-13-2138||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Despachar Arcane Slay conservando hechizo causante y conteo de bajas por piso
 // 2026-10-13-2353||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Tuition pasiva independiente: cada 30 de daño descuenta todas las cartas Frozen actualmente en mano
+// 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Reiniciar origen de hechizos generados al comenzar/reconstruir batalla
+// 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Conservar autoría entre rings; reinicio y carga quedan a cargo de Conductor ISaveData
+// 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Limpiar recibos de bajas reclamadas al configurar cada batalla
+// 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Usar daño total independiente para U17 sin cambiar daño efectivo para PhD y otras conversiones
+// 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Configurar estado nativo de selección para marcar y oscurecer cartas no elegibles
+// 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas

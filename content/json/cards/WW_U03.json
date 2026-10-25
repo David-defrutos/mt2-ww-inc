@@ -120,16 +120,16 @@
       "id": "WW_U03_Overheal",
       "trigger": "@WW_Overheal",
       "descriptions": {
-        "english": "Deal damage to all enemies equal to the excess healing.",
-        "spanish": "Inflige daño a todos los enemigos igual a la curación sobrante.",
-        "french": "Inflige à tous les ennemis des dégâts égaux aux soins excédentaires.",
-        "german": "Füge allen Gegnern Schaden in Höhe der überschüssigen Heilung zu.",
-        "portuguese": "Causa dano a todos os inimigos igual à cura excedente.",
-        "russian": "Наносит всем врагам урон в размере избытка лечения.",
-        "chinese": "对所有敌人造成等于溢出治疗量的伤害。",
-        "chinese_traditional": "對所有敵人造成等於溢出治療量的傷害。",
-        "korean": "초과 치유량만큼 모든 적에게 피해를 줍니다.",
-        "japanese": "超過回復量と同じダメージをすべての敵に与える。"
+        "english": "Deal the excess healing as damage to all enemies.",
+        "spanish": "Inflige la curación sobrante como daño a todos los enemigos.",
+        "french": "Infligez les soins excédentaires en dégâts à tous les ennemis.",
+        "german": "Füge allen Feinden die überschüssige Heilung als Schaden zu.",
+        "portuguese": "Causa a cura excedente como dano a todos os inimigos.",
+        "russian": "Нанесите всем врагам урон в размере избыточного лечения.",
+        "chinese": "对所有敌人造成等同于溢出治疗量的伤害。",
+        "chinese_traditional": "對所有敵人造成等同於溢出治療量的傷害。",
+        "korean": "모든 적에게 초과 치유량만큼 피해를 줍니다.",
+        "japanese": "回復の超過分に等しいダメージを敵全体に与える。"
       },
       "effects": [
         "@WW_U03_OverhealEffect"

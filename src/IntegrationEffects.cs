@@ -10,13 +10,12 @@ namespace WwInc;
 public sealed class CardEffectAcademicWizardDraw : AcademicEffectBase,ICardTargetingCardEffect,ICardEffectDrawsCards
 {
     readonly CardEffectDrawType nativeDraw=new();
-    internal static CardUpgradeData NextUseUpgrade=null!;
     public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
     {
         var cm=m.GetCardManager();var filter=s.GetParamCardFilter();
-        return !cm.GetDrawingDeckCardsDisabledThisTurn()&&cm.GetBelowHandSize()&&filter!=null&&
+        return s.GetParamCardUpgradeData()!=null&&!cm.GetDrawingDeckCardsDisabledThisTurn()&&cm.GetBelowHandSize()&&filter!=null&&
             cm.GetDrawPile().Concat(cm.GetDiscardPile()).Any(c=>c!=p.playedCard&&filter.FilterCard(c,m.GetRelicManager()));
     }
     public int GetNumCardTargets(CardState card,CardEffectState effect,CardStatistics statistics)
@@ -27,7 +26,7 @@ public sealed class CardEffectAcademicWizardDraw : AcademicEffectBase,ICardTarge
         if(!TestEffect(s,p,m))yield break;
         AcademicRuntime.Core=m;
         // Shared by all paths: native Runespeak upgrade-then-draw sequence.
-        var upgrade=new CardUpgradeState();upgrade.Setup(NextUseUpgrade);
+        var upgrade=new CardUpgradeState();upgrade.Setup(s.GetParamCardUpgradeData());
         upgrade.SetAvoidClobberingExistingTraits(true);
         m.GetCardManager().AddTempCardUpgradeToNextDrawnCard(upgrade);
         yield return nativeDraw.ApplyEffect(s,p,m,systems);
@@ -35,7 +34,7 @@ public sealed class CardEffectAcademicWizardDraw : AcademicEffectBase,ICardTarge
     internal static int Rank(CharacterState? unit,string prefix)=>unit==null?0:AcademicMath.ChampionRank(ChampionPathText.Selected(unit.GetSpawnerCard(),unit).Select(u=>u.GetAssetName()),prefix);
 }
 
-public sealed class CardEffectAcademicPurgePermit : AcademicEffectBase
+public sealed class CardEffectAcademicPurgePermit : AcademicEffectBase,ICardEffectUiDialog
 {
     public override bool CanApplyInPreviewMode=>true;
     static readonly RingPermitLedger Permit=new();
@@ -91,7 +90,7 @@ internal static class EligibleRedirectHook
     static MethodBase TargetMethod()=>typeof(TargetHelper).GetMethods().Single(m=>m.Name==nameof(TargetHelper.CollectTargets)&&m.GetParameters()[0].ParameterType==typeof(CardEffectState));
     static void Postfix(CardEffectState effectState,CardEffectParams cardEffectParams,ICoreGameManagers coreGameManagers)
     {
-        var card=cardEffectParams.playedCard;if(card==null||card.IsUnitAbility()||card.GetCardType()!=CardType.Spell)return;
+        var card=cardEffectParams.playedCard;if(card==null||!LightningRodSafety.Eligible(card))return;
         if(coreGameManagers.GetSaveManager().PreviewMode&&!PreviewScope.Active)return;
         AcademicRuntime.Core=coreGameManagers;
         if(SpellRules.IsAreaEffect(card,effectState))
@@ -114,7 +113,7 @@ internal static class RedirectTargetHook
 {
     static bool Prefix(CardEffectState effectState,List<CharacterState> targets,SpawnPoint dropLocation,ref CharacterState overrideTargetCharacter)
     {
-        var card=effectState.GetParentCardState();if(card==null||card.IsUnitAbility())return true;
+        var card=effectState.GetParentCardState();if(card==null||!LightningRodSafety.Eligible(card))return true;
         if(SpellRules.IsAreaEffect(card,effectState))
         {return false;}
         // Repeat supplies its own target; do not restore the original redirected enemy.
@@ -133,7 +132,7 @@ internal static class RedirectTargetHook
 
 // 2026-10-10-0005||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Habilidad compartida del Wizard, permiso de Purge por ring y selecciÃ³n de objetivos
 
-public sealed class CardEffectAcademicDiscardForEmber : AcademicEffectBase
+public sealed class CardEffectAcademicDiscardForEmber : AcademicEffectBase,ICardEffectUiDialog
 {
     public override bool CanApplyInPreviewMode=>true;
     internal static bool Eligible(CardState card)=>(card.GetCardType() is CardType.Spell or CardType.Blight or CardType.Junk)&&
@@ -165,7 +164,7 @@ internal static class RedirectUiHook
 {
     static void Postfix(List<CharacterState> outCharacters,CardState cardState,RoomState room)
     {
-        if(cardState==null||room==null||cardState.IsAnyAbility()||cardState.GetCardType()!=CardType.Spell||!cardState.GetEffectStates().Any(e=>e.GetTargetTeamType().HasFlag(Team.Type.Heroes)))return;
+        if(cardState==null||room==null||!LightningRodSafety.Eligible(cardState))return;
         if(RedirectTargets.InRoom(room,Team.Type.Heroes).Count==0)return;
         foreach(var unit in RedirectTargets.InRoom(room,Team.Type.Monsters).Where(u=>AcademicRuntime.Is(u,"WW_U01")))if(!outCharacters.Contains(unit))outCharacters.Add(unit);
     }
@@ -258,7 +257,7 @@ internal static class RedirectTeamValidationHook
         var unit=selectedSpawnPointUI?.GetParentSpawnPoint()?.GetCharacterState();
         if(card==null||selectedRoom==null||unit==null||unit.IsDead||unit.IsDestroyed||
             card.IsAnyAbility()||card.GetCardType()!=CardType.Spell||!AcademicRuntime.Is(unit,"WW_U01")||
-            !card.GetEffectStates().Any(e=>e.GetTargetTeamType().HasFlag(Team.Type.Heroes))||
+            !LightningRodSafety.Eligible(card)||
             RedirectTargets.InRoom(selectedRoom,Team.Type.Heroes).Count==0)return;
         RedirectTeamScope.Cards.Push(card);__state=true;
     }
@@ -297,7 +296,7 @@ public sealed class CardEffectAcademicCopyLastCommon : AcademicEffectBase
     {
         if(m.GetSaveManager().PreviewMode)yield break;
         AcademicRuntime.Core=m;
-        if(AcademicRuntime.LastPlayedCommonSpell is CardState last)SpellRules.CopyEphemeral(last);
+        if(AcademicRuntime.LastPlayedCommonSpell is CardState last)SpellRules.CopyEphemeral(last,s.GetParamCardUpgradeData());
         yield break;
     }
 }
@@ -320,3 +319,7 @@ public sealed class CardEffectAcademicCopyLastCommon : AcademicEffectBase
 // 2026-10-19-2359||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Withdrawal Stamp vuelve a un solo Purge por ring; retirar fase Consume
 // 2026-10-20-0017||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Identificar copia de Withdrawal Stamp desde equipo del activador y gastar solo su permiso
 // 2026-10-21-2245||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Course Withdrawal acepta Scourge mediante CardType.Junk nativo
+// 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||UI, validación y override comparten criterio que excluye LastTargetedCharacters aliado de Immortal Trade
+// 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Postdoc entrega al copiador su mejora Ephemeral declarada
+// 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas
+// 2026-10-25-1643||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Requisition lee su mejora concedida desde param_upgrade para exponer Explosive al tooltip nativo

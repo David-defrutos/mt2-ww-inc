@@ -78,7 +78,7 @@ public sealed class CardEffectAcademicDeskSwap : AcademicEffectBase
             room.GetRoomIndex(),allowTheft:false,null,ignoreAttackPrevention:true);
     }
 }
-public sealed class CardEffectAcademicSabbatical : AcademicEffectBase
+public sealed class CardEffectAcademicSabbatical : CardEffectHeal
 {
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)=>p.targets.Any(u=>!u.HasStatusEffect("untouchable"));
@@ -88,15 +88,16 @@ public sealed class CardEffectAcademicSabbatical : AcademicEffectBase
         foreach(var unit in p.targets)
         {
             if(unit.HasStatusEffect("untouchable")) continue;
-            unit.AddStatusEffect("untouchable",1);
-            AcademicRuntime.NextTurnActions.Add(()=>Wake(unit,p.playedCard,s.GetParamInt()));
+            var status=s.GetParamStatusEffectStackData()[0];
+            unit.AddStatusEffect(status.statusId,status.count);
+            AcademicRuntime.NextTurnActions.Add(()=>Wake(unit,p.playedCard,s.GetParamInt(),status.statusId,status.count));
         }
         yield break;
     }
-    static IEnumerator Wake(CharacterState unit,CardState? card,int extra)
+    static IEnumerator Wake(CharacterState unit,CardState? card,int extra,string status,int count)
     {
         if(unit.IsDestroyed || unit.IsDead) yield break;
-        unit.RemoveStatusEffect("untouchable",1,allowModification:false);
+        unit.RemoveStatusEffect(status,count,allowModification:false);
         yield return unit.ApplyHeal(Math.Max(0,unit.GetMaxHP()-unit.GetHP())/2+extra,responsibleCard:card);
     }
 }
@@ -109,7 +110,8 @@ public sealed class CardEffectAcademicArmorHonors : AcademicEffectBase
         foreach(var unit in p.targets)
         {
             int attack=unit.GetAttackDamage(); 
-            unit.AddStatusEffect("armor",attack); AcademicRuntime.ZeroAttack.Add(unit); unit.AddStatusEffect("dazed",1);
+            var states=s.GetParamStatusEffectStackData();
+            unit.AddStatusEffect(states[0].statusId,attack); AcademicRuntime.ZeroAttack.Add(unit); unit.AddStatusEffect(states[1].statusId,states[1].count);
             AcademicRuntime.EndTurnActions.Add(()=> { if(!unit.IsDestroyed) AcademicRuntime.ZeroAttack.Remove(unit); });
         }
         yield break;
@@ -125,7 +127,7 @@ public sealed class CardEffectAcademicConversion : AcademicEffectBase
         yield break;
     }
 }
-public sealed class CardEffectAcademicConsumeCredits : AcademicEffectBase
+public sealed class CardEffectAcademicConsumeCredits : AcademicEffectBase,ICardEffectUiDialog
 {
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
@@ -136,17 +138,17 @@ public sealed class CardEffectAcademicConsumeCredits : AcademicEffectBase
         AcademicRuntime.Core=m;var unit=p.characterThatActivatedAbility??p.selfTarget;
         if(unit==null)yield break;
         yield return AcademicRuntime.ChooseHand(p.playedCard,c=>c.GetCardType()==CardType.Spell,
-            new Func<CardState,IEnumerator>(chosen=>ResolveCredits(chosen,unit,m)));
+            new Func<CardState,IEnumerator>(chosen=>ResolveCredits(chosen,unit,m,s)));
     }
-    private static IEnumerator ResolveCredits(CardState chosen,CharacterState unit,ICoreGameManagers m)
+    private static IEnumerator ResolveCredits(CardState chosen,CharacterState unit,ICoreGameManagers m,CardEffectState s)
     {
         AcademicRuntime.Core=m;
-        int conduit=Math.Max(0,chosen.GetCostWithoutAnyModifications())*5;
+        int conduit=Math.Max(0,chosen.GetCostWithoutAnyModifications())*s.GetParamInt();
         yield return m.GetCardManager().ConsumeCardWithoutPlaying(new CardManager.DiscardCardParams { discardCard=chosen,overrideDiscardEffect=HandUI.DiscardEffect.Exhausted });
-        unit.AddStatusEffect("conduit",conduit);
+        unit.AddStatusEffect(s.GetParamStatusEffectStackData()[0].statusId,conduit);
     }
 }
-public sealed class CardEffectAcademicConduitTransfer : AcademicEffectBase
+public sealed class CardEffectAcademicConduitTransfer : AcademicEffectBase,ICardEffectUiDialog
 {
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
@@ -157,9 +159,9 @@ public sealed class CardEffectAcademicConduitTransfer : AcademicEffectBase
         AcademicRuntime.Core=m;
         yield return AcademicRuntime.ChooseHand(p.playedCard,c=>c.GetCardType()==CardType.Spell,chosen=> {
             AcademicRuntime.Core=m;
-            int total=0;
-            foreach(var unit in AcademicRuntime.AllAllies()) { int amount=unit.GetStatusEffectStacks("conduit"); total+=amount; unit.RemoveStatusEffect("conduit",amount,allowModification:false); }
-            AcademicRuntime.ModifyCard(chosen,total,0,false);SpellRules.Explosive(chosen);
+            int total=0;string status=s.GetParamStatusEffectStackData()[0].statusId;
+            foreach(var unit in AcademicRuntime.AllAllies()) { int amount=unit.GetStatusEffectStacks(status); total+=amount; unit.RemoveStatusEffect(status,amount,allowModification:false); }
+            AcademicRuntime.ModifyCard(chosen,total,0,false);SpellRules.GrantConfiguredTraits(chosen,s.GetParamCardUpgradeData());
         });
     }
 }
@@ -218,3 +220,7 @@ public sealed class CardEffectAcademicOneTurnUpgrade : AcademicEffectBase
 // 2026-10-12-1712||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Eliminar efecto C# de recarga reemplazado por efecto nativo
 // 2026-10-12-2322||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Sabbatical: sumar 10 a la mitad de salud faltante al salir de Stasis
 // 2026-10-13-2353||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Retirar selector propio de Freeze y antiguo vínculo a una sola carta; usar efecto oficial
+// 2026-10-25-1557||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Sabbatical hereda curación nativa para escalar el término fijo con mejoras de Magic Power
+// 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Resolver Stasis, Armor/Dazed, Conduit y rasgos con las mismas referencias JSON que usa la UI
+// 2026-10-25-1617||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Pasar configuración de concesión Conduit al callback de selección
+// 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicEffects.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas

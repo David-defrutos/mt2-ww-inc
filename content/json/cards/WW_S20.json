@@ -7,7 +7,8 @@
       "target_mode": "draw_pile",
       "target_team": "none",
       "target_card_type": "spell",
-      "param_int": 3
+      "param_int": 3,
+      "hide_tooltip": true
     }
   ],
   "cards": [

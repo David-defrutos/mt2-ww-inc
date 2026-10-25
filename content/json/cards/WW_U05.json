@@ -39,7 +39,7 @@
       "character_art": "@WW_U05CharacterArt",
       "size": 2,
       "health": 20,
-      "attack_damage": 15,
+      "attack_damage": 16,
       "subtypes": [
         "@WW_Witch",
         "SubtypesData_BannerUnit"
@@ -142,16 +142,16 @@
         "japanese": "秘術撃破"
       },
       "descriptions": {
-        "english": "Triggers when a spell kills an enemy on this floor.",
-        "spanish": "Se activa cuando un hechizo mata a un enemigo de este piso.",
-        "french": "Se déclenche quand un sort tue un ennemi à cet étage.",
-        "german": "Wird ausgelöst, wenn ein Zauber einen Gegner auf dieser Etage tötet.",
-        "portuguese": "Ativa quando um feitiço mata um inimigo neste andar.",
-        "russian": "Срабатывает, когда заклинание убивает врага на этом этаже.",
-        "chinese": "当法术击杀本层敌人时触发。",
-        "chinese_traditional": "當法術擊殺本層敵人時觸發。",
-        "korean": "주문이 이 층의 적을 처치하면 발동합니다.",
-        "japanese": "呪文がこの階の敵を倒すと発動する。"
+        "english": "Triggers when a spell kills an enemy.",
+        "spanish": "Se activa cuando un hechizo mata a un enemigo.",
+        "french": "Se déclenche quand un sort tue un ennemi.",
+        "german": "Wird ausgelöst, wenn ein Zauber einen Feind tötet.",
+        "portuguese": "Ativa quando um feitiço mata um inimigo.",
+        "russian": "Срабатывает, когда заклинание убивает врага.",
+        "chinese": "法术击杀敌人时触发。",
+        "chinese_traditional": "法術擊殺敵人時觸發。",
+        "korean": "주문이 적을 처치하면 발동합니다.",
+        "japanese": "呪文が敵を倒したときに発動する。"
       },
       "notifications": {
         "english": "Arcane Slay",

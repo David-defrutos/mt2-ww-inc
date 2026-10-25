@@ -25,16 +25,16 @@
         "japanese": "負のグループ課題"
       },
       "descriptions": {
-        "spanish": "Transfiere todos los efectos de [debuff] de las demás unidades aliadas de este piso a una unidad aliada.",
-        "english": "Transfer all [debuff] effects from the other friendly units on this floor to a friendly unit.",
-        "french": "Transfère tous les états négatifs des autres alliés de cet étage à la cible.",
-        "german": "Übertrage alle negativen Zustände der anderen Verbündeten dieser Etage auf den Zielverbündeten.",
-        "portuguese": "Transfere todos os estados negativos dos outros aliados deste andar ao alvo.",
-        "russian": "Переносит все отрицательные состояния остальных союзников этажа на цель.",
-        "chinese": "将本层其他盟友全部负面状态转给目标盟友。",
-        "chinese_traditional": "將本層其他盟友全部負面狀態轉給目標盟友。",
-        "korean": "이 층 다른 아군의 모든 부정적 상태를 대상 아군에게 이전합니다.",
-        "japanese": "この階の他の味方の全負の状態を、対象の味方へ移す。"
+        "spanish": "Transfiere todos los efectos de [debuff] de los demás aliados a una unidad aliada.",
+        "french": "Transférez tous les effets de [debuff] des autres alliés à une unité alliée.",
+        "german": "Übertrage alle [debuff]-Effekte anderer Verbündeter auf einen Verbündeten.",
+        "portuguese": "Transfere todos os efeitos de [debuff] dos outros aliados para uma unidade aliada.",
+        "russian": "Перенесите все эффекты [debuff] с остальных союзников на одного союзника.",
+        "chinese": "将其他友军的全部[debuff]效果转移给一个友军。",
+        "chinese_traditional": "將其他友軍的全部[debuff]效果轉移給一個友軍。",
+        "korean": "다른 아군의 모든 [debuff] 효과를 아군 하나에게 옮깁니다.",
+        "japanese": "他の味方の[debuff]効果をすべて味方1体に移す。",
+        "english": "Transfer all [debuff] effects from other friendly units to a friendly unit."
       },
       "class": "@WW_Class",
       "card_type": "spell",

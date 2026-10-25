@@ -3,7 +3,7 @@
   "effects": [
     {
       "id": "WW_S11_Effect",
-      "name": "@CardEffectAcademicSpellRule",
+      "name": "@CardEffectAcademicInteractiveRule",
       "target_mode": "room",
       "target_team": "monsters",
       "param_str": "recover_x"

@@ -14,7 +14,7 @@
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
   "subtype": "Wizard",
   "stats": {
-    "attack": 15,
+    "attack": 16,
     "health": 15,
     "size": 1
   },

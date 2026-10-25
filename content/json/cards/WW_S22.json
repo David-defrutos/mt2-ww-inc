@@ -16,16 +16,16 @@
         "japanese": "緊急相談時間"
       },
       "descriptions": {
-        "english": "Reduce a friendly unit’s current [cooldown] by [effect0.status0.power]. Apply [dazed] [effect1.status0.power].",
-        "spanish": "Reduce la [cooldown] actual de una unidad aliada en [effect0.status0.power]. Añade [dazed] [effect1.status0.power].",
-        "french": "Réduit la [cooldown] actuelle d’un allié de [effect0.status0.power]. Applique [dazed] [effect1.status0.power].",
-        "german": "Verringere die aktuelle [cooldown] eines Verbündeten um [effect0.status0.power]. Wende [dazed] [effect1.status0.power] an.",
-        "portuguese": "Reduz a [cooldown] atual de um aliado em [effect0.status0.power]. Aplica [dazed] [effect1.status0.power].",
-        "russian": "Снижает текущую [cooldown] союзника на [effect0.status0.power]. Даёт [dazed] [effect1.status0.power].",
-        "chinese": "使友方单位当前[cooldown]减少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
-        "chinese_traditional": "使友方單位當前[cooldown]減少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
-        "korean": "아군 유닛의 현재 [cooldown]을 [effect0.status0.power] 줄입니다. [dazed] [effect1.status0.power]을 부여합니다.",
-        "japanese": "味方ユニットの現在の[cooldown]を[effect0.status0.power]減らす。[dazed] [effect1.status0.power]を与える。"
+        "spanish": "Reduce la [cooldown] de una unidad aliada en [effect0.status0.power]. Añade [dazed] [effect1.status0.power].",
+        "french": "Réduisez le [cooldown] d'un allié de [effect0.status0.power]. Appliquez [dazed] [effect1.status0.power].",
+        "german": "Verringere den [cooldown] eines Verbündeten um [effect0.status0.power]. Wende [dazed] [effect1.status0.power] an.",
+        "portuguese": "Reduz o [cooldown] de uma unidade aliada em [effect0.status0.power]. Aplica [dazed] [effect1.status0.power].",
+        "russian": "Уменьшите [cooldown] союзника на [effect0.status0.power]. Примените [dazed] [effect1.status0.power].",
+        "chinese": "使一个友军的[cooldown]减少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
+        "chinese_traditional": "使一個友軍的[cooldown]減少[effect0.status0.power]。施加[dazed] [effect1.status0.power]。",
+        "korean": "아군 하나의 [cooldown]을 [effect0.status0.power] 줄입니다. [dazed] [effect1.status0.power]을 부여합니다.",
+        "japanese": "味方1体の[cooldown]を[effect0.status0.power]減らす。[dazed] [effect1.status0.power]を付与する。",
+        "english": "Reduce a friendly unit’s [cooldown] by [effect0.status0.power]. Apply [dazed] [effect1.status0.power]."
       },
       "class": "@WW_Class",
       "card_type": "spell",

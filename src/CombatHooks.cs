@@ -1,3 +1,4 @@
+using MonsterTrain2.SharedTriggers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,25 +33,25 @@ internal static class TurnEndHook
 internal static class SpellResolutionHook
 {
     static MethodBase TargetMethod()=>typeof(CombatManager).GetMethods().Single(m=>m.Name==nameof(CombatManager.ApplyEffects)&&m.GetParameters().FirstOrDefault()?.ParameterType==typeof(List<CardEffectState>));
-    static void Postfix(CardState playedCard,int selectedRoom,bool fromPlayedCard,CharacterState selfTarget,SpawnPoint dropLocation,ref IEnumerator __result)
+    static void Postfix(CardState playedCard,int selectedRoom,bool fromPlayedCard,CharacterState selfTarget,SpawnPoint dropLocation,AllGameManagers ___allGameManagers,ref IEnumerator __result)
     {
         if(playedCard==null || !fromPlayedCard || playedCard.IsUnitAbility() || playedCard.GetCardType()!=CardType.Spell) return;
-        __result=Run(__result,playedCard,selectedRoom,dropLocation?.GetCharacterState()??selfTarget);
+        __result=Run(__result,playedCard,selectedRoom,dropLocation?.GetCharacterState()??selfTarget,___allGameManagers.GetCoreManagers());
     }
-    static IEnumerator Run(IEnumerator original,CardState card,int floor,CharacterState target)
+    static IEnumerator Run(IEnumerator original,CardState card,int floor,CharacterState target,ICoreGameManagers core)
     {
-        if(!AcademicRuntime.Active) { yield return original; yield break; }
+        if(core.GetSaveManager().PreviewMode&&!PreviewScope.Active){yield return original;yield break;}
+        var previousCore=AcademicRuntime.Core;AcademicRuntime.Core=core;
         var frame=new AcademicRuntime.SpellResolution { Card=card,Floor=floor,FirstDamage=card.GetIsDamageCard()&&AcademicRuntime.FirstDamageSpell==null,WasFrozen=card.HasTrait(typeof(CardTraitFreeze)) };
-        if(target!=null&&AcademicRuntime.Is(target,"WW_U01")&&card.GetEffectStates().Any(e=>e.GetTargetTeamType().HasFlag(Team.Type.Heroes))&&AcademicRuntime.Units(floor,Team.Type.Heroes).Count>0)
-        {
-            int dazed=target.GetStatusEffectStacks("dazed");frame.Redirected=true;
-            if(dazed>0)yield return AcademicRuntime.Core.GetCombatManager().ApplyDamageToTarget(AcademicMath.RedirectionDamage(dazed),target,new CombatManager.ApplyDamageToTargetParameters());
-            if(!target.IsDestroyed&&!target.IsDead)target.AddStatusEffect("dazed",1);
-            AcademicRuntime.Core.GetPlayerManager().AddEnergy(card.GetLastPlayedCost());
-            target=AcademicRuntime.Units(floor,Team.Type.Heroes).FirstOrDefault();
-        }
         try
         {
+            if(target!=null&&AcademicRuntime.Is(target,"WW_U01")&&LightningRodSafety.Eligible(card)&&
+                RedirectTargets.InRoom(core.GetRoomManager().GetRoom(floor),Team.Type.Heroes).Count>0)
+            {
+                frame.Redirected=true;
+                yield return LightningRodSafety.Feedback(target,card,core);
+                target=RedirectTargets.InRoom(core.GetRoomManager().GetRoom(floor),Team.Type.Heroes).FirstOrDefault();
+            }
             yield return SpellRules.Before(frame,target);
             if(!frame.Indirect&&card.GetRarity()==CollectableRarity.Common)AcademicRuntime.LastPlayedCommonSpell=card;
             if(card.GetIsDamageCard())
@@ -63,7 +64,11 @@ internal static class SpellResolutionHook
             finally { AcademicRuntime.Frames.Pop(); }
             yield return AcademicRuntime.AfterSpell(frame);
         }
-        finally { foreach(var cleanup in frame.Cleanup)cleanup(); }
+        finally
+        {
+            try {foreach(var cleanup in frame.Cleanup)cleanup();}
+            finally {AcademicRuntime.Core=previousCore;}
+        }
     }
 }
 [HarmonyPatch(typeof(CharacterState),nameof(CharacterState.ApplyHeal))]
@@ -80,7 +85,7 @@ internal static class HealHook
         if(!unit.IsDestroyed&&unit.IsAlive)
         {
             AcademicRuntime.RecordHeal(unit,Math.Max(0,unit.GetHP()-before),excess,source);
-            yield return OverhealEvent.Dispatch(unit,excess,source);
+            if(AcademicRuntime.Active)yield return OverhealEvent.Dispatch(AcademicRuntime.Core,unit,excess,source);
         }
     }
 }
@@ -109,3 +114,5 @@ internal static class HealHook
 // 2026-10-12-2053||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Reutilizar cálculo de exceso de ApplyHeal para activar pasiva Hostile Medicine
 // 2026-10-12-2211||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Despachar Overheal al personaje curado con la cantidad sobrante y la fuente original
 // 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Excluir Overheal también por cantidad original >=9999 antes de modificadores; conservar curación nativa
+// 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Resolver con managers nativos del caller y proteger preparación, preview, reembolso y restauración de contexto
+// 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas

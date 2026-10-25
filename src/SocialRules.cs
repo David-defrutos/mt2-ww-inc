@@ -71,7 +71,7 @@ internal static class SocialRules
             if(!wizard&&!witch)continue;
             string prefix=wizard?"WW_FratBro":"WW_QueenBee";
             int rank=CardEffectAcademicWizardDraw.Rank(unit,prefix);
-            int amount=AcademicMath.ChampionAura(rank,wizard?witches:wizards);int old=AuraBonuses.TryGetValue(unit,out int previous)?previous:0;
+            int amount=AcademicMath.ChampionAura(rank,wizard?witches:wizards,wizard?5:1);int old=AuraBonuses.TryGetValue(unit,out int previous)?previous:0;
             old=Math.Min(old,unit.GetStatusEffectStacks(wizard?"conduit":"mageblade"));
             int delta=amount-old;if(delta>0)unit.AddStatusEffect(wizard?"conduit":"mageblade",delta,allowModification:false);
             else if(delta<0)unit.RemoveStatusEffect(wizard?"conduit":"mageblade",-delta,allowModification:false);
@@ -121,3 +121,4 @@ public sealed class RoomStateAcademicPlatonic : RoomStateModifierBase
 // 2026-10-12-2105||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SocialRules.cs||Conservar helper IsTrio usado por reliquia A09; la sala usa Mixed
 // 2026-10-13-2124||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SocialRules.cs||Office of Complaints exige tres tipos en mismo piso sin adyacencia; conserva recorrido determinista y una activación
 // 2026-10-14-0021||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SocialRules.cs||Awkward Silence concede 15 Magic Power por pareja adyacente
+// 2026-10-24-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SocialRules.cs||Queen Bee Mageblade +1/+2/+3 por Wizard; Frat Bro conserva +5/+10/+15 Conduit

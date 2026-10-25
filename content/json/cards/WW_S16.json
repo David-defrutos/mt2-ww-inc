@@ -24,16 +24,16 @@
         "japanese": "生命記録交換"
       },
       "descriptions": {
-        "spanish": "Intercambia la salud actual de la primera y la última unidad aliada. La salud que exceda su máximo se convierte en [armor].",
-        "english": "Swap the current health of the front and rear friendly units. Health exceeding their maximum becomes [armor].",
-        "french": "Échange les PV actuels des alliés de tête et de queue. L'excédent devient [armor].",
-        "german": "Tausche die aktuelle Gesundheit des vordersten und hintersten Verbündeten. Überschuss wird zu [armor].",
-        "portuguese": "Troca a vida atual dos aliados da frente e de trás. Vida excedente vira [armor].",
-        "russian": "Меняет текущее здоровье переднего и заднего союзников. Излишек превращается в [armor].",
-        "chinese": "交换前排与后排盟友当前生命，超出上限的部分转为 [armor]。",
-        "chinese_traditional": "交換前排與後排盟友當前生命，超出上限的部分轉為 [armor]。",
-        "korean": "맨 앞과 맨 뒤 아군의 현재 생명력을 교환합니다. 초과 생명력은 [armor]가 됩니다.",
-        "japanese": "先頭と最後尾の味方の現在HPを交換する。上限超過分は[armor]になる。"
+        "spanish": "Intercambia la salud del primer y del último aliado. Convierte la salud que supere su máximo en [armor].",
+        "french": "Échangez les PV des alliés de tête et de queue. Convertissez les PV au-delà de leur maximum en [armor].",
+        "german": "Tausche das Leben des vordersten und hintersten Verbündeten. Wandle Leben über ihrem Maximum in [armor] um.",
+        "portuguese": "Troca a saúde do primeiro e do último aliado. Converte a saúde acima do máximo em [armor].",
+        "russian": "Поменяйте местами здоровье переднего и заднего союзников. Здоровье сверх максимума превращается в [armor].",
+        "chinese": "交换最前方与最后方友军的生命。超过各自生命上限的部分转化为[armor]。",
+        "chinese_traditional": "交換最前方與最後方友軍的生命。超過各自生命上限的部分轉化為[armor]。",
+        "korean": "맨 앞과 맨 뒤 아군의 체력을 맞바꿉니다. 최대치를 넘는 체력은 [armor]로 전환합니다.",
+        "japanese": "先頭と最後尾の味方の体力を入れ替える。各自の最大値を超えた体力は[armor]に変換する。",
+        "english": "Swap the front and rear friendly units’ health. Convert health above their maximum to [armor]."
       },
       "class": "@WW_Class",
       "card_type": "spell",

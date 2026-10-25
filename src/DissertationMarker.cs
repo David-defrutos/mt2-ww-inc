@@ -22,7 +22,7 @@ internal static class DissertationMarker
     {
         if(!SpellRules.BoundAttacks.TryGetValue(unit,out var bindings))return "";
         return string.Join("<br>",bindings.Select(binding=>binding.card.GetTitle()+" — "+
-            string.Format("david.wwinc.ReservedAttacks".Localize(),binding.attacks)));
+            string.Format("david.wwinc.ReservedAttacks".Localize(),binding.attacks)+" — "+DissertationTargeting.SideLabel(binding.card)));
     }
 }
 
@@ -38,3 +38,4 @@ internal static class DissertationMarkerTooltipHook
 }
 // 2026-10-13-0023||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Marca visual de vínculos: ataques restantes y tooltip con nombres de hechizos y contadores individuales
 // 2026-10-13-0033||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Usar ID real de Dissertation en concesión, contador y tooltip
+// 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Mostrar bando elegido junto al hechizo y ataques restantes

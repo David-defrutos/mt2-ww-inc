@@ -8,13 +8,13 @@
   },
   "cost": 2,
   "rarity": "uncommon",
-  "effect": "El primer hechizo de daño de cada turno le otorga tanto [attack] como el daño total que inflija, durante ese turno.",
+  "effect": "Obtiene [attack] igual al daño total que el primer hechizo de daño de cada turno inflija a enemigos, en cualquier piso, durante ese turno.",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "Daño total del primer hechizo de daño del turno a enemigos en cualquier piso; daño postmitigación nativo antes del límite de HP más armadura consumida. Incluye exceso; Damage Shield bloqueado cuenta 0. Contador independiente de daño efectivo de PhD/otras conversiones. Duración un turno. Pendiente partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
   "subtype": "Witch",
   "stats": {
-    "attack": 5,
+    "attack": 6,
     "health": 35,
     "size": 1
   },

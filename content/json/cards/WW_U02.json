@@ -25,16 +25,16 @@
         "japanese": "秘術応急処置博士"
       },
       "descriptions": {
-        "english": "The first spell each turn that damages enemies on this floor also restores health equal to that damage, divided evenly among friendly units on this floor.",
-        "spanish": "El primer hechizo de cada turno que dañe a enemigos de este piso también restaura salud igual al daño infligido, repartida por igual entre los aliados de este piso.",
-        "french": "Le premier sort de chaque tour qui blesse les ennemis de cet étage restaure aussi des PV égaux aux dégâts infligés, répartis également entre les alliés de cet étage.",
-        "german": "Der erste Zauber jeder Runde, der Gegnern dieser Etage Schaden zufügt, stellt auch Leben in Höhe dieses Schadens wieder her, gleichmäßig auf die Verbündeten dieser Etage verteilt.",
-        "portuguese": "O primeiro feitiço de cada turno que causa dano a inimigos neste andar também restaura vida igual ao dano causado, dividida igualmente entre os aliados deste andar.",
-        "russian": "Первое заклинание каждого хода, наносящее урон врагам этого этажа, также восстанавливает столько же здоровья, поровну между союзниками на этом этаже.",
-        "chinese": "每回合首个对本层敌人造成伤害的法术，也会恢复等于该伤害量的生命值，由本层友方单位平均分配。",
-        "chinese_traditional": "每回合首個對本層敵人造成傷害的法術，也會恢復等於該傷害量的生命值，由本層友方單位平均分配。",
-        "korean": "매 턴 이 층의 적에게 처음 피해를 주는 주문은 그 피해만큼 체력도 회복하며, 이 층의 아군에게 균등하게 나눕니다.",
-        "japanese": "毎ターンこの階の敵に最初にダメージを与える呪文は、そのダメージと同量の体力も回復し、この階の味方に均等に分配する。"
+        "spanish": "El primer hechizo de cada turno que dañe a enemigos también restaura esa cantidad de salud, repartida por igual entre los aliados.",
+        "french": "Le premier sort de chaque tour qui blesse des ennemis restaure aussi autant de PV, répartis également entre les alliés.",
+        "german": "Der erste Zauber jeder Runde, der Feinden Schaden zufügt, stellt ebenso viel Leben wieder her, gleichmäßig auf Verbündete verteilt.",
+        "portuguese": "O primeiro feitiço de cada turno que causar dano a inimigos também restaura essa quantidade de saúde, dividida igualmente entre os aliados.",
+        "russian": "Первое заклинание каждого хода, наносящее урон врагам, также восстанавливает столько же здоровья, поровну разделённого между союзниками.",
+        "chinese": "每回合首个对敌人造成伤害的法术也会恢复等量生命，由友军均分。",
+        "chinese_traditional": "每回合首個對敵人造成傷害的法術也會恢復等量生命，由友軍均分。",
+        "korean": "매 턴 처음 적에게 피해를 주는 주문은 그만큼 체력도 회복하며, 아군에게 균등하게 나눕니다.",
+        "japanese": "毎ターン最初に敵へダメージを与える呪文は、同量の体力も回復し、味方で均等に分ける。",
+        "english": "The first spell each turn that damages enemies also restores that much health, split evenly among friendly units."
       },
       "class": "@WW_Class",
       "card_type": "monster",
@@ -68,7 +68,7 @@
       "character_art": "@WW_U02CharacterArt",
       "size": 2,
       "health": 30,
-      "attack_damage": 5,
+      "attack_damage": 6,
       "subtypes": [
         "@WW_Witch",
         "SubtypesData_BannerUnit"

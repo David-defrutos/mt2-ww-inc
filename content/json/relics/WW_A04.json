@@ -23,16 +23,16 @@
         "japanese": "素行証明書"
       },
       "descriptions": {
-        "spanish": "Si no juegas hechizos de daño este turno, roba +1 en el próximo turno.",
-        "english": "If you play no damage spells this turn, draw +1 next turn.",
-        "french": "Si vous terminez le tour sans sort de dégâts, piochez 1 carte supplémentaire au prochain tour.",
-        "german": "Endest du die Runde ohne Schadenszauber, ziehe nächste Runde 1 zusätzliche Karte.",
-        "portuguese": "Se terminar o turno sem jogar feitiço de dano, compre 1 carta extra no próximo turno.",
-        "russian": "Если закончить ход без заклинаний урона, в следующий ход возьмите 1 дополнительную карту.",
-        "chinese": "若回合结束前未使用伤害法术，下回合额外抽1张牌。",
-        "chinese_traditional": "若回合結束前未使用傷害法術，下回合額外抽1張牌。",
-        "korean": "피해 주문을 사용하지 않고 턴을 마치면 다음 턴 1장을 추가로 뽑습니다.",
-        "japanese": "ダメージ呪文を使わずターンを終えると、次のターン追加で1枚引く。"
+        "english": "If you play no damage spells, draw +1 next turn.",
+        "spanish": "Si no juegas hechizos de daño, roba +1 el próximo turno.",
+        "french": "Si vous ne jouez aucun sort de dégâts, piochez +1 au prochain tour.",
+        "german": "Wenn du keine Schadenszauber spielst, ziehe nächste Runde +1.",
+        "portuguese": "Se não jogar feitiços de dano, compra +1 no próximo turno.",
+        "russian": "Если вы не играете заклинания урона, возьмите +1 в следующем ходу.",
+        "chinese": "若未打出伤害法术，下回合多抽1张牌。",
+        "chinese_traditional": "若未打出傷害法術，下回合多抽1張牌。",
+        "korean": "피해 주문을 사용하지 않으면 다음 턴 +1장 뽑습니다.",
+        "japanese": "ダメージ呪文をプレイしなければ、次のターンに+1枚引く。"
       },
       "icon": "@WW_A04Icon",
       "icon_small": "@WW_A04IconSmall",

@@ -8,9 +8,11 @@ Wizards & Witches Inc. is a spell-focused clan for Monster Train 2. An academy o
 - **10 relics** and text in all ten game languages.
 - **Arcane Slay:** rewards kills caused by spells.
 - **Overheal:** uses healing that exceeds a unit's maximum health.
+- **Overdamage:** turns excess attack damage into Extra Credit.
+- **MineMineMine:** claims spell kills on the holder's floor.
 - Build around Conduit, spell upgrades, healing, and Wizard–Witch combinations.
 
-## BETA — 0.1.132
+## BETA — 0.1.154
 
 This clan is playable but **unfinished**, and I am publishing it at this stage on purpose: I would rather have real games behind it than keep guessing on my own. What helps most is **bug reports** and an opinion on the **balance of the champions, the units and the spells**.
 
@@ -64,9 +66,11 @@ Wizards & Witches Inc. es un clan de hechizos para Monster Train 2. Una academia
 - **10 reliquias** y textos en los diez idiomas del juego.
 - **Arcane Slay:** recompensa las bajas causadas por hechizos.
 - **Sobrecuración:** utiliza la curación que excede la salud máxima de una unidad.
+- **Daño sobrante:** convierte el exceso de daño de los ataques en Crédito Extra.
+- **MíoMíoMío:** reclama las bajas de hechizos del piso del portador.
 - Combina Conduit, mejoras de hechizos, curación y parejas de Mago y Bruja.
 
-## BETA — 0.1.132
+## BETA — 0.1.154
 
 Este clan es jugable, pero está **sin terminar**, y lo publico en este estado a propósito: prefiero contar con partidas reales antes que seguir haciendo suposiciones por mi cuenta. Lo que más ayuda son los **informes de errores** y vuestra opinión sobre el **equilibrio de los campeones, las unidades y los hechizos**.
 
@@ -99,3 +103,13 @@ Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Grou
 <!-- 2026-10-24-1709||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir aviso de clan inacabado y petición de errores y balance en inglés y español; enlaces públicos de W&W y Discord; conservar beta 0.1.132 -->
 
 <!-- 2026-10-24-1717||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Sustituir More cards/spells-infrequent.png por Spells/spells.png y actualizar enlace español de galería -->
+<!-- 2026-10-24-2204||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar ficha pública a beta 0.1.149 y mencionar Overdamage y MineMineMine conservando galería y enlaces -->
+<!-- 2026-10-25-1547||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Versión 0.1.149: corregir tooltips repetidos y claves internas sin traducir -->
+<!-- 2026-10-25-1557||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Versión 0.1.149: presentación de clan, iconos y compatibilidad de mejoras -->
+<!-- 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Versión 0.1.149: seguridad de preview de Intern y daño total de Representative -->
+<!-- 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Versión 0.1.149: tooltips de cartas generadas y keywords concedidas -->
+<!-- 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.150 sin reescribir comentarios históricos -->
+<!-- 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa editorial a 0.1.151 sin reescribir historial -->
+<!-- 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.152 por filtro no aleatorio -->
+<!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
+<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->

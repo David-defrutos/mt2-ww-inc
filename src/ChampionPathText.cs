@@ -72,3 +72,5 @@ internal static class ChampionPathTooltipHook
 
 // 2026-10-11-0020||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ChampionPathText.cs||Evitar la extensión Concat ambigua y usar colecciones nativas tipadas
 // 2026-10-12-2232||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ChampionPathText.cs||Excluir sendas Dean ahora nativas del texto C# adicional para evitar duplicar Arcane Slay
+// 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ChampionPathText.cs||Mostrar nueva senda Advanced Spellwork en carta, mejora y tooltip
+// 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ChampionPathText.cs||Advanced Spellwork vuelve a texto y tooltip nativos de trigger Overdamage, sin duplicación

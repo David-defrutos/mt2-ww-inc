@@ -12,7 +12,8 @@
       "id": "WW_U08_CopyLastCommon",
       "name": "@CardEffectAcademicCopyLastCommon",
       "target_mode": "self",
-      "target_team": "none"
+      "target_team": "none",
+      "param_upgrade": "@WW_U08_CopyGrant"
     }
   ],
   "characters": [
@@ -127,17 +128,33 @@
         "@WW_U08_CopyLastCommon"
       ],
       "descriptions": {
-        "english": "Add a copy of the last common spell played to hand with 0[ember] and [ephemeral].",
-        "spanish": "Añade a tu mano una copia del último hechizo común jugado con 0[ember] y [ephemeral].",
-        "french": "Ajoute en main une copie du dernier sort commun joué avec 0[ember] et [ephemeral].",
-        "german": "Füge deiner Hand eine Kopie des zuletzt gespielten gewöhnlichen Zaubers mit 0[ember] und [ephemeral] hinzu.",
-        "portuguese": "Adiciona à mão uma cópia do último feitiço comum jogado com 0[ember] e [ephemeral].",
-        "russian": "Добавляет в руку копию последнего сыгранного обычного заклинания с ценой 0[ember] и [ephemeral].",
-        "chinese": "将最后使用的普通法术的复制加入手牌，费用为0[ember]并具有[ephemeral]。",
-        "chinese_traditional": "將最後使用的普通法術的複製加入手牌，費用為0[ember]並具有[ephemeral]。",
-        "korean": "마지막으로 사용한 일반 주문의 복사본을 비용 0[ember]과 [ephemeral]로 손에 추가합니다.",
-        "japanese": "最後に使ったコモンの呪文のコピーを、コスト0[ember]と[ephemeral]付きで手札に加える。"
+        "spanish": "Añade a tu mano una copia del último hechizo común jugado. Cuesta 0[ember] y tiene [ephemeral].",
+        "french": "Ajoutez en main une copie du dernier sort commun joué. Elle coûte 0[ember] et a [ephemeral].",
+        "german": "Füge der Hand eine Kopie des zuletzt gespielten gewöhnlichen Zaubers hinzu. Sie kostet 0[ember] und hat [ephemeral].",
+        "portuguese": "Adiciona à mão uma cópia do último feitiço comum jogado. Custa 0[ember] e tem [ephemeral].",
+        "russian": "Добавьте в руку копию последнего сыгранного обычного заклинания. Она стоит 0[ember] и имеет [ephemeral].",
+        "chinese": "将最后打出的普通法术的复制品加入手牌。它费用为0[ember]，并具有[ephemeral]。",
+        "chinese_traditional": "將最後打出的普通法術的複製品加入手牌。它費用為0[ember]，並具有[ephemeral]。",
+        "korean": "마지막으로 사용한 일반 주문의 복사본을 손에 추가합니다. 비용은 0[ember]이며 [ephemeral]을 가집니다.",
+        "japanese": "最後にプレイしたコモン呪文のコピーを手札に加える。コストは0[ember]で、[ephemeral]を持つ。",
+        "english": "Add a copy of the last common spell played to hand. It costs 0[ember] and has [ephemeral]."
       }
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_U08_CopyGrant",
+      "trait_upgrades": [
+        "@WW_U08_CopyEphemeral"
+      ],
+      "hide_icon_on_card": true
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_U08_CopyEphemeral",
+      "name": "CardTraitEphemeral",
+      "stack_mode": "none"
     }
   ]
 }

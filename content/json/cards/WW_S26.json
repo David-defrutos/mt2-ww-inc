@@ -54,7 +54,8 @@
       "param_bool_2": true,
       "param_bool_3": true,
       "should_fail_to_cast_if_test_fails": true,
-      "should_cancel_subsequent_effects_if_test_fails": true
+      "should_cancel_subsequent_effects_if_test_fails": true,
+      "hide_tooltip": true
     }
   ],
   "sprites": [

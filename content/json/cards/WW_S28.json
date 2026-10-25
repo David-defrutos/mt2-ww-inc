@@ -16,16 +16,16 @@
         "japanese": "延期された課題"
       },
       "descriptions": {
-        "english": "Deal [effect0.power] damage to a unit.",
-        "spanish": "Inflige [effect0.power] de daño a una unidad.",
-        "french": "Inflige [effect0.power] dégâts à une unité.",
-        "german": "Füge einer Einheit [effect0.power] Schaden zu.",
-        "portuguese": "Causa [effect0.power] de dano a uma unidade.",
-        "russian": "Наносит бойцу [effect0.power] урона.",
-        "chinese": "对单位造成[effect0.power]点伤害。",
-        "chinese_traditional": "對單位造成[effect0.power]點傷害。",
-        "korean": "유닛에게 [effect0.power]의 피해를 줍니다.",
-        "japanese": "ユニットに[effect0.power]ダメージを与える。"
+        "english": "Deal [effect0.power] damage.",
+        "spanish": "Inflige [effect0.power] de daño.",
+        "french": "Infligez [effect0.power] dégâts.",
+        "german": "Verursache [effect0.power] Schaden.",
+        "portuguese": "Causa [effect0.power] de dano.",
+        "russian": "Нанесите [effect0.power] урона.",
+        "chinese": "造成[effect0.power]点伤害。",
+        "chinese_traditional": "造成[effect0.power]點傷害。",
+        "korean": "[effect0.power] 피해를 줍니다.",
+        "japanese": "[effect0.power]ダメージを与える。"
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -69,7 +69,10 @@
       },
       "target_team": "none",
       "param_upgrade": "@WW_S28_Charge",
-      "param_bool": false
+      "param_bool": false,
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     },
     {
       "id": "WW_S28_Return",

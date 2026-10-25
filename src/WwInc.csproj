@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>WwInc.Plugin</AssemblyName>
     <RootNamespace>WwInc</RootNamespace>
-    <Version>0.1.132</Version>
+    <Version>0.1.154</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -639,3 +639,25 @@
 <!-- 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.130 -->
 <!-- 2026-10-21-2059||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.131: límite de armadura por Overheal -->
 <!-- 2026-10-21-2245||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.132: Course Withdrawal acepta Scourge -->
+<!-- 2026-10-24-1824||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.133: campeona Witch recibe Overheal de daño -->
+<!-- 2026-10-24-1826||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.134: Protective Tenure otorga Armor y Spikes -->
+<!-- 2026-10-24-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.135: escala Queen Bee +1/+2/+3 -->
+<!-- 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.136: Advanced Spellwork genera Extra Credit atribuido a la campeona -->
+<!-- 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.137: trigger Overdamage reutilizable -->
+<!-- 2026-10-24-1900||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.138: ilustración propia de Extra Credit -->
+<!-- 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.139: Crédito Extra acumulable de coste 0 Frozen/Purge -->
+<!-- 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.140: trigger MineMineMine reutilizable de autoría de bajas -->
+<!-- 2026-10-24-1943||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.141: MineMineMine en todas las sendas Witch y Overheal solo en protección -->
+<!-- 2026-10-24-1946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.142: Advanced Spellwork 100% con progresión de keywords -->
+<!-- 2026-10-24-1959||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.143: restaurar Incant de ataque junto a Overdamage -->
+<!-- 2026-10-24-2025||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: corregir Spikes del Incant de protección -->
+<!-- 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: Dissertation admite hechizos de soporte -->
+<!-- 2026-10-25-1547||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: corregir tooltips repetidos y claves internas sin traducir -->
+<!-- 2026-10-25-1557||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: presentación de clan, iconos y compatibilidad de mejoras -->
+<!-- 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: seguridad de preview de Intern y daño total de Representative -->
+<!-- 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.149: tooltips de cartas generadas y keywords concedidas -->
+<!-- 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.150 sin reescribir comentarios históricos -->
+<!-- 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa editorial a 0.1.151 sin reescribir historial -->
+<!-- 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.152 por filtro no aleatorio -->
+<!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
+<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->

@@ -5,7 +5,17 @@
       "id": "WW_S07_Effect",
       "name": "@CardEffectAcademicConduitTransfer",
       "target_mode": "room",
-      "target_team": "monsters"
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "conduit",
+          "count": 0
+        }
+      ],
+      "param_upgrade": "@WW_S07_ExplosiveGrant",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     }
   ],
   "cards": [
@@ -24,16 +34,16 @@
         "japanese": "Conduit 単位振替"
       },
       "descriptions": {
-        "spanish": "Elimina todo el [conduit] de las unidades aliadas de todos los pisos. Un hechizo de tu mano obtiene esa cantidad de [magicpower] y Explosive.",
-        "english": "Remove all [conduit] from friendly units on all floors. A spell in hand gains that much [magicpower] and Explosive.",
-        "french": "Retire toute la [conduit] de vos unités. Un sort choisi gagne autant de [magicpower] et Explosive.",
-        "german": "Entferne alle [conduit] deiner Einheiten. Ein gewählter Zauber erhält so viel [magicpower] und Explosive.",
-        "portuguese": "Remove toda a [conduit] das suas unidades. Um feitiço escolhido ganha essa quantidade de [magicpower] e Explosive.",
-        "russian": "Убирает всю [conduit] ваших единиц. Выбранное заклинание получает столько же [magicpower] и Explosive.",
-        "chinese": "移除己方单位全部 [conduit]。选定法术获得等量 [magicpower] 和 Explosive。",
-        "chinese_traditional": "移除己方單位全部 [conduit]。選定法術獲得等量 [magicpower] 和 Explosive。",
-        "korean": "아군 유닛의 모든 [conduit]를 제거합니다. 선택한 주문이 그만큼 [magicpower]와 Explosive를 얻습니다.",
-        "japanese": "味方ユニットの全[conduit]を除く。選んだ呪文は、同量の[magicpower]とExplosiveを得る。"
+        "spanish": "Elimina todo el [conduit] de los aliados de todos los pisos. Otorga esa cantidad de [magicpower] y Explosive a un hechizo de tu mano.",
+        "french": "Retirez tout le [conduit] des alliés de tous les étages. Donnez autant de [magicpower] et Explosive à un sort en main.",
+        "german": "Entferne sämtliches [conduit] von Verbündeten auf allen Etagen. Gib einem Zauber auf der Hand ebenso viel [magicpower] und Explosive.",
+        "portuguese": "Remove todo o [conduit] dos aliados de todos os andares. Dá essa quantidade de [magicpower] e Explosive a um feitiço na mão.",
+        "russian": "Уберите весь [conduit] у союзников на всех этажах. Дайте заклинанию в руке столько же [magicpower] и Explosive.",
+        "chinese": "移除所有楼层友军的全部[conduit]。使一张手牌法术获得等量[magicpower]和Explosive。",
+        "chinese_traditional": "移除所有樓層友軍的全部[conduit]。使一張手牌法術獲得等量[magicpower]和Explosive。",
+        "korean": "모든 층 아군의 [conduit]를 전부 제거합니다. 손의 주문 하나에 그만큼 [magicpower]와 Explosive를 부여합니다.",
+        "japanese": "全階の味方の[conduit]をすべて取り除く。手札の呪文1枚に同量の[magicpower]とExplosiveを与える。",
+        "english": "Remove all [conduit] from friendly units on all floors. Give a spell in hand that much [magicpower] and Explosive."
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -65,6 +75,15 @@
           "sprite": "@WW_S07CardArt"
         }
       }
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_S07_ExplosiveGrant",
+      "trait_upgrades": [
+        "@WW_ExtraCredit_ExplosiveTrait"
+      ],
+      "hide_icon_on_card": true
     }
   ]
 }

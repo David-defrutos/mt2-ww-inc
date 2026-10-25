@@ -10,6 +10,6 @@
   "rarity": "uncommon",
   "effect": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de la salud que le falte más [effect0.power].",
   "status": "implemented_unverified",
-  "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10 con ApplyHeal nativo.",
+  "implementation_note": "Stasis hasta próximo turno; al despertar cura mitad de salud faltante +10. Hereda CardEffectHeal y se registra mediante Conductor.Utilities.MarkEffectAsHealEffect en Railend.ConfigurePostAction: piedras de poder aumentan solo la parte fija por GetParamInt nativo. La fracción de salud faltante no escala. Pendiente partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
 }

@@ -30,6 +30,22 @@ Check(AcademicMath.OverhealArmor(130,50)+AcademicMath.OverhealArmor(130,50)==100
 Check(AcademicMath.OverhealArmor(130,75)==75,"Current increased maximum health raises the per-event cap");
 Check(AcademicMath.OverhealArmor(0,50)==0&&AcademicMath.OverhealArmor(130,0)==0,"No excess or no maximum health grants no Armor");
 
+Check(AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(50,20),100)==30&&AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(50,20),150)==45&&AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(50,20),200)==60,"Extra Credit uses 100/150/200 percent of actual excess");
+Check(AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(20,20),200)==0&&AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(0,0),200)==0,"No excess or blocked hit generates no spell");
+Check(AcademicMath.ScaleOverdamage(30,0)==0,"Zero-percent consumers produce no damage");
+Check(AcademicMath.ScaleOverdamage(AcademicMath.OverdamageAmount(21,20),150)==1,"Half-point excess conversion rounds down");
+Check(AcademicMath.ScaleOverdamage(int.MaxValue,200)==int.MaxValue,"Extra Credit damage saturates instead of overflowing");
+
+Check(20+AcademicMath.CreditDamageIncrement(20,30)==50,"Extra Credit 20 plus 30 overdamage becomes one card with 50 damage");
+Check(AcademicMath.CreditDamageIncrement(0,20)==20,"New permanent Extra Credit starts with the captured damage");
+Check(AcademicMath.CreditDamageIncrement(int.MaxValue-5,30)==5,"Accumulation saturates without overflowing native additionalDamage");
+Check(AcademicMath.CreditDamageIncrement(int.MaxValue,30)==0&&AcademicMath.CreditDamageIncrement(20,0)==0,"Saturated cards and zero excess add no damage");
+
+Check(MineMineMineRules.FirstHolder(new[]{false,true,true})==1,"MineMineMine picks the first holder, not the first unit");
+Check(MineMineMineRules.FirstHolder(new[]{true,true,false})==0,"Two holders give only the front holder priority");
+Check(MineMineMineRules.FirstHolder(new[]{false,false,true})==2,"Removing the former front holder transfers priority deterministically");
+Check(MineMineMineRules.FirstHolder(Array.Empty<bool>())==-1&&MineMineMineRules.FirstHolder(new[]{false,false})==-1,"No holder leaves native attribution unchanged");
+
 int[] Separate(int[] source)
 {
     var units=source.ToList();
@@ -57,7 +73,9 @@ Check(AcademicMath.ServingStats(-3)==(0,1),"Negative Conduit cannot create inval
 Check(AcademicMath.ServingStats(long.MaxValue)==(int.MaxValue-1,int.MaxValue),"Summed Conduit cannot overflow Health");
 Check(AcademicMath.ChampionRank(new[]{"david.wwinc-Upgrade-WW_FratBro1","david.wwinc-Upgrade-WW_FratBro3","WW_FratBro2"},"WW_FratBro")==3,"Only highest rank of same path contributes");
 Check(AcademicMath.ChampionRank(new[]{"WW_FratBro10","WW_Other3"},"WW_FratBro")==0,"Unrelated and malformed rank IDs grant no aura");
-Check(AcademicMath.ChampionAura(2,3)==30,"Frat Bro or Queen Bee rank II counts three living opposite mages");
+Check(AcademicMath.ChampionAura(2,3)==30,"Frat Bro rank II counts three living Witches");
+Check(AcademicMath.ChampionAura(1,4,1)==4&&AcademicMath.ChampionAura(2,4,1)==8&&AcademicMath.ChampionAura(3,4,1)==12,"Queen Bee grants one/two/three Mageblade per Wizard by rank");
+Check(AcademicMath.ChampionAura(3,0,1)==0&&AcademicMath.ChampionAura(0,4,1)==0,"Queen Bee needs a Wizard and its own path rank");
 Check(AcademicMath.ChampionAura(3,0)==0,"Last opposite mage dying removes social aura");
 Check(AcademicMath.ChampionAura(0,5)==0,"Incant-only Witch gains no Queen Bee aura");
 var permit=new RingPermitLedger();
@@ -110,7 +128,14 @@ Check(AcademicMath.ConsumedDamage(10,10,2)==30,"Two consumed cards add twenty da
 Check(AcademicMath.ConsumedDamage(15,10,0)==15,"Chair or stone bonus remains with no consumed cards");
 Check(AcademicMath.ConsumedDamage(35,10,2)==55,"Power including Attuned is not counted twice");
 Check(AcademicMath.ConsumedDamage(int.MaxValue,10,2)==int.MaxValue,"Consumed bonus cannot overflow into zero damage");
-Check(AcademicMath.EducationPower(15,1)==7,"Education rounds front Attack down");
+Check(AcademicMath.EducationPower(15,1)==8,"Education rounds odd front Attack up");
+Check(AcademicMath.EducationPower(16,1)==8,"Even front Attack is unchanged");
+Check(AcademicMath.EducationPower(15,2)==16,"Each Education source contributes its rounded bonus");
+Check(AcademicMath.EducationPower(-3,1)==0,"Negative front Attack gives no power");
+Check(AcademicMath.EducationPower(15,0)==0,"No professor gives no power");
+Check(AcademicMath.EducationPower(15,-1)==0,"Negative source count cannot reduce power");
+Check(AcademicMath.EducationPower(int.MaxValue,1)==1073741824,"Ceiling at maximum Attack does not overflow");
+Check(AcademicMath.EducationPower(int.MaxValue,3)==int.MaxValue,"Stacked Education saturates instead of overflowing");
 Check(AcademicMath.EducationPower(20,2)==20,"Two professors stack their first-spell bonus");
 Check(AcademicMath.EducationPower(0,1)==0,"Zero Attack gives no bonus and preserves spell base power");
 var medicineTurns=new HashSet<string>();
@@ -133,6 +158,13 @@ var noKill=AcademicMath.RefundProgress(4,0);
 Check(noKill.count==4&&!noKill.refund,"A spell without kills does not advance or spend a ready counter");
 var fifth=AcademicMath.RefundProgress(4,25);
 Check(fifth.count==0&&fifth.refund,"Fifth spell resets even if it kills many enemies");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Harmful})==DissertationSide.Enemies,"Both-target damage/debuff chooses enemy");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Beneficial})==DissertationSide.Allies,"Both-target healing/buff chooses bearer");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Beneficial,DissertationIntent.Harmful})==DissertationSide.Choose,"Mixed spell asks instead of harming an ally automatically");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Unknown})==DissertationSide.Choose,"Unknown custom effect asks for a side");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Harmful,DissertationIntent.Unknown})==DissertationSide.Choose,"Known damage does not hide an unknown attached effect");
+Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Beneficial,DissertationIntent.Beneficial})==DissertationSide.Allies,"Multiple beneficial effects do not become ambiguous");
+Check(DissertationPolicy.Resolve(Array.Empty<DissertationIntent>())==DissertationSide.Enemies,"Native exclusive team/area effects need no arbitrary side choice");
 Console.WriteLine(JsonSerializer.Serialize(new {success=errors.Count==0,checks,errors},new JsonSerializerOptions{WriteIndented=true}));return errors.Count==0?0:1;
 // 2026-10-10-0020||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Casos de comportamiento para orden determinista, adyacencia, umbrales y Dazed
 // 2026-10-10-0058||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Casos de producción con cero, múltiples fuentes y límites de Conduit
@@ -174,3 +206,10 @@ internal static class SnapshotFixture
 // 2026-10-20-0017||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones reales de copias con mismo ID, reequipo, replay y nuevo ring
 // 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones Overheal: 9998 permitido; 9999, 10000 e int.MaxValue excluidos
 // 2026-10-21-2059||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Seis regresiones de límite de armadura por evento y salud máxima variable
+// 2026-10-24-1835||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Probar Queen Bee +1/+2/+3 y ausencia de magos; preservar escala Frat Bro
+// 2026-10-24-1839||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones de porcentajes, bloqueo, senda ausente, redondeo y overflow
+// 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Probar cantidad y escalado genéricos de Overdamage sin dependencia de rangos de campeona
+// 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones de acumulación 20+30=50, carta nueva, saturación y cero
+// 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Probar prioridad frontal, varios portadores, cambio de posición y ausencia de portadores
+// 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones de daño, curación, estados, mezcla y efectos desconocidos
+// 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Verificar redondeo de Education, apilamiento, cero y límites enteros sin tocar textos de carta

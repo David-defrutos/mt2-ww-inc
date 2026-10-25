@@ -68,6 +68,10 @@
     {
       "id": "WW_Token_ChaperonaCharacterArt",
       "path": "textures/characters/WW_Token_ChaperonaCharacterArt.png"
+    },
+    {
+      "id": "WW_Token_ExtraCreditCardArt",
+      "path": "textures/cards/WW_Token_ExtraCreditCardArt.png"
     }
   ],
   "game_objects": [
@@ -112,6 +116,121 @@
           }
         }
       }
+    },
+    {
+      "id": "WW_Token_ExtraCreditCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_Token_ExtraCreditCardArt"
+        }
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "WW_Token_ExtraCredit",
+      "names": {
+        "english": "Extra Credit",
+        "spanish": "Crédito Extra",
+        "french": "Crédit supplémentaire",
+        "german": "Zusatzleistung",
+        "portuguese": "Crédito Extra",
+        "russian": "Дополнительный зачёт",
+        "chinese": "额外学分",
+        "chinese_traditional": "額外學分",
+        "korean": "추가 학점",
+        "japanese": "追加単位"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to an enemy unit. Kills count as kills by its creator.",
+        "spanish": "Inflige [effect0.power] de daño a una unidad enemiga. Las bajas cuentan como bajas de su creadora.",
+        "french": "Inflige [effect0.power] dégâts à une unité ennemie. Les éliminations sont attribuées à sa créatrice.",
+        "german": "Füge einer gegnerischen Einheit [effect0.power] Schaden zu. Tötungen zählen für seine Erschafferin.",
+        "portuguese": "Causa [effect0.power] de dano a uma unidade inimiga. As eliminações contam para sua criadora.",
+        "russian": "Наносит врагу [effect0.power] урона. Убийства засчитываются создательнице.",
+        "chinese": "对一个敌方单位造成[effect0.power]点伤害。 击杀归于创造者。",
+        "chinese_traditional": "對一個敵方單位造成[effect0.power]點傷害。 擊殺歸於創造者。",
+        "korean": "적 유닛 하나에게 [effect0.power]의 피해를 줍니다. 처치는 생성자의 처치로 계산됩니다.",
+        "japanese": "敵ユニット1体に[effect0.power]ダメージを与える。 撃破は作成者の撃破として扱われる。"
+      },
+      "class": "@WW_Class",
+      "card_type": "spell",
+      "cost": 0,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "effects": [
+        "@WW_ExtraCredit_Damage"
+      ],
+      "card_art": "@WW_Token_ExtraCreditCardArt",
+      "pools": [],
+      "traits": [
+        "@WW_ExtraCredit_Purge",
+        "@WW_ExtraCredit_Freeze"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_ExtraCredit_Damage",
+      "name": "@CardEffectAcademicAuthoredDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_int": 0
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_ExtraCredit_Purge",
+      "name": "CardTraitSelfPurge"
+    },
+    {
+      "id": "WW_ExtraCredit_Freeze",
+      "name": "CardTraitFreeze"
+    }
+  ],
+  "character_trigger_types": [
+    {
+      "id": "WW_Overdamage",
+      "names": {
+        "english": "Overdamage",
+        "spanish": "Daño sobrante",
+        "french": "Dégâts excédentaires",
+        "german": "Überschaden",
+        "portuguese": "Dano excedente",
+        "russian": "Избыточный урон",
+        "chinese": "溢出伤害",
+        "chinese_traditional": "溢出傷害",
+        "korean": "초과 피해",
+        "japanese": "超過ダメージ"
+      },
+      "descriptions": {
+        "english": "Triggers when an attack kills an enemy with excess damage.",
+        "spanish": "Se activa cuando un ataque mata a un enemigo con daño sobrante.",
+        "french": "Se déclenche quand une attaque tue un ennemi avec des dégâts excédentaires.",
+        "german": "Wird ausgelöst, wenn ein Angriff einen Feind mit überschüssigem Schaden tötet.",
+        "portuguese": "Ativa quando um ataque mata um inimigo com dano excedente.",
+        "russian": "Срабатывает, когда атака убивает врага с избыточным уроном.",
+        "chinese": "攻击以溢出伤害击杀敌人时触发。",
+        "chinese_traditional": "攻擊以溢出傷害擊殺敵人時觸發。",
+        "korean": "공격이 초과 피해로 적을 처치하면 발동합니다.",
+        "japanese": "攻撃が超過ダメージで敵を倒したときに発動する。"
+      },
+      "notifications": {
+        "english": "Overdamage",
+        "spanish": "Daño sobrante",
+        "french": "Dégâts excédentaires",
+        "german": "Überschaden",
+        "portuguese": "Dano excedente",
+        "russian": "Избыточный урон",
+        "chinese": "溢出伤害",
+        "chinese_traditional": "溢出傷害",
+        "korean": "초과 피해",
+        "japanese": "超過ダメージ"
+      },
+      "sprite": "Conductor-Sprite-trigger_followup",
+      "disallow_in_deployment": true
     }
   ]
 }

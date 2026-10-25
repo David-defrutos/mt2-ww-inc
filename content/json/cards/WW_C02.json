@@ -31,6 +31,9 @@
       "subtypes": [
         "@WW_Witch",
         "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"
+      ],
+      "triggers": [
+        "@WW_MineMineMine_Claim"
       ]
     }
   ],

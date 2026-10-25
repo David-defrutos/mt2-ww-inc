@@ -64,7 +64,7 @@
         "japanese": "列車内の魔女ごとに[conduit] +10。"
       },
       "does_not_replace_ability": true,
-      "bonus_damage": 5,
+      "bonus_damage": 4,
       "bonus_hp": 15,
       "status_effect_upgrades": [
         {
@@ -151,7 +151,7 @@
         "japanese": "実践魔法学科 2"
       },
       "does_not_replace_ability": true,
-      "bonus_damage": 5,
+      "bonus_damage": 4,
       "bonus_hp": 10,
       "status_effect_upgrades": [
         {
@@ -232,7 +232,7 @@
         "japanese": "呪文調整学科 2"
       },
       "does_not_replace_ability": true,
-      "bonus_damage": 5,
+      "bonus_damage": 4,
       "bonus_hp": 10,
       "status_effect_upgrades": [
         {
@@ -286,16 +286,16 @@
         "japanese": "女王蜂 1"
       },
       "descriptions": {
-        "spanish": "[mageblade] +5 por Mago en juego",
-        "english": "[mageblade] +5 per Wizard in the train.",
-        "french": "[mageblade] +5 par sorcier vivant dans le train.",
-        "german": "[mageblade] +5 je lebendem Magier im Zug.",
-        "portuguese": "[mageblade] +5 por Mago vivo no trem.",
-        "russian": "[mageblade] +5 за каждого живого мага в поезде.",
-        "chinese": "列车每个男巫提供 [mageblade] +5。",
-        "chinese_traditional": "列車每個男巫提供 [mageblade] +5。",
-        "korean": "열차의 마법사당 [mageblade] +5.",
-        "japanese": "列車内の魔法使いごとに[mageblade] +5。"
+        "spanish": "[mageblade] +1 por Mago en juego",
+        "english": "[mageblade] +1 per Wizard in the train.",
+        "french": "[mageblade] +1 par sorcier vivant dans le train.",
+        "german": "[mageblade] +1 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +1 por Mago vivo no trem.",
+        "russian": "[mageblade] +1 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +1。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +1。",
+        "korean": "열차의 마법사당 [mageblade] +1.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +1。"
       },
       "does_not_replace_ability": true,
       "bonus_damage": 0,
@@ -316,16 +316,16 @@
         "japanese": "女王蜂 2"
       },
       "descriptions": {
-        "spanish": "[mageblade] +10 por Mago en juego",
-        "english": "[mageblade] +10 per Wizard in the train.",
-        "french": "[mageblade] +10 par sorcier vivant dans le train.",
-        "german": "[mageblade] +10 je lebendem Magier im Zug.",
-        "portuguese": "[mageblade] +10 por Mago vivo no trem.",
-        "russian": "[mageblade] +10 за каждого живого мага в поезде.",
-        "chinese": "列车每个男巫提供 [mageblade] +10。",
-        "chinese_traditional": "列車每個男巫提供 [mageblade] +10。",
-        "korean": "열차의 마법사당 [mageblade] +10.",
-        "japanese": "列車内の魔法使いごとに[mageblade] +10。"
+        "spanish": "[mageblade] +2 por Mago en juego",
+        "english": "[mageblade] +2 per Wizard in the train.",
+        "french": "[mageblade] +2 par sorcier vivant dans le train.",
+        "german": "[mageblade] +2 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +2 por Mago vivo no trem.",
+        "russian": "[mageblade] +2 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +2。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +2。",
+        "korean": "열차의 마법사당 [mageblade] +2.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +2。"
       },
       "does_not_replace_ability": true,
       "bonus_damage": 10,
@@ -346,16 +346,16 @@
         "japanese": "女王蜂 3"
       },
       "descriptions": {
-        "spanish": "[mageblade] +15 por Mago en juego",
-        "english": "[mageblade] +15 per Wizard in the train.",
-        "french": "[mageblade] +15 par sorcier vivant dans le train.",
-        "german": "[mageblade] +15 je lebendem Magier im Zug.",
-        "portuguese": "[mageblade] +15 por Mago vivo no trem.",
-        "russian": "[mageblade] +15 за каждого живого мага в поезде.",
-        "chinese": "列车每个男巫提供 [mageblade] +15。",
-        "chinese_traditional": "列車每個男巫提供 [mageblade] +15。",
-        "korean": "열차의 마법사당 [mageblade] +15.",
-        "japanese": "列車内の魔法使いごとに[mageblade] +15。"
+        "spanish": "[mageblade] +3 por Mago en juego",
+        "english": "[mageblade] +3 per Wizard in the train.",
+        "french": "[mageblade] +3 par sorcier vivant dans le train.",
+        "german": "[mageblade] +3 je lebendem Magier im Zug.",
+        "portuguese": "[mageblade] +3 por Mago vivo no trem.",
+        "russian": "[mageblade] +3 за каждого живого мага в поезде.",
+        "chinese": "列车每个男巫提供 [mageblade] +3。",
+        "chinese_traditional": "列車每個男巫提供 [mageblade] +3。",
+        "korean": "열차의 마법사당 [mageblade] +3.",
+        "japanese": "列車内の魔法使いごとに[mageblade] +3。"
       },
       "does_not_replace_ability": true,
       "bonus_damage": 20,
@@ -544,21 +544,30 @@
       "name": "@CardEffectAcademicUpgradeSlayingSpell",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_upgrade": "@WW_Attuned1_HandPower"
+      "param_upgrade": "@WW_Attuned1_HandPower",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     },
     {
       "id": "WW_Attuned2_SlayEffect",
       "name": "@CardEffectAcademicUpgradeSlayingSpell",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_upgrade": "@WW_Attuned2_HandPower"
+      "param_upgrade": "@WW_Attuned2_HandPower",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     },
     {
       "id": "WW_Attuned3_SlayEffect",
       "name": "@CardEffectAcademicUpgradeSlayingSpell",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_upgrade": "@WW_Attuned3_HandPower"
+      "param_upgrade": "@WW_Attuned3_HandPower",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     }
   ]
 }

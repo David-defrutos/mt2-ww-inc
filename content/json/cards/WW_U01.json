@@ -6,7 +6,10 @@
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
       "target_team": "monsters",
-      "param_character": "@WW_U01_Character"
+      "param_character": "@WW_U01_Character",
+      "additional_tooltips": [
+        "@WW_U01_DazedReference"
+      ]
     }
   ],
   "characters": [
@@ -50,16 +53,16 @@
         "japanese": "避雷針インターン"
       },
       "descriptions": {
-        "spanish": "Los hechizos dirigidos a enemigos pueden seleccionar esta unidad. Redirígelos al primer enemigo de su piso, o a todos si son de área. Recupera las [ember] gastadas. Sufre 10 de daño por cada [dazed] y después añade [dazed] 1.",
-        "english": "Spells targeting enemies can target this unit. Redirect them to the front enemy, or all enemies for area spells. Refund [ember] spent. Take 10 damage per [dazed], then gain [dazed] 1.",
-        "french": "Les sorts ennemis ciblent cette unité et sont redirigés vers l'ennemi de tête, en conservant la zone. Rembourse l'[ember] payé. Subit 10 dégâts par [dazed] déjà présent, puis gagne [dazed] 1.",
-        "german": "Auf diese Einheit gezielte Gegnerzauber werden auf den vordersten Gegner umgeleitet; Flächenziele bleiben. Erstattet bezahltes [ember]. Erleidet 10 Schaden je vorhandenem [dazed], dann [dazed] 1.",
-        "portuguese": "Recebe feitiços contra inimigos e redireciona ao inimigo da frente, mantendo a área. Reembolsa o [ember] pago. Sofre 10 de dano por [dazed] anterior, depois ganha [dazed] 1.",
-        "russian": "Принимает заклинания для врагов и перенаправляет на переднего врага, сохраняя область. Возвращает потраченный [ember]. Получает 10 урона за каждый прежний [dazed], затем [dazed] 1.",
-        "chinese": "可被对敌法术选中。转向前排敌人，保留范围目标，返还已付 [ember]。每层已有 [dazed] 造成10伤害，然后获得 [dazed] 1。",
-        "chinese_traditional": "可被對敵法術選中。轉向前排敵人，保留範圍目標，返還已付 [ember]。每層已有 [dazed] 造成10傷害，然後獲得 [dazed] 1。",
-        "korean": "적 대상 주문을 받을 수 있습니다. 범위를 유지하며 맨 앞 적에게 돌리고 지불한 [ember]를 돌려줍니다. 기존 [dazed]당 피해 10을 받은 후 [dazed] 1을 얻습니다.",
-        "japanese": "敵向け呪文を受け、範囲を維持して先頭の敵へ転送し、支払った[ember]を返す。既存の[dazed]1につき10ダメージを受け、その後[dazed] 1を得る。"
+        "spanish": "Los hechizos dirigidos a enemigos pueden elegir esta unidad. Redirígelos al primer enemigo, o a todos si son de área, y devuelve su coste en [ember]. Recibe 10 de daño por cada [dazed] y después añade [dazed] 1.",
+        "french": "Les sorts visant les ennemis peuvent cibler cette unité. Redirigez-les vers l'ennemi de tête, ou tous les ennemis pour les sorts de zone, et remboursez leur coût en [ember]. Subissez 10 dégâts par [dazed], puis gagnez [dazed] 1.",
+        "german": "Zauber gegen Feinde können diese Einheit anvisieren. Leite sie zum vordersten Feind um, bei Flächenzaubern zu allen Feinden, und erstatte ihre [ember]-Kosten. Erleide 10 Schaden pro [dazed], dann erhalte [dazed] 1.",
+        "portuguese": "Feitiços que visam inimigos podem escolher esta unidade. Redireciona-os ao primeiro inimigo, ou a todos se forem de área, e devolve seu custo em [ember]. Sofre 10 de dano por [dazed], depois ganha [dazed] 1.",
+        "russian": "Заклинания против врагов могут выбирать этого бойца. Перенаправьте их на переднего врага, а площадные — на всех врагов, и верните стоимость в [ember]. Получите 10 урона за каждый [dazed], затем [dazed] 1.",
+        "chinese": "可对敌人施放的法术也能选择此单位。将其转向最前方敌人，范围法术则转向所有敌人，并返还[ember]费用。每层[dazed]受到10点伤害，然后获得[dazed] 1。",
+        "chinese_traditional": "可對敵人施放的法術也能選擇此單位。將其轉向最前方敵人，範圍法術則轉向所有敵人，並返還[ember]費用。每層[dazed]受到10點傷害，然後獲得[dazed] 1。",
+        "korean": "적 대상 주문이 이 유닛을 선택할 수 있습니다. 맨 앞 적에게, 광역 주문은 모든 적에게 전환하고 [ember] 비용을 돌려줍니다. [dazed] 중첩당 10 피해를 받은 뒤 [dazed] 1을 얻습니다.",
+        "japanese": "敵を対象とする呪文はこのユニットも選べる。先頭の敵へ、範囲呪文は敵全体へ転送し、[ember]コストを返す。[dazed]1ごとに10ダメージを受け、その後[dazed] 1を得る。",
+        "english": "Enemy-targeting spells can target this unit. Redirect them to the front enemy, or all enemies for area spells, and refund their [ember] cost. Take 10 damage per [dazed], then gain [dazed] 1."
       },
       "class": "@WW_Class",
       "card_type": "monster",
@@ -114,6 +117,17 @@
             }
           }
         }
+      }
+    }
+  ],
+  "additional_tooltips": [
+    {
+      "id": "WW_U01_DazedReference",
+      "titles": {
+        "key": "StatusEffect_Dazed_CardText"
+      },
+      "descriptions": {
+        "key": "StatusEffect_Dazed_CardTooltipText"
       }
     }
   ]

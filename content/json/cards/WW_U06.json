@@ -10,10 +10,9 @@
     },
     {
       "id": "WW_U06_Ability_Effect",
-      "name": "@CardEffectAcademicSpellRule",
+      "name": "@CardEffectAcademicCollectiveAssessment",
       "target_mode": "self",
-      "target_team": "monsters",
-      "param_str": "area"
+      "target_team": "monsters"
     }
   ],
   "cards": [
@@ -32,16 +31,16 @@
         "japanese": "合同評価"
       },
       "descriptions": {
-        "spanish": "Elige un hechizo de daño de tu mano. Este turno, inflige la mitad de daño, a todos los enemigos de su piso.",
-        "english": "Choose a damage spell in hand. This turn, it deals half damage, to all enemies on its floor.",
-        "french": "Choisissez un sort de dégâts en main. Ce tour, il inflige la moitié des dégâts, à tous les ennemis de son étage.",
-        "german": "Wähle einen Schadenszauber auf der Hand. Diese Runde trifft er alle Gegner seiner Etage mit halbem, em Schaden.",
-        "portuguese": "Escolha um feitiço de dano da mão. Neste turno causa metade do dano, a todos os inimigos do andar.",
-        "russian": "выберите заклинание урона в руке. В этот ход наносит всем врагам этажа половину урона.",
-        "chinese": "选择手牌伤害法术。本回合对使用层所有敌人造成一半伤害，。",
-        "chinese_traditional": "選擇手牌傷害法術。本回合對使用層所有敵人造成一半傷害，。",
-        "korean": "손의 피해 주문을 선택합니다. 이번 턴 해당 층 모든 적에게 절반의 피해를 내림하여 줍니다.",
-        "japanese": "手札のダメージ呪文を選ぶ。このターン、使用階の全敵に半分のダメージを与える。"
+        "spanish": "Elige un hechizo de daño de tu mano. Este turno, inflige la mitad de daño a todos los enemigos.",
+        "french": "Choisissez un sort de dégâts en main. Ce tour, il inflige la moitié de ses dégâts à tous les ennemis.",
+        "german": "Wähle einen Schadenszauber auf der Hand. Diese Runde fügt er allen Feinden halben Schaden zu.",
+        "portuguese": "Escolhe um feitiço de dano na mão. Neste turno, causa metade do dano a todos os inimigos.",
+        "russian": "Выберите заклинание урона в руке. В этом ходу оно наносит половину урона всем врагам.",
+        "chinese": "选择一张手牌伤害法术。本回合，它对所有敌人造成一半伤害。",
+        "chinese_traditional": "選擇一張手牌傷害法術。本回合，它對所有敵人造成一半傷害。",
+        "korean": "손의 피해 주문 하나를 선택합니다. 이번 턴 모든 적에게 절반의 피해를 줍니다.",
+        "japanese": "手札のダメージ呪文1枚を選ぶ。このターン、敵全体に半分のダメージを与える。",
+        "english": "Choose a damage spell in hand. This turn, it deals half damage to all enemies."
       },
       "card_type": "spell",
       "cost": 0,

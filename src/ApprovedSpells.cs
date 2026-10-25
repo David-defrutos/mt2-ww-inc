@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 namespace WwInc;
 
-public sealed class CardEffectAcademicTome : AcademicEffectBase
+public sealed class CardEffectAcademicTome : AcademicEffectBase,ICardEffectUiDialog
 {
     public override bool CanApplyInPreviewMode=>true;
     private static bool Eligible(CardState card,CardEffectState effect,ICoreGameManagers managers)
@@ -63,3 +63,4 @@ public sealed class CardEffectAcademicReturnFrozen : AcademicEffectBase
 
 // 2026-10-12-1758||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Conexión Slay con retorno tras descarte; Freeze nativo y retirada exacta de Unplayable al turno siguiente
 // 2026-10-12-2258||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Retirar C# del Spike y su reducción cooldown; sustituido por componentes nativos
+// 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas

@@ -21,3 +21,10 @@
 *.pfx
 *.key
 # 2026-10-24-1624||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/.gitignore||Excluir salidas, bibliotecas, informes locales y credenciales del repositorio propio
+
+# Local feedback, audit notes and extraction/deployment evidence
+/design/feedback-review-*.json
+/design/editorial-application-*.json
+/design/shared-triggers-extraction-*.json
+/design/*-audit-*.json
+# 2026-10-25-1908||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/.gitignore||Excluir informes locales y notas de testers antes de publicar fuentes; conservarlos en disco

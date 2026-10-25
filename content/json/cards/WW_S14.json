@@ -16,16 +16,16 @@
         "japanese": "医療保険付き実習"
       },
       "descriptions": {
-        "english": "Deal [effect0.power] damage to a unit. Restore [effect1.power] health to all friendly units on this floor.",
-        "spanish": "Inflige [effect0.power] de daño a una unidad. Restaura [effect1.power] de salud a todos los aliados de este piso.",
-        "french": "Inflige [effect0.power] dégâts à une unité. Rend [effect1.power] PV à toutes les unités alliées de cet étage.",
-        "german": "Füge einer Einheit [effect0.power] Schaden zu. Stelle bei allen verbündeten Einheiten auf dieser Etage [effect1.power] Leben wieder her.",
-        "portuguese": "Causa [effect0.power] de dano a uma unidade. Restaura [effect1.power] de vida a todas as unidades aliadas deste andar.",
-        "russian": "Наносит бойцу [effect0.power] урона. Восстанавливает [effect1.power] здоровья всем союзникам на этом этаже.",
-        "chinese": "对单位造成[effect0.power]点伤害。为本层所有友方单位恢复[effect1.power]点生命。",
-        "chinese_traditional": "對單位造成[effect0.power]點傷害。為本層所有友方單位恢復[effect1.power]點生命。",
-        "korean": "유닛에게 [effect0.power]의 피해를 줍니다. 이 층의 모든 아군 유닛의 체력을 [effect1.power] 회복합니다.",
-        "japanese": "ユニットに[effect0.power]ダメージを与える。この階のすべての味方ユニットの体力を[effect1.power]回復する。"
+        "spanish": "Inflige [effect0.power] de daño. Restaura [effect1.power] de salud a los aliados.",
+        "french": "Infligez [effect0.power] dégâts. Restaurez [effect1.power] PV aux alliés.",
+        "german": "Verursache [effect0.power] Schaden. Stelle bei Verbündeten [effect1.power] Leben wieder her.",
+        "portuguese": "Causa [effect0.power] de dano. Restaura [effect1.power] de saúde aos aliados.",
+        "russian": "Нанесите [effect0.power] урона. Восстановите союзникам [effect1.power] здоровья.",
+        "chinese": "造成[effect0.power]点伤害。为友军恢复[effect1.power]点生命。",
+        "chinese_traditional": "造成[effect0.power]點傷害。為友軍恢復[effect1.power]點生命。",
+        "korean": "[effect0.power] 피해를 줍니다. 아군의 체력을 [effect1.power] 회복합니다.",
+        "japanese": "[effect0.power]ダメージを与える。味方の体力を[effect1.power]回復する。",
+        "english": "Deal [effect0.power] damage. Restore [effect1.power] health to friendly units."
       },
       "class": "@WW_Class",
       "card_type": "spell",

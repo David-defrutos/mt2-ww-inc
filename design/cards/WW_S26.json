@@ -10,6 +10,6 @@
   "rarity": "uncommon",
   "effect": "Devuelve una unidad aliada no campeón y su equipo a tu mano.",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "CardEffectReturnUnitToHand nativo con los tres parámetros de retorno, exclusión de campeones y hide_tooltip=true como Magnetic Relay. Evita claves internas de tooltip sin traducir, sin alterar objetivos o retorno. Pendiente confirmación visual en partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
 }

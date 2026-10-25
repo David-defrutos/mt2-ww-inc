@@ -16,16 +16,16 @@
         "japanese": "延長のスパイク"
       },
       "descriptions": {
-        "english": "Apply [x] [spellweakness] to enemy units.",
-        "spanish": "Añade [spellweakness] [x] a las unidades enemigas.",
-        "french": "Appliquez [spellweakness] [x] aux unités ennemies.",
-        "german": "Wende [spellweakness] [x] auf gegnerische Einheiten an.",
-        "portuguese": "Aplica [spellweakness] [x] às unidades inimigas.",
-        "russian": "Накладывает [spellweakness] [x] на вражеских бойцов.",
-        "chinese": "对敌方单位施加[spellweakness] [x]。",
-        "chinese_traditional": "對敵方單位施加[spellweakness] [x]。",
-        "korean": "적 유닛들에게 [spellweakness] [x]를 부여합니다.",
-        "japanese": "敵ユニットに[spellweakness] [x]を付与する。"
+        "english": "Apply [spellweakness] [x] to enemy units.",
+        "spanish": "Añade [spellweakness] [x] a los enemigos.",
+        "french": "Appliquez [spellweakness] [x] aux ennemis.",
+        "german": "Wende [spellweakness] [x] auf Feinde an.",
+        "portuguese": "Aplica [spellweakness] [x] aos inimigos.",
+        "russian": "Примените [spellweakness] [x] к врагам.",
+        "chinese": "对敌人施加[spellweakness] [x]。",
+        "chinese_traditional": "對敵人施加[spellweakness] [x]。",
+        "korean": "적에게 [spellweakness] [x]를 부여합니다.",
+        "japanese": "敵に[spellweakness] [x]を付与する。"
       },
       "class": "@WW_Class",
       "card_type": "spell",

@@ -6,7 +6,10 @@
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
       "target_team": "monsters",
-      "param_character": "@WW_U04_Character"
+      "param_character": "@WW_U04_Character",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     }
   ],
   "cards": [
@@ -25,16 +28,16 @@
         "japanese": "魔法教育教授"
       },
       "descriptions": {
-        "english": "The first spell played on this floor each turn gains [magicpower] equal to half the front friendly unit’s [attack], for this cast.",
-        "spanish": "El primer hechizo jugado en este piso cada turno obtiene tanto [magicpower] como la mitad del [attack] de la primera unidad aliada, solo al jugarlo.",
-        "french": "Le premier sort joué à cet étage chaque tour gagne [magicpower] égal à la moitié de l’[attack] du premier allié, pour ce lancement.",
-        "german": "Der erste Zauber auf dieser Etage pro Runde erhält für dieses Wirken [magicpower] in Höhe der halben [attack] des vordersten Verbündeten.",
-        "portuguese": "O primeiro feitiço jogado neste andar a cada turno ganha [magicpower] igual à metade do [attack] do aliado da frente, neste lançamento.",
-        "russian": "Первое заклинание на этом этаже каждый ход получает [magicpower], равный половине [attack] переднего союзника, на это применение.",
-        "chinese": "每回合在本层使用的首个法术，本次获得等于前排盟友[attack]一半的[magicpower]，。",
-        "chinese_traditional": "每回合在本層使用的首個法術，本次獲得等於前排盟友[attack]一半的[magicpower]，。",
-        "korean": "매 턴 이 층에서 처음 사용한 주문은 이번 사용에 맨 앞 아군 [attack]의 절반만큼 [magicpower]를 얻습니다.",
-        "japanese": "毎ターンこの階で最初に使う呪文は、今回のみ先頭の味方の[attack]の半分の[magicpower]を得る。"
+        "spanish": "El primer hechizo de cada turno tiene [magicpower] adicional igual a la mitad del [attack] del primer aliado.",
+        "french": "Le premier sort de chaque tour a un bonus de [magicpower] égal à la moitié de l'[attack] de l'allié de tête.",
+        "german": "Der erste Zauber jeder Runde hat zusätzliche [magicpower] in Höhe der halben [attack] des vordersten Verbündeten.",
+        "portuguese": "O primeiro feitiço de cada turno tem [magicpower] adicional igual à metade do [attack] do aliado da frente.",
+        "russian": "Первое заклинание каждого хода получает дополнительную [magicpower] в размере половины [attack] переднего союзника.",
+        "chinese": "每回合首个法术拥有等同于最前方友军[attack]一半的额外[magicpower]。",
+        "chinese_traditional": "每回合首個法術擁有等同於最前方友軍[attack]一半的額外[magicpower]。",
+        "korean": "매 턴 첫 주문은 맨 앞 아군 [attack]의 절반만큼 추가 [magicpower]를 가집니다.",
+        "japanese": "毎ターン最初の呪文は、先頭の味方の[attack]の半分に等しい追加[magicpower]を持つ。",
+        "english": "The first spell each turn has bonus [magicpower] equal to half the front friendly unit’s [attack]."
       },
       "class": "@WW_Class",
       "card_type": "monster",
@@ -68,7 +71,7 @@
       "character_art": "@WW_U04CharacterArt",
       "size": 1,
       "health": 15,
-      "attack_damage": 15,
+      "attack_damage": 16,
       "subtypes": [
         "@WW_Wizard"
       ]

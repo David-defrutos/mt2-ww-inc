@@ -84,16 +84,16 @@
         "@WW_U18_Spawn"
       ],
       "descriptions": {
-        "english": "Every 30 damage dealt reduces the cost of all [freeze] cards in hand by 1[ember].",
-        "spanish": "Por cada 30 de daño que inflija, reduce el coste de todas las cartas con [freeze] de tu mano en 1[ember].",
-        "french": "Tous les 30 dégâts infligés, réduit le coût de toutes les cartes avec [freeze] en main de 1[ember].",
-        "german": "Je 30 verursachten Schaden kosten alle Karten mit [freeze] auf deiner Hand 1[ember] weniger.",
+        "english": "For every 30 damage dealt, reduce the cost of all [freeze] cards in hand by 1[ember].",
+        "spanish": "Por cada 30 de daño infligido, reduce el coste de todas las cartas con [freeze] de tu mano en 1[ember].",
+        "french": "Tous les 30 dégâts infligés, réduisez le coût de toutes les cartes avec [freeze] en main de 1[ember].",
+        "german": "Verringere für je 30 verursachten Schaden die Kosten aller Karten mit [freeze] auf der Hand um 1[ember].",
         "portuguese": "A cada 30 de dano causado, reduz o custo de todas as cartas com [freeze] na mão em 1[ember].",
-        "russian": "За каждые 30 нанесённого урона снижает стоимость всех карт с [freeze] в руке на 1[ember].",
-        "chinese": "每造成30点伤害，使手牌中所有具有[freeze]的卡牌费用降低1[ember]。",
-        "chinese_traditional": "每造成30點傷害，使手牌中所有具有[freeze]的卡牌費用降低1[ember]。",
-        "korean": "피해를 30 줄 때마다 손에 있는 모든 [freeze] 카드의 비용을 1[ember] 감소시킵니다.",
-        "japanese": "30ダメージを与えるたび、手札のすべての[freeze]カードのコストを1[ember]減らす。"
+        "russian": "За каждые 30 нанесённого урона уменьшайте стоимость всех карт с [freeze] в руке на 1[ember].",
+        "chinese": "每造成30点伤害，使手牌中所有[freeze]卡牌的费用降低1[ember]。",
+        "chinese_traditional": "每造成30點傷害，使手牌中所有[freeze]卡牌的費用降低1[ember]。",
+        "korean": "피해를 30 줄 때마다 손의 모든 [freeze] 카드 비용을 1[ember] 줄입니다.",
+        "japanese": "30ダメージを与えるごとに、手札の[freeze]を持つ全カードのコストを1[ember]減らす。"
       }
     }
   ],
@@ -115,7 +115,7 @@
       "character_art": "@WW_U18CharacterArt",
       "size": 2,
       "health": 25,
-      "attack_damage": 25,
+      "attack_damage": 26,
       "subtypes": [
         "@WW_Witch",
         "SubtypesData_BannerUnit"

@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup><Compile Include="../../src/MineMineMine.cs" Link="MineMineMine.cs" /><Compile Include="../../src/MineMineMineRules.cs" Link="MineMineMineRules.cs" /></ItemGroup>
+</Project>
+<!-- 2026-10-24-1933||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/KillClaims/KillClaims.csproj||Ejecutar código real MineMineMine contra doble de cola nativa y estados para probar atribución y no duplicación -->

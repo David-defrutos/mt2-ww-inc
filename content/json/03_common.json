@@ -5,5 +5,77 @@
       "id": "WW_Consume",
       "name": "CardTraitExhaustState"
     }
+  ],
+  "character_trigger_types": [
+    {
+      "id": "WW_MineMineMine",
+      "names": {
+        "english": "MineMineMine",
+        "spanish": "MíoMíoMío",
+        "french": "ÀMoiÀMoi",
+        "german": "MeinsMeinsMeins",
+        "portuguese": "MeuMeuMeu",
+        "russian": "МоёМоёМоё",
+        "chinese": "我的我的我的",
+        "chinese_traditional": "我的我的我的",
+        "korean": "내꺼내꺼",
+        "japanese": "私の私の私の"
+      },
+      "descriptions": {
+        "english": "Spell kills count as this unit’s kills. Only the frontmost unit with MineMineMine claims them.",
+        "spanish": "Las bajas por hechizos cuentan como bajas de esta unidad. Solo las reclama la primera unidad con MineMineMine.",
+        "french": "Les ennemis tués par des sorts comptent pour cette unité. Seule l'unité de tête avec MineMineMine les revendique.",
+        "german": "Zaubertötungen zählen als Tötungen dieser Einheit. Nur die vorderste Einheit mit MineMineMine beansprucht sie.",
+        "portuguese": "Mortes por feitiços contam como mortes desta unidade. Só a unidade mais à frente com MineMineMine as reivindica.",
+        "russian": "Убийства заклинаниями засчитываются этому бойцу. Их получает только передний боец с MineMineMine.",
+        "chinese": "法术击杀归属于此单位。只有最前方拥有MineMineMine的单位获得归属。",
+        "chinese_traditional": "法術擊殺歸屬於此單位。只有最前方擁有MineMineMine的單位獲得歸屬。",
+        "korean": "주문 처치를 이 유닛의 처치로 계산합니다. MineMineMine를 가진 맨 앞 유닛만 처치를 가져갑니다.",
+        "japanese": "呪文による撃破をこのユニットの撃破として扱う。MineMineMineを持つ最前方のユニットだけが取得する。"
+      },
+      "notifications": {
+        "english": "MineMineMine",
+        "spanish": "MíoMíoMío",
+        "french": "ÀMoiÀMoi",
+        "german": "MeinsMeinsMeins",
+        "portuguese": "MeuMeuMeu",
+        "russian": "МоёМоёМоё",
+        "chinese": "我的我的我的",
+        "chinese_traditional": "我的我的我的",
+        "korean": "내꺼내꺼",
+        "japanese": "私の私の私の"
+      },
+      "sprite": "Conductor-Sprite-trigger_followup",
+      "disallow_in_deployment": true
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_MineMineMine_ClaimEffect",
+      "name": "@CardEffectMineMineMineClaim",
+      "target_mode": "self",
+      "target_team": "monsters"
+    }
+  ],
+  "character_triggers": [
+    {
+      "id": "WW_MineMineMine_Claim",
+      "trigger": "@WW_MineMineMine",
+      "descriptions": {
+        "english": "Claim spell kills.",
+        "spanish": "Reclama las bajas por hechizos.",
+        "french": "Revendiquer les ennemis tués par des sorts.",
+        "german": "Beanspruche Zaubertötungen.",
+        "portuguese": "Reivindica mortes por feitiços.",
+        "russian": "Получайте убийства заклинаниями.",
+        "chinese": "取得法术击杀归属。",
+        "chinese_traditional": "取得法術擊殺歸屬。",
+        "korean": "주문 처치를 가져갑니다.",
+        "japanese": "呪文による撃破を取得する。"
+      },
+      "effects": [
+        "@WW_MineMineMine_ClaimEffect"
+      ]
+    }
   ]
 }

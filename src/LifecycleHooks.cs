@@ -61,7 +61,9 @@ internal static class UnitAttackHook
         if(!AcademicRuntime.Active){yield return original;yield break;}
         var attacker=parameters.attacker; bool direct=parameters.damageType==Damage.Type.DirectAttack;
         int hp=target.GetHP(),floor=target.GetCurrentRoomIndex();bool dead=target.IsDead;
-        yield return original;
+        var observed=RepresentativeDamage.Begin(target);
+        try {yield return original;}
+        finally {RepresentativeDamage.End(observed);}
         AcademicRuntime.RecordDamage(target,Math.Max(0,hp-(target.IsDestroyed?0:target.GetHP())),!dead&&(target.IsDead||target.IsDestroyed),parameters.damageSourceCard,attacker,floor);
         if(attacker!=null&&direct)
         {
@@ -79,7 +81,7 @@ internal static class UnitAttackHook
                 if(bindings.Count==0)SpellRules.BoundAttacks.Remove(attacker);
                 DissertationMarker.Refresh(attacker);
             }
-            foreach(var spell in spells)if(!target.IsDestroyed&&!target.IsDead)yield return SpellRules.Repeat(spell,floor,target);
+            foreach(var spell in spells)yield return DissertationTargeting.Repeat(spell,floor,attacker,target);
             foreach(var spell in completed)yield return SpellRules.ReleaseBoundSpell(spell);
         }
         if(!AcademicRuntime.Simulating&&damage>0&&target.HasStatusEffect(StatusEffectAcademicScholarship.Id))
@@ -190,3 +192,5 @@ internal static class FrozenCardDrawHook
 // 2026-10-13-0106||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Liberar vínculo tras muerte y ataques directos alternativos; evitar duplicados
 // 2026-10-13-0108||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Scholarship selecciona cualquier carta de robo; retirar filtro Spell y conservar descuento nativo
 // 2026-10-14-2156||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Eliminar conversión de Spell Weakness en Melee Weakness del Inspector
+// 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Reproducir Dissertation con aliado portador y enemigo atacado incluso tras baja del objetivo
+// 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Observar daño nativo en contexto por víctima con limpieza de pila garantizada

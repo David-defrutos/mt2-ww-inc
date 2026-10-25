@@ -16,16 +16,16 @@
         "japanese": "破壊的評価の書"
       },
       "descriptions": {
-        "english": "Apply [attuned] and +10 [magicpower] to a damage spell in hand.",
-        "spanish": "Añade [attuned] y +10 [magicpower] a un hechizo de daño de tu mano.",
-        "french": "Choisissez un sort de dégâts en main. Il gagne [attuned] et +10 [magicpower].",
-        "german": "Wähle einen Schadenszauber auf der Hand. Er erhält [attuned] und +10 [magicpower].",
-        "portuguese": "Escolha um feitiço de dano da mão. Ganha [attuned] e +10 [magicpower].",
-        "russian": "Выберите заклинание урона в руке. Оно получает [attuned] и +10 [magicpower].",
-        "chinese": "选择一个手牌伤害法术。获得 [attuned] 和 +10 [magicpower]。",
-        "chinese_traditional": "選擇一個手牌傷害法術。獲得 [attuned] 和 +10 [magicpower]。",
-        "korean": "손의 피해 주문을 선택합니다. [attuned]와 [magicpower] +10을 얻습니다.",
-        "japanese": "手札のダメージ呪文を選ぶ。[attuned]と[magicpower] +10を得る。"
+        "english": "Give a damage spell in hand [attuned] and +10 [magicpower].",
+        "spanish": "Otorga [attuned] y +10 [magicpower] a un hechizo de daño de tu mano.",
+        "french": "Donnez [attuned] et +10 [magicpower] à un sort de dégâts en main.",
+        "german": "Gib einem Schadenszauber auf der Hand [attuned] und +10 [magicpower].",
+        "portuguese": "Dá [attuned] e +10 [magicpower] a um feitiço de dano na mão.",
+        "russian": "Дайте заклинанию урона в руке [attuned] и +10 [magicpower].",
+        "chinese": "使一张手牌伤害法术获得[attuned]和+10 [magicpower]。",
+        "chinese_traditional": "使一張手牌傷害法術獲得[attuned]和+10 [magicpower]。",
+        "korean": "손의 피해 주문 하나에 [attuned]과 +10 [magicpower]를 부여합니다.",
+        "japanese": "手札のダメージ呪文1枚に[attuned]と+10[magicpower]を与える。"
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -51,7 +51,10 @@
       "name": "@CardEffectAcademicTome",
       "target_mode": "room",
       "target_team": "monsters",
-      "param_upgrade": "@WW_S30_Upgrade"
+      "param_upgrade": "@WW_S30_Upgrade",
+      "additional_tooltips": [
+        "@WW_MagicPowerReference"
+      ]
     }
   ],
   "sprites": [

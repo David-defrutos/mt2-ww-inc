@@ -14,7 +14,7 @@
   "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
   "subtype": "Wizard",
   "stats": {
-    "attack": 5,
+    "attack": 6,
     "health": 20,
     "size": 2
   },
@@ -35,7 +35,7 @@
           "health": 5
         },
         {
-          "attack": 5,
+          "attack": 4,
           "health": 15
         },
         {
@@ -58,7 +58,7 @@
           "health": 5
         },
         {
-          "attack": 5,
+          "attack": 4,
           "health": 10
         },
         {
@@ -80,7 +80,7 @@
           "health": 5
         },
         {
-          "attack": 5,
+          "attack": 4,
           "health": 10
         },
         {

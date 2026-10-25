@@ -370,8 +370,8 @@
           "sprite": "@WW_C01Display",
           "transform": {
             "scale": {
-              "x": 0.6,
-              "y": 0.6,
+              "x": 1.6,
+              "y": 1.6,
               "z": 1
             }
           }
@@ -386,8 +386,8 @@
           "sprite": "@WW_C02Display",
           "transform": {
             "scale": {
-              "x": 0.6,
-              "y": 0.6,
+              "x": 1.6,
+              "y": 1.6,
               "z": 1
             }
           }
@@ -445,6 +445,62 @@
         "chinese_traditional": "選擇一個法術。",
         "korean": "주문을 선택하세요.",
         "japanese": "呪文を選ぶ。"
+      }
+    },
+    {
+      "key": "david.wwinc.DissertationChooseSide",
+      "texts": {
+        "english": "Choose a side for the bound spell.",
+        "spanish": "Elige un bando para el hechizo vinculado.",
+        "french": "Choisissez un camp pour le sort lié.",
+        "german": "Wähle eine Seite für den gebundenen Zauber.",
+        "portuguese": "Escolha um lado para o feitiço vinculado.",
+        "russian": "Выберите сторону для привязанного заклинания.",
+        "chinese": "选择绑定法术的目标阵营。",
+        "chinese_traditional": "選擇綁定法術的目標陣營。",
+        "korean": "연결된 주문의 대상 진영을 선택하세요.",
+        "japanese": "結び付けた呪文の対象陣営を選ぶ。"
+      }
+    },
+    {
+      "key": "david.wwinc.DissertationAllies",
+      "texts": {
+        "english": "Allies",
+        "spanish": "Aliados",
+        "french": "Alliés",
+        "german": "Verbündete",
+        "portuguese": "Aliados",
+        "russian": "Союзники",
+        "chinese": "友方",
+        "chinese_traditional": "友方",
+        "korean": "아군",
+        "japanese": "味方"
+      }
+    },
+    {
+      "key": "david.wwinc.DissertationEnemies",
+      "texts": {
+        "english": "Enemies",
+        "spanish": "Enemigos",
+        "french": "Ennemis",
+        "german": "Gegner",
+        "portuguese": "Inimigos",
+        "russian": "Враги",
+        "chinese": "敌方",
+        "chinese_traditional": "敵方",
+        "korean": "적",
+        "japanese": "敵"
+      }
+    }
+  ],
+  "additional_tooltips": [
+    {
+      "id": "WW_MagicPowerReference",
+      "titles": {
+        "key": "ModifyCard_MagicalPower_TooltipTitle"
+      },
+      "descriptions": {
+        "key": "ModifyCard_MagicalPower_TooltipBody"
       }
     }
   ]

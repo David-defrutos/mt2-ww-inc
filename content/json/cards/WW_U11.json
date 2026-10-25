@@ -15,7 +15,8 @@
       "target_team": "none",
       "target_card_type": "spell",
       "target_card_selection_mode": "choose_to_hand",
-      "param_int": 1
+      "param_int": 1,
+      "hide_tooltip": true
     }
   ],
   "cards": [

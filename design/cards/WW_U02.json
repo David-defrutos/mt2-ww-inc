@@ -14,7 +14,7 @@
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
   "subtype": "Witch",
   "stats": {
-    "attack": 5,
+    "attack": 6,
     "health": 30,
     "size": 2
   },

@@ -39,7 +39,7 @@
       "character_art": "@WW_U16CharacterArt",
       "size": 2,
       "health": 12,
-      "attack_damage": 5,
+      "attack_damage": 6,
       "subtypes": [
         "@WW_Wizard",
         "SubtypesData_BannerUnit"

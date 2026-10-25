@@ -8,7 +8,7 @@
   },
   "cost": 0,
   "rarity": "champion",
-  "effect": "Tres sendas pasivas combinables. La senda Queen Bee escala con Wizards; las otras reaccionan a hechizos jugados en su piso.",
+  "effect": "MíoMíoMío en todas las sendas: reclama las bajas de hechizos del piso si es el primer portador desde delante. Queen Bee escala Mageblade con Wizards; Advanced Spellwork acumula daño de Overdamage en Crédito Extra; Protective Tenure tiene Incant Armor/Spikes y es la única senda con Sobrecuración de daño.",
   "status": "implemented_unverified",
   "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
   "balance": "Versión de pruebas 2: progresión de ataque y vida por senda; pendiente ajuste con partidas.",
@@ -23,9 +23,9 @@
     {
       "name": "Queen Bee",
       "ranks": [
-        "Mageblade +5 por Wizard en juego",
-        "Mageblade +10 por Wizard en juego",
-        "Mageblade +15 por Wizard en juego"
+        "Mageblade +1 por Wizard en juego",
+        "Mageblade +2 por Wizard en juego",
+        "Mageblade +3 por Wizard en juego"
       ],
       "mode": "Aura dinámica, sin acumulación por turnos.",
       "stat_bonuses": [
@@ -46,18 +46,18 @@
     {
       "name": "Advanced Spellwork",
       "ranks": [
-        "Incant: +5 de ataque",
-        "Incant: +10 de ataque",
-        "Incant: +20 de ataque"
+        "Incant: +5 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo.",
+        "Incant: +10 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Dale Attuned.",
+        "Incant: +20 de ataque. Overdamage: Añade el 100% del daño sobrante a Crédito Extra en tu mano. Si no tienes uno, créalo. Dale Attuned y Explosive."
       ],
-      "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectBuffDamage.",
+      "implementation": "Overdamage acumula el 100% del exceso en todos los niveles. Rango I sin traits añadidos; II mejora nativa permanente Attuned; III Attuned+Explosive. Se aplica también a Crédito Extra ya en mano, sin duplicar upgrades ni retirar traits anteriores. Coste 0, Frozen y Purge conservados. Incant original restaurado con card_spell_played y CardEffectBuffDamage +5/+10/+20, como segundo trigger independiente de Overdamage.",
       "stat_bonuses": [
         {
           "attack": 0,
           "health": 5
         },
         {
-          "attack": 5,
+          "attack": 6,
           "health": 10
         },
         {
@@ -69,18 +69,18 @@
     {
       "name": "Protective Tenure",
       "ranks": [
-        "Incant: Armor 5",
-        "Incant: Armor 10",
-        "Incant: Armor 20"
+        "Incant: Armor 3, Spikes 1. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+        "Incant: Armor 6, Spikes 2. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante.",
+        "Incant: Armor 12, Spikes 4. Sobrecuración: Inflige daño a todos los enemigos igual a la curación sobrante."
       ],
-      "implementation": "Pasiva expresable en JSON con card_spell_played y CardEffectAddStatusEffect.",
+      "implementation": "Incant card_spell_played ejecuta dos CardEffectAddStatusEffect independientes, cada uno con un único estado: Armor 3/6/12 y Spikes 1/2/4. No agrupar ambos en param_status_effects, pues el motor elige uno al azar. Cada nivel también concede @WW_U03_Overheal. MineMineMine es común en el personaje base.",
       "stat_bonuses": [
         {
           "attack": 0,
           "health": 10
         },
         {
-          "attack": 5,
+          "attack": 6,
           "health": 25
         },
         {

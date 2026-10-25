@@ -67,7 +67,7 @@
     },
     {
       "id": "WW_ScholarshipIcon",
-      "path": "textures/icons/WW_InsuranceTooltip.png"
+      "path": "textures/icons/WW_Scholarship_Character50.png"
     }
   ],
   "game_objects": [
@@ -142,7 +142,7 @@
   "atlas_icons": [
     {
       "id": "WW_ScholarshipIcon",
-      "path": "textures/icons/WW_InsuranceTooltip.png"
+      "path": "textures/icons/WW_Scholarship_Tooltip50.png"
     }
   ]
 }

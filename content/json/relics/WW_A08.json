@@ -23,16 +23,16 @@
         "japanese": "事務局の黙祷"
       },
       "descriptions": {
-        "spanish": "La primera muerte de un chaperón o chaperona de cada turno reduce la [cooldown] actual de los aliados de su piso en 1.",
-        "english": "The first chaperone death each turn reduces friendly units’ current [cooldown] on its floor by 1.",
-        "french": "La première mort d'un chaperon par tour réduit de 1 la recharge actuelle des alliés de son étage, minimum 0.",
-        "german": "Der erste Tod einer Begleitperson jeder Runde verringert die aktuelle Abklingzeit der Verbündeten ihrer Etage um 1, mindestens 0.",
-        "portuguese": "A primeira morte de acompanhante a cada turno reduz em 1 a recarga atual dos aliados do andar, mínimo 0.",
-        "russian": "Первая смерть сопровождающего за ход снижает текущую перезарядку союзников его этажа на 1, минимум 0.",
-        "chinese": "每回合首次监督员死亡时，本层盟友当前技能冷却减少1，最低0。",
-        "chinese_traditional": "每回合首次監督員死亡時，本層盟友當前技能冷卻減少1，最低0。",
-        "korean": "매 턴 보호자가 처음 죽으면 해당 층 아군의 현재 재사용 대기시간이 1 줄어듭니다. 최소 0.",
-        "japanese": "毎ターン最初の付き添いの死亡時、その階の味方の現在クールダウンを1減らす。最低0。"
+        "english": "The first Chaperone death each turn reduces friendly units’ [cooldown] on its floor by 1.",
+        "spanish": "La primera muerte de un Chaperón de cada turno reduce en 1 la [cooldown] de los aliados de su piso.",
+        "french": "La première mort d'un chaperon chaque tour réduit de 1 le [cooldown] des alliés de son étage.",
+        "german": "Der erste Tod einer Begleitperson jeder Runde verringert den [cooldown] der Verbündeten auf ihrer Etage um 1.",
+        "portuguese": "A primeira morte de um Acompanhante de cada turno reduz em 1 o [cooldown] dos aliados do seu andar.",
+        "russian": "Первая смерть сопровождающего за ход уменьшает [cooldown] союзников на его этаже на 1.",
+        "chinese": "每回合首个监督员死亡时，使其所在楼层友军的[cooldown]减少1。",
+        "chinese_traditional": "每回合首個監督員死亡時，使其所在樓層友軍的[cooldown]減少1。",
+        "korean": "매 턴 첫 보호자 사망 시 해당 층 아군의 [cooldown]이 1 줄어듭니다.",
+        "japanese": "毎ターン最初に付き添いが死亡したとき、その階の味方の[cooldown]を1減らす。"
       },
       "icon": "@WW_A08Icon",
       "icon_small": "@WW_A08IconSmall",

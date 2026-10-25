@@ -190,16 +190,16 @@
         "japanese": "過剰回復"
       },
       "descriptions": {
-        "english": "Triggers when this unit receives healing exceeding its maximum health. The effect uses the excess healing.",
-        "spanish": "Se activa cuando esta unidad recibe curación por encima de su salud máxima. El efecto utiliza la curación sobrante.",
-        "french": "Se déclenche quand les soins reçus dépassent les PV maximum de cette unité. L’effet utilise les soins excédentaires.",
-        "german": "Wird ausgelöst, wenn diese Einheit Heilung über ihr maximales Leben hinaus erhält. Der Effekt nutzt die überschüssige Heilung.",
-        "portuguese": "Ativa quando esta unidade recebe cura além da vida máxima. O efeito usa a cura excedente.",
-        "russian": "Срабатывает при лечении этого бойца сверх максимального здоровья. Эффект использует избыток лечения.",
-        "chinese": "此单位受到超出最大生命值的治疗时触发。效果使用溢出的治疗量。",
-        "chinese_traditional": "此單位受到超出最大生命值的治療時觸發。效果使用溢出的治療量。",
-        "korean": "이 유닛이 최대 체력을 초과하는 치유를 받으면 발동합니다. 효과는 초과 치유량을 사용합니다.",
-        "japanese": "このユニットが最大体力を超える回復を受けると発動する。効果には超過した回復量を使う。"
+        "english": "Triggers when healing exceeds this unit’s missing health.",
+        "spanish": "Se activa cuando la curación supera la salud que le falta a esta unidad.",
+        "french": "Se déclenche quand les soins dépassent les PV manquants de cette unité.",
+        "german": "Wird ausgelöst, wenn Heilung das fehlende Leben dieser Einheit übersteigt.",
+        "portuguese": "Ativa quando a cura excede a saúde perdida desta unidade.",
+        "russian": "Срабатывает, когда лечение превышает недостающее здоровье этого бойца.",
+        "chinese": "治疗量超过此单位已损失的生命时触发。",
+        "chinese_traditional": "治療量超過此單位已損失的生命時觸發。",
+        "korean": "치유량이 이 유닛의 잃은 체력을 초과하면 발동합니다.",
+        "japanese": "回復量がこのユニットの失った体力を超えたときに発動する。"
       },
       "notifications": {
         "english": "Overheal",

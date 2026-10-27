@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_G04",
+      "names": {
+        "english": "Amulet of Undying",
+        "spanish": "Amuleto de Reanimación",
+        "french": "Amulette de réanimation",
+        "german": "Amulett der Wiederbelebung",
+        "portuguese": "Amuleto da Reanimação",
+        "russian": "Амулет реанимации",
+        "chinese": "复苏护符",
+        "chinese_traditional": "復甦護符",
+        "korean": "소생의 부적",
+        "japanese": "蘇生のアミュレット"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_G04CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_G04_Equip"
+      ],
+      "traits": [
+        "@WW_G04_Grafted"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_G04_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_G04_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_G04_Upgrade",
+      "titles": {
+        "english": "Amulet of Undying",
+        "spanish": "Amuleto de Reanimación",
+        "french": "Amulette de réanimation",
+        "german": "Amulett der Wiederbelebung",
+        "portuguese": "Amuleto da Reanimação",
+        "russian": "Амулет реанимации",
+        "chinese": "复苏护符",
+        "chinese_traditional": "復甦護符",
+        "korean": "소생의 부적",
+        "japanese": "蘇生のアミュレット"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_G04Icon",
+      "status_effect_upgrades": [
+        {
+          "status": "undying",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_G04_Grafted",
+      "name": "CardTraitGraftedEquipment",
+      "trait_is_removable": false
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_G04CardArt",
+      "path": "textures/cards/WW_G04CardArt.png"
+    },
+    {
+      "id": "WW_G04Icon",
+      "path": "textures/equipment/WW_G04Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_G04CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_G04CardArt"
+        }
+      }
+    }
+  ]
+}

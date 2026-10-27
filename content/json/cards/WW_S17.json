@@ -31,16 +31,16 @@
         "japanese": "1ターンの研究休暇"
       },
       "descriptions": {
-        "spanish": "Añade [stasis] hasta el próximo turno. Al terminar, restaura la mitad de su salud perdida más [effect0.power].",
-        "french": "Appliquez [stasis] jusqu'au prochain tour. À sa fin, restaurez la moitié des PV manquants plus [effect0.power].",
-        "german": "Wende [stasis] bis zur nächsten Runde an. Stelle danach die Hälfte des fehlenden Lebens plus [effect0.power] wieder her.",
-        "portuguese": "Aplica [stasis] até o próximo turno. Ao terminar, restaura metade da saúde perdida mais [effect0.power].",
-        "russian": "Примените [stasis] до следующего хода. После этого восстановите половину недостающего здоровья плюс [effect0.power].",
-        "chinese": "施加[stasis]直到下回合。结束时，恢复其已损失生命的一半，再加[effect0.power]。",
-        "chinese_traditional": "施加[stasis]直到下回合。結束時，恢復其已損失生命的一半，再加[effect0.power]。",
-        "korean": "다음 턴까지 [stasis]를 부여합니다. 끝나면 잃은 체력의 절반에 [effect0.power]을 더해 회복합니다.",
-        "japanese": "次のターンまで[stasis]を付与する。終了時、失った体力の半分に[effect0.power]を加えた量を回復する。",
-        "english": "Apply [stasis] until next turn. When it ends, restore half its missing health plus [effect0.power]."
+        "english": "Apply [stasis] to a friendly unit until next turn. When it ends, restore half its missing health plus [effect0.power].",
+        "spanish": "Añade [stasis] a una unidad aliada hasta el próximo turno. Al terminar, restaura la mitad de su salud perdida más [effect0.power].",
+        "french": "Appliquez [stasis] à une unité alliée jusqu’au prochain tour. À sa fin, restaurez la moitié de ses PV manquants plus [effect0.power].",
+        "german": "Wende [stasis] bis zur nächsten Runde auf einen Verbündeten an. Stelle danach die Hälfte seines fehlenden Lebens plus [effect0.power] wieder her.",
+        "portuguese": "Aplica [stasis] a uma unidade aliada até o próximo turno. Ao terminar, restaura metade da saúde perdida mais [effect0.power].",
+        "russian": "Дайте союзнику [stasis] до следующего хода. Затем восстановите половину его недостающего здоровья плюс [effect0.power].",
+        "chinese": "使一个友方单位获得[stasis]直到下回合。结束时，恢复其已损失生命的一半，再加[effect0.power]。",
+        "chinese_traditional": "使一個友方單位獲得[stasis]直到下回合。結束時，恢復其已損失生命的一半，再加[effect0.power]。",
+        "korean": "다음 턴까지 아군 유닛에게 [stasis]를 부여합니다. 끝나면 잃은 체력의 절반에 [effect0.power]을 더해 회복합니다.",
+        "japanese": "味方ユニットに次のターンまで[stasis]を付与する。終了時、失った体力の半分に[effect0.power]を加えた量を回復する。"
       },
       "class": "@WW_Class",
       "card_type": "spell",

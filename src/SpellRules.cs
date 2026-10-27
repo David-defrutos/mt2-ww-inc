@@ -46,8 +46,6 @@ internal static class SpellRules
         ReservedCards.Clear();PileSelections.Clear();Pending.Clear();CardRules.Clear();PlayedKills.Clear();BoundAttacks.Clear();BoundSides.Clear();Archived.Clear();Deferred.Clear();
         OnceTurn.Clear();TuitionRefundCount=0;DamageFactors.Clear();AreaTurn.Clear();HealingAreaTurn=-1;EffectFloor=-1;
     }
-    internal static bool HasRelic(string id)=>AcademicRuntime.Core.GetRelicManager()
-        .GetRelicEffects(new List<RelicEffectAcademic>()).Any(r=>r.SourceRelicData.name.EndsWith(id,StringComparison.Ordinal));
     internal static void AddRule(CardState card,string rule)
     { if(!CardRules.TryGetValue(card,out var rules)) CardRules[card]=rules=new(); rules.Add(rule); }
     internal static bool HasRule(CardState card,string rule)=>CardRules.TryGetValue(card,out var rules)&&rules.Contains(rule);
@@ -159,20 +157,20 @@ internal static class SpellRules
         var added=card.GetTemporaryCardStateModifiers().GetTemporaryTraits().Last(t=>t is CardTraitStrongerMagicPower);
         card.ReapplyMagicPowerScalingFromTraitsToAllExistingUpgrades(AcademicRuntime.Core);
         card.UpdateCardBodyText();
-        if(thisTurn)AcademicRuntime.EndTurnActions.Add(()=>
+        if(thisTurn)EffectLifetimes.AtEndCombatTurn(()=>
         {
             card.RemoveTemporaryTrait(added);
             card.ReapplyMagicPowerScalingFromTraitsToAllExistingUpgrades(AcademicRuntime.Core);
             card.UpdateCardBodyText();
         });
     }
-    internal static void GrantConfiguredTraits(CardState card,CardUpgradeData? data)
+    internal static bool GrantConfiguredTraits(CardState card,CardUpgradeData? data)
     {
         if(data==null)throw new InvalidOperationException("Missing configured granted traits");
         var sourceTraits=data.GetTraitDataUpgrades();
-        if(sourceTraits.Count>0&&sourceTraits.All(t=>card.HasTrait(ShinyShoe.TypeNameCache.GetType(t.GetTraitStateName()))))return;
+        if(sourceTraits.Count>0&&sourceTraits.All(t=>card.HasTrait(ShinyShoe.TypeNameCache.GetType(t.GetTraitStateName()))))return true;
         var upgrade=new CardUpgradeState();upgrade.Setup(data);upgrade.SetAvoidClobberingExistingTraits(true);
-        CardUpgradeHelper.TryApplyUpgradeToCard(card,null,upgrade,isTemporaryUpgrade:true,AcademicRuntime.Core);
+        return CardUpgradeHelper.TryApplyUpgradeToCard(card,null,upgrade,isTemporaryUpgrade:true,AcademicRuntime.Core);
     }
     internal static void Explosive(CardState card)
     {
@@ -210,12 +208,7 @@ internal static class SpellRules
             });
         }
     }
-    internal static int EducationPowerOnFloor(int floor)
-    {
-        var units=AcademicRuntime.Units(floor);
-        return AcademicMath.EducationPower(units.FirstOrDefault()?.GetAttackDamage()??0,
-            units.Count(u=>AcademicRuntime.Is(u,"WW_U04")));
-    }
+    internal static int EducationPowerOnFloor(int floor)=>UnitSpellPassives.EducationPower(AcademicRuntime.Core,floor);
     internal static IEnumerator Before(AcademicRuntime.SpellResolution frame,CharacterState? target)
     {
         var card=frame.Card; var units=AcademicRuntime.Units(frame.Floor);
@@ -224,23 +217,20 @@ internal static class SpellRules
         bool firstSpellOnFloor=!frame.Indirect&&OnceTurn.Add("FirstSpell:"+frame.Floor);
         if(firstSpellOnFloor)
             ResolutionPower(frame,EducationPowerOnFloor(frame.Floor));
-        if(card.GetIsDamageCard() && HasRelic("WW_A01") && OnceTurn.Add("A01"))
-            ResolutionPower(frame,(units.FirstOrDefault()?.GetAttackDamage()??0)/2);
+        AcademicRelics.BeforePower(frame,units);
+        if(PendingSpellRules.ConsumeFloorUse(Pending,frame.Floor,frame.Indirect,TargetsEnemy(target)&&MonoEnemy(card)))frame.Rules.Add("floors");
         foreach(var rule in Pending.ToArray())
         {
             if(rule.Floor>=0&&rule.Floor!=frame.Floor) continue;
             if(rule.Kind=="power"&&!card.GetIsDamageCard())continue;
             if(rule.Kind=="double"&&!card.GetIsDamageCard())continue;
-            if(rule.Kind=="floors"&&(!TargetsEnemy(target)||!MonoEnemy(card)))continue;
+            if(rule.Kind=="floors")continue;
             Pending.Remove(rule);
             if(rule.Kind=="power") ResolutionPower(frame,(units.FirstOrDefault()?.GetAttackDamage()??0)/2);
             else if(rule.Kind=="double") { float previous=DamageFactors.TryGetValue(card,out var f)?f:1; DamageFactors[card]=previous*2;frame.Cleanup.Add(()=> { if(previous==1)DamageFactors.Remove(card);else DamageFactors[card]=previous; });AddRule(card,"defer"); }
             else if(rule.Kind=="floors") frame.Rules.Add("floors");
         }
-        if(!frame.Indirect&&IsHealingSpell(card)&&HasRelic("WW_A10")&&OnceTurn.Add("A10"))
-            frame.Rules.Add("offensive_medicine");
-        if(TargetsEnemy(target)&&MonoEnemy(card)&&HasRelic("WW_A06")&&OnceTurn.Add("A06")) frame.Rules.Add("behind");
-        if(card.HasTrait(typeof(CardTraitExhaustState))&&HasRelic("WW_A02")&&OnceTurn.Add("A02")) AddRule(card,"spellchain");
+        AcademicRelics.BeforeRules(frame,target);
         frame.Target=target;
         if(target!=null)
         {
@@ -256,7 +246,7 @@ internal static class SpellRules
         {
             if(frame.Rules.Contains("floors"))
                 foreach(int floor in SocialRules.FloorsBottomUp())
-                { if(floor==frame.Floor) continue; var enemy=AcademicRuntime.Units(floor,Team.Type.Heroes).FirstOrDefault();if(enemy!=null)yield return Repeat(card,floor,enemy,frame); }
+                { if(floor==frame.Floor) continue; var enemy=SpellReplay.FrontEnemy(core,floor);if(enemy!=null)yield return Repeat(card,floor,enemy,frame); }
             if(frame.Rules.Contains("behind")&&frame.Target!=null)
             {
                 var enemies=AcademicRuntime.Units(frame.Floor,Team.Type.Heroes);
@@ -266,7 +256,7 @@ internal static class SpellRules
         }
         int kills=frame.Kills.Values.Sum();PlayedKills[card]=kills;
         if(!frame.Indirect&&kills>0&&!AcademicRuntime.Simulating)
-            foreach(var relic in core.GetRelicManager().GetRelicEffects(new List<RelicEffectAcademic>()))
+            foreach(var relic in AcademicRelics.Effects(core))
                 relic.RecordKillingSpell(card,kills,core);
         if(frame.Rules.Contains("offensive_medicine")||HealingAreaTurn==AcademicRuntime.Turn)
         {
@@ -284,103 +274,14 @@ internal static class SpellRules
     {
         var frame=aggregate??new AcademicRuntime.SpellResolution {Card=card,Floor=floor,Target=target,Indirect=true};
         int previousFloor=EffectFloor;EffectFloor=floor;AcademicRuntime.Frames.Push(frame);
-        try { yield return AcademicRuntime.Core.GetCombatManager().ApplyEffects(card.GetEffectStates(),floor,card,selfTarget:target,overrideTargetCharacter:target); }
+        try {
+            yield return SpellReplay.Cast(card,floor,target);
+        }
         finally { AcademicRuntime.Frames.Pop();EffectFloor=previousFloor; }
         if(aggregate==null)yield return AcademicRuntime.AfterSpell(frame);
     }
 }
 
-public sealed class RelicEffectAcademic : RelicEffectBase
-{
-    public override PropDescriptions CreateEditorInspectorDescriptions()=>PropDescriptions.DisplayNone;
-    bool IsTuitionRefund=>SourceRelicData!=null&&SourceRelicData.name.EndsWith("WW_A05",StringComparison.Ordinal);
-    internal void RecordKillingSpell(CardState card,int kills,ICoreGameManagers managers)
-    {
-        if(!IsTuitionRefund||managers.GetSaveManager().PreviewMode)return;
-        var progress=AcademicMath.RefundProgress(SpellRules.TuitionRefundCount,kills);
-        SpellRules.TuitionRefundCount=progress.count;
-        if(!progress.refund)return;
-        managers.GetPlayerManager().AddEnergy(Math.Max(0,card.GetLastPlayedCost()));
-        NotifyRelicTriggeredScreenCenter(managers.GetRelicManager());
-    }
-    public override void AppendConditionCountDisplay(System.Text.StringBuilder builder,CardStatistics statistics)
-    {
-        if(!IsTuitionRefund){base.AppendConditionCountDisplay(builder,statistics);return;}
-        builder.Append(string.Format("TextFormat_Divide".Localize(),SpellRules.TuitionRefundCount,5));
-    }
-}
-public class CardEffectAcademicSpellRule : AcademicEffectBase
-{
-    // Only rules without player choices or card-pile changes may simulate.
-    static bool CanPreview(string rule)=>rule is "floors" or "double" or "power" or "healing_area";
-    public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
-    {
-        string rule=s.GetParamStr();
-        var cm=m.GetCardManager();
-        if(rule=="defer_hand")return cm.GetHand().Any(c=>c!=p.playedCard&&c.GetCardType()==CardType.Spell);
-        if(rule=="recover_x")return SpellRules.RecoveryCandidates(cm,p.playedCard).Count>0;
-        if(rule=="archive")return SpellRules.ArchiveCandidates(cm,p.playedCard).Count>0;
-        if(rule=="kill_return")return cm.GetHand().Any(c=>c!=p.playedCard&&c.GetCardType()==CardType.Spell&&c.HasTrait(typeof(CardTraitExhaustState)));
-        return true;
-    }
-    public override bool CanApplyInPreviewMode=>true;
-    public override IEnumerator ApplyEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m,ISystemManagers systems)
-    {
-        string rule=s.GetParamStr();
-        if(m.GetSaveManager().PreviewMode&&!CanPreview(rule))yield break;
-        AcademicRuntime.Core=m;var unit=p.characterThatActivatedAbility??p.selfTarget;
-        if(rule=="floors"||rule=="double"||rule=="power")
-            SpellRules.Pending.Add(new SpellRules.Rule {Kind=rule,Floor=rule=="power"?unit!.GetCurrentRoomIndex():-1,Unit=unit});
-        else if(rule=="healing_area") SpellRules.HealingAreaTurn=AcademicRuntime.Turn;
-        else if(rule=="defer_hand")
-        {
-            for(int i=0;i<3;i++)
-            {
-                CardState? selected=null;
-                yield return SpellRules.SelectPile(systems,TargetMode.Hand,c=>c!=p.playedCard,c=>selected=c);
-                if(selected==null)break;SpellRules.Apart(selected,AcademicRuntime.Turn+1,true);
-            }
-        }
-        else if(rule=="recover_x")
-        {
-            for(int i=0;i<(p.playedCard?.GetLastPlayedCost()??0);i++)
-            {
-                CardState? selected=null;
-                var candidates=SpellRules.RecoveryCandidates(m.GetCardManager(),p.playedCard);
-                if(candidates.Count==0)break;
-                // Native Self + includeTemporaryCardsInBattle exposes hand, draw
-                // and discard. The exact candidate filter excludes hand and all
-                // other piles while allowing one combined selection screen.
-                yield return SpellRules.SelectPile(systems,TargetMode.Self,c=>candidates.Contains(c),c=>selected=c);
-                if(selected==null)break;
-                yield return SpellRules.Restore(selected,false,true);AcademicRuntime.Trait(selected,"CardTraitExhaustState");
-            }
-        }
-        else if(rule=="archive")
-        {
-            CardState? selected=null;var manager=m.GetCardManager();
-            var candidates=SpellRules.ArchiveCandidates(manager,p.playedCard);
-            if(candidates.Count==0||unit==null)yield break;
-            yield return SpellRules.SelectPile(systems,TargetMode.Self,c=>candidates.Contains(c),c=>selected=c,candidates:candidates);
-            if(selected!=null)
-            {
-                // Consumed spells also have stand-by bookkeeping. Native restore
-                // removes both entries before the spell is reserved again.
-                if(manager.GetExhaustedPile().Contains(selected))manager.RestoreExhaustedOrEatenCard(selected);
-                manager.MoveToStandByPile(selected,false,false);SpellRules.ReservedCards.Add(selected);
-                if(!SpellRules.Archived.TryGetValue(unit,out var list))SpellRules.Archived[unit]=list=new();
-                list.Add(selected);
-            }
-        }
-        else if(rule=="kill_return")
-        {
-            yield return AcademicRuntime.ChooseHand(p.playedCard,c=>c.GetCardType()==CardType.Spell&&c.HasTrait(typeof(CardTraitExhaustState)),selected=> {
-                SpellRules.AddRule(selected,"kill_return");
-            });
-        }
-        else throw new InvalidOperationException("Unknown academic spell rule: "+rule);
-    }
-}
 // 2026-10-10-0003||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Correcciones de resoluciÃ³n, traits y acumulaciÃ³n de reglas
 // 2026-10-10-0009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Duración de Attuned, coste al regresar y liberación real de cartas apartadas
 // 2026-10-10-0014||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Agregación de reproducciones del hechizo y contexto correcto del piso
@@ -455,8 +356,20 @@ internal static class AcademicPileSelectionHook
 // 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Aplicar rasgos declarados con helper nativo preservando existentes en Postdoc y Conduit Transfer
 // 2026-10-25-1617||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Resolver TypeNameCache nativo y validar referencias de mejoras antes de mutar copias
 
-// Only the rules which open a card selector declare the native UI contract.
-public sealed class CardEffectAcademicInteractiveRule : CardEffectAcademicSpellRule,ICardEffectUiDialog { }
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Separar contrato de reglas interactivas de reglas sin diálogos manteniendo resolución existente
 // 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Pasar el CombatManager del caller al filtro nativo de aleatoriedad sin depender de contexto global
 // 2026-10-25-1852||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Retirar ramas activas movidas a efectos dedicados; conservar compatibilidad de cartas retiradas
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Propagar éxito de mejora nativa y delegar cálculo Education sin identificar cartas por sufijo
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/SpellRules.cs||Retirar clases de compatibilidad del flujo activo conservando nombres en archivo LegacySpellEffects
+// 2026-10-27-1439||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Añadir contador nativo 0/1 y 1/1 de Extended Exam Session sin duplicar estado de consumo
+// 2026-10-27-1528||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Consumir un solo uso Memo por hechizo elegible y conservar restantes para siguientes lanzamientos
+// 2026-10-27-1528||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||No gastar uso de Extended Exam Session por resolución indirecta
+// 2026-10-27-1528||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Conservar el hechizo como fuente de rasgos y usar contexto de piso nativo en copias
+// 2026-10-27-1529||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Seleccionar frente mediante TargetHelper nativo y contexto correcto para jefes de varios pisos
+// 2026-10-27-1540||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Separar consumo de un uso Memo del procesamiento de otras reglas
+// 2026-10-27-1540||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Evitar segundo consumo de Memo en el bucle de reglas restantes
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Registrar vencimiento explícito sin cambiar instancias de mejoras ni duración aprobada
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Extraer reglas de reliquias a clases específicas manteniendo estado de preview y secuencia de hechizos
+// 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Retirar consulta por ID sin usuarios; conservar búsqueda de compatibilidad únicamente en fachada antigua
+// 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Compartir enumeración nativa de consumidores concretos después de hechizos

@@ -48,8 +48,8 @@
       "id": "WW_S12_Damage",
       "name": "CardEffectDamage",
       "target_mode": "drop_target_character",
-      "target_team": "heroes",
-      "param_int": 1
+      "target_team": "both",
+      "param_int": 4
     }
   ],
   "sprites": [

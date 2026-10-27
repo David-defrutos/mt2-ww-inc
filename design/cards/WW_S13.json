@@ -8,7 +8,7 @@
   },
   "cost": 1,
   "rarity": "common",
-  "effect": "[trample]. Inflige [effect0.power] de daño. Slay: aumenta el daño en 2 permanentemente.",
+  "effect": "Inflige 4 de daño a una unidad. Trample. Slay: aumenta el daño en 2 permanentemente.",
   "status": "implemented_unverified",
   "implementation_note": "CardTraitTrample nativo añadido; keyword y tooltip nativos. Conserva coste 1, común, daño base 4 y Slay nativo +2 de daño permanente mediante CardTriggerEffectBuffSpellDamage single_run. Pendiente partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."

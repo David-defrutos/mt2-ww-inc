@@ -10,6 +10,6 @@
   "rarity": "common",
   "effect": "Intercambia la primera y la última unidad aliada. La nueva primera unidad ataca de inmediato.",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "Intercambio atómico de extremos; respeta Immobile y jefe exterior. Eventos nativos de reliquia, Shift, Sentry, orden de sala y desbloqueos. Ataque inmediato nativo solo con el extremo trasero original si sobrevive y sigue delante. No Dazed ni cambios de Armor. Pendiente partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
 }

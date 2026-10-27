@@ -8,8 +8,8 @@
   },
   "cost": 1,
   "rarity": "common",
-  "effect": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
+  "effect": "Inflige [effect0.power] de daño tres veces a la misma unidad.",
   "status": "implemented_unverified",
-  "implementation_note": "Tres aplicaciones nativas de 1 de daño al mismo enemigo, coste 1 y rareza común. Sin Trample. Pendiente partida.",
-  "balance": "Valores vigentes: coste 1, daño 1 tres veces, común."
+  "implementation_note": "Tres aplicaciones nativas de 4 de daño a la misma unidad, coste 1 y rareza común. Sin Trample. Pendiente partida.",
+  "balance": "Valores vigentes: coste 1, daño 4 tres veces, común."
 }

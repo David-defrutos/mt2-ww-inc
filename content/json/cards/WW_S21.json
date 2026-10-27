@@ -34,16 +34,16 @@
         "japanese": "装甲付き優等登録"
       },
       "descriptions": {
-        "spanish": "Añade tanto [armor] como [attack]. Reduce [attack] a 0 este turno. Añade [dazed] 1.",
-        "french": "Appliquez autant de [armor] que d'[attack]. Fixez l'[attack] à 0 ce tour. Appliquez [dazed] 1.",
-        "german": "Wende [armor] in Höhe von [attack] an. Setze [attack] diese Runde auf 0. Wende [dazed] 1 an.",
-        "portuguese": "Aplica [armor] igual ao [attack]. Define o [attack] como 0 neste turno. Aplica [dazed] 1.",
-        "russian": "Дайте [armor] в размере [attack]. Установите [attack] на 0 до конца хода. Примените [dazed] 1.",
-        "chinese": "施加等同于[attack]的[armor]。本回合将[attack]设为0。施加[dazed] 1。",
-        "chinese_traditional": "施加等同於[attack]的[armor]。本回合將[attack]設為0。施加[dazed] 1。",
-        "korean": "[attack]만큼 [armor]를 부여합니다. 이번 턴 [attack]을 0으로 만듭니다. [dazed] 1을 부여합니다.",
-        "japanese": "[attack]に等しい[armor]を付与する。このターン[attack]を0にする。[dazed] 1を付与する。",
-        "english": "Apply [armor] equal to [attack]. Set [attack] to 0 this turn. Apply [dazed] 1."
+        "english": "Apply [armor] equal to [attack]. Set [attack] to 0 for the next round of combat. Apply [dazed] 1.",
+        "spanish": "Añade tanto [armor] como [attack]. Reduce [attack] a 0 durante la próxima ronda de combate. Añade [dazed] 1.",
+        "french": "Appliquez autant de [armor] que d’[attack]. Fixez l’[attack] à 0 pour la prochaine manche de combat. Appliquez [dazed] 1.",
+        "german": "Wende [armor] in Höhe von [attack] an. Setze [attack] für die nächste Kampfrunde auf 0. Wende [dazed] 1 an.",
+        "portuguese": "Aplica [armor] igual ao [attack]. Define o [attack] como 0 na próxima rodada de combate. Aplica [dazed] 1.",
+        "russian": "Дайте [armor] в размере [attack]. Установите [attack] на 0 на следующий раунд боя. Примените [dazed] 1.",
+        "chinese": "施加等同于[attack]的[armor]。下一轮战斗中将[attack]设为0。施加[dazed] 1。",
+        "chinese_traditional": "施加等同於[attack]的[armor]。下一輪戰鬥中將[attack]設為0。施加[dazed] 1。",
+        "korean": "[attack]만큼 [armor]를 부여합니다. 다음 전투 라운드 동안 [attack]을 0으로 만듭니다. [dazed] 1을 부여합니다.",
+        "japanese": "[attack]に等しい[armor]を付与する。次の戦闘ラウンド中、[attack]を0にする。[dazed] 1を付与する。"
       },
       "class": "@WW_Class",
       "card_type": "spell",

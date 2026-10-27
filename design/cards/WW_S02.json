@@ -8,7 +8,7 @@
   },
   "cost": 2,
   "rarity": "rare",
-  "effect": "Aparta un hechizo de tu mano. Los próximos 3 ataques de esta unidad también lo lanzan: los perjudiciales al enemigo atacado y los beneficiosos a esta unidad. Elige bando para los ambiguos. Devuélvelo al descarte cuando termine el efecto.",
+  "effect": "Aparta un hechizo no aleatorio. Los próximos 3 ataques también lo lanzan. Admite efectos globales nativos seguros de recursos y robo; muestra su descripción completa en la marca.",
   "status": "implemented_unverified",
   "implementation_note": "Admite hechizos aliados y enemigos con OnlySpells nativo. Los efectos de objetivo único con bando exclusivo mantienen ese bando. Los efectos Both se infieren con clases nativas de daño/curación, registro Conductor y DisplayCategory de estados; si son desconocidos o mezclan beneficio y perjuicio, DeckScreen nativo elige Allies/Enemies con dos CardState auxiliares fuera de cualquier pila. CheckTargetsOverride nativo recibe el portador o enemigo por efecto; áreas mantienen target_mode/team. Permite beneficios tras baja del enemigo. Tres ataques, retorno nativo al descarte y marca con hechizo/contador/bando. Pendiente prueba en partida, selección, replay y preview.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."

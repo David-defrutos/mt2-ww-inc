@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_G03",
+      "names": {
+        "english": "Protective Charm",
+        "spanish": "Talismán Protector",
+        "french": "Charme protecteur",
+        "german": "Schutztalisman",
+        "portuguese": "Talismã Protetor",
+        "russian": "Защитный талисман",
+        "chinese": "防护护符",
+        "chinese_traditional": "防護護符",
+        "korean": "보호 부적",
+        "japanese": "守護のお守り"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_G03CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_G03_Equip"
+      ],
+      "traits": [
+        "@WW_G03_Grafted"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_G03_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_G03_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_G03_Upgrade",
+      "titles": {
+        "english": "Protective Charm",
+        "spanish": "Talismán Protector",
+        "french": "Charme protecteur",
+        "german": "Schutztalisman",
+        "portuguese": "Talismã Protetor",
+        "russian": "Защитный талисман",
+        "chinese": "防护护符",
+        "chinese_traditional": "防護護符",
+        "korean": "보호 부적",
+        "japanese": "守護のお守り"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_G03Icon",
+      "status_effect_upgrades": [
+        {
+          "status": "damage shield",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_G03_Grafted",
+      "name": "CardTraitGraftedEquipment",
+      "trait_is_removable": false
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_G03CardArt",
+      "path": "textures/cards/WW_G03CardArt.png"
+    },
+    {
+      "id": "WW_G03Icon",
+      "path": "textures/equipment/WW_G03Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_G03CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_G03CardArt"
+        }
+      }
+    }
+  ]
+}

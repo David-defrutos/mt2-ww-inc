@@ -1,7 +1,7 @@
 <!-- Documento generado el 2026-10-10-0024 -->
 # W&W Inc.
 
-## Development source — 0.1.154 beta
+## Development source — 0.1.167 beta
 
 Source code and assets for **W&W Inc.**, a Monster Train 2 clan. The latest changes have passed code and data validation; their behavior and presentation still need in-game verification.
 
@@ -14,7 +14,7 @@ Source code and assets for **W&W Inc.**, a Monster Train 2 clan. The latest chan
 
 ### Building from a clone
 
-Requires .NET SDK 10, Monster Train 2, BepInEx, Trainworks Reloaded 0.7.33 and Conductor 0.5.15. Set the local assembly paths in `src/WwInc.csproj` and `tests/Contracts/Contracts.csproj`, and the assembly resolver paths at the top of `tests/Contracts/Program.cs`, to your installation. Game and dependency DLLs are not included.
+Requires .NET SDK 10, Monster Train 2, BepInEx, Trainworks Reloaded 0.7.33 and Conductor 0.5.16. Set the local assembly paths in `src/WwInc.csproj` and `tests/Contracts/Contracts.csproj`, and the assembly resolver paths at the top of `tests/Contracts/Program.cs`, to your installation. Game and dependency DLLs are not included.
 
 From the repository root:
 
@@ -31,16 +31,23 @@ dotnet run --project tests/TriggerEvents/TriggerEvents.csproj
 
 The shared-trigger project accepts `MonsterTrain2Managed` and `BepInExCore` MSBuild properties to override its default local paths. It compiles independently of W&W and Conductor; it is not a Conductor plugin or a second DLL to install alongside W&W.
 
-Latest local validation: **1,264 checks**, valid runtime JSON, and both compilation projects finish without errors or warnings. Automated checks do not replace in-game testing. Compiled output, game libraries, local reports and tester feedback notes are excluded from Git.
+Latest local validation: compilation and seven automated suites are required by the packaging script. See the local deployment report for the current counts. Automated checks do not replace in-game testing.
+
+Five starting grafts are defined separately from the 43 selected cards. They attach through native CharacterData metadata and are not offered as regular rewards. Training Wand uses the displayed ring to resolve its Conduit; the other four use native equipment upgrades. Artwork masters and exact prompts are recorded in the local graft-art report.
 
 ## Workspace notes
+
+Active development: `D:/Juegos/MT2_mod/salidas/build/ww-inc`. The copy in `repos/MT2/repos-propios/mt2-ww-inc` is read-only reference material and may be reset by repository synchronization. Do not edit it.
+
+Arcane Slay hit detection and queueing use Conductor 0.5.16. Overheal and Overdamage retain their adapters because this API does not expose healing or mitigated excess damage.
+
 
 Las secciones siguientes conservan el flujo del workspace original. Sus enlaces a `docs/`, scripts de operaciones y rutas absolutas requieren ese workspace y no se resuelven en un clon independiente. No son pasos necesarios para las pruebas de reglas y daño.
 
 
-Versión local 0.1.154 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
+Versión local 0.1.167 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
 
-[Estado y pruebas pendientes](../../../../docs/clanes/ww-inc/hechizos-starter-2026-10-11-1106.md) · [Catálogo seleccionado](design/catalog.json).
+[Estado y pruebas pendientes](../../../docs/clanes/ww-inc/hechizos-starter-2026-10-11-1106.md) · [Catálogo seleccionado](design/catalog.json).
 
 Los 263 bloques localizados runtime cubren los diez idiomas admitidos. El validador comprueba cobertura y parámetros; las definiciones retiradas se conservan como compatibilidad. No ejecutar los generadores históricos para reconstruir el contenido vigente.
 
@@ -50,7 +57,7 @@ El runtime está en `content/json` y el código C# en `src`. Las fichas `design/
 
 Los recursos distribuidos están en `content/textures`, incluidos cartas, sprites, reliquias e interfaz. Los maestros y variantes del workspace se conservan fuera de este repositorio. El informe enlazado conserva entregas históricas y no sustituye una comprobación actual del encaje dentro de Unity.
 
-[Informe de arte](../../../../docs/clanes/ww-inc/arte-completo-2026-10-11-1019.md).
+[Informe de arte](../../../docs/clanes/ww-inc/arte-completo-2026-10-11-1019.md).
 
 ## Compilar y comprobar
 
@@ -58,13 +65,13 @@ Desde la raíz `D:/Juegos/MT2_mod`:
 
 ```powershell
 Set-Location 'D:/Juegos/MT2_mod'
-dotnet build repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj -c Release
-dotnet run --project repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Rules.csproj
-dotnet run --project repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Contracts.csproj -- 'D:/Juegos/MT2_mod/repos/MT2/repos-propios/mt2-ww-inc'
+dotnet build salidas/build/ww-inc/src/WwInc.csproj -c Release
+dotnet run --project salidas/build/ww-inc/tests/Rules/Rules.csproj
+dotnet run --project salidas/build/ww-inc/tests/Contracts/Contracts.csproj -- 'D:/Juegos/MT2_mod/salidas/build/ww-inc'
 python scripts/operaciones/validar-ww-inc-2026-10-09.py
 ```
 
-El proyecto referencia las DLL del juego y del perfil Default instalados en este ordenador. Compilado con Trainworks 0.7.33 y Conductor 0.5.15. No copia bibliotecas del juego al paquete.
+El proyecto referencia las DLL del juego y del perfil Default instalados en este ordenador. Compilado con Trainworks 0.7.33 y Conductor 0.5.16. No copia bibliotecas del juego al paquete.
 
 ## Paquete e instalación local
 
@@ -355,3 +362,14 @@ El empaquetador específico es `scripts/operaciones/empaquetar-ww-inc-thundersto
 <!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
 <!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->
 <!-- 2026-10-25-1908||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/README.md||Preparar README público bilingüe con rutas de fuentes actuales, compilación independiente y siete suites; corregir recuentos obsoletos -->
+<!-- 2026-10-26-2044||codex-ww-inc||salidas/build/ww-inc/README.md||Documentar ruta independiente, versión 0.1.159 y migración a Conductor 0.5.16 -->
+<!-- 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar versión de desarrollo 0.1.160 -->
+<!-- 2026-10-26-2233||codex-ww-inc||salidas/build/ww-inc/README.md||Actualizar versión de desarrollo a 0.1.161 -->
+<!-- 2026-10-26-2233||codex-ww-inc||salidas/build/ww-inc/README.md||Describir equipos injertados auxiliares sin aumentar ficticiamente la colección drafteable -->
+<!-- 2026-10-26-2313||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar versión actual 0.1.162 en presentación -->
+<!-- 2026-10-26-2338||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar auditoría integral como desarrollo 0.1.163 -->
+<!-- 2026-10-26-2338||codex-ww-inc||salidas/build/ww-inc/README.md||Corregir versión local obsoleta en párrafo de presentación -->
+<!-- 2026-10-27-0008||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar hotfix de acceso a gestores fuera de combate como 0.1.164 -->
+<!-- 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar desarrollo con correcciones posteriores al informe público 0.1.164 -->
+<!-- 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar versión 0.1.166 con propuestas de corrección aprobadas -->
+<!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->

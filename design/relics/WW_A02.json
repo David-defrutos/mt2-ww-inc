@@ -6,7 +6,7 @@
   },
   "effect": "El primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
   "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
   "rarity": "common"
 }

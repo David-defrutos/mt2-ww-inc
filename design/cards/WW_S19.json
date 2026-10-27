@@ -8,7 +8,7 @@
   },
   "cost": 0,
   "rarity": "rare",
-  "effect": "Descarta un hechizo, Blight o Scourge de la mano. Obtén el doble de su coste actual en [ember]. Roba [effect1.power].",
+  "effect": "Descarta un hechizo, Blight o Scourge. Gana el doble de su coste actual en Ember. Después roba una carta.",
   "status": "implemented_unverified",
   "implementation_note": "Selecciona Spell o Blight de mano, conservando exclusión de Persistent/Infusion. Captura GetCost actual antes de DiscardCard nativo; da el doble en Ember solo si sale de mano. Después CardEffectDraw roba 1. Rara, coste 0. Pendiente prueba en partida.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."

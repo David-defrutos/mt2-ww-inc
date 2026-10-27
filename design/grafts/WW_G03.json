@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_G03",
+  "type": "grafted_equipment",
+  "names": {
+    "english": "Protective Charm",
+    "spanish": "Talismán Protector"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "owners": [
+    "WW_U18"
+  ],
+  "draftable": false,
+  "effect": "damage shield 1"
+}

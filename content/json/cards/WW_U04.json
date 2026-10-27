@@ -74,7 +74,8 @@
       "attack_damage": 16,
       "subtypes": [
         "@WW_Wizard"
-      ]
+      ],
+      "grafted_equipment": "@WW_G01"
     }
   ],
   "sprites": [

@@ -8,7 +8,8 @@
       "target_team": "none",
       "target_card_type": "spell",
       "param_int": 3,
-      "hide_tooltip": true
+      "hide_tooltip": true,
+      "param_card_filter": "@WW_S20_DistinctSpells"
     }
   ],
   "cards": [
@@ -51,7 +52,9 @@
       "effects": [
         "@WW_S20_Effect"
       ],
-      "traits": []
+      "traits": [
+        "@WW_S20_Distinct"
+      ]
     }
   ],
   "sprites": [
@@ -69,6 +72,29 @@
           "sprite": "@WW_S20CardArt"
         }
       }
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_S20_Distinct",
+      "name": "CardTraitDistinct"
+    }
+  ],
+  "card_pools": [
+    {
+      "id": "WW_S20_Copies",
+      "cards": [
+        "@WW_S20"
+      ]
+    }
+  ],
+  "upgrade_masks": [
+    {
+      "id": "WW_S20_DistinctSpells",
+      "card_type": "spell",
+      "disallowed_pools": [
+        "@WW_S20_Copies"
+      ]
     }
   ]
 }

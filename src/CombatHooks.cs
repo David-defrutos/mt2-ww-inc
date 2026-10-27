@@ -78,6 +78,7 @@ internal static class HealHook
         =>__result=Run(__result,__instance,amount,responsibleCard,fromMaxHPChange);
     static IEnumerator Run(IEnumerator original,CharacterState unit,int amount,CardState source,bool fromMaxHPChange)
     {
+        if(!AcademicRuntime.Active||!PreviewDependencies.CanWrite(unit,AcademicRuntime.Core)){yield return original;yield break;}
         int before=unit.GetHP();
         int possible=unit.GetHealToTarget(amount,source,fromMaxHPChange,limitByHp:false);
         int excess=fromMaxHPChange||amount>=9999?0:AcademicMath.ExcessHealing(possible,before,unit.GetMaxHP());
@@ -85,7 +86,7 @@ internal static class HealHook
         if(!unit.IsDestroyed&&unit.IsAlive)
         {
             AcademicRuntime.RecordHeal(unit,Math.Max(0,unit.GetHP()-before),excess,source);
-            if(AcademicRuntime.Active)yield return OverhealEvent.Dispatch(AcademicRuntime.Core,unit,excess,source);
+            if(AcademicRuntime.Active&&unit.HasEffectTrigger(OverhealEvent.Trigger))yield return OverhealEvent.Dispatch(AcademicRuntime.Core,unit,excess,source);
         }
     }
 }
@@ -116,3 +117,5 @@ internal static class HealHook
 // 2026-10-21-2043||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Excluir Overheal también por cantidad original >=9999 antes de modificadores; conservar curación nativa
 // 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Resolver con managers nativos del caller y proteger preparación, preview, reembolso y restauración de contexto
 // 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/CombatHooks.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas
+// 2026-10-27-1534||codex-ww-inc||salidas/build/ww-inc/src/CombatHooks.cs||No generar eventos Overheal en unidades sin consumidores del trigger
+// 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/CombatHooks.cs||No calcular ni despachar efectos propios de curación sobre estados no preparados

@@ -25,7 +25,7 @@ internal sealed class ExcessCreditSave : ISaveData
     public string Serialize()
     {
         var managers=AllGameManagers.Instance??throw new InvalidOperationException("Game managers unavailable for Extra Credit persistence.");
-        var deck=managers.GetCoreManagers().GetSaveManager().GetDeckState();
+        var deck=managers.GetSaveManager().GetDeckState();
         var snapshot=new Snapshot();
         foreach(var pair in ExcessCredit.Origins)
         {
@@ -42,7 +42,7 @@ internal sealed class ExcessCreditSave : ISaveData
         var snapshot=JsonUtility.FromJson<Snapshot>(payload);
         if(snapshot?.Entries==null)return;
         var managers=AllGameManagers.Instance??throw new InvalidOperationException("Game managers unavailable for Extra Credit persistence.");
-        var deck=managers.GetCoreManagers().GetSaveManager().GetDeckState();
+        var deck=managers.GetSaveManager().GetDeckState();
         foreach(var entry in snapshot.Entries)
         {
             if(entry.Spell<0||entry.Spell>=deck.Count||entry.Owner<0||entry.Owner>=deck.Count)continue;
@@ -55,3 +55,4 @@ internal sealed class ExcessCreditSave : ISaveData
 }
 // 2026-10-24-1923||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCreditSave.cs||Persistir autoría por Conductor ISaveData y posiciones verificadas del mazo nativo, restauradas tras carga
 // 2026-10-24-1925||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCreditSave.cs||Comprobar managers al serializar/restaurar y eliminar dos avisos nullable sin ocultar fallos de carga
+// 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/src/ExcessCreditSave.cs||Guardar y restaurar autoría Extra Credit mediante SaveManager persistente disponible en mapa

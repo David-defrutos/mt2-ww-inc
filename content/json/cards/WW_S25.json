@@ -13,7 +13,10 @@
       "name": "@CardEffectAcademicOneTurnUpgrade",
       "target_mode": "drop_target_character",
       "target_team": "monsters",
-      "param_upgrade": "@WW_Retribution"
+      "param_upgrade": "@WW_Retribution",
+      "additional_tooltips": [
+        "@WW_InsuranceRevengeReference"
+      ]
     },
     {
       "id": "WW_RetributionDamage",
@@ -75,16 +78,16 @@
         "japanese": "秘術賠償責任保険"
       },
       "descriptions": {
-        "spanish": "Restaura [effect0.power] de salud. Hasta el próximo turno, al recibir un golpe, inflige la [health] de esta unidad como daño al atacante.",
-        "french": "Restaurez [effect0.power] PV. Jusqu'au prochain tour, quand cette unité est touchée, infligez ses [health] en dégâts à l'attaquant.",
-        "german": "Stelle [effect0.power] Leben wieder her. Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihre [health] als Schaden zu.",
-        "portuguese": "Restaura [effect0.power] de saúde. Até o próximo turno, ao sofrer um golpe, causa a [health] desta unidade como dano ao atacante.",
-        "russian": "Восстановите [effect0.power] здоровья. До следующего хода при получении удара наносите атакующему урон в размере [health] этого бойца.",
-        "chinese": "恢复[effect0.power]点生命。直到下回合，此单位受击时，对攻击者造成等同于自身[health]的伤害。",
-        "chinese_traditional": "恢復[effect0.power]點生命。直到下回合，此單位受擊時，對攻擊者造成等同於自身[health]的傷害。",
-        "korean": "체력을 [effect0.power] 회복합니다. 다음 턴까지 피격 시 공격자에게 이 유닛의 [health]만큼 피해를 줍니다.",
-        "japanese": "体力を[effect0.power]回復する。次のターンまで、被弾時にこのユニットの[health]に等しいダメージを攻撃者に与える。",
-        "english": "Restore [effect0.power] health. Until next turn, when hit, deal this unit’s [health] as damage to the attacker."
+        "spanish": "Restaura [effect0.power] de salud a una unidad aliada. Hasta el próximo turno, al recibir un golpe, inflige la [health] de esta unidad como daño al atacante.",
+        "french": "Restaurez [effect0.power] PV à une unité alliée. Jusqu'au prochain tour, quand cette unité est touchée, infligez ses [health] en dégâts à l'attaquant.",
+        "german": "Stelle bei einem Verbündeten [effect0.power] Leben wieder her. Wenn diese Einheit getroffen wird, fügt sie dem Angreifer bis zur nächsten Runde ihre [health] als Schaden zu.",
+        "portuguese": "Restaura [effect0.power] de saúde a uma unidade aliada. Até o próximo turno, ao sofrer um golpe, causa a [health] desta unidade como dano ao atacante.",
+        "russian": "Восстановите союзнику [effect0.power] здоровья. До следующего хода при получении удара наносите атакующему урон в размере [health] этого бойца.",
+        "chinese": "为一个友方单位恢复[effect0.power]点生命。直到下回合，此单位受击时，对攻击者造成等同于自身[health]的伤害。",
+        "chinese_traditional": "為一個友方單位恢復[effect0.power]點生命。直到下回合，此單位受擊時，對攻擊者造成等同於自身[health]的傷害。",
+        "korean": "아군 유닛의 체력을 [effect0.power] 회복합니다. 다음 턴까지 피격 시 공격자에게 이 유닛의 [health]만큼 피해를 줍니다.",
+        "japanese": "味方ユニットの体力を[effect0.power]回復する。次のターンまで、被弾時にこのユニットの[health]に等しいダメージを攻撃者に与える。",
+        "english": "Restore [effect0.power] health to a friendly unit. Until next turn, when hit, deal this unit’s [health] as damage to the attacker."
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -178,6 +181,12 @@
     {
       "id": "WW_InsuranceIcon",
       "path": "textures/icons/WW_Insurance_Tooltip50.png"
+    }
+  ],
+  "additional_tooltips": [
+    {
+      "id": "WW_InsuranceRevengeReference",
+      "trigger": "on_hit"
     }
   ]
 }

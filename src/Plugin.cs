@@ -10,9 +10,9 @@ using TrainworksReloaded.Base;
 
 namespace WwInc;
 
-[BepInPlugin(Guid, "W&W Inc.", "0.1.154")]
+[BepInPlugin(Guid, "W&W Inc.", "0.1.167")]
 [BepInDependency("TrainworksReloaded.Plugin")]
-[BepInDependency("Conductor")]
+[BepInDependency("Conductor","0.5.16")]
 public sealed class Plugin : BaseUnityPlugin
 {
     public const string Guid = "david.wwinc";
@@ -33,7 +33,7 @@ public sealed class Plugin : BaseUnityPlugin
             Conductor.Utilities.MarkEffectAsHealEffect(typeof(CardEffectAcademicSabbatical));
         });
         Roundhouse.WhenReady(Guid,ctx=> {
-            var missingCards=new[]{"WW_C01","WW_C02","WW_T01","WW_T02","WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08","WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18","WW_S01","WW_S02","WW_S03","WW_S04","WW_S05","WW_S06","WW_S07","WW_S08","WW_S09","WW_S10","WW_S11","WW_S12","WW_S13","WW_S14","WW_S15","WW_S16","WW_S17","WW_S18","WW_S19","WW_S20","WW_S21","WW_S22","WW_S23","WW_S24","WW_S25","WW_S26","WW_E01","WW_E02","WW_E03","WW_R01","WW_R02","WW_S27","WW_S28","WW_S29","WW_S30","WW_S31","WW_S32"}.Where(id=>ctx.GetCard(id)==null).ToArray();
+            var missingCards=new[]{"WW_C01","WW_C02","WW_T01","WW_T02","WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08","WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18","WW_S01","WW_S02","WW_S03","WW_S04","WW_S05","WW_S06","WW_S07","WW_S08","WW_S09","WW_S10","WW_S11","WW_S12","WW_S13","WW_S14","WW_S15","WW_S16","WW_S17","WW_S18","WW_S19","WW_S20","WW_S21","WW_S22","WW_S23","WW_S24","WW_S25","WW_S26","WW_E01","WW_E02","WW_E03","WW_R01","WW_R02","WW_S27","WW_S28","WW_S29","WW_S30","WW_S31","WW_S32","WW_G01","WW_G02","WW_G03","WW_G04","WW_G05"}.Where(id=>ctx.GetCard(id)==null).ToArray();
             var missingRelics=new[]{"WW_A01","WW_A02","WW_A03","WW_A04","WW_A05","WW_A06","WW_A07","WW_A08","WW_A09","WW_A10"}.Where(id=>ctx.GetRelic(id)==null).ToArray();
             if(missingCards.Length>0||missingRelics.Length>0||ctx.GetClass("WW_Class")==null)
                 throw new InvalidOperationException("W&W Inc. incomplete registration: "+string.Join(",",missingCards.Concat(missingRelics)));
@@ -41,11 +41,20 @@ public sealed class Plugin : BaseUnityPlugin
             var permitEffect=ctx.GetCard("WW_E01_Ability").GetEffects()[0];
             if(purgeMask==null||permitEffect.GetParamCardFilter()!=purgeMask)
                 throw new InvalidOperationException("W&W Inc.: Expulsion Permit card filters were not resolved.");
-            Logger.LogInfo("W&W Inc. DATA READY: 43 active cards, 10 relics, 4 tokens; localized content finalized.");
+            Logger.LogInfo("W&W Inc. DATA READY: 43 selected cards, 5 graft equipment, 10 relics, 4 tokens; localized content finalized.");
             ArcaneSlayEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_ArcaneSlay");
+            ArcaneSlayConductor.Register();
+            TrainingWand.Template=ctx.GetCardUpgrade("WW_G01_Upgrade");
+            BannerPresentation.Configure((RewardNodeData)ctx.GetMapNode("WW_BannerNode"),ctx.GetSprite("WW_ClanIconSmall"));
             MineMineMine.Trigger=ctx.GetCharacterTriggerEnum("WW_MineMineMine");
             OverdamageEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overdamage");
             OverhealEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overheal");
+            UnitSpellPassives.Representative=ctx.GetCharacter("WW_U17_Character");
+            UnitSpellPassives.FirstAid=ctx.GetCharacter("WW_U02_Character");
+            UnitSpellPassives.Education=ctx.GetCharacter("WW_U04_Character");
+            AcademicTooltips.ClassId=ctx.GetClass("WW_Class").GetID();
+            RunLoadDiagnostic.DataReady=true;
+            FrozenTuition.Source=ctx.GetCharacter("WW_U18_Character")??throw new InvalidOperationException("Missing Frozen Tuition character");
             SpellRules.HitDiscountUpgrade=ctx.GetCardUpgrade("WW_S09_Discount");
             StatusEffectAcademicScholarship.Id=ctx.GetStatusEffect("ww_scholarship").GetStatusId();
             DissertationMarker.StatusId=ctx.GetStatusEffect("ww_dissertation").GetStatusId();
@@ -58,7 +67,7 @@ public sealed class Plugin : BaseUnityPlugin
             SocialRules.Wizard=ctx.GetSubtype("WW_Wizard");SocialRules.Witch=ctx.GetSubtype("WW_Witch");SocialRules.Chaperone=ctx.GetSubtype("WW_Chaperone");
         });
         new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
-        Logger.LogInfo("W&W Inc.: academic mechanics 0.1.154 loaded; local Trample/Explosive guard enabled");
+        Logger.LogInfo("W&W Inc.: academic mechanics 0.1.167 loaded; local Trample/Explosive guard enabled");
     }
     internal static void Log(string message) => Instance.Logger.LogInfo(message);
 }
@@ -307,4 +316,28 @@ public sealed class Plugin : BaseUnityPlugin
 // 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.152 por filtro no aleatorio
 // 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education
 // 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas
-// 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño
+// 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Actualizar versión activa a 0.1.156: ataques pares, separación de eventos y signo de tamaño
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Identificar nuevo desarrollo 0.1.156; separar de beta publicada 0.1.155
+// 2026-10-25-2036||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Resolver referencia nativa de Frozen Tuition en registro; evitar sufijos de IDs en ejecución
+// 2026-10-25-2038||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Versión de desarrollo 0.1.157 para extracción de Frozen Tuition
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Resolver personajes de pasivas y clase del fallback de tooltips mediante registro Trainworks
+// 2026-10-25-2146||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Identificar desarrollo integral 0.1.158
+// 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Registrar Arcane Slay con Conductor
+// 2026-10-26-2035||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Configurar emblema sobre plantilla de estandarte nativa para encajar hover
+// 2026-10-26-2035||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Identificar desarrollo integral 0.1.159
+// 2026-10-26-2035||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Identificar desarrollo integral 0.1.159
+// 2026-10-26-2035||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/Plugin.cs||Exigir API de eventos de Conductor instalada 0.5.16
+// 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Versión de desarrollo 0.1.160 para Distinct y Dissertation ampliada
+// 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Versión de desarrollo 0.1.160 para Distinct y Dissertation ampliada
+// 2026-10-26-2229||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Resolver upgrade de Training Wand mediante registro tipado Trainworks
+// 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Comprobar registro de los cinco equipos injertados al cargar
+// 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Distinguir injertos auxiliares de cartas seleccionadas en diagnóstico de carga
+// 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Versión 0.1.161 con cinco grafts y arte generado
+// 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Versión 0.1.161 con cinco grafts y arte generado
+// 2026-10-26-2313||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar corrección de tooltip y cambios pendientes como 0.1.162
+// 2026-10-26-2338||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar auditoría integral como desarrollo 0.1.163
+// 2026-10-27-0008||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar hotfix de acceso a gestores fuera de combate como 0.1.164
+// 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar desarrollo con correcciones posteriores al informe público 0.1.164
+// 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Marcar finalización de registro de clase para diagnóstico de reanudación
+// 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar versión 0.1.166 con propuestas de corrección aprobadas
+// 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas

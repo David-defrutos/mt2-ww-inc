@@ -44,5 +44,24 @@ core.Combat.Body=FailBody;failed=false;try{Run(ArcaneSlayEvent.Dispatch(core,spe
 Check(failed&&ArcaneSlayEvent.Source(arcaneParams)==null&&ArcaneSlayEvent.EnqueuingSource==null,"Consumer failure unwinds both Slay execution and enqueue scopes");
 core.Combat.ThrowBeforeRoom=true;failed=false;try{Run(ArcaneSlayEvent.Dispatch(core,spell,0,1));}catch(InvalidOperationException){failed=true;}
 Check(failed&&ArcaneSlayEvent.EnqueuingSource==null,"Native room failure unwinds queued source");
+WwInc.ArcaneSlayConductor.Register();
+var receiver=new CharacterState();var slain=new CharacterState{TeamType=Team.Type.Heroes,IsAlive=false};
+var hit=new Conductor.Extensions.TriggerOnCharacterHitParams {Character=receiver,DamagedCharacter=slain,OriginalDamage=42,DamageParams=new CharacterState.ApplyDamageParams{damageSourceCard=spell}};
+var callback=Conductor.Extensions.CharacterTriggerExtensions.Registered!;
+Check(callback!=null&&callback(hit,out var _),"Arcane Slay registers with Conductor and accepts a killing spell");
+callback!(hit,out var receipt);
+var captured=(ArcaneSlayEvent.Data)receipt!.Value.fireTriggersData;
+Check(captured.Source==spell&&captured.paramInt==42&&captured.overrideTargetCharacter==slain,"Conductor payload retains spell identity, damage and victim");
+receiver.HasTrigger=false;Check(!callback(hit,out _),"Units without Arcane Slay do not receive custom trigger events");receiver.HasTrigger=true;
+spell.Ability=true;Check(!callback(hit,out _),"Ability kills do not become Arcane Slay");spell.Ability=false;
+slain.IsAlive=true;Check(!callback(hit,out _),"Nonlethal spell damage does not trigger Arcane Slay");slain.IsAlive=false;
+slain.TeamType=Team.Type.Monsters;Check(callback(hit,out _),"Friendly-fire spell kills trigger Arcane Slay");slain.TeamType=Team.Type.Heroes;
+receiver.TeamType=Team.Type.Heroes;Check(!callback(hit,out _),"Enemy units cannot receive this clan's spell-slay reward");receiver.TeamType=Team.Type.Monsters;
+WwInc.AcademicRuntime.ConversionDepth=1;Check(!callback(hit,out _),"Converted healing damage cannot recurse into Arcane Slay");WwInc.AcademicRuntime.ConversionDepth=0;
+hit.DamageParams.damageSourceCard=null;Check(!callback(hit,out _),"Attack-only damage has no spell-slay source");
+
 Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,errors}));return errors.Count==0?0:1;
 // 2026-10-25-1850||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/TriggerEvents/Program.cs||Regresiones de reentrada, fuente, propietario, cantidad y limpieza de eventos independientes ante excepción
+// 2026-10-26-2035||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/TriggerEvents/Program.cs||Regresiones del adaptador Conductor y conservación de fuente, aliados, habilidades y conversión
+// 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/tests/TriggerEvents/Program.cs||Verificar baja aliada aprobada sin convertir habilidades ni impactos no letales
+// 2026-10-27-1540||codex-ww-inc||salidas/build/ww-inc/tests/TriggerEvents/Program.cs||Verificar ausencia de eventos Arcane Slay en unidades ajenas al trigger

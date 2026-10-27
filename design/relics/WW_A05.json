@@ -6,7 +6,7 @@
   },
   "effect": "Por cada 5 hechizos que maten a un enemigo, recupera el coste del último en [ember].",
   "status": "implemented_unverified",
-  "implementation_note": "Contador 0–4 por batalla, conserva progreso entre turnos. Una vez por lanzamiento letal aunque mate varios. Al quinto reinicia a cero y devuelve su coste pagado. AppendConditionCountDisplay y force_update_count_label nativos; preview no cuenta. Pendiente prueba en partida.",
+  "implementation_note": "Contador 0–4 por batalla, conserva progreso entre turnos. Una vez por lanzamiento letal aunque mate varios. Al quinto reinicia a cero y devuelve su coste pagado. AppendConditionCountDisplay y force_update_count_label nativos; preview no cuenta. Pendiente prueba en partida. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
   "balance": "Reembolso repetible cada cinco hechizos letales; el quinto de coste cero también reinicia el ciclo.",
   "rarity": "uncommon"
 }

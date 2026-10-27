@@ -3,7 +3,7 @@
   "relic_effects": [
     {
       "id": "WW_A05_Effect",
-      "name": "@RelicEffectAcademic"
+      "name": "@RelicEffectLethalRefund"
     }
   ],
   "relics": [

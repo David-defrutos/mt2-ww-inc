@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_G04",
+  "type": "grafted_equipment",
+  "names": {
+    "english": "Amulet of Undying",
+    "spanish": "Amuleto de Reanimación"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "owners": [
+    "WW_U08"
+  ],
+  "draftable": false,
+  "effect": "undying 1"
+}

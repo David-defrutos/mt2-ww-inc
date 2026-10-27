@@ -9,13 +9,13 @@ internal static class EducationPreview
     internal static int TextDepth;
     internal static int Power(CardState? card)
     {
-        var core=AcademicRuntime.Core;
-        if(core==null||AcademicRuntime.Simulating||TextDepth>0||card==null||
+        if(card==null||TextDepth>0||!BattlePresentationContext.TryGet(out var core)||
+            core.GetSaveManager().PreviewMode||
             !RoomPowerEligibility.Affected(card)||!core.GetCombatManager().IsPlayerActionPhase()||
             !core.GetCardManager().GetHand().Contains(card)||
             AcademicRuntime.Frames.Any(frame=>frame.Card==card))return 0;
         int floor=core.GetRoomManager().GetSelectedRoom();
-        return floor<0||SpellRules.OnceTurn.Contains("FirstSpell:"+floor)?0:SpellRules.EducationPowerOnFloor(floor);
+        return floor<0||SpellRules.OnceTurn.Contains("FirstSpell:"+floor)?0:UnitSpellPassives.EducationPower(core,floor);
     }
     internal sealed class Scope
     {
@@ -61,6 +61,7 @@ internal static class EducationRefreshHook
     static readonly ConditionalWeakTable<CardUI,View> views=new();
     static void Postfix(CardUI __instance,CardStatistics ___currentCardStats)
     {
+        if(!BattlePresentationContext.TryGet(out _))return;
         var card=__instance.GetCardState();
         if(card==null||___currentCardStats==null||!RoomPowerEligibility.Affected(card))return;
         int power=EducationPreview.Power(card),multiplier=card.GetMagicPowerMultiplierFromTraits();
@@ -72,3 +73,6 @@ internal static class EducationRefreshHook
     }
 }
 // 2026-10-15-2226||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/EducationPreview.cs||Mostrar bono Education en texto del piso seleccionado con mejora nativa acotada y limpieza incluso ante excepción
+// 2026-10-27-0007||codex-ww-inc||salidas/build/ww-inc/src/EducationPreview.cs||Education: comprobar contexto actual antes de usar gestores; no consultar Core retenido fuera de batalla
+// 2026-10-27-0007||codex-ww-inc||salidas/build/ww-inc/src/EducationPreview.cs||Education: calcular bono con gestores vivos explícitos sin depender de referencia estática anterior
+// 2026-10-27-0007||codex-ww-inc||salidas/build/ww-inc/src/EducationPreview.cs||No refrescar cada CardUI fuera de escena de combate

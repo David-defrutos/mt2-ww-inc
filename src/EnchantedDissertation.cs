@@ -16,8 +16,9 @@ public sealed class CardEffectAcademicDissertation : AcademicEffectBase,ICardEff
         if(m.GetSaveManager().PreviewMode)yield break;
         AcademicRuntime.Core=m;
         var target=p.targets.FirstOrDefault();if(target==null)yield break;
-        yield return AcademicRuntime.ChooseHand(p.playedCard,c=>EligibleBoundSpell(c,s,m),
+        yield return HandSelection.ChooseHand(m,p.playedCard,c=>EligibleBoundSpell(c,s,m),
             new Func<CardState,IEnumerator>(selected=>DissertationTargeting.Bind(selected,target,m,systems)));
     }
 }
 // 2026-10-25-1852||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/EnchantedDissertation.cs||Separar efecto activo por mecánica con selectores y operaciones nativas; sin despacho por cadena de regla
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/EnchantedDissertation.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución

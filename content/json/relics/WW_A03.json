@@ -3,7 +3,11 @@
   "relic_effects": [
     {
       "id": "WW_A03_Effect",
-      "name": "@RelicEffectAcademic"
+      "name": "@RelicEffectAcademicFrozenDraw",
+      "param_int": 1,
+      "conditions": [
+        "@WW_A03_OncePerTurn"
+      ]
     }
   ],
   "relics": [
@@ -49,7 +53,19 @@
             "rarity": "common"
           }
         }
-      ]
+      ],
+      "relic_activated_texts": {
+        "english": "Draw 1.",
+        "spanish": "Roba 1.",
+        "french": "Piochez 1.",
+        "german": "Ziehe 1.",
+        "portuguese": "Compra 1.",
+        "russian": "Возьмите 1.",
+        "chinese": "抽1张牌。",
+        "chinese_traditional": "抽1張牌。",
+        "korean": "1장 뽑습니다.",
+        "japanese": "1枚引く。"
+      }
     }
   ],
   "sprites": [
@@ -60,6 +76,15 @@
     {
       "id": "WW_A03IconSmall",
       "path": "textures/relics/WW_A03IconSmall.png"
+    }
+  ],
+  "relic_effect_conditions": [
+    {
+      "id": "WW_A03_OncePerTurn",
+      "param_entry_duration": "this_turn",
+      "param_track_trigger_count": true,
+      "param_int": 1,
+      "allow_multiple_triggers_per_duration": false
     }
   ]
 }

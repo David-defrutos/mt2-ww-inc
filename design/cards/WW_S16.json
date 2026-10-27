@@ -8,7 +8,7 @@
   },
   "cost": 1,
   "rarity": "common",
-  "effect": "Intercambia la salud actual de la primera y la última unidad aliada. La salud que exceda su máximo se convierte en [armor].",
+  "effect": "Intercambia la salud actual de la primera y última aliadas. Convierte el exceso sobre su máximo en Armor. Después cura 4 a cada una.",
   "status": "implemented_unverified",
   "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."

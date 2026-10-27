@@ -23,9 +23,7 @@ internal static class DeathHook
         foreach(var spell in bound)yield return SpellRules.ReleaseBoundSpell(spell);
         if(!unit.IsDestroyed)DissertationMarker.Refresh(unit);
         if(!AcademicRuntime.Simulating&&archived.Length>0){SpellRules.Archived.Remove(unit);foreach(var spell in archived)yield return SpellRules.Restore(spell,false,true,attunedThisTurn:true);}
-        if(chaperone&&SpellRules.HasRelic("WW_A08")&&SpellRules.OnceTurn.Add("A08"))
-            foreach(var ally in AcademicRuntime.Units(floor))
-                if(ally.GetStatusEffectStacks("cooldown")>0)ally.RemoveStatusEffect("cooldown",1);
+        AcademicRelics.UnitDied(chaperone,floor);
         SocialRules.RefreshAuras();
     }
 }
@@ -34,9 +32,9 @@ internal static class PlatonicCooldownHook
 {
     static void Postfix(CharacterState __instance,ref int __result)
     {
-        var core=AcademicRuntime.Core;if(core==null||SocialRules.Wizard==null||__instance.IsDestroyed)return;
+        if(SocialRules.Wizard==null||__instance.IsDestroyed||!BattlePresentationContext.TryGet(out var core))return;
         var room=__instance.GetCurrentRoom();if(room==null||!room.GetRoomStateModifiersFromTrainRoomAttachments<RoomStateAcademicPlatonic>(Team.Type.Monsters).Any())return;
-        var units=AcademicRuntime.Units(room.GetRoomIndex());
+        var units=UnitSpellPassives.Units(core,room.GetRoomIndex());
         for(int i=0;i+1<units.Count;i++)
             if(SocialRules.Mixed(units[i],units[i+1])&&(units[i]==__instance||units[i+1]==__instance)){__result=Math.Max(1,__result-1);return;}
     }
@@ -47,6 +45,7 @@ internal static class AuraPositionHook
     static void Postfix()=>SocialRules.RefreshAuras();
 }
 [HarmonyPatch(typeof(CharacterState),nameof(CharacterState.ApplyDamage))]
+[HarmonyAfter("Conductor")]
 internal static class UnitAttackHook
 {
     static void Prefix(ref int damage,CharacterState.ApplyDamageParams damageParams)
@@ -58,7 +57,7 @@ internal static class UnitAttackHook
         =>__result=Run(__result,__instance,damage,damageParams);
     static IEnumerator Run(IEnumerator original,CharacterState target,int damage,CharacterState.ApplyDamageParams parameters)
     {
-        if(!AcademicRuntime.Active){yield return original;yield break;}
+        if(!AcademicRuntime.Active||!PreviewDependencies.CanWrite(target,AcademicRuntime.Core)){yield return original;yield break;}
         var attacker=parameters.attacker; bool direct=parameters.damageType==Damage.Type.DirectAttack;
         int hp=target.GetHP(),floor=target.GetCurrentRoomIndex();bool dead=target.IsDead;
         var observed=RepresentativeDamage.Begin(target);
@@ -92,6 +91,7 @@ internal static class UnitAttackHook
     }
 }
 [HarmonyPatch(typeof(CardManager),nameof(CardManager.DiscardCard))]
+[HarmonyAfter("Conductor")]
 internal static class DiscardRuleHook
 {
     static void Postfix(CardManager __instance,CardManager.DiscardCardParams discardCardParams,ref IEnumerator __result)
@@ -161,7 +161,9 @@ internal static class FrozenCardDrawHook
         =>__state=AcademicRuntime.Active&&!AcademicRuntime.Simulating&&!cardState.IsAnyAbility()&&cardState.HasTrait(typeof(CardTraitFreeze));
     static void Postfix(CardManager __instance,bool __result,bool __state)
     {
-        if(__result&&__state&&SpellRules.HasRelic("WW_A03")&&SpellRules.OnceTurn.Add("A03"))__instance.DrawCards(1);
+        if(__result&&__state)
+            foreach(var relic in AcademicRuntime.Core.GetRelicManager().GetRelicEffects(new System.Collections.Generic.List<RelicEffectAcademicFrozenDraw>()))
+                relic.OnFrozenCardPlayed(AcademicRuntime.Core);
     }
 }
 
@@ -194,3 +196,10 @@ internal static class FrozenCardDrawHook
 // 2026-10-14-2156||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Eliminar conversión de Spell Weakness en Melee Weakness del Inspector
 // 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Reproducir Dissertation con aliado portador y enemigo atacado incluso tras baja del objetivo
 // 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Observar daño nativo en contexto por víctima con limpieza de pila garantizada
+// 2026-10-25-2140||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Retirar identificación A03 y contador OnceTurn; delegar resultado al efecto con condiciones nativas
+// 2026-10-27-0007||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Strictly Platonic: proteger consulta de recarga en tooltips fuera de combate
+// 2026-10-27-0007||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Strictly Platonic: usar gestores actuales en consulta de recarga
+// 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Ejecutar wrapper después de Conductor para que su detector vea la coroutine nativa ApplyDamage
+// 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||No ejecutar observadores/pasivas de daño sobre unidades sin copia temporal durante preview
+// 2026-10-27-2018||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Ordenar wrapper de descarte después de Conductor para conservar sus triggers
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Delegar reducción de recarga por muerte de chaperón a su consumidor específico

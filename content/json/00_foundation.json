@@ -290,7 +290,7 @@
         "@WW_U02",
         "@WW_U03",
         "@WW_U05",
-        "@WW_U06",
+        "@WW_U10",
         "@WW_U13",
         "@WW_U16",
         "@WW_U17",
@@ -353,13 +353,7 @@
       "id": "WW_BannerIcon",
       "type": "map_node_icon",
       "extensions": {
-        "map_node_icon": {
-          "disabled_sprite": "@WW_BannerDisabled",
-          "enabled_sprite": "@WW_BannerEnabled",
-          "frozen_sprite": "@WW_BannerFrozen",
-          "visited_sprite_disabled": "@WW_BannerVisited",
-          "visited_sprite_enabled": "@WW_BannerVisited"
-        }
+        "map_node_icon": {}
       }
     },
     {
@@ -490,6 +484,66 @@
         "chinese_traditional": "敵方",
         "korean": "적",
         "japanese": "敵"
+      }
+    },
+    {
+      "key": "david.wwinc.DissertationNoTarget",
+      "texts": {
+        "english": "No unit target",
+        "spanish": "Sin objetivo de unidad",
+        "french": "Sans unité ciblée",
+        "german": "Kein Einheitenziel",
+        "portuguese": "Sem unidade como alvo",
+        "russian": "Без цели-бойца",
+        "chinese": "无单位目标",
+        "chinese_traditional": "無單位目標",
+        "korean": "유닛 대상 없음",
+        "japanese": "ユニット対象なし"
+      }
+    },
+    {
+      "key": "david.wwinc.TrainingWandText",
+      "texts": {
+        "english": "[conduit] {0}. Reduced by 1 per completed ring, to a minimum of 0.",
+        "spanish": "[conduit] {0}. Se reduce en 1 por ring completado, hasta un mínimo de 0.",
+        "french": "[conduit] {0}. Réduit de 1 par cercle terminé, jusqu’à un minimum de 0.",
+        "german": "[conduit] {0}. Pro abgeschlossenem Ring um 1 verringert, mindestens 0.",
+        "portuguese": "[conduit] {0}. Reduzido em 1 por anel concluído, até um mínimo de 0.",
+        "russian": "[conduit] {0}. Уменьшается на 1 за пройденное кольцо, минимум 0.",
+        "chinese": "[conduit] {0}。每完成一环减少1，最低为0。",
+        "chinese_traditional": "[conduit] {0}。每完成一環減少1，最低為0。",
+        "korean": "[conduit] {0}. 완료한 링마다 1 감소하며 최소 0입니다.",
+        "japanese": "[conduit] {0}。リングをクリアするごとに1減少する（最低0）。"
+      }
+    },
+    {
+      "key": "david.wwinc.TrainingWandDecayText",
+      "texts": {
+        "english": "Reduced by 1 per completed ring, to a minimum of 0.",
+        "spanish": "Se reduce en 1 por ring completado, hasta un mínimo de 0.",
+        "french": "Réduit de 1 par cercle terminé, jusqu’à un minimum de 0.",
+        "german": "Pro abgeschlossenem Ring um 1 verringert, mindestens 0.",
+        "portuguese": "Reduzido em 1 por anel concluído, até um mínimo de 0.",
+        "russian": "Уменьшается на 1 за пройденное кольцо, минимум 0.",
+        "chinese": "每完成一环减少1，最低为0。",
+        "chinese_traditional": "每完成一環減少1，最低為0。",
+        "korean": "완료한 링마다 1 감소하며 최소 0입니다.",
+        "japanese": "リングをクリアするごとに1減少する（最低0）。"
+      }
+    },
+    {
+      "key": "david.wwinc.SpellTrample",
+      "texts": {
+        "english": "Excess damage carries over to the front enemy until none remains. Transferred damage is not increased by Spell Weakness.",
+        "spanish": "El daño sobrante pasa al enemigo delantero hasta agotarse. Debilidad a hechizos no aumenta el daño transferido.",
+        "french": "Les dégâts excédentaires passent à l’ennemi de tête jusqu’à épuisement. La Faiblesse aux sorts n’augmente pas les dégâts transférés.",
+        "german": "Überschüssiger Schaden geht auf den vordersten Gegner über, bis er aufgebraucht ist. Zauberschwäche erhöht übertragenen Schaden nicht.",
+        "portuguese": "O dano excedente passa ao inimigo da frente até se esgotar. Fraqueza a Feitiços não aumenta o dano transferido.",
+        "russian": "Избыточный урон переходит к переднему врагу, пока не иссякнет. Уязвимость к заклинаниям не усиливает перенесённый урон.",
+        "chinese": "过量伤害依次转移至前排敌人，直到耗尽。法术易伤不会增加转移的伤害。",
+        "chinese_traditional": "過量傷害依次轉移至前排敵人，直到耗盡。法術易傷不會增加轉移的傷害。",
+        "korean": "초과 피해를 소진할 때까지 맨 앞 적에게 전달합니다. 전달된 피해는 주문 취약으로 증가하지 않습니다.",
+        "japanese": "余剰ダメージはなくなるまで先頭の敵へ移る。転送されたダメージは呪文弱化で増加しない。"
       }
     }
   ],

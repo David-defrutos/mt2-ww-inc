@@ -52,7 +52,8 @@
       ],
       "triggers": [
         "@WW_U05_ArcaneSlay"
-      ]
+      ],
+      "grafted_equipment": "@WW_G02"
     }
   ],
   "cards": [
@@ -142,16 +143,16 @@
         "japanese": "秘術撃破"
       },
       "descriptions": {
-        "english": "Triggers when a spell kills an enemy.",
-        "spanish": "Se activa cuando un hechizo mata a un enemigo.",
-        "french": "Se déclenche quand un sort tue un ennemi.",
-        "german": "Wird ausgelöst, wenn ein Zauber einen Feind tötet.",
-        "portuguese": "Ativa quando um feitiço mata um inimigo.",
-        "russian": "Срабатывает, когда заклинание убивает врага.",
-        "chinese": "法术击杀敌人时触发。",
-        "chinese_traditional": "法術擊殺敵人時觸發。",
-        "korean": "주문이 적을 처치하면 발동합니다.",
-        "japanese": "呪文が敵を倒したときに発動する。"
+        "english": "Triggers when a spell kills a unit.",
+        "spanish": "Se activa cuando un hechizo mata a una unidad.",
+        "french": "Se déclenche lorsqu’un sort tue une unité.",
+        "german": "Wird ausgelöst, wenn ein Zauber eine Einheit tötet.",
+        "portuguese": "Ativa quando um feitiço mata uma unidade.",
+        "russian": "Срабатывает, когда заклинание убивает бойца.",
+        "chinese": "法术击杀单位时触发。",
+        "chinese_traditional": "法術擊殺單位時觸發。",
+        "korean": "주문이 유닛을 처치하면 발동합니다.",
+        "japanese": "呪文がユニットを倒すと発動する。"
       },
       "notifications": {
         "english": "Arcane Slay",

@@ -79,7 +79,7 @@
       "targets_room": true,
       "card_art": "@WW_U06CardArt",
       "pools": [
-        "UnitsAllBanner"
+        "MegaPool"
       ],
       "effects": [
         "@WW_U06_Spawn"
@@ -106,8 +106,7 @@
       "health": 30,
       "attack_damage": 10,
       "subtypes": [
-        "@WW_Witch",
-        "SubtypesData_BannerUnit"
+        "@WW_Witch"
       ],
       "ability": "@WW_U06_Ability"
     }

@@ -18,8 +18,10 @@ internal static class TrampleOverflowGuard
 [HarmonyPatch(typeof(CardTraitTrample), nameof(CardTraitTrample.OnDamageWasApplied))]
 internal static class TrampleFromOverflowHook
 {
-    internal static bool Prefix(CardTraitState.ApplyingDamageParameters damageParams, ref IEnumerator __result)
+    internal static bool Prefix(CardTraitState.ApplyingDamageParameters damageParams, ref IEnumerator __result,ICoreGameManagers coreGameManagers=null!)
     {
+        if(SpellTrample.Own(damageParams.damageSourceCard)&&coreGameManagers!=null)
+        {__result=SpellTrample.Apply(damageParams,coreGameManagers);return false;}
         if (!TrampleOverflowGuard.Block(damageParams, Damage.Type.SpellOverflow)) return true;
         __result = TrampleOverflowGuard.Empty();
         return false;
@@ -37,3 +39,4 @@ internal static class OverflowFromTrampleHook
     }
 }
 // 2026-10-17-1448||script-corregir-trample-explosive.py||repos/MT2/repos-propios/mt2-ww-inc/src/TrampleOverflowGuard.cs||Cortar reactivación cruzada Trample/SpellOverflow solo en cartas david.wwinc, también en preview
+// 2026-10-27-1531||codex-ww-inc||salidas/build/ww-inc/src/TrampleOverflowGuard.cs||Sustituir únicamente Trample de cartas W&W por cadena aprobada; conservar comportamiento de otros clanes

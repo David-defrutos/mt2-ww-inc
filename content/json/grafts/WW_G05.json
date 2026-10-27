@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_G05",
+      "names": {
+        "english": "Emergency Battery",
+        "spanish": "Batería de Emergencia",
+        "french": "Batterie de secours",
+        "german": "Notfallbatterie",
+        "portuguese": "Bateria de Emergência",
+        "russian": "Аварийная батарея",
+        "chinese": "应急电池",
+        "chinese_traditional": "應急電池",
+        "korean": "비상 배터리",
+        "japanese": "非常用バッテリー"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_G05CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_G05_Equip"
+      ],
+      "traits": [
+        "@WW_G05_Grafted"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_G05_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_G05_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_G05_Upgrade",
+      "titles": {
+        "english": "Emergency Battery",
+        "spanish": "Batería de Emergencia",
+        "french": "Batterie de secours",
+        "german": "Notfallbatterie",
+        "portuguese": "Bateria de Emergência",
+        "russian": "Аварийная батарея",
+        "chinese": "应急电池",
+        "chinese_traditional": "應急電池",
+        "korean": "비상 배터리",
+        "japanese": "非常用バッテリー"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_G05Icon",
+      "status_effect_upgrades": [
+        {
+          "status": "burst",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_G05_Grafted",
+      "name": "CardTraitGraftedEquipment",
+      "trait_is_removable": false
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_G05CardArt",
+      "path": "textures/cards/WW_G05CardArt.png"
+    },
+    {
+      "id": "WW_G05Icon",
+      "path": "textures/equipment/WW_G05Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_G05CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_G05CardArt"
+        }
+      }
+    }
+  ]
+}

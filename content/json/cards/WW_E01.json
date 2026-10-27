@@ -13,7 +13,8 @@
       "name": "@CardEffectAcademicPurgePermit",
       "target_mode": "self",
       "target_team": "monsters",
-      "param_card_filter": "@WW_E01_PurgeableMask"
+      "param_card_filter": "@WW_E01_PurgeableMask",
+      "param_upgrade": "@WW_E01_PurgeGrant"
     }
   ],
   "cards": [
@@ -111,6 +112,12 @@
       "hide_icon_on_card": true,
       "ability_upgrade": "@WW_E01_Ability",
       "icon": "@WW_E01Icon"
+    },
+    {
+      "id": "WW_E01_PurgeGrant",
+      "trait_upgrades": [
+        "@WW_E01_PurgeTrait"
+      ]
     }
   ],
   "sprites": [
@@ -137,6 +144,13 @@
       "excluded_traits": [
         "CardTraitUnpurgable"
       ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_E01_PurgeTrait",
+      "name": "CardTraitSelfPurge",
+      "stack_mode": "none"
     }
   ]
 }

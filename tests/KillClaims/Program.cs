@@ -159,6 +159,7 @@ namespace WwInc
 }
 namespace HarmonyLib
 {
+    [AttributeUsage(AttributeTargets.Class)]public sealed class HarmonyAfter:Attribute{public HarmonyAfter(params string[] ids){_=ids;}}
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class HarmonyPatch:Attribute
     {
@@ -172,3 +173,4 @@ namespace HarmonyLib
     }
 }
 // 2026-10-24-1933||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/KillClaims/Program.cs||Banco de cola reentrante y daño con código real MineMineMine; casos frontal, origen propio, pisos, preview y Slay único
+// 2026-10-27-1437||codex-ww-inc||salidas/build/ww-inc/tests/KillClaims/Program.cs||Modelar metadato HarmonyAfter en arnés de autoría sin simular el motor Harmony

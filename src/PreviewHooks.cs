@@ -7,7 +7,7 @@ internal static class PreviewScope
     internal static bool Active=>snapshots.Count>0;
     internal static void Begin()
     {
-        snapshots.Push(new CollectionSnapshot(typeof(AcademicRuntime),typeof(SpellRules),typeof(SocialRules)));
+        snapshots.Push(new CollectionSnapshot(typeof(AcademicRuntime),typeof(SpellRules),typeof(SocialRules),typeof(FrozenTuition),typeof(EffectLifetimes)));
         AcademicRuntime.Frames.Clear();
     }
     internal static void End()
@@ -34,13 +34,7 @@ internal static class AcademicPreviewTargetsHook
 {
     static void Postfix(RoomManager roomManager,ref List<CharacterState> previewTargets)
     {
-        if(AcademicRuntime.Core==null)return;
-        var additional=new List<CharacterState>();
-        AcademicRuntime.Core.GetHeroManager().AddCharactersToList(additional);
-        AcademicRuntime.Core.GetMonsterManager().AddCharactersToList(additional);
-        for(int i=0;i<roomManager.GetNumRooms();i++)
-            roomManager.GetRoom(i)?.AddCharactersToList(additional,Team.Type.Monsters|Team.Type.Heroes);
-        foreach(var unit in additional)if(!previewTargets.Contains(unit))previewTargets.Add(unit);
+        if(PreviewDependencies.RequiresExpansion(roomManager))PreviewTargets.Expand(roomManager,previewTargets);
     }
 }
 // 2026-10-11-0001||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/PreviewHooks.cs||Cubrir predicción de combate completa y copiar unidades afectadas en otros pisos
@@ -52,3 +46,7 @@ internal static class EquipmentPreviewOwnerHook
     static bool Prefix()=>AcademicRuntime.EquipmentPreviewDepth==0;
 }
 // 2026-10-11-0009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/PreviewHooks.cs||Proteger propietario real del equipo durante S24 y cubrir personajes exteriores en preview
+// 2026-10-25-2036||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/PreviewHooks.cs||Incluir estado extraído de Frozen Tuition en la misma instantánea de preview
+// 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||Usar contexto actual y unidades visibles válidas al ampliar preview; evitar asserts fuera de combate
+// 2026-10-27-1534||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||No ampliar todos los pisos en partidas sin cartas/pasivas W&W presentes
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||Preservar colas de expiración extraídas al entrar y salir de preview

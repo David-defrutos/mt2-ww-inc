@@ -106,7 +106,9 @@ var wizard=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicWizardDraw"
 Check(wizard.Methods.Single(m=>m.Name=="TestEffect").Body.Instructions.Any(i=>i.Operand is MethodReference call&&call.Name=="GetDrawingDeckCardsDisabledThisTurn"),"Wizard respects native draw prevention");
 var previewTargets=mod.MainModule.Types.Single(t=>t.Name=="AcademicPreviewTargetsHook");
 var previewTargetCalls=previewTargets.Methods.Single(m=>m.Name=="Postfix").Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
-Check(previewTargetCalls.Contains("GetHeroManager")&&previewTargetCalls.Contains("GetMonsterManager"),"Preview also copies manager-owned exterior units");
+Check(previewTargetCalls.Contains("Expand"),"Preview delegates expansion to guarded current-room context");
+var previewExpansionCalls=mod.MainModule.Types.Single(t=>t.Name=="PreviewTargets").Methods.Single(m=>m.Name=="Expand").Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
+Check(previewExpansionCalls.Contains("TryGet")&&previewExpansionCalls.Contains("GetCharacterUI")&&!previewExpansionCalls.Contains("GetHeroManager")&&!previewExpansionCalls.Contains("GetMonsterManager"),"Preview expansion validates context and UI without broad manager-owned exterior collections");
 var returnEffect=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicEquipmentReturn");
 var previewProperty=returnEffect.Methods.Single(m=>m.Name=="get_CanApplyInPreviewMode");
 Check(previewProperty.Body.Instructions.Any(i=>i.OpCode==Mono.Cecil.Cil.OpCodes.Ldc_I4_1),"Equipment return supports preview");
@@ -149,7 +151,7 @@ var bannerData=new Dictionary<string,Dictionary<string,JsonElement>>();
 foreach(var path in Directory.GetFiles(Path.Combine(root,"content/json"),"*.json",SearchOption.AllDirectories))
 {
     using var doc=JsonDocument.Parse(File.ReadAllText(path).TrimStart('\uFEFF'));
-    foreach(var group in new[]{"cards","characters","effects","card_pools","character_triggers","character_trigger_types","card_triggers","traits","upgrades","relics","upgrade_masks"})
+    foreach(var group in new[]{"cards","characters","effects","card_pools","character_triggers","character_trigger_types","card_triggers","traits","upgrades","relics","relic_effects","relic_effect_conditions","upgrade_masks","game_objects","additional_tooltips"})
     {
         if(!doc.RootElement.TryGetProperty(group,out var rows))continue;
         if(!bannerData.ContainsKey(group))bannerData[group]=new();
@@ -201,7 +203,7 @@ Check(!mod.MainModule.Types.Any(t=>t.Name=="CardEffectAcademicSpike"),"Spike no 
 Check(!bannerData["cards"]["WW_S29"].GetProperty("descriptions").GetProperty("english").GetString()!.Contains("cooldown"),"Spike wording no longer describes cooldown");
 foreach(var id in new[]{"WW_S10","WW_S06","WW_S04","WW_S32","WW_S03","WW_S08"})
  Check(bannerData["cards"][id].GetProperty("pools").GetArrayLength()==0&&bannerData["cards"][id].GetProperty("hide_in_logbook").GetBoolean(),id+": retired from rewards and logbook");
-var medicalBefore=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext");
+var medicalBefore=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectOffensiveMedicine").Methods.Single(m=>m.Name=="BeforeRules");
 Check(medicalBefore.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="IsHealingSpell")&&medicalBefore.Body.Instructions.Any(i=>i.OpCode==Mono.Cecil.Cil.OpCodes.Ldstr&&(string)i.Operand=="A10"),"Medicine relic reserves the first native healing spell before resolution");
 Check(bannerData["relics"]["WW_A10"].GetProperty("descriptions").GetProperty("english").GetString()!.StartsWith("Your first healing spell each turn also"),"Medicine relic text preserves healing and restricts to first healing spell per turn");
 Check(bannerData["relics"]["WW_A10"].GetProperty("extensions")[0].GetProperty("collectable").GetProperty("pools")[0].GetString()=="MegaRelicPool", "Medicine relic is available through the native relic reward pool");
@@ -211,7 +213,7 @@ foreach(var id in new[]{"WW_S19","WW_S01","WW_S09","WW_S22","WW_S20"})Check(bann
 Check(bannerData["cards"]["WW_S21"].GetProperty("rarity").GetString()=="uncommon","Armored Honors is uncommon");
 Check(bannerData["cards"]["WW_S27"].GetProperty("pools").GetArrayLength()==0&&bannerData["cards"]["WW_S27"].GetProperty("hide_in_logbook").GetBoolean(),"Campus Ice Cream Stand retired from rewards and logbook");
 Check(bannerData["cards"]["WW_S22"].GetProperty("cost").GetInt32()==0,"Emergency Office Hours costs zero");
-Check(bannerData["effects"]["WW_S19_Draw"].GetProperty("name").GetString()=="CardEffectDraw"&&bannerData["effects"]["WW_S19_Draw"].GetProperty("param_int").GetInt32()==1&&bannerData["cards"]["WW_S19"].GetProperty("effects")[1].GetString()=="@WW_S19_Draw","Course Withdrawal adds native draw one after its original effect");
+Check(bannerData["effects"]["WW_S19_Effect"].GetProperty("param_int").GetInt32()==1&&bannerData["cards"]["WW_S19"].GetProperty("effects").GetArrayLength()==1,"Course Withdrawal configures draw one inside the confirmed discard callback");
 Check(bannerData["effects"]["WW_S17_Effect"].GetProperty("param_int").GetInt32()==10,"Sabbatical adds ten to missing-health healing");
 using(var dissertationDoc=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"content/json/cards/WW_S02.json")).TrimStart('\uFEFF')))
 {
@@ -279,7 +281,7 @@ var deanAbility=bannerData["cards"]["WW_C01_Ability"];
 Check(!deanAbility.TryGetProperty("targets_room",out var deanTargetsRoom)||!deanTargetsRoom.GetBoolean(),"Dean ability targets a character spawn point, like native Runespeak");
 Check(deanAbility.TryGetProperty("initial_keyboard_target",out var deanKeyboard)&&deanKeyboard.GetString()=="front_friendly","Dean has native friendly keyboard targeting");
 var deanEffect=bannerData["effects"]["WW_C01_Ability_Effect"];
-using var nativeRunespeak=JsonDocument.Parse(File.ReadAllText(Path.GetFullPath(Path.Combine(root,"../../../../datos-juego/MonsterTrain2GameData/CardData/Runespeak.json"))).TrimStart('\uFEFF'));
+using var nativeRunespeak=JsonDocument.Parse(File.ReadAllText(Path.Combine(Environment.GetEnvironmentVariable("MonsterTrain2GameData")??Path.GetFullPath(Path.Combine(root,"../../../datos-juego/MonsterTrain2GameData")),"CardData","Runespeak.json")).TrimStart('\uFEFF'));
 string nativeDamageFilter=nativeRunespeak.RootElement.GetProperty("effects")[1].GetProperty("param_card_filter").GetString()!;
 Check(deanEffect.TryGetProperty("param_card_filter",out var deanFilter)&&deanFilter.GetString()==nativeDamageFilter&&deanEffect.TryGetProperty("param_int",out var deanCount)&&deanCount.GetInt32()==1,"Dean uses Runespeak's actual native damage-spell filter and draw count");
 // Casting must remain valid while simulation must never execute a card selector.
@@ -375,6 +377,12 @@ int tomeSelection=tomeIL.FindIndex(i=>i.Operand is MethodReference c&&c.Name=="C
 Check(tomePreview>=0&&tomeSelection>tomePreview&&tomeIL.Skip(tomePreview).Take(tomeSelection-tomePreview).Any(i=>i.OpCode==Mono.Cecil.Cil.OpCodes.Ret),"Tome preview cannot open selection or change the real hand");
 var examEffect=bannerData["effects"]["WW_S20_Effect"];
 Check(examEffect.GetProperty("name").GetString()=="CardEffectDrawType", "Exam Week uses native typed draw across draw and discard");
+Check(examEffect.GetProperty("param_card_filter").GetString()=="@WW_S20_DistinctSpells", "Exam Week passes its Distinct mask to native draw");
+Check(bannerData["upgrade_masks"]["WW_S20_DistinctSpells"].GetProperty("card_type").GetString()=="spell"&&bannerData["upgrade_masks"]["WW_S20_DistinctSpells"].GetProperty("disallowed_pools")[0].GetString()=="@WW_S20_Copies","Distinct filter excludes its dedicated identity pool, retaining other spell types");
+Check(bannerData["card_pools"]["WW_S20_Copies"].GetProperty("cards").GetArrayLength()==1&&bannerData["card_pools"]["WW_S20_Copies"].GetProperty("cards")[0].GetString()=="@WW_S20","All Exam Week copies share the excluded CardData identity");
+Check(bannerData["traits"]["WW_S20_Distinct"].GetProperty("name").GetString()=="CardTraitDistinct"&&bannerData["cards"]["WW_S20"].GetProperty("traits")[0].GetString()=="@WW_S20_Distinct","Exam Week exposes the official Distinct keyword");
+Check(nativeTypedDrawCalls.Contains("GetParamCardFilter")&&nativeTypedDrawCalls.Contains("FilterCard"),"Installed native DrawType actually applies the configured filter");
+
 Check(examEffect.GetProperty("target_card_type").GetString()=="spell"&&examEffect.GetProperty("param_int").GetInt32()==3, "Exam Week draws three spells, not arbitrary cards or a full hand");
 Check(!mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Fields.Any(f=>f.Name=="BottomDeckTurn"), "Exam Week no longer redirects end-turn discarded spells to the bottom of draw");
 Check(!bannerData["cards"]["WW_S20"].GetProperty("traits").EnumerateArray().Any(t=>t.GetString()=="@WW_Consume"), "Exam Week no longer has Consume");
@@ -420,7 +428,7 @@ var frozenMark=frozenReturnType.NestedTypes.Single(t=>t.Name.StartsWith("<ApplyE
 Check(frozenMark.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="AddRule")&&!frozenMark.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="DrawSpecificCard"),"Slay marks a single return instead of drawing the casting card before discard");
 var frozenUnlock=frozenReturnType.NestedTypes.Single(t=>t.Name.StartsWith("<Unlock>")).Methods.Single(m=>m.Name=="MoveNext");
 Check(frozenUnlock.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="RemoveTemporaryTrait"&&c.Parameters[0].ParameterType.Name=="CardTraitState"),"Next-turn unlock removes only the Unplayable instance added by Slay");
-Check(frozenReturnType.Methods.Single(m=>m.Name=="ProtectUntilNextTurn").Body.Instructions.Any(i=>i.Operand is FieldReference f&&f.Name=="NextTurnActions"),"Deferred Project unlock uses next-turn cleanup rather than end-turn cleanup");
+Check(frozenReturnType.Methods.Single(m=>m.Name=="ProtectUntilNextTurn").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="EffectLifetimes"&&m.Name=="AtNextPlayerTurn"),"Deferred Project unlock uses next-turn cleanup rather than end-turn cleanup");
 
 
 var emeritusHeal=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").Methods.Single(m=>m.Name=="RecordHeal");
@@ -471,7 +479,7 @@ foreach(var id in new[]{"WW_U03","WW_U13"})
  Check(bannerData["character_triggers"][id+"_Overheal"].GetProperty("trigger").GetString()=="@WW_Overheal",id+": same shared event with independently configured effect");
 }
 
-var sharedHeal=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<HealShared>")).Methods.Single(m=>m.Name=="MoveNext");
+var sharedHeal=mod.MainModule.Types.Single(t=>t.Name=="UnitSpellPassives").NestedTypes.Single(t=>t.Name.StartsWith("<HealShared>")).Methods.Single(m=>m.Name=="MoveNext");
 Check(sharedHeal.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="SharedHealing")&&sharedHeal.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="ApplyHeal")&&!sharedHeal.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="GetHP"),"PhD heals equal native shares without capping to missing health before ApplyHeal");
 Check(bannerData["cards"]["WW_U02"].GetProperty("descriptions").GetProperty("english").GetString()!.Contains("split evenly"),"PhD wording states equal division instead of front-to-rear overflow");
 Check(hostile.Body.Instructions.Any(i=>i.Operand is FieldReference f&&f.Name=="HostileHealingDepth"),"Hostile Medicine accepts PhD excess healing while preventing its own damage feedback");
@@ -525,9 +533,9 @@ Check(areaPredicate.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.N
 foreach(var hookName in new[]{"EligibleRedirectHook","RedirectTargetHook"})
     Check(mod.MainModule.Types.Single(t=>t.Name==hookName).Methods.SelectMany(m=>m.HasBody?m.Body.Instructions.AsEnumerable():Enumerable.Empty<Mono.Cecil.Cil.Instruction>()).Any(i=>i.Operand is MethodReference c&&c.Name=="IsAreaEffect"),hookName+": shared area predicate controls targeting");
 var beforeIterator=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext");
-Check(beforeIterator.Body.Instructions.Count(i=>i.Operand is MethodReference c&&c.Name=="TargetsEnemy")==2,"Both cross-floor and rear-enemy repetitions require an actual enemy target");
+Check(beforeIterator.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="TargetsEnemy")&&mod.MainModule.Types.Single(t=>t.Name=="RelicEffectExtendedExam").Methods.Single(m=>m.Name=="BeforeRules").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="TargetsEnemy"),"Both cross-floor and rear-enemy repetitions require an actual enemy target");
 Check(bannerData["cards"]["WW_S22"].GetProperty("descriptions").GetProperty("english").GetString()!.Contains("[effect1.status0.power]"),"Emergency Office Hours displays upgraded Dazed stacks");
-Check(mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<ChooseHand>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is string text&&text=="david.wwinc.ChooseCard"),"Hand choices do not falsely announce Freeze");
+Check(mod.MainModule.Types.Single(t=>t.Name=="HandSelection").NestedTypes.Single(t=>t.Name.StartsWith("<ChooseHand>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is string text&&text=="david.wwinc.ChooseCard"),"Hand choices do not falsely announce Freeze");
 Check(mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Methods.Single(m=>m.Name=="SelectPile").Parameters.Last().Constant as string=="david.wwinc.ChooseSpell","Pile choices retain generic localized default while allowing a specific instruction");
 var inspectorPierce=bannerData["characters"]["WW_U16_Character"].GetProperty("starting_status_effects")[0];
 Check(inspectorPierce.GetProperty("count").GetInt32()==1&&inspectorPierce.GetProperty("status").GetProperty("id").GetString()=="@pierce"&&inspectorPierce.GetProperty("status").GetProperty("mod_reference").GetString()=="Conductor","Inspector starts with Conductor Pierce 1, not vanilla Piercing");
@@ -601,11 +609,47 @@ using(var pathsDoc=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"conten
 var conversionRun=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<AfterSpell>")).Methods.Single(m=>m.Name=="MoveNext");
 var conversionCalls=conversionRun.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
 
+Check(bannerData["effects"]["WW_S12_Damage"].GetProperty("target_team").GetString()=="both","Triple Impact Exam accepts allied and enemy targets");
+foreach(var hookName in new[]{"UnitAttackHook","MineMineMineDamageHook"})
+{
+    var hook=mod.MainModule.Types.Single(t=>t.Name==hookName);
+    Check(hook.CustomAttributes.Any(a=>a.AttributeType.Name=="HarmonyAfter"&&a.ConstructorArguments.Any(v=>v.Value is CustomAttributeArgument[] items&&items.Any(item=>Equals(item.Value,"Conductor")))),hookName+": coroutine wraps after Conductor hit detection");
+}
+var creditSaveType=mod.MainModule.Types.Single(t=>t.Name=="ExcessCreditSave");
+foreach(var methodName in new[]{"Serialize","Deserialize"})
+    Check(!creditSaveType.Methods.Single(m=>m.Name==methodName).Body.Instructions.Any(i=>i.Operand is MethodReference method&&method.Name=="GetCoreManagers"),methodName+": persistent Extra Credit save avoids combat-only core");
+
+Check(bannerData["relics"]["WW_A03"].GetProperty("relic_activated_texts").GetProperty("english").GetString()=="Draw 1.","Frozen Enrollment Scholarship defines its native activation notification");
+var grantedTooltipIterator=mod.MainModule.Types.Single(t=>t.Name=="GrantedEffectTooltips").NestedTypes.Single(t=>t.Name.StartsWith("<Append>")).Methods.Single(m=>m.Name=="MoveNext");
+var grantedTooltipCalls=grantedTooltipIterator.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
+Check(grantedTooltipCalls.Contains("GetStatusEffectTooltipContents")&&grantedTooltipCalls.Contains("GetTraitTooltipTextLocalizationKey"),"Granted status and trait tooltips fill localized content like native tooltip initialization");
+
+var repeatCounter=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectExtendedExam").Methods.Single(m=>m.Name=="Count").Body.Instructions;
+Check(repeatCounter.Any(i=>Equals(i.Operand,"A06"))&&repeatCounter.Any(i=>i.Operand is FieldReference f&&f.Name=="OnceTurn"),"Extended Exam Session counter reads its actual per-turn use instead of a second tracker");
+
+var creditBody166=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicConsumeCredits").NestedTypes.Single(t=>t.Name.StartsWith("<ResolveCredits>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions;
+Check(creditBody166.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="CardEffectAddStatusEffect"&&m.Name==".ctor")&&creditBody166.Any(i=>i.Operand is MethodReference m&&m.Name=="ApplyEffect")&&!creditBody166.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="CharacterState"&&m.Name=="AddStatusEffect"),"Credit Conversion delegates status grant and queue to native effect");
+Check(creditBody166.Any(i=>i.Operand is MethodReference m&&m.Name=="SetParamInt"&&i.Previous?.OpCode==Mono.Cecil.Cil.OpCodes.Ldc_I4_0),"Cost multiplier cannot become native five-percent chance");
+var nativeStatusGrant166=gameTypes["CardEffectAddStatusEffect"].NestedTypes.Single(t=>t.Name.StartsWith("<ApplyEffect>")).Methods.Single(m=>m.Name=="MoveNext");
+Check(nativeStatusGrant166.Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="RunTriggerQueue"),"Installed native status effect drains queued state triggers");
+var replayType166=mod.MainModule.Types.Single(t=>t.Name=="SpellReplay");
+Check(replayType166.Methods.Single(m=>m.Name=="FrontEnemy").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="TargetHelper"&&m.Name=="CollectTargets"),"Replay enemy selection reuses native filters instead of an unfiltered boss special case");
+var afterSpell166=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<AfterSpell>")).Methods.Single(m=>m.Name=="MoveNext");
+Check(afterSpell166.Body.Instructions.Any(i=>Equals(i.Operand,"floors"))&&afterSpell166.Body.Instructions.Any(i=>Equals(i.Operand,"behind")),"Camera restoration is limited to actual cross-floor or behind-target repetitions");
+Check(mod.MainModule.Types.Single(t=>t.Name=="HandSelectionPresentation").Methods.Single(m=>m.Name=="Restore").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="RefreshHandCards"),"Selection cleanup uses native full-hand refresh");
+Check(mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="ConsumeFloorUse"),"Memo FIFO helper is connected to real spell preparation");
+Check(mod.MainModule.Types.Single(t=>t.Name=="ArcaneSlayConductor").Methods.Single(m=>m.Name=="OnHit").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="HasEffectTrigger"),"Arcane Slay requires an actual native listener");
+Check(gameTypes["SaveManager"].Properties.Any(p=>p.Name=="ActiveSaveData"),"Saved-clan diagnosis reads the installed native active-save property");
+var loadCheck166=mod.MainModule.Types.Single(t=>t.Name=="RunLoadDiagnostic").Methods.Single(m=>m.Name=="Check").Body.Instructions;
+Check(!loadCheck166.Any(i=>i.Operand is MethodReference m&&(m.Name=="GetCoreManagers"||m.Name.StartsWith("SetMainClass")||m.Name.StartsWith("SetSubClass"))),"Load diagnostic neither accesses combat managers nor invents saved clan IDs");
+
 var arcaneType=bannerData["character_trigger_types"]["WW_ArcaneSlay"];
-Check(arcaneType.GetProperty("names").GetProperty("english").GetString()=="Arcane Slay"&&arcaneType.GetProperty("descriptions").GetProperty("english").GetString()!.Contains("spell kills an enemy"),"Arcane Slay has reusable name and tooltip describing spell kills on its floor");
+Check(arcaneType.GetProperty("names").GetProperty("english").GetString()=="Arcane Slay"&&arcaneType.GetProperty("descriptions").GetProperty("english").GetString()!.Contains("spell kills a unit"),"Arcane Slay has reusable name and tooltip describing spell kills on its floor");
 Check(bannerData["character_triggers"]["WW_U05_ArcaneSlay"].GetProperty("trigger").GetString()=="@WW_ArcaneSlay"&&!bannerData["cards"]["WW_U05"].TryGetProperty("descriptions",out _),"Explosive Lab Assistant uses native trigger text without duplicate override");
 Check(bannerData["effects"]["WW_U05_ArcaneSlayEffect"].GetProperty("name").GetString()=="CardEffectAddStatusEffect"&&bannerData["effects"]["WW_U05_ArcaneSlayEffect"].GetProperty("param_status_effects")[0].GetProperty("status").GetString()=="burst"&&bannerData["effects"]["WW_U05_ArcaneSlayEffect"].GetProperty("param_status_effects")[0].GetProperty("count").GetInt32()==1,"Arcane Slay effect is native Burst one rather than a bespoke coded reward");
-Check(conversionCalls.Contains("Dispatch")&&!conversionRun.Body.Instructions.Any(i=>i.OpCode==Mono.Cecil.Cil.OpCodes.Ldstr&&(string)i.Operand=="WW_U05"),"Spell kills dispatch the reusable trigger through native room queue without U05 ID checks");
+var arcaneAdapter=mod.MainModule.Types.Single(t=>t.Name=="ArcaneSlayConductor");
+Check(arcaneAdapter.Methods.Single(m=>m.Name=="Register").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="SetToTriggerOnCharacterHit"),"Arcane Slay registers detection and native queue with installed Conductor");
+Check(!conversionCalls.Contains("Dispatch"),"AfterSpell does not dispatch Arcane Slay twice after migration");
 
 Check(conversionCalls.Contains("HealShared")&&!conversionCalls.Contains("HealOverflow")&&!conversionCalls.Contains("DamageOverflow"),"First-spell damage-to-healing passive remains; Hostile Medicine no longer uses trample conversion");
 foreach(var id in new[]{"WW_U02"})
@@ -613,7 +657,11 @@ using(var medicineDoc=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"con
     Check(medicineDoc.RootElement.GetProperty("cards").EnumerateArray().All(c=>c.GetProperty("descriptions").GetProperty("english").GetString()!.Contains("also")),id+": unit and ability texts explicitly say also");
 var deskRun=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicDeskSwap").NestedTypes.Single(t=>t.Name.StartsWith("<ApplyEffect>")).Methods.Single(m=>m.Name=="MoveNext");
 var deskInstructions=deskRun.Body.Instructions;
-Check(deskInstructions.Any(i=>i.Operand is MethodReference c&&c.Name=="RunUnitTurn"),"Desk Swap executes the native immediate unit turn");
+Check(!deskInstructions.Any(i=>i.Operand is MethodReference c&&c.Name=="RunUnitTurn")&&
+    bannerData["effects"]["WW_S18_Attack"].GetProperty("name").GetString()=="CardEffectAttackWithUnit"&&
+    bannerData["cards"]["WW_S18"].GetProperty("effects").GetArrayLength()==1&&
+    deskInstructions.Any(i=>i.Operand is MethodReference c&&c.DeclaringType.Name=="CardEffectAttackWithUnit"&&c.Name==".ctor")&&deskInstructions.Any(i=>i.Operand is MethodReference c&&c.Name=="ApplyEffect"),
+    "Desk Swap delegates its validated attacker to native attack inside atomic coordination");
 Check(!deskInstructions.Any(i=>i.Operand is string s&&s=="armor")&&!deskInstructions.Any(i=>i.Operand is MethodReference c&&c.Name=="RemoveStatusEffect"),"Desk Swap leaves Armor untouched");
 Check(!deskInstructions.Any(i=>i.Operand is string s&&s=="dazed"),"Desk Swap grants no Dazed");
 var resolutionPowerMethod=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Methods.Single(m=>m.Name=="ResolutionPower");
@@ -638,11 +686,11 @@ Check(mod.MainModule.Types.Single(t=>t.Name=="EligibleRedirectHook").NestedTypes
 Check(bannerData["cards"]["WW_S31"].GetProperty("cost").GetInt32()==1&&bannerData["cards"]["WW_S31"].GetProperty("rarity").GetString()=="common","New direct damage spell is common and costs one Ember");
 Check(bannerData["effects"]["WW_S31_Damage"].GetProperty("param_int").GetInt32()==8&&bannerData["effects"]["WW_S31_Damage"].GetProperty("target_team").GetString()=="heroes"&&bannerData["effects"]["WW_S31_Damage"].GetProperty("target_mode").GetString()=="room","General Examination deals eight to all enemy units on its floor");
 Check(bannerData["cards"]["WW_E02"].GetProperty("rarity").GetString()=="common"&&!bannerData["effects"]["WW_E02_Equip"].TryGetProperty("target_subtype",out _)&&bannerData["upgrades"]["WW_E02_Upgrade"].GetProperty("status_effect_upgrades")[0].GetProperty("status").GetString()=="conduit"&&bannerData["upgrades"]["WW_E02_Upgrade"].GetProperty("status_effect_upgrades")[0].GetProperty("count").GetInt32()==5,"Common Faculty Robe has no subtype restriction and grants native Conduit five");
-Check(bannerData["characters"]["WW_U08_Character"].GetProperty("starting_status_effects").EnumerateArray().Any(s=>s.GetProperty("status").GetString()=="undying"&&s.GetProperty("count").GetInt32()==1),"Postdoc starts with Undying one");
+Check(!bannerData["characters"]["WW_U08_Character"].GetProperty("starting_status_effects").EnumerateArray().Any(s=>s.GetProperty("status").GetString()=="undying")&&bannerData["characters"]["WW_U08_Character"].GetProperty("grafted_equipment").GetString()=="@WW_G04","Postdoc receives Undying from its graft, without a second innate charge");
 Check(bannerData["cards"]["WW_U11_Ability"].GetProperty("cooldown").GetInt32()==3&&bannerData["effects"]["WW_U11_Ability_Effect"].GetProperty("name").GetString()=="CardEffectRecursion"&&bannerData["effects"]["WW_U11_Ability_Effect"].GetProperty("target_mode").GetString()=="exhaust","Archivist recovers a consumed spell through native selection with cooldown three");
 Check(!bannerData["characters"]["WW_U04_Character"].TryGetProperty("ability",out _)&&!bannerData["cards"].ContainsKey("WW_U04_Ability"),"Education is passive and has no active ability card");
 Check(mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="EducationPowerOnFloor"),"First-spell pipeline applies the Education passive");
-Check(!mod.MainModule.Types.Single(t=>t.Name=="SocialRules").NestedTypes.Single(t=>t.Name.StartsWith("<BeginTurn>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is string s&&s=="WW_E02"),"Replacement equipment cannot retain old shrink behavior");
+Check(!mod.MainModule.Types.Single(t=>t.Name=="SocialRules").NestedTypes.Single(t=>t.Name.StartsWith("<CreateSeparators>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is string s&&s=="WW_E02"),"Replacement equipment cannot retain old shrink behavior");
 foreach(var id in new[]{"WW_U02","WW_U03"})
 {
     Check(!bannerData["characters"][id+"_Character"].TryGetProperty("ability",out _)&&!bannerData["cards"].ContainsKey(id+"_Ability"),id+": medicine passive has no ability or cooldown");
@@ -664,16 +712,16 @@ Check(!pairPreviewCalls.Any(n=>n.Contains("AddTemporary")||n.Contains("RemoveTem
 Check(pairPreviewCalls.Contains("GetHand")&&pairPreviewCalls.Contains("IsPlayerActionPhase")&&pairPreviewCalls.Contains("GetSelectedRoom")&&pairPreviewCalls.Contains("Mixed"), "Prospective keywords are scoped to a hand card and the selected floor's mixed pair");
 Check(pairPreviewCalls.Contains("HasTrait"), "Preview omits keywords already held by the card");
 Check(mod.MainModule.Types.Single(t=>t.Name=="PairAssignmentRefreshHook").Methods.Where(m=>m.HasBody).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&c.Name=="UpdateTextContent"), "Pair Assignment refreshes UI when prospective keywords change");
-var chooseHandState=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<ChooseHand>"));
+var chooseHandState=mod.MainModule.Types.Single(t=>t.Name=="HandSelection").NestedTypes.Single(t=>t.Name.StartsWith("<ChooseHand>"));
 var chooseInstructions=chooseHandState.Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.ToList();
 int selectHandIndex=chooseInstructions.FindIndex(i=>i.Operand is MethodReference call&&call.Name=="SelectCardFromHand");
-Check(!chooseInstructions.Any(i=>i.Operand is MethodReference call&&call.Name=="AddSelectCardFromHandOnCompletedCallback")&&!chooseInstructions.Any(i=>i.Operand is FieldReference f&&f.Name=="completed"),"Shared selector does not keep card-play resolution blocked while awaiting hand input");
+Check(!chooseInstructions.Any(i=>i.Operand is FieldReference f&&f.Name=="completed"),"Shared selector does not keep card-play resolution blocked while awaiting hand input");
 Check(selectHandIndex>0&&chooseInstructions[selectHandIndex-1].OpCode==Mono.Cecil.Cil.OpCodes.Ldc_I4_0,"Hand selection disables native last-card auto-pick that bypasses filters");
-var applyChoice=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<ApplyChoice>")).Methods.Single(m=>m.Name=="MoveNext");
+var applyChoice=mod.MainModule.Types.Single(t=>t.Name=="HandSelection").NestedTypes.Single(t=>t.Name.StartsWith("<ApplyChoice>")).Methods.Single(m=>m.Name=="MoveNext");
 Check(applyChoice.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Invoke")&&applyChoice.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Contains"),"Confirmed callback verifies hand membership before running selected-card resolution");
 var withdrawalState=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicDiscardForEmber").NestedTypes.Single(t=>t.Name.StartsWith("<ResolveWithdrawal>"));
 var withdrawalCalls=withdrawalState.Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(c=>c.Name).ToList();
-Check(withdrawalCalls.IndexOf("Cost")>=0&&withdrawalCalls.IndexOf("Cost")<withdrawalCalls.IndexOf("DiscardCard")&&withdrawalCalls.IndexOf("DiscardCard")<withdrawalCalls.IndexOf("AddEnergy"),"Course Withdrawal confirmation snapshots current cost, discards, then grants Ember");
+Check(withdrawalCalls.IndexOf("Cost")>=0&&withdrawalCalls.IndexOf("Cost")<withdrawalCalls.IndexOf("DiscardCard")&&withdrawalCalls.IndexOf("DiscardCard")<withdrawalCalls.IndexOf("AddEnergy")&&withdrawalCalls.IndexOf("AddEnergy")<withdrawalCalls.IndexOf("DrawCards"),"Course Withdrawal confirmation snapshots current cost, discards, then grants Ember");
 Check(withdrawalCalls.LastIndexOf("Contains")>withdrawalCalls.IndexOf("DiscardCard")&&withdrawalCalls.LastIndexOf("Contains")<withdrawalCalls.IndexOf("AddEnergy"),"Ember is conditional on the selected card leaving the hand");
 var pairKeywords=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Methods.Single(m=>m.Name=="ApplyPairKeywords");
 var pairKeywordCalls=pairKeywords.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(c=>c.Name).ToArray();
@@ -734,15 +782,16 @@ var educationText=File.ReadAllText(Path.Combine(root,"src/EducationPreview.cs"))
 Check(educationText.Contains("AcademicRuntime.PowerUpgrade")&&educationText.Contains("includeCurrentTraitEffectText=true"),"Education text uses native scaled upgrade and native dynamic formatting");
 Check(educationText.Contains("OnceTurn.Contains")&&!educationText.Contains("OnceTurn.Add"),"Reading Education bonus never spends the first-spell trigger");
 Check(educationText.Contains("static void Finalizer")&&educationText.Contains("if(finished)return")&&educationText.Contains("RemoveUpgrade(upgrade)"),"Prospective power is removed once on success or exception");
-Check(educationText.Contains("GetHand().Contains(card)")&&educationText.Contains("AcademicRuntime.Simulating")&&educationText.Contains("frame.Card==card"),"Education text excludes collection, simulation and resolving spell");
+Check(educationText.Contains("GetHand().Contains(card)")&&educationText.Contains("core.GetSaveManager().PreviewMode")&&educationText.Contains("frame.Card==card"),"Education text excludes collection, simulation and resolving spell");
 Check(educationText.Contains("view.Power==power")&&educationText.Contains("UpdateTextContent"),"Education refreshes the hand when selected floor bonus changes");
 var refundRules=File.ReadAllText(Path.Combine(root,"src/SpellRules.cs"));
 using var refundJson=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"content/json/relics/WW_A05.json")).TrimStart('\uFEFF'));
 Check(refundJson.RootElement.GetProperty("relics")[0].GetProperty("extensions")[0].GetProperty("collectable").GetProperty("force_update_count_label").GetBoolean(),"Refund enables native relic counter refresh");
-Check(refundRules.Contains("AppendConditionCountDisplay")&&refundRules.Contains("TextFormat_Divide"),"Refund shows native localized count / 5");
+var refundBehavior=File.ReadAllText(Path.Combine(root,"src/RelicEffectLethalRefund.cs"));
+Check(refundBehavior.Contains("Count(")&&refundBehavior.Contains("TextFormat_Divide"),"Refund shows native localized count / 5");
 Check(refundRules.Contains("OnceTurn.Clear();TuitionRefundCount=0;")&&!refundRules.Contains("OnceBattle.Add(\"A05\")"),"Refund resets per battle without a first-battle-only gate");
 Check(refundRules.Contains("!frame.Indirect&&kills>0&&!AcademicRuntime.Simulating")&&refundRules.Contains("RecordKillingSpell(card,kills,core)"),"Refund counts one completed lethal cast, excluding previews and indirect replay frames");
-Check(refundRules.Contains("GetLastPlayedCost()")&&refundRules.Contains("RefundProgress"),"Refund gives fifth spell paid cost using the tested counter rule");
+Check(refundBehavior.Contains("GetLastPlayedCost()")&&refundBehavior.Contains("RefundProgress"),"Refund gives fifth spell paid cost using the tested counter rule");
 var permitAbilityJson=bannerData["cards"]["WW_E01_Ability"];
 Check(permitAbilityJson.GetProperty("initial_cooldown").GetInt32()==0&&permitAbilityJson.GetProperty("cooldown").GetInt32()==8,"Withdrawal Stamp starts ready and has cooldown eight after use");
 Check(!bannerData["effects"]["WW_E01_Ability_Effect"].TryGetProperty("param_card_filter_2",out _)&&!bannerData["upgrade_masks"].ContainsKey("WW_E01_ConsumeMask"),"Withdrawal Stamp no longer has a Consume phase or its mask");
@@ -913,6 +962,98 @@ Check(bannerData["effects"]["WW_S02_Effect"].GetProperty("name").GetString()=="@
     bannerData["effects"]["WW_U06_Ability_Effect"].GetProperty("name").GetString()=="@CardEffectAcademicCollectiveAssessment"&&
     bannerData["effects"]["WW_S01_Effect"].GetProperty("name").GetString()=="@CardEffectAcademicInterdepartmentalMemo",
     "Current interactive and repeat cards resolve to dedicated effects instead of legacy string dispatch");
+
+var scholarshipEffect=bannerData["relic_effects"]["WW_A03_Effect"];
+Check(scholarshipEffect.GetProperty("name").GetString()=="@RelicEffectAcademicFrozenDraw"&&scholarshipEffect.GetProperty("param_int").GetInt32()==1&&
+ scholarshipEffect.GetProperty("conditions")[0].GetString()=="@WW_A03_OncePerTurn","Frozen scholarship exposes draw count and its native condition in JSON");
+var scholarshipConditions=bannerData["relic_effect_conditions"]["WW_A03_OncePerTurn"];
+Check(scholarshipConditions.GetProperty("param_track_trigger_count").GetBoolean()&&scholarshipConditions.GetProperty("param_entry_duration").GetString()=="this_turn"&&
+ scholarshipConditions.GetProperty("param_int").GetInt32()==1&&!scholarshipConditions.GetProperty("allow_multiple_triggers_per_duration").GetBoolean(),"Scholarship quota is implemented by the native per-turn trigger counter");
+var scholarshipCalls=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectAcademicFrozenDraw").Methods.Single(m=>m.Name=="OnFrozenCardPlayed").Body.Instructions
+ .Select(i=>i.Operand).OfType<MethodReference>().Select(c=>c.Name).ToArray();
+Check(scholarshipCalls.Contains("AreConditionsTrue")&&scholarshipCalls.Contains("OnTrigger")&&scholarshipCalls.Contains("DrawCards"),"Scholarship bridge uses native condition checking, accounting and card drawing");
+Check(bannerData["effects"]["WW_E01_Ability_Effect"].GetProperty("param_upgrade").GetString()=="@WW_E01_PurgeGrant"&&
+ bannerData["traits"]["WW_E01_PurgeTrait"].GetProperty("name").GetString()=="CardTraitSelfPurge","Withdrawal Stamp declares Purge as the actual configured native trait upgrade");
+Check(bannerData["effects"]["WW_S16_Effect"].GetProperty("param_status_effects")[0].GetProperty("status").GetString()=="armor","Health Exchange declares its granted Armor for native tooltip generation");
+Check(bannerData["effects"]["WW_S18_Effect"].GetProperty("should_fail_to_cast_if_test_fails").GetBoolean()&&
+ bannerData["effects"]["WW_S18_Attack"].GetProperty("target_mode").GetString()=="front_in_room"&&bannerData["effects"]["WW_S18_Attack"].GetProperty("target_team").GetString()=="monsters",
+ "Desk Swap requires the swap to be valid and attacks with the resulting front ally");
+
+Check(bannerData["effects"]["WW_S13_Damage"].GetProperty("target_team").GetString()=="both","Dissertation accepts friendly and enemy units");
+Check(bannerData["traits"]["WW_S13_Trample"].GetProperty("name").GetString()=="CardTraitTrample","Dissertation retains the native Trample trait");
+Check(!bannerData["game_objects"]["WW_BannerIcon"].GetProperty("extensions").GetProperty("map_node_icon").EnumerateObject().Any(),"Banner keeps the native template textures and silhouette instead of incompatible custom outlines");
+Check(mod.MainModule.Types.Single(t=>t.Name=="BannerPresentation").Methods.Single(m=>m.Name=="Configure").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="GetMapIconPrefab"),"Banner emblem is added to the registered native prefab");
+Check(bannerData["additional_tooltips"]["WW_InsuranceRevengeReference"].GetProperty("trigger").GetString()=="on_hit","Insurance exposes the official trigger tooltip and native Silence semantics");
+
+var graftOwners=new Dictionary<string,string>{{"WW_U04","WW_G01"},{"WW_U16","WW_G02"},{"WW_U05","WW_G02"},{"WW_U18","WW_G03"},{"WW_U08","WW_G04"},{"WW_U17","WW_G05"}};
+foreach(var pair in graftOwners)
+ Check(bannerData["characters"][pair.Key+"_Character"].GetProperty("grafted_equipment").GetString()=="@"+pair.Value,pair.Key+": approved starting graft is native CharacterData metadata");
+foreach(var id in new[]{"WW_G01","WW_G02","WW_G03","WW_G04","WW_G05"})
+{
+ var graftCard=bannerData["cards"][id];
+ Check(graftCard.GetProperty("card_type").GetString()=="equipment"&&graftCard.GetProperty("pools").GetArrayLength()==0,id+": auxiliary equipment does not alter normal rewards");
+ Check(graftCard.GetProperty("cost").GetInt32()==1&&graftCard.GetProperty("rarity").GetString()=="common",id+": simple one-Ember common equipment when recovered");
+ Check(bannerData["traits"][id+"_Grafted"].GetProperty("name").GetString()=="CardTraitGraftedEquipment"&&!bannerData["traits"][id+"_Grafted"].GetProperty("trait_is_removable").GetBoolean(),id+": uses official nonremovable graft marker");
+ Check(graftCard.GetProperty("names").EnumerateObject().Count()==10&&bannerData["upgrades"][id+"_Upgrade"].GetProperty("titles").EnumerateObject().Count()==10,id+": ten-language equipment name and upgrade title");
+}
+Check(bannerData["upgrades"]["WW_G02_Upgrade"].GetProperty("bonus_hp").GetInt32()==10,"Safety Hat supplies exactly ten maximum health");
+foreach(var expectedStatus in new[]{("WW_G01","conduit",10),("WW_G03","damage shield",1),("WW_G04","undying",1),("WW_G05","burst",3)})
+{
+ var stack=bannerData["upgrades"][expectedStatus.Item1+"_Upgrade"].GetProperty("status_effect_upgrades")[0];
+ Check(stack.GetProperty("status").GetString()==expectedStatus.Item2&&stack.GetProperty("count").GetInt32()==expectedStatus.Item3,expectedStatus.Item1+": correct native status and configured base amount");
+}
+var trainingType=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicTrainingWand");
+Check(trainingType.BaseType!.Name=="CardEffectAttachEquipment"&&!trainingType.Methods.Any(m=>m.Name=="ApplyEffect"),"Training Wand delegates attachment and graft behavior to native equipment");
+foreach(var hook in new[]{"TrainingWandApplyHook","TrainingWandRemoveHook"})
+ Check(mod.MainModule.Types.Single(t=>t.Name==hook).Methods.Single(m=>m.Name=="Prefix").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Prepare"),hook+": applies the same calculated amount in native add/remove paths");
+Check(!gameTypes["CardStatistics"].NestedTypes.Single(t=>t.Name=="TrackedValueType").Fields.Any(f=>f.Name.Contains("Ring")||f.Name.Contains("Distance")),"Installed native tracked values have no ring counter, so the small ring bridge is required");
+Check(bannerCatalog.RootElement.GetProperty("grafted_equipment").GetArrayLength()==5,"Catalog distinguishes five grafts from the selected reward collection");
+
+// Review invariants cover in-play text as well as the card body.
+using var pairRoomDoc=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"content/json/cards/WW_R02.json")));
+var pairRoom=pairRoomDoc.RootElement.GetProperty("room_modifiers")[0];
+Check(pairRoom.GetProperty("in_play_descriptions").GetRawText()==pairRoom.GetProperty("descriptions").GetRawText(),"Awkward Silence uses the same concise room and card description in every language");
+var sabbaticalType=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicSabbatical");
+Check(!sabbaticalType.NestedTypes.Where(t=>t.Name.Contains("DisplayClass")).SelectMany(t=>t.Fields).Any(f=>f.FieldType.Name=="CardEffectState"),"Delayed Sabbatical does not retain an effect-state getter whose temporary bonuses may expire");
+Check(sabbaticalType.NestedTypes.SelectMany(t=>t.Methods).Where(m=>m.HasBody).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&c.Name=="GetHealAmount"),"Sabbatical captures native scaled healing before scheduling next-turn wake");
+foreach(var entry in new[]{("EducationPreview","Power"),("PairAssignmentPreview","MissingKeywords"),("CardTraitAcademicPairPower","GetMagicPowerAdditive"),("PlatonicCooldownHook","Postfix")})
+{
+    var method=mod.MainModule.Types.Single(t=>t.Name==entry.Item1).Methods.Single(m=>m.Name==entry.Item2);
+    var instructions=method.Body.Instructions;
+    int guardIndex=instructions.ToList().FindIndex(i=>i.Operand is MethodReference call&&call.DeclaringType.Name=="BattlePresentationContext"&&call.Name=="TryGet");
+    int managerIndex=instructions.ToList().FindIndex(i=>i.Operand is MethodReference call&&call.DeclaringType.Name=="ICoreGameManagers"&&call.Name.StartsWith("Get"));
+    Check(guardIndex>=0&&(managerIndex<0||guardIndex<managerIndex),entry.Item1+" checks available scene before asserting manager getters");
+    Check(!instructions.Any(i=>i.Operand is FieldReference field&&field.DeclaringType.Name=="AcademicRuntime"&&field.Name=="Core"),entry.Item1+" does not trust retained Core for presentation");
+}
+foreach(var name in new[]{"EducationRefreshHook","PairAssignmentRefreshHook"})
+ Check(mod.MainModule.Types.Single(t=>t.Name==name).Methods.Single(m=>m.Name=="Postfix").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.DeclaringType.Name=="BattlePresentationContext"&&c.Name=="TryGet"),name+" skips refresh outside combat scene");
+foreach(var property in new[]{"get_Active","get_Simulating"})
+{
+ var getter=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").Methods.Single(m=>m.Name==property);
+ var getterCalls=getter.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().ToArray();
+ Check(Array.FindIndex(getterCalls,c=>c.DeclaringType.Name=="BattlePresentationContext")>=0&&Array.FindIndex(getterCalls,c=>c.DeclaringType.Name=="BattlePresentationContext")<Array.FindIndex(getterCalls,c=>c.Name=="GetSaveManager"),property+" guards scene availability before reading save state");
+}
+
+var discardCompatibility=mod.MainModule.Types.Single(t=>t.Name=="DiscardRuleHook");
+Check(discardCompatibility.CustomAttributes.Any(a=>a.AttributeType.Name=="HarmonyAfter"&&a.ConstructorArguments.Any(v=>v.Value is CustomAttributeArgument[] items&&items.Any(item=>Equals(item.Value,"Conductor")))),"Discard wrapper nests outside Conductor so native event inspection remains visible");
+var authoredIterator=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicAuthoredDamage").NestedTypes.Single(t=>t.Name.StartsWith("<ApplyEffect>")).Methods.Single(m=>m.Name=="MoveNext");
+Check(authoredIterator.Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="SpellReplay"&&m.Name=="WithSource"),"Direct Extra Credit uses the same safe source scope as spell replays");
+foreach(var name in new[]{"CharacterFloorRearranged","ShiftCharacterTrigger","SentryCharacterTrigger","HandleRoomUnitOrderPossiblyChanged"})
+    Check(deskInstructions.Any(i=>i.Operand is MethodReference m&&m.Name==name),"Atomic Desk Swap preserves native movement contract: "+name);
+var lifetimeTypes=mod.MainModule.Types.Single(t=>t.Name=="EffectLifetimes");
+Check(lifetimeTypes.Fields.Any(f=>f.Name=="EndCombatTurn")&&lifetimeTypes.Fields.Any(f=>f.Name=="NextPlayerTurn"),"Turn boundaries have explicit independent owners");
+var previewLifetime=mod.MainModule.Types.Single(t=>t.Name=="PreviewScope").Methods.Single(m=>m.Name=="Begin").Body.Instructions;
+Check(previewLifetime.Any(i=>i.Operand is TypeReference t&&t.Name=="EffectLifetimes"),"Preview snapshots include extracted lifetime queues");
+var relicClasses=new Dictionary<string,string>{["WW_A01"]="RelicEffectStrengthChair",["WW_A02"]="RelicEffectConsumeCopy",["WW_A04"]="RelicEffectQuietStudy",["WW_A05"]="RelicEffectLethalRefund",["WW_A06"]="RelicEffectExtendedExam",["WW_A07"]="RelicEffectRelationsCommittee",["WW_A08"]="RelicEffectAdministrativeSilence",["WW_A09"]="RelicEffectComplaintsOffice",["WW_A10"]="RelicEffectOffensiveMedicine"};
+foreach(var relic in relicClasses)
+{
+ using var relicDoc=JsonDocument.Parse(File.ReadAllText(Path.Combine(root,"content/json/relics",relic.Key+".json")).TrimStart('\uFEFF'));
+ Check(relicDoc.RootElement.GetProperty("relic_effects")[0].GetProperty("name").GetString()=="@"+relic.Value,relic.Key+": JSON uses a dedicated concrete relic effect");
+ Check(Derives(mod.MainModule.Types.Single(t=>t.Name==relic.Value),"RelicEffectAcademic"),relic.Key+": old common type remains an assignable compatibility base");
+}
+var commonRelic=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectAcademic");
+Check(!commonRelic.IsSealed&&commonRelic.Methods.Any(m=>m.Name=="Legacy"),"Former relic binary type is preserved with an isolated legacy adapter");
+
 Console.WriteLine(JsonSerializer.Serialize(new {success=errors.Count==0,checks,errors},new JsonSerializerOptions{WriteIndented=true}));
 return errors.Count==0?0:1;
 
@@ -1142,3 +1283,33 @@ return errors.Count==0?0:1;
 // 2026-10-25-1745||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Actualizar texto esperado de Hostile Medicine a la forma breve aprobada
 // 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Adaptar contratos a starter 2 de ataque y clonación de efectos en consumidor separado
 // 2026-10-25-1852||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Contrastar núcleos sin dependencias al clan y conexión de los tres efectos activos dedicados
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Mantener contratos nativos de selección tras extracción de AcademicRuntime
+// 2026-10-25-2140||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Actualizar contratos de ubicación de curación y ataque oficial de Desk Swap
+// 2026-10-25-2142||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Contrastar condiciones y concesiones declarativas y ataque oficial con JSON y ensamblado compilado
+// 2026-10-25-2146||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Incluir efectos y condiciones de reliquias en índice de contratos y conservar JsonElement clonado
+// 2026-10-26-2033||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Contrato: robo Course Withdrawal en confirmación, no antes de descartar
+// 2026-10-26-2033||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Verificar IL descarte-Ember-robo y no solo texto
+// 2026-10-26-2037||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Contracts/Program.cs||Contratos: API Conductor instalada y ausencia de doble despacho
+// 2026-10-26-2043||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contratos de objetivos, Trample nativo, silueta de banner y tooltip de trigger Insurance
+// 2026-10-26-2046||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Indexar prefabs y referencias de tooltip para nuevos contratos
+// 2026-10-26-2046||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Resolver fixture oficial desde nueva profundidad de trabajo o ruta configurable
+// 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contratos de filtro Distinct, pool de identidad y aplicación nativa efectiva
+// 2026-10-26-2231||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contrato de Undying único de Postdoc a través de su injerto
+// 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contratos de cinco injertos, seis portadores, carga nativa, estados, localización y varita simétrica
+// 2026-10-26-2335||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Añadir contratos de texto de sala e instantánea de curación diferida
+// 2026-10-26-2339||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Leer bloque de sala desde JSON fuente; inventario banner no contiene modificadores de sala
+// 2026-10-27-0008||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Diez contratos: cuatro rutas de texto/recarga y ambos refrescos comprueban escena antes de getters
+// 2026-10-27-0009||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contrato Education verifica preview desde gestores vivos, no consulta estática antigua
+// 2026-10-27-0010||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Dos contratos de guardia global Active/Simulating para hooks de coste y otros accesos fuera de escena
+// 2026-10-27-0010||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Evitar colisión de variable calls en contratos nuevos de getters globales
+// 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Alinear contrato de texto Arcane Slay con bajas aliadas aprobadas
+// 2026-10-27-1429||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contratos de objetivos aliados, orden Conductor y guardado sin gestores de combate
+// 2026-10-27-1434||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar nueva ruta segura de preview y no exigir getters causantes de assertions
+// 2026-10-27-1434||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Permitir callback de limpieza sin confundirlo con espera bloqueante de selección
+// 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar textos nativos de activación, estado concedido y fallback Purge
+// 2026-10-27-1439||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar conexión de contador a uso real de Extended Exam Session
+// 2026-10-27-1545||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Contratos de conexión al motor: estado/cola nativos, chance, targeting, cámara acotada, Memo FIFO y diagnóstico sin mutación
+// 2026-10-27-1546||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar construcción nativa y llamada virtual heredada sin exigir un declaring type incorrecto
+// 2026-10-27-2022||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Actualizar contratos de nuevas responsabilidades y comprobar conexión real a APIs de autoría, descarte, movimiento y reliquias
+// 2026-10-27-2022||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir comprobación de equipo retirado en nueva operación social concreta
+// 2026-10-27-2023||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir condiciones de curación y objetivo en consumidores extraídos y reconocer despacho virtual nativo de ataque

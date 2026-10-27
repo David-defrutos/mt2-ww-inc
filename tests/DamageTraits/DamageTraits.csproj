@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
-  <ItemGroup><Compile Include="../../src/TrampleOverflowGuard.cs" Link="TrampleOverflowGuard.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../../src/TrampleOverflowGuard.cs" Link="TrampleOverflowGuard.cs" /><Compile Include="../../src/NextUseUpgrade.cs" Link="NextUseUpgrade.cs"/><Compile Include="../../src/SpellTrample.cs" Link="SpellTrample.cs"/></ItemGroup>
 </Project>
 <!-- 2026-10-17-1448||script-corregir-trample-explosive.py||repos/MT2/repos-propios/mt2-ww-inc/tests/DamageTraits/DamageTraits.csproj||Ejecutar los prefijos reales en un banco de callbacks sin Unity -->
+<!-- 2026-10-26-2050||codex-ww-inc||salidas/build/ww-inc/tests/DamageTraits/DamageTraits.csproj||Añadir comentario XML de trazabilidad de cambios aprobados 0.1.159 -->
+<!-- 2026-10-27-1539||codex-ww-inc||salidas/build/ww-inc/tests/DamageTraits/DamageTraits.csproj||Ejecutar transferencia postmitigación y tooltip de Trample real -->

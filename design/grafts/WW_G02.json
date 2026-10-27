@@ -1,0 +1,16 @@
+﻿{
+  "id": "WW_G02",
+  "type": "grafted_equipment",
+  "names": {
+    "english": "Safety Hat",
+    "spanish": "Sombrero de Seguridad"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "owners": [
+    "WW_U16",
+    "WW_U05"
+  ],
+  "draftable": false,
+  "effect": "+10 Health"
+}

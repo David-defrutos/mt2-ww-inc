@@ -56,11 +56,10 @@ public sealed class CardEffectAcademicPurgePermit : AcademicEffectBase,ICardEffe
         AcademicRuntime.Core=m;
         var equipment=Equipment(s,p);
         if(equipment==null||!TestEffect(s,p,m))yield break;
-        yield return AcademicRuntime.ChooseHand(p.playedCard,c=>Eligible(c,s,m,equipment),card=> {
+        yield return HandSelection.ChooseHand(m,p.playedCard,c=>Eligible(c,s,m,equipment),card=> {
             AcademicRuntime.Core=m;
             string ring=Ring(m);
-            AcademicRuntime.Trait(card,"CardTraitSelfPurge");
-            Permit.MarkUsed(ring,equipment);
+            if(SpellRules.GrantConfiguredTraits(card,s.GetParamCardUpgradeData()))Permit.MarkUsed(ring,equipment);
         });
     }
 }
@@ -143,10 +142,10 @@ public sealed class CardEffectAcademicDiscardForEmber : AcademicEffectBase,ICard
     {
         if(m.GetSaveManager().PreviewMode)yield break;
         AcademicRuntime.Core=m;
-        yield return AcademicRuntime.ChooseHand(p.playedCard,Eligible,
-            new Func<CardState,IEnumerator>(card=>ResolveWithdrawal(card,p,m)));
+        yield return HandSelection.ChooseHand(m,p.playedCard,Eligible,
+            new Func<CardState,IEnumerator>(card=>ResolveWithdrawal(card,p,m,s.GetParamInt())));
     }
-    private static IEnumerator ResolveWithdrawal(CardState card,CardEffectParams p,ICoreGameManagers m)
+    private static IEnumerator ResolveWithdrawal(CardState card,CardEffectParams p,ICoreGameManagers m,int drawCount)
     {
         AcademicRuntime.Core=m;
         var manager=m.GetCardManager();
@@ -154,7 +153,11 @@ public sealed class CardEffectAcademicDiscardForEmber : AcademicEffectBase,ICard
         int cost=(int)Math.Min(int.MaxValue,2L*Math.Max(0,SpellRules.Cost(card)));
         yield return manager.DiscardCard(new CardManager.DiscardCardParams {
             discardCard=card,triggeredByCard=true,triggeredCard=p.playedCard,wasPlayed=false });
-        if(!manager.GetHand().Contains(card))m.GetPlayerManager().AddEnergy(cost);
+        if(!manager.GetHand().Contains(card))
+        {
+            m.GetPlayerManager().AddEnergy(cost);
+            manager.DrawCards(drawCount,p.playedCard);
+        }
     }
 }
 // 2026-10-10-0009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Descarte con Ember actual y redirección tras muerte del receptor
@@ -323,3 +326,8 @@ public sealed class CardEffectAcademicCopyLastCommon : AcademicEffectBase
 // 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Postdoc entrega al copiador su mejora Ephemeral declarada
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas
 // 2026-10-25-1643||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Requisition lee su mejora concedida desde param_upgrade para exponer Explosive al tooltip nativo
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Withdrawal Stamp concede Purge desde param_upgrade y consume permiso solo si la mejora nativa tiene éxito
+// 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Pasar robo configurado a callback
+// 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Resolver descarte y robo en misma confirmación
+// 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Course Withdrawal: descartar, Ember y luego DrawCards nativo

@@ -3,7 +3,7 @@
   "relic_effects": [
     {
       "id": "WW_A07_Effect",
-      "name": "@RelicEffectAcademic",
+      "name": "@RelicEffectRelationsCommittee",
       "additional_tooltips": [
         "@WW_A07_ChaperoneDetails"
       ]

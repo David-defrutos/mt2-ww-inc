@@ -285,7 +285,7 @@
       },
       "cost": 2,
       "rarity": "uncommon",
-      "effect": "El primer hechizo de cada turno que dañe a enemigos de este piso también restaura salud igual al daño infligido, repartida por igual entre los aliados de este piso.",
+      "effect": "El primer hechizo por turno que reste salud a enemigos cura la salud perdida, repartida por igual entre aliados.",
       "status": "implemented_unverified",
       "implementation_note": "Primer hechizo de daño apto por turno y piso: curación por aliado = daño efectivo total / aliados vivos, redondeo entero habitual. Incluye al PhD y aliados con vida completa; no redistribuye exceso. Usa ApplyHeal nativo y conserva interacciones de excedente con Emeritus/Hostile Medicine. Pendiente prueba en partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
@@ -342,7 +342,8 @@
         "size": 1
       },
       "banner": false,
-      "ability_cooldown": null
+      "ability_cooldown": null,
+      "grafted_equipment": "WW_G01"
     },
     {
       "id": "WW_U05",
@@ -365,7 +366,8 @@
         "size": 2
       },
       "banner": true,
-      "ability_cooldown": null
+      "ability_cooldown": null,
+      "grafted_equipment": "WW_G02"
     },
     {
       "id": "WW_U06",
@@ -387,7 +389,7 @@
         "health": 30,
         "size": 2
       },
-      "banner": true,
+      "banner": false,
       "ability_cooldown": 2,
       "ability_name": {
         "english": "Collective Assessment",
@@ -423,7 +425,8 @@
         "size": 1
       },
       "banner": false,
-      "ability_cooldown": null
+      "ability_cooldown": null,
+      "grafted_equipment": "WW_G04"
     },
     {
       "id": "WW_U10",
@@ -445,7 +448,7 @@
         "health": 20,
         "size": 1
       },
-      "banner": false,
+      "banner": true,
       "ability_cooldown": 3,
       "ability_name": {
         "english": "Credit Conversion",
@@ -545,7 +548,8 @@
         "size": 2
       },
       "banner": true,
-      "ability_cooldown": null
+      "ability_cooldown": null,
+      "grafted_equipment": "WW_G02"
     },
     {
       "id": "WW_U17",
@@ -568,7 +572,8 @@
         "size": 1
       },
       "banner": true,
-      "ability_cooldown": null
+      "ability_cooldown": null,
+      "grafted_equipment": "WW_G05"
     },
     {
       "id": "WW_U18",
@@ -604,7 +609,8 @@
         "korean": "동결 등록",
         "japanese": "凍結登録"
       },
-      "ability_effect": "Añade [freeze] a una carta de tu mano."
+      "ability_effect": "Añade [freeze] a una carta de tu mano.",
+      "grafted_equipment": "WW_G03"
     },
     {
       "id": "WW_S01",
@@ -631,7 +637,7 @@
       },
       "cost": 2,
       "rarity": "rare",
-      "effect": "Aparta un hechizo de tu mano. Los próximos 3 ataques de esta unidad también lo lanzan: los perjudiciales al enemigo atacado y los beneficiosos a esta unidad. Elige bando para los ambiguos. Devuélvelo al descarte cuando termine el efecto.",
+      "effect": "Aparta un hechizo no aleatorio. Los próximos 3 ataques también lo lanzan. Admite efectos globales nativos seguros de recursos y robo; muestra su descripción completa en la marca.",
       "status": "implemented_unverified",
       "implementation_note": "Admite hechizos aliados y enemigos con OnlySpells nativo. Los efectos de objetivo único con bando exclusivo mantienen ese bando. Los efectos Both se infieren con clases nativas de daño/curación, registro Conductor y DisplayCategory de estados; si son desconocidos o mezclan beneficio y perjuicio, DeckScreen nativo elige Allies/Enemies con dos CardState auxiliares fuera de cualquier pila. CheckTargetsOverride nativo recibe el portador o enemigo por efecto; áreas mantienen target_mode/team. Permite beneficios tras baja del enemigo. Tres ataques, retorno nativo al descarte y marca con hechizo/contador/bando. Pendiente prueba en partida, selección, replay y preview.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -676,10 +682,10 @@
       },
       "cost": 1,
       "rarity": "common",
-      "effect": "Inflige [effect0.power] de daño tres veces al mismo enemigo.",
+      "effect": "Inflige [effect0.power] de daño tres veces a la misma unidad.",
       "status": "implemented_unverified",
-      "implementation_note": "Tres aplicaciones nativas de 1 de daño al mismo enemigo, coste 1 y rareza común. Sin Trample. Pendiente partida.",
-      "balance": "Valores vigentes: coste 1, daño 1 tres veces, común."
+      "implementation_note": "Tres aplicaciones nativas de 4 de daño a la misma unidad, coste 1 y rareza común. Sin Trample. Pendiente partida.",
+      "balance": "Valores vigentes: coste 1, daño 4 tres veces, común."
     },
     {
       "id": "WW_S13",
@@ -691,7 +697,7 @@
       },
       "cost": 1,
       "rarity": "common",
-      "effect": "[trample]. Inflige [effect0.power] de daño. Slay: aumenta el daño en 2 permanentemente.",
+      "effect": "Inflige 4 de daño a una unidad. Trample. Slay: aumenta el daño en 2 permanentemente.",
       "status": "implemented_unverified",
       "implementation_note": "CardTraitTrample nativo añadido; keyword y tooltip nativos. Conserva coste 1, común, daño base 4 y Slay nativo +2 de daño permanente mediante CardTriggerEffectBuffSpellDamage single_run. Pendiente partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -736,7 +742,7 @@
       },
       "cost": 1,
       "rarity": "common",
-      "effect": "Intercambia la salud actual de la primera y la última unidad aliada. La salud que exceda su máximo se convierte en [armor].",
+      "effect": "Intercambia la salud actual de la primera y última aliadas. Convierte el exceso sobre su máximo en Armor. Después cura 4 a cada una.",
       "status": "implemented_unverified",
       "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -768,7 +774,7 @@
       "rarity": "common",
       "effect": "Intercambia la primera y la última unidad aliada. La nueva primera unidad ataca de inmediato.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Intercambio atómico de extremos; respeta Immobile y jefe exterior. Eventos nativos de reliquia, Shift, Sentry, orden de sala y desbloqueos. Ataque inmediato nativo solo con el extremo trasero original si sobrevive y sigue delante. No Dazed ni cambios de Armor. Pendiente partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
     },
     {
@@ -781,7 +787,7 @@
       },
       "cost": 0,
       "rarity": "rare",
-      "effect": "Descarta un hechizo, Blight o Scourge de la mano. Obtén el doble de su coste actual en [ember]. Roba [effect1.power].",
+      "effect": "Descarta un hechizo, Blight o Scourge. Gana el doble de su coste actual en Ember. Después roba una carta.",
       "status": "implemented_unverified",
       "implementation_note": "Selecciona Spell o Blight de mano, conservando exclusión de Persistent/Infusion. Captura GetCost actual antes de DiscardCard nativo; da el doble en Ember solo si sale de mano. Después CardEffectDraw roba 1. Rara, coste 0. Pendiente prueba en partida.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -796,7 +802,7 @@
       },
       "cost": 1,
       "rarity": "rare",
-      "effect": "Roba [effect0.power] hechizos de tu pila de robo o de descartes.",
+      "effect": "Distinct. Roba 3 hechizos de robo o descarte, excluyendo cualquier copia de Exam Week.",
       "status": "implemented_unverified",
       "implementation_note": "Roba 3 hechizos desde robo o descarte. Rara, sin Consume.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -811,7 +817,7 @@
       },
       "cost": 1,
       "rarity": "uncommon",
-      "effect": "Añade tanta [armor] a una unidad aliada como su [attack]. Su [attack] pasa a 0 este turno. Añade [dazed] 1.",
+      "effect": "Añade Armor igual a Attack. Attack es 0 durante la próxima ronda de combate. Añade Dazed 1.",
       "status": "implemented_unverified",
       "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
       "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."
@@ -1006,7 +1012,7 @@
       },
       "effect": "El primer hechizo de daño de cada turno obtiene tanto [magicpower] como la mitad del [attack] de la primera unidad aliada de su piso, solo al jugarlo.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1018,7 +1024,7 @@
       },
       "effect": "El primer hechizo con [consume] de cada turno obtiene Spellchain. Su copia cuesta 1[ember].",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1042,7 +1048,7 @@
       },
       "effect": "Si no juegas hechizos de daño este turno, roba +1 en el próximo turno.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1054,7 +1060,7 @@
       },
       "effect": "Por cada 5 hechizos que maten a un enemigo, recupera el coste del último en [ember].",
       "status": "implemented_unverified",
-      "implementation_note": "Contador 0–4 por batalla, conserva progreso entre turnos. Una vez por lanzamiento letal aunque mate varios. Al quinto reinicia a cero y devuelve su coste pagado. AppendConditionCountDisplay y force_update_count_label nativos; preview no cuenta. Pendiente prueba en partida.",
+      "implementation_note": "Contador 0–4 por batalla, conserva progreso entre turnos. Una vez por lanzamiento letal aunque mate varios. Al quinto reinicia a cero y devuelve su coste pagado. AppendConditionCountDisplay y force_update_count_label nativos; preview no cuenta. Pendiente prueba en partida. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Reembolso repetible cada cinco hechizos letales; el quinto de coste cero también reinicia el ciclo.",
       "rarity": "uncommon"
     },
@@ -1066,7 +1072,7 @@
       },
       "effect": "El primer hechizo dirigido a un único enemigo de cada turno también afecta al enemigo que tiene detrás.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "uncommon"
     },
@@ -1078,7 +1084,7 @@
       },
       "effect": "Al comienzo del turno, invoca un chaperón 0/1 de 1[size] y [conduit] 1 entre cada Mago y Bruja adyacentes. Usa la variante del mago de la izquierda. Recorre de abajo arriba y de izquierda a derecha. Ignora [capacity]; máximo 7 unidades por piso. Al morir, desaparece.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1090,7 +1096,7 @@
       },
       "effect": "La primera muerte de un chaperón o chaperona de cada turno reduce la [cooldown] actual de los aliados de su piso en 1.",
       "status": "implemented_unverified",
-      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+      "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1102,7 +1108,7 @@
       },
       "effect": "Al comienzo del turno, transfiere todos los efectos de [debuff] de un Mago y una Bruja a un Chaperón de su piso.",
       "status": "implemented_unverified",
-      "implementation_note": "Al comienzo del turno, el primer piso válido de abajo arriba con Wizard, Witch y Chaperone transfiere los estados negativos del primer Wizard y la primera Witch al primer Chaperone de izquierda a derecha. No exige adyacencia; una sola transferencia por turno. Incluye campeones por subtipos. Pendiente partida.",
+      "implementation_note": "Al comienzo del turno, el primer piso válido de abajo arriba con Wizard, Witch y Chaperone transfiere los estados negativos del primer Wizard y la primera Witch al primer Chaperone de izquierda a derecha. No exige adyacencia; una sola transferencia por turno. Incluye campeones por subtipos. Pendiente partida. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad.",
       "balance": "Versión de pruebas 1; activaciones automáticas y una sola carga por ventana indicada.",
       "rarity": "common"
     },
@@ -1115,7 +1121,7 @@
       "effect": "El primer hechizo de curación de cada turno también inflige daño a las unidades enemigas de su piso igual a la salud restaurada.",
       "status": "implemented_unverified",
       "rarity": "common",
-      "implementation_note": "Reutiliza la conversión de curación contabilizada por hechizo del clan y ApplyDamageToTarget nativo. Clasificación CardEffectHeal/subclases y registro compartido de Conductor y cuota OnceTurn global reservada antes de resolver. No cuenta curaciones indirectas/abilities ni restaura en vez de dañar. Iconos provisionales WW_A03 reutilizados. Pendiente partida."
+      "implementation_note": "Reutiliza la conversión de curación contabilizada por hechizo del clan y ApplyDamageToTarget nativo. Clasificación CardEffectHeal/subclases y registro compartido de Conductor y cuota OnceTurn global reservada antes de resolver. No cuenta curaciones indirectas/abilities ni restaura en vez de dañar. Iconos provisionales WW_A03 reutilizados. Pendiente partida. Consumidor concreto por reliquia; fachada binaria anterior conservada para compatibilidad."
     }
   ],
   "reserved_room_names": [
@@ -1314,6 +1320,84 @@
       },
       "serving_size": 1,
       "retired_reason": "Retirada por petición del usuario."
+    }
+  ],
+  "grafted_equipment": [
+    {
+      "id": "WW_G01",
+      "type": "grafted_equipment",
+      "names": {
+        "english": "Training Wand",
+        "spanish": "Varita de Prácticas"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "owners": [
+        "WW_U04"
+      ],
+      "draftable": false,
+      "effect": "Conduit max(0, 10 - completed rings)"
+    },
+    {
+      "id": "WW_G02",
+      "type": "grafted_equipment",
+      "names": {
+        "english": "Safety Hat",
+        "spanish": "Sombrero de Seguridad"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "owners": [
+        "WW_U16",
+        "WW_U05"
+      ],
+      "draftable": false,
+      "effect": "+10 Health"
+    },
+    {
+      "id": "WW_G03",
+      "type": "grafted_equipment",
+      "names": {
+        "english": "Protective Charm",
+        "spanish": "Talismán Protector"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "owners": [
+        "WW_U18"
+      ],
+      "draftable": false,
+      "effect": "damage shield 1"
+    },
+    {
+      "id": "WW_G04",
+      "type": "grafted_equipment",
+      "names": {
+        "english": "Amulet of Undying",
+        "spanish": "Amuleto de Reanimación"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "owners": [
+        "WW_U08"
+      ],
+      "draftable": false,
+      "effect": "undying 1"
+    },
+    {
+      "id": "WW_G05",
+      "type": "grafted_equipment",
+      "names": {
+        "english": "Emergency Battery",
+        "spanish": "Batería de Emergencia"
+      },
+      "cost": 1,
+      "rarity": "common",
+      "owners": [
+        "WW_U17"
+      ],
+      "draftable": false,
+      "effect": "burst 3"
     }
   ]
 }

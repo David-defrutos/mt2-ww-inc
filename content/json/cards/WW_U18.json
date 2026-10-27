@@ -120,7 +120,8 @@
         "@WW_Witch",
         "SubtypesData_BannerUnit"
       ],
-      "ability": "@WW_U18_Ability"
+      "ability": "@WW_U18_Ability",
+      "grafted_equipment": "@WW_G03"
     }
   ],
   "sprites": [

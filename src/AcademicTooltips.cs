@@ -10,16 +10,14 @@ namespace WwInc;
 // not read a spawning card's override description for code-driven passives.
 internal static class AcademicTooltips
 {
-    static readonly HashSet<string> Cards = new(new[]{"WW_C01","WW_C02",
-        "WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08",
-        "WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18"});
+    internal static string ClassId="";
 
     internal static bool TryCreate(CardState? card,CharacterState? unit,out TooltipContent content)
     {
         content=default;
         if(card==null||unit==null)return false;
         string asset=AcademicRuntime.Id(card);
-        if(!Cards.Any(id=>asset.EndsWith(id,StringComparison.Ordinal)))return false;
+        if(card.GetCardType()!=CardType.Monster||card.GetLinkedClassID()!=ClassId)return false;
         string key=card.GetOverrideDescriptionKey();
         if(string.IsNullOrWhiteSpace(key)||!key.HasTranslation())return false;
         // CardState is the localization power context, just as in the native
@@ -73,3 +71,4 @@ internal static class AcademicCharacterTooltipHook
 // 2026-10-12-0946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicTooltips.cs||Cubrir tooltip S32
 // 2026-10-13-0023||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicTooltips.cs||Mover detalles de Dissertation al tooltip de su marca nativa y evitar duplicado en reservas
 // 2026-10-25-1547||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicTooltips.cs||Retirar tooltip de texto completo de hechizos; conservar fallback solo de unidades y reservas
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicTooltips.cs||Sustituir lista fija de IDs de unidades por tipo y clase nativos para tooltips de pasivas

@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>WwInc.Plugin</AssemblyName>
     <RootNamespace>WwInc</RootNamespace>
-    <Version>0.1.154</Version>
+    <Version>0.1.167</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -660,4 +660,16 @@
 <!-- 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa editorial a 0.1.151 sin reescribir historial -->
 <!-- 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.152 por filtro no aleatorio -->
 <!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
-<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->
+<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Actualizar versión activa a 0.1.156: ataques pares, separación de eventos y signo de tamaño -->
+<!-- 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Identificar nuevo desarrollo 0.1.156; separar de beta publicada 0.1.155 -->
+<!-- 2026-10-25-2038||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión de ensamblado 0.1.157 -->
+<!-- 2026-10-25-2146||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/WwInc.csproj||Versión 0.1.158 de ensamblado -->
+<!-- 2026-10-26-2050||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Añadir comentario XML de trazabilidad de cambios aprobados 0.1.159 -->
+<!-- 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Versión de desarrollo 0.1.160 para Distinct y Dissertation ampliada -->
+<!-- 2026-10-26-2232||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Versión 0.1.161 con cinco grafts y arte generado -->
+<!-- 2026-10-26-2313||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Actualizar ensamblado a 0.1.162 -->
+<!-- 2026-10-26-2338||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Actualizar versión de ensamblado tras auditoría -->
+<!-- 2026-10-27-0008||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Actualizar versión de DLL a 0.1.164 -->
+<!-- 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar desarrollo con correcciones posteriores al informe público 0.1.164 -->
+<!-- 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar versión 0.1.166 con propuestas de corrección aprobadas -->
+<!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->

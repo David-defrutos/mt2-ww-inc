@@ -3,7 +3,7 @@
   "relic_effects": [
     {
       "id": "WW_A01_Effect",
-      "name": "@RelicEffectAcademic",
+      "name": "@RelicEffectStrengthChair",
       "additional_tooltips": [
         "@WW_MagicPowerReference"
       ]

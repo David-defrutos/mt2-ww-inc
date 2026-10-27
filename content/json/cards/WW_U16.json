@@ -59,7 +59,8 @@
       ],
       "triggers": [
         "@WW_U16_Strike"
-      ]
+      ],
+      "grafted_equipment": "@WW_G02"
     }
   ],
   "cards": [

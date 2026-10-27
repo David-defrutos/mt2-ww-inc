@@ -12,28 +12,28 @@ Wizards & Witches Inc. is a spell-focused clan for Monster Train 2. An academy o
 - **MineMineMine:** claims spell kills on the holder's floor.
 - Build around Conduit, spell upgrades, healing, and Wizard–Witch combinations.
 
-## BETA — 0.1.154
+## BETA — 0.1.167
 
 This clan is playable but **unfinished**, and I am publishing it at this stage on purpose: I would rather have real games behind it than keep guessing on my own. What helps most is **bug reports** and an opinion on the **balance of the champions, the units and the spells**.
 
 Most of the content has never been played outside my own runs, so expect rough edges and numbers that are off. **If you want a polished experience, wait for a later version.**
 
-Found something, or think a card is absurd in either direction? Either place works:
+Please post suggestions and balance feedback in the clan’s dedicated Discord channel. You can also report bugs on GitHub:
 
 - GitHub issues: [W&W Inc. reports](https://github.com/David-defrutos/mt2-ww-inc-media/issues)
-- The modding channel on the Monster Train Discord: [Monster Train modding](https://discord.com/channels/336546996779483136/1377778943674810368)
+- Suggestions and balance feedback: [W&W Inc. Discord channel](https://discord.com/channels/336546996779483136/1563714320058290300)
 
 Please include the card names, mod version, and your BepInEx log when reporting a problem.
 
 ## Installation
 
-Install with Thunderstore Mod Manager or r2modman. Required dependencies are installed automatically: BepInExPack, Trainworks Reloaded **0.7.33 or later**, and Conductor **0.5.15 or later**.
+Install with Thunderstore Mod Manager or r2modman. Required dependencies are installed automatically: BepInExPack, Trainworks Reloaded **0.7.33 or later**, and Conductor **0.5.16 or later**.
 
 If you have the local development build in `Local-WWInc`, disable or remove that copy before enabling this package. Keep only one installation of W&W Inc. active.
 
 ## Credits
 
-Built with [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) and [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Thanks to their authors and the Monster Train modding community.
+Built with [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) and [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Thank you to everyone who has helped me with any of my clans: the framework and mod authors, players, testers, and everyone who has shared bug reports, suggestions, code, or advice. Your help has made all of these projects better.
 
 ## Gallery
 
@@ -70,22 +70,22 @@ Wizards & Witches Inc. es un clan de hechizos para Monster Train 2. Una academia
 - **MíoMíoMío:** reclama las bajas de hechizos del piso del portador.
 - Combina Conduit, mejoras de hechizos, curación y parejas de Mago y Bruja.
 
-## BETA — 0.1.154
+## BETA — 0.1.167
 
 Este clan es jugable, pero está **sin terminar**, y lo publico en este estado a propósito: prefiero contar con partidas reales antes que seguir haciendo suposiciones por mi cuenta. Lo que más ayuda son los **informes de errores** y vuestra opinión sobre el **equilibrio de los campeones, las unidades y los hechizos**.
 
 La mayor parte del contenido no se ha probado fuera de mis propias partidas, así que encontraréis aspectos por pulir y cifras desajustadas. **Si buscas una experiencia pulida, espera a una versión posterior.**
 
-¿Has encontrado un problema o crees que alguna carta es demasiado fuerte o demasiado débil? Puedes comentarlo en cualquiera de estos sitios:
+Envía las sugerencias y los comentarios sobre el equilibrio al canal específico del clan en Discord. También puedes informar de errores en GitHub:
 
 - Incidencias de GitHub: [Reportes de W&W Inc.](https://github.com/David-defrutos/mt2-ww-inc-media/issues)
-- El canal de modding del Discord de Monster Train: [Modding de Monster Train](https://discord.com/channels/336546996779483136/1377778943674810368)
+- Sugerencias y equilibrio: [Canal de W&W Inc. en Discord](https://discord.com/channels/336546996779483136/1563714320058290300)
 
 Para informar de un problema, incluye los nombres de las cartas, la versión del mod y el registro de BepInEx.
 
 ## Instalación
 
-Instala con Thunderstore Mod Manager o r2modman. Las dependencias se instalan automáticamente: BepInExPack, Trainworks Reloaded **0.7.33 o posterior** y Conductor **0.5.15 o posterior**.
+Instala con Thunderstore Mod Manager o r2modman. Las dependencias se instalan automáticamente: BepInExPack, Trainworks Reloaded **0.7.33 o posterior** y Conductor **0.5.16 o posterior**.
 
 Si tienes la versión local de desarrollo en `Local-WWInc`, desactiva o retira esa copia antes de activar este paquete. Mantén una sola instalación de W&W Inc. activa.
 
@@ -95,7 +95,7 @@ Si tienes la versión local de desarrollo en `Local-WWInc`, desactiva o retira e
 
 ## Créditos
 
-Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) y [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Gracias a sus autores y a la comunidad de modding de Monster Train.
+Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) y [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Gracias a todas las personas que me han ayudado con cualquiera de mis clanes: autores de herramientas y mods, jugadores, testers y quienes han compartido errores, sugerencias, código o consejos. Vuestra ayuda ha mejorado todos estos proyectos.
 <!-- 2026-10-24-1621||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Ficha pública bilingüe beta con contenido, dependencias y aviso de instalación duplicada -->
 
 <!-- 2026-10-24-1705||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir galería de cinco capturas con enlaces públicos de mt2-ww-inc-media -->
@@ -112,4 +112,20 @@ Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Grou
 <!-- 2026-10-25-1743||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa editorial a 0.1.151 sin reescribir historial -->
 <!-- 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.152 por filtro no aleatorio -->
 <!-- 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.153 por redondeo aprobado de Education -->
-<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.154: ataques pares, separación de eventos y signo de tamaño -->
+<!-- 2026-10-25-1853||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar versión activa a 0.1.156: ataques pares, separación de eventos y signo de tamaño -->
+<!-- 2026-10-25-2005||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Dirigir sugerencias y balance al canal específico de W&W Inc. en Discord; mantener GitHub para errores -->
+<!-- 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Identificar nuevo desarrollo 0.1.156; separar de beta publicada 0.1.155 -->
+<!-- 2026-10-25-2038||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar encabezados de próxima versión sin alterar canal de sugerencias -->
+<!-- 2026-10-25-2146||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Actualizar encabezados de desarrollo conservando agradecimientos y canal del clan -->
+<!-- 2026-10-26-2046||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Actualizar ficha de desarrollo 0.1.159 y dependencia de eventos Conductor -->
+<!-- 2026-10-26-2153||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar versión de desarrollo 0.1.160 -->
+<!-- 2026-10-26-2233||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Actualizar versión de desarrollo a 0.1.161 -->
+<!-- 2026-10-26-2313||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar versión actual 0.1.162 en presentación -->
+<!-- 2026-10-26-2338||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar auditoría integral como desarrollo 0.1.163 -->
+<!-- 2026-10-27-0008||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar hotfix de acceso a gestores fuera de combate como 0.1.164 -->
+<!-- 2026-10-27-0015||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Sincronizar encabezado español con versión pública preparada 0.1.164 -->
+<!-- 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar desarrollo con correcciones posteriores al informe público 0.1.164 -->
+<!-- 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar versión 0.1.166 con propuestas de corrección aprobadas -->
+<!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->
+<!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Ampliar agradecimientos generales a todas las personas que han ayudado en cualquiera de los clanes, en inglés -->
+<!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Ampliar agradecimientos generales a todas las personas que han ayudado en cualquiera de los clanes, en español -->

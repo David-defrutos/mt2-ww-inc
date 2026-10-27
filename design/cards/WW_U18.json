@@ -32,5 +32,6 @@
     "korean": "동결 등록",
     "japanese": "凍結登録"
   },
-  "ability_effect": "Añade [freeze] a una carta de tu mano."
+  "ability_effect": "Añade [freeze] a una carta de tu mano.",
+  "grafted_equipment": "WW_G03"
 }

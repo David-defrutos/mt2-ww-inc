@@ -22,7 +22,7 @@ internal static class OverdamageEvent
     static readonly Stack<Context> contexts=new();
     internal static IEnumerator Dispatch(CharacterState unit,int excess,CardState? source)
     {
-        if(!AcademicRuntime.Active||excess<=0||unit.IsDestroyed||!unit.IsAlive)yield break;
+        if(!AcademicRuntime.Active||excess<=0||unit.IsDestroyed||!unit.IsAlive||!unit.HasEffectTrigger(Trigger))yield break;
         yield return AcademicRuntime.Core.GetCombatManager().QueueAndRunTrigger(unit,Trigger,
             fireTriggersData:new Data {paramInt=excess,Source=source});
     }
@@ -81,3 +81,4 @@ public sealed class CardEffectOverdamageExtraCredit : AcademicEffectBase
 // 2026-10-24-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/OverdamageEvent.cs||Crear trigger Overdamage genérico: cola nativa, payload de exceso, contexto seguro y consumidor independiente Extra Credit
 // 2026-10-24-1946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/OverdamageEvent.cs||Pasar al consumidor de acumulación la mejora configurada en JSON
 // 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/OverdamageEvent.cs||Leer tarjeta generada del mismo pool que el motor usa para explicar Extra Credit
+// 2026-10-27-1534||codex-ww-inc||salidas/build/ww-inc/src/OverdamageEvent.cs||No despachar Overdamage para unidades sin ese trigger

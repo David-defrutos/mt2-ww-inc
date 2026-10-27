@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_G02",
+      "names": {
+        "english": "Safety Hat",
+        "spanish": "Sombrero de Seguridad",
+        "french": "Chapeau de sécurité",
+        "german": "Sicherheitshut",
+        "portuguese": "Chapéu de Segurança",
+        "russian": "Защитная шляпа",
+        "chinese": "安全帽",
+        "chinese_traditional": "安全帽",
+        "korean": "안전 모자",
+        "japanese": "安全帽"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_G02CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_G02_Equip"
+      ],
+      "traits": [
+        "@WW_G02_Grafted"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_G02_Equip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_G02_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_G02_Upgrade",
+      "titles": {
+        "english": "Safety Hat",
+        "spanish": "Sombrero de Seguridad",
+        "french": "Chapeau de sécurité",
+        "german": "Sicherheitshut",
+        "portuguese": "Chapéu de Segurança",
+        "russian": "Защитная шляпа",
+        "chinese": "安全帽",
+        "chinese_traditional": "安全帽",
+        "korean": "안전 모자",
+        "japanese": "安全帽"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_G02Icon",
+      "bonus_hp": 10
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_G02_Grafted",
+      "name": "CardTraitGraftedEquipment",
+      "trait_is_removable": false
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_G02CardArt",
+      "path": "textures/cards/WW_G02CardArt.png"
+    },
+    {
+      "id": "WW_G02Icon",
+      "path": "textures/equipment/WW_G02Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_G02CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_G02CardArt"
+        }
+      }
+    }
+  ]
+}

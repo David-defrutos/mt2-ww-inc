@@ -5,7 +5,17 @@
       "id": "WW_S18_Effect",
       "name": "@CardEffectAcademicDeskSwap",
       "target_mode": "room",
-      "target_team": "monsters"
+      "target_team": "monsters",
+      "should_fail_to_cast_if_test_fails": true,
+      "should_cancel_subsequent_effects_if_test_fails": true
+    },
+    {
+      "id": "WW_S18_Attack",
+      "name": "CardEffectAttackWithUnit",
+      "target_mode": "front_in_room",
+      "target_team": "monsters",
+      "param_bool": false,
+      "param_bool_2": false
     }
   ],
   "cards": [

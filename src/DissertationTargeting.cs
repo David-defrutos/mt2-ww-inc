@@ -19,9 +19,14 @@ internal static class DissertationTargeting
         =>card.GetEffectStates().Any(e=>e.GetCardEffect() is ICardEffectUiDialog);
     internal static bool HasRandomTargets(CardState card,CombatManager combat)
         =>card.GetEffectStates().Any(e=>e.HasRandomTarget(combat));
+    // Concrete native effects verified to resolve without prompting during combat.
+    internal static bool SafeTargetless(CardState card)
+        =>card.GetEffectStates().Count>0&&card.GetEffectStates().All(e=>e.GetCardEffect() is
+            CardEffectRewardGold or CardEffectAdjustDragonsHoard or CardEffectDraw or CardEffectDrawType);
     internal static bool CanBind(CardState card,CombatManager combat)
-        =>!OpensDialog(card)&&!HasRandomTargets(card,combat)&&card.GetEffectStates().Any(e=>(e.GetTargetTeamType()&(Team.Type.Monsters|Team.Type.Heroes))!=0||
-            e.GetTargetMode()==TargetMode.Self||e.GetCardEffect() is CardEffectRewardGold);
+        =>!OpensDialog(card)&&!HasRandomTargets(card,combat)&&
+          (SafeTargetless(card)||card.GetEffectStates().Any(e=>
+            (e.GetTargetTeamType()&(Team.Type.Monsters|Team.Type.Heroes))!=0||e.GetTargetMode()==TargetMode.Self));
     internal static DissertationSide PreferredSide(CardState card)
         =>DissertationPolicy.Resolve(card.GetEffectStates().Where(e=>e.GetTargetMode()==TargetMode.DropTargetCharacter&&
             e.GetTargetTeamType().HasFlag(Team.Type.Monsters)&&e.GetTargetTeamType().HasFlag(Team.Type.Heroes)).Select(Intent));
@@ -78,6 +83,7 @@ internal static class DissertationTargeting
     }
     internal static string SideLabel(CardState card)
     {
+        if(SafeTargetless(card))return "david.wwinc.DissertationNoTarget".Localize();
         var flexible=card.GetEffectStates().Any(e=>e.GetTargetMode()==TargetMode.DropTargetCharacter&&
             e.GetTargetTeamType().HasFlag(Team.Type.Monsters)&&e.GetTargetTeamType().HasFlag(Team.Type.Heroes));
         var team=flexible&&SpellRules.BoundSides.TryGetValue(card,out var side)?side:card.GetTargetedTeamType();
@@ -96,8 +102,7 @@ internal static class DissertationTargeting
         Casts.Push(cast);AcademicRuntime.Frames.Push(frame);
         try
         {
-            yield return AcademicRuntime.Core.GetCombatManager().ApplyEffects(card.GetEffectStates(),floor,card,
-                selfTarget:owner,overrideTargetCharacter:target);
+            yield return SpellReplay.Cast(card,floor,target,owner);
         }
         finally{AcademicRuntime.Frames.Pop();Casts.Pop();SpellRules.EffectFloor=previous;}
         yield return AcademicRuntime.AfterSpell(frame);
@@ -124,3 +129,6 @@ internal static class DissertationTargetOverride
 // 2026-10-24-2105||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationTargeting.cs||Tratar HealAndDamageRelative como mixto aunque herede de CardEffectHeal
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationTargeting.cs||Excluir diálogos de Dissertation al seleccionar, vincular y repetir para impedir UI durante ataques
 // 2026-10-25-1832||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationTargeting.cs||Excluir objetivos aleatorios mediante HasRandomTarget nativo al seleccionar, reservar y repetir
+// 2026-10-26-2151||codex-ww-inc||salidas/build/ww-inc/src/DissertationTargeting.cs||Permitir recursos y robo nativos seguros sin objetivo; mantener exclusiones UI y aleatorios
+// 2026-10-26-2151||codex-ww-inc||salidas/build/ww-inc/src/DissertationTargeting.cs||Etiqueta sin objetivo para hechizos globales vinculados
+// 2026-10-27-1528||codex-ww-inc||salidas/build/ww-inc/src/DissertationTargeting.cs||Compartir reproducción segura y fuente explícita sin perder destinos positivos de Dissertation

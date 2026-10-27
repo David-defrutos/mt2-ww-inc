@@ -5,7 +5,27 @@
       "id": "WW_S16_Effect",
       "name": "@CardEffectAcademicHealthExchange",
       "target_mode": "room",
-      "target_team": "monsters"
+      "target_team": "monsters",
+      "param_status_effects": [
+        {
+          "status": "armor",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "WW_S16_HealFront",
+      "name": "CardEffectHeal",
+      "target_mode": "front_in_room",
+      "target_team": "monsters",
+      "param_int": 4
+    },
+    {
+      "id": "WW_S16_HealBack",
+      "name": "CardEffectHeal",
+      "target_mode": "back_in_room",
+      "target_team": "monsters",
+      "param_int": 4
     }
   ],
   "cards": [
@@ -24,16 +44,16 @@
         "japanese": "生命記録交換"
       },
       "descriptions": {
-        "spanish": "Intercambia la salud del primer y del último aliado. Convierte la salud que supere su máximo en [armor].",
-        "french": "Échangez les PV des alliés de tête et de queue. Convertissez les PV au-delà de leur maximum en [armor].",
-        "german": "Tausche das Leben des vordersten und hintersten Verbündeten. Wandle Leben über ihrem Maximum in [armor] um.",
-        "portuguese": "Troca a saúde do primeiro e do último aliado. Converte a saúde acima do máximo em [armor].",
-        "russian": "Поменяйте местами здоровье переднего и заднего союзников. Здоровье сверх максимума превращается в [armor].",
-        "chinese": "交换最前方与最后方友军的生命。超过各自生命上限的部分转化为[armor]。",
-        "chinese_traditional": "交換最前方與最後方友軍的生命。超過各自生命上限的部分轉化為[armor]。",
-        "korean": "맨 앞과 맨 뒤 아군의 체력을 맞바꿉니다. 최대치를 넘는 체력은 [armor]로 전환합니다.",
-        "japanese": "先頭と最後尾の味方の体力を入れ替える。各自の最大値を超えた体力は[armor]に変換する。",
-        "english": "Swap the front and rear friendly units’ health. Convert health above their maximum to [armor]."
+        "spanish": "Intercambia la salud del primer y del último aliado. Convierte la salud que supere su máximo en [armor]. Restaura [effect1.power] de salud a cada una.",
+        "french": "Échangez les PV des alliés de tête et de queue. Convertissez les PV au-delà de leur maximum en [armor]. Restaure [effect1.power] PV à chacune.",
+        "german": "Tausche das Leben des vordersten und hintersten Verbündeten. Wandle Leben über ihrem Maximum in [armor] um. Stelle bei beiden [effect1.power] LP wieder her.",
+        "portuguese": "Troca a saúde do primeiro e do último aliado. Converte a saúde acima do máximo em [armor]. Restaura [effect1.power] de vida a cada uma.",
+        "russian": "Поменяйте местами здоровье переднего и заднего союзников. Здоровье сверх максимума превращается в [armor]. Восстанавливает каждой [effect1.power] здоровья.",
+        "chinese": "交换最前方与最后方友军的生命。超过各自生命上限的部分转化为[armor]。各恢复[effect1.power]点生命值。",
+        "chinese_traditional": "交換最前方與最後方友軍的生命。超過各自生命上限的部分轉化為[armor]。各恢復[effect1.power]點生命值。",
+        "korean": "맨 앞과 맨 뒤 아군의 체력을 맞바꿉니다. 최대치를 넘는 체력은 [armor]로 전환합니다. 각각 체력을 [effect1.power] 회복합니다.",
+        "japanese": "先頭と最後尾の味方の体力を入れ替える。各自の最大値を超えた体力は[armor]に変換する。それぞれの体力を[effect1.power]回復する。",
+        "english": "Swap the front and rear friendly units’ health. Convert health above their maximum to [armor]. Restore [effect1.power] health to each."
       },
       "class": "@WW_Class",
       "card_type": "spell",
@@ -46,7 +66,9 @@
       ],
       "targetless": true,
       "effects": [
-        "@WW_S16_Effect"
+        "@WW_S16_Effect",
+        "@WW_S16_HealFront",
+        "@WW_S16_HealBack"
       ]
     }
   ],

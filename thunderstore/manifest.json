@@ -1,11 +1,11 @@
 ﻿{
   "name": "W_and_W_Inc",
-  "version_number": "0.1.154",
-  "website_url": "",
+  "version_number": "0.1.167",
+  "website_url": "https://github.com/David-defrutos/mt2-ww-inc",
   "description": "BETA: Wizards & Witches Inc., a spell-focused academic clan with 2 champions, 43 cards, 10 relics, Arcane Slay, and Overheal.",
   "dependencies": [
     "BepInEx-BepInExPack-5.4.2100",
     "MT2-Trainworks_Reloaded-0.7.33",
-    "Conductor-Conductor-0.5.15"
+    "Conductor-Conductor-0.5.16"
   ]
 }

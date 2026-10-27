@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_G01",
+  "type": "grafted_equipment",
+  "names": {
+    "english": "Training Wand",
+    "spanish": "Varita de Prácticas"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "owners": [
+    "WW_U04"
+  ],
+  "draftable": false,
+  "effect": "Conduit max(0, 10 - completed rings)"
+}

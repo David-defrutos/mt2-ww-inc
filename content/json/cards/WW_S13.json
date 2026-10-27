@@ -52,7 +52,7 @@
       "id": "WW_S13_Damage",
       "name": "CardEffectDamage",
       "target_mode": "drop_target_character",
-      "target_team": "heroes",
+      "target_team": "both",
       "param_int": 4
     }
   ],

@@ -14,7 +14,7 @@ public sealed class CardEffectAcademicTome : AcademicEffectBase,ICardEffectUiDia
     {
         if(m.GetSaveManager().PreviewMode)yield break;
         AcademicRuntime.Core=m;
-        yield return AcademicRuntime.ChooseHand(p.playedCard,c=>Eligible(c,s,m),selected=> {
+        yield return HandSelection.ChooseHand(m,p.playedCard,c=>Eligible(c,s,m),selected=> {
             CardEffectAddTempCardUpgradeToCardsInHand.TryApplyUpgradeToCard(selected,false,s,p,m);
         });
     }
@@ -36,7 +36,7 @@ public sealed class CardEffectAcademicReturnFrozen : AcademicEffectBase
         if(card.HasTrait(typeof(CardTraitUnplayable)))return;
         AcademicRuntime.Trait(card,"CardTraitUnplayable");
         var added=card.GetTemporaryCardStateModifiers().GetTemporaryTraits().Last(t=>t is CardTraitUnplayable);
-        AcademicRuntime.NextTurnActions.Add(()=>Unlock(card,added,manager));
+        EffectLifetimes.AtNextPlayerTurn(()=>Unlock(card,added,manager));
     }
     private static IEnumerator Unlock(CardState card,CardTraitState added,CardManager manager)
     {
@@ -64,3 +64,5 @@ public sealed class CardEffectAcademicReturnFrozen : AcademicEffectBase
 // 2026-10-12-1758||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Conexión Slay con retorno tras descarte; Freeze nativo y retirada exacta de Unplayable al turno siguiente
 // 2026-10-12-2258||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Retirar C# del Spike y su reducción cooldown; sustituido por componentes nativos
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/ApprovedSpells.cs||Registrar vencimiento explícito sin cambiar instancias de mejoras ni duración aprobada

@@ -18,7 +18,7 @@
     "health": 30,
     "size": 2
   },
-  "banner": true,
+  "banner": false,
   "ability_cooldown": 2,
   "ability_name": {
     "english": "Collective Assessment",

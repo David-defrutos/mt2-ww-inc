@@ -3,7 +3,7 @@
   "relic_effects": [
     {
       "id": "WW_A08_Effect",
-      "name": "@RelicEffectAcademic"
+      "name": "@RelicEffectAdministrativeSilence"
     }
   ],
   "relics": [

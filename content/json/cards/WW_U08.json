@@ -38,15 +38,11 @@
       "subtypes": [
         "@WW_Witch"
       ],
-      "starting_status_effects": [
-        {
-          "status": "undying",
-          "count": 1
-        }
-      ],
+      "starting_status_effects": [],
       "triggers": [
         "@WW_U08_Extinguish"
-      ]
+      ],
+      "grafted_equipment": "@WW_G04"
     }
   ],
   "cards": [

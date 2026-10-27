@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "WW_G01",
+      "names": {
+        "english": "Training Wand",
+        "spanish": "Varita de Prácticas",
+        "french": "Baguette d’entraînement",
+        "german": "Übungszauberstab",
+        "portuguese": "Varinha de Treino",
+        "russian": "Учебная палочка",
+        "chinese": "练习魔杖",
+        "chinese_traditional": "練習魔杖",
+        "korean": "연습용 지팡이",
+        "japanese": "練習用の杖"
+      },
+      "class": "@WW_Class",
+      "card_type": "equipment",
+      "cost": 1,
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "card_art": "@WW_G01CardArt",
+      "pools": [],
+      "effects": [
+        "@WW_G01_Equip"
+      ],
+      "traits": [
+        "@WW_G01_Grafted"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "WW_G01_Equip",
+      "name": "@CardEffectAcademicTrainingWand",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@WW_G01_Upgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "WW_G01_Upgrade",
+      "titles": {
+        "english": "Training Wand",
+        "spanish": "Varita de Prácticas",
+        "french": "Baguette d’entraînement",
+        "german": "Übungszauberstab",
+        "portuguese": "Varinha de Treino",
+        "russian": "Учебная палочка",
+        "chinese": "练习魔杖",
+        "chinese_traditional": "練習魔杖",
+        "korean": "연습용 지팡이",
+        "japanese": "練習用の杖"
+      },
+      "hide_icon_on_card": true,
+      "icon": "@WW_G01Icon",
+      "status_effect_upgrades": [
+        {
+          "status": "conduit",
+          "count": 10
+        }
+      ]
+    }
+  ],
+  "traits": [
+    {
+      "id": "WW_G01_Grafted",
+      "name": "CardTraitGraftedEquipment",
+      "trait_is_removable": false
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WW_G01CardArt",
+      "path": "textures/cards/WW_G01CardArt.png"
+    },
+    {
+      "id": "WW_G01Icon",
+      "path": "textures/equipment/WW_G01Icon.png"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WW_G01CardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WW_G01CardArt"
+        }
+      }
+    }
+  ]
+}

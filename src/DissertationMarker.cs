@@ -21,8 +21,15 @@ internal static class DissertationMarker
     internal static string Details(CharacterState unit)
     {
         if(!SpellRules.BoundAttacks.TryGetValue(unit,out var bindings))return "";
-        return string.Join("<br>",bindings.Select(binding=>binding.card.GetTitle()+" — "+
-            string.Format("david.wwinc.ReservedAttacks".Localize(),binding.attacks)+" — "+DissertationTargeting.SideLabel(binding.card)));
+        return string.Join("<br><br>",bindings.Select(binding=>
+        {
+            var card=binding.card;
+            var data=AcademicRuntime.Core.GetAllGameData().FindCardData(card.GetCardDataID());
+            string description=data==null?card.GetTitle():CardTooltipHelper.GetTooltipContentForGeneratedCard(
+                data,card,AcademicRuntime.Core.GetSaveManager());
+            return string.Format("david.wwinc.ReservedAttacks".Localize(),binding.attacks)+" — "+
+                DissertationTargeting.SideLabel(card)+"<br>"+description;
+        }));
     }
 }
 
@@ -39,3 +46,4 @@ internal static class DissertationMarkerTooltipHook
 // 2026-10-13-0023||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Marca visual de vínculos: ataques restantes y tooltip con nombres de hechizos y contadores individuales
 // 2026-10-13-0033||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Usar ID real de Dissertation en concesión, contador y tooltip
 // 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/DissertationMarker.cs||Mostrar bando elegido junto al hechizo y ataques restantes
+// 2026-10-26-2151||codex-ww-inc||salidas/build/ww-inc/src/DissertationMarker.cs||Tooltip Dissertation incluye carta completa con formateador nativo y CardState real, contador y destino

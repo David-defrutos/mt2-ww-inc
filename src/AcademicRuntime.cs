@@ -16,17 +16,15 @@ internal static class AcademicRuntime
     internal static int EquipmentPreviewDepth;
     internal static CardState? LastPlayedCommonSpell;
     internal static readonly Dictionary<CharacterState, int> HealingModes = new();
-    internal static readonly Dictionary<CharacterState, int> DamageCredits = new();
-    internal static readonly List<Action> EndTurnActions = new();
-    internal static readonly List<Func<IEnumerator>> NextTurnActions = new();
     internal static readonly Stack<SpellResolution> Frames = new();
     internal static bool DamageSpellPlayed;
     internal static CardState? FirstDamageSpell;
     internal static readonly HashSet<CharacterState> ZeroAttack = new();
     internal static readonly Dictionary<CharacterState,List<CardState>> BoundForAttack = new();
     internal static readonly Dictionary<CardState,int> FixedCosts = new();
-    internal static bool Simulating => Core != null && Core.GetSaveManager().PreviewMode;
-    internal static bool Active => Core != null && (!Simulating || PreviewScope.Active);
+    internal static bool Simulating => BattlePresentationContext.TryGet(out var current)&&current.GetSaveManager().PreviewMode;
+    internal static bool Active => Core!=null&&BattlePresentationContext.TryGet(out var current)&&
+        (!current.GetSaveManager().PreviewMode||PreviewScope.Active);
 
     internal sealed class SpellResolution
     {
@@ -64,7 +62,7 @@ internal static class AcademicRuntime
         Core = ((AllGameManagers)AccessTools.Field(typeof(CardManager), "allGameManagers").GetValue(manager)).GetCoreManagers();
         SocialRules.AuraBonuses.Clear(); ZeroAttack.Clear(); FixedCosts.Clear();BoundForAttack.Clear(); Turn=0; ConversionDepth=0; HostileHealingDepth=0; EquipmentPreviewDepth=0; Frames.Clear(); LastPlayedCommonSpell=null; HealingModes.Clear();SpellRules.Reset();
         MineMineMine.Claimed.Clear();
-        DamageCredits.Clear(); EndTurnActions.Clear(); NextTurnActions.Clear();
+        FrozenTuition.Reset(); EffectLifetimes.Reset();
         DamageSpellPlayed=false; FirstDamageSpell=null;
         CardEffectAcademicPurgePermit.BeginBattle(Core);
     }
@@ -72,8 +70,7 @@ internal static class AcademicRuntime
     {
         if (Core == null || Core.GetSaveManager().PreviewMode) yield break;
         Turn++; DamageSpellPlayed=false; FirstDamageSpell=null; HealingModes.Clear();
-        var pending=NextTurnActions.ToArray(); NextTurnActions.Clear();
-        foreach (var action in pending) yield return action();
+        yield return EffectLifetimes.StartPlayerTurn();
         yield return SpellRules.BeginTurn();
         yield return SocialRules.BeginTurn();
         SocialRules.RefreshAuras();
@@ -82,20 +79,13 @@ internal static class AcademicRuntime
     internal static void EndTurn()
     {
         if (!Active) return;
-        if (!DamageSpellPlayed && SpellRules.HasRelic("WW_A04")) Core.GetCardManager().AdjustDrawCountModifier(1);
-        TurnCleanup.Run(EndTurnActions); HealingModes.Clear(); SpellRules.Pending.RemoveAll(r=>r.Kind=="power");
+        AcademicRelics.EndTurn(DamageSpellPlayed);
+        EffectLifetimes.FinishCombatTurn(); HealingModes.Clear(); SpellRules.Pending.RemoveAll(r=>r.Kind=="power");
     }
     internal static void RecordDamage(CharacterState target, int lost, bool died, CardState? card, CharacterState? attacker, int floor)
     {
         if (!Active || ConversionDepth != 0) return;
-        if (!Simulating && lost>0 && attacker!=null && Is(attacker,"WW_U18"))
-        {
-            var credit=AcademicMath.Tuition(DamageCredits.TryGetValue(attacker,out var previous)?previous:0,lost);
-            int discounts=credit.discounts; DamageCredits[attacker]=credit.remainder;
-            if(discounts>0)
-                foreach(var cardInHand in Core.GetCardManager().GetHand().Where(c=>c.HasTrait(typeof(CardTraitFreeze))).ToArray())
-                    ModifyCard(cardInHand,0,discounts,false);
-        }
+        FrozenTuition.RecordDamage(Core,attacker,lost,(selected,discount)=>ModifyCard(selected,0,discount,false));
         if (Frames.Count==0 || card==null || Frames.Peek().Card!=card) return;
         var frame=Frames.Peek();
         if(target.GetTeamType()!=Team.Type.Heroes) return;
@@ -113,19 +103,11 @@ internal static class AcademicRuntime
     }
     internal static IEnumerator AfterSpell(SpellResolution frame)
     {
-        yield return SpellRules.After(frame);
+        yield return frame.Rules.Contains("floors")||frame.Rules.Contains("behind")
+            ?SpellReplay.PreserveView(SpellRules.After(frame)):SpellRules.After(frame);
         bool first=frame.FirstDamage;
-        if(first)
-        {
-            int amount=frame.RepresentativeDamage;
-            foreach(var unit in AllAllies().Where(u=>Is(u,"WW_U17")))
-            {
-                unit.SetAttackDamage(unit.GetAttackDamageWithoutStatusEffectBuffs()+amount);
-                EndTurnActions.Add(()=> { if(!unit.IsDestroyed) unit.SetAttackDamage(Math.Max(0,unit.GetAttackDamageWithoutStatusEffectBuffs()-amount)); });
-            }
-        }
-        foreach(var pair in frame.Kills)
-            if(pair.Value>0)yield return ArcaneSlayEvent.Dispatch(Core,frame.Card,pair.Key,pair.Value);
+        if(first)UnitSpellPassives.ApplyRepresentative(AllAllies(),frame.RepresentativeDamage,EffectLifetimes.EndCombatTurn);
+        // Conductor queues Arcane Slay at the killing hit, never again after the spell.
         ConversionDepth++;
         try
         {
@@ -133,20 +115,11 @@ internal static class AcademicRuntime
             {
                 foreach(var pair in frame.Damage)
                     if(AcademicMath.FirstQualifyingSpell(SpellRules.OnceTurn,"U02Damage",pair.Key,pair.Value))
-                        foreach(var unit in Units(pair.Key).Where(u=>Is(u,"WW_U02")).ToArray())
-                            yield return HealShared(pair.Key,pair.Value,frame.Card);
+                        foreach(var unit in Units(pair.Key).Where(u=>u.GetSourceCharacterData()==UnitSpellPassives.FirstAid).ToArray())
+                            yield return UnitSpellPassives.HealShared(Core,pair.Key,pair.Value,frame.Card);
             }
         }
         finally { ConversionDepth--; }
-    }
-    internal static IEnumerator HealShared(int floor,int amount,CardState? source)
-    {
-        var allies=Units(floor).ToArray();
-        int healing=AcademicMath.SharedHealing(amount,allies.Length);
-        if(healing<=0)yield break;
-        foreach(var ally in allies)
-            if(!ally.IsDestroyed&&ally.IsAlive)
-                yield return ally.ApplyHeal(healing,responsibleCard:source);
     }
     internal static CardUpgradeState ModifyCard(CardState card,int power,int discount,bool thisTurn)
     {
@@ -155,7 +128,7 @@ internal static class AcademicRuntime
         upgrade.SetCostReduction(discount);
         var mods=card.GetTemporaryCardStateModifiers(); mods.AddUpgrade(upgrade);
         card.UpdateCardBodyText();
-        if(thisTurn) EndTurnActions.Add(()=> { mods.RemoveUpgrade(upgrade); if(FixedCosts.TryGetValue(card,out var cost))FixedCosts[card]=Math.Max(0,cost+discount); card.UpdateCardBodyText(); });
+        if(thisTurn) EffectLifetimes.AtEndCombatTurn(()=> { mods.RemoveUpgrade(upgrade); if(FixedCosts.TryGetValue(card,out var cost))FixedCosts[card]=Math.Max(0,cost+discount); card.UpdateCardBodyText(); });
         return upgrade;
     }
     // Native Attuned recalibration needs the unscaled bonuses in source data.
@@ -175,35 +148,13 @@ internal static class AcademicRuntime
     internal static void SetFixedCost(CardState card,int cost,bool thisTurn)
     {
         bool previous=FixedCosts.TryGetValue(card,out int old);FixedCosts[card]=cost;
-        if(thisTurn)EndTurnActions.Add(()=> {if(previous)FixedCosts[card]=old;else FixedCosts.Remove(card);card.UpdateCardBodyText();});
+        if(thisTurn)EffectLifetimes.AtEndCombatTurn(()=> {if(previous)FixedCosts[card]=old;else FixedCosts.Remove(card);card.UpdateCardBodyText();});
         card.UpdateCardBodyText();
     }
     internal static void Trait(CardState card,string type)
     {
         var trait=new CardTraitData(); trait.Setup(type); Core.GetCardManager().AddTemporaryTraitToCard(card,trait);
     }
-    internal static IEnumerator ChooseHand(CardState? source,Func<CardState,bool> eligible,Action<CardState> picked)
-        =>ChooseHand(source,eligible,new Func<CardState,IEnumerator>(c=>Complete(c,picked)));
-    internal static IEnumerator ChooseHand(CardState? source,Func<CardState,bool> eligible,Func<CardState,IEnumerator> apply)
-    {
-        var manager=Core.GetCardManager();
-        if(!manager.GetHand().Any(c=>c!=source&&eligible(c)))yield break;
-        // Native UI input stays locked while the playing effect is unresolved.
-        // Open and return; the confirmation callback resolves the selected effect.
-        yield return manager.SelectCardFromHand(new HandSelectionUI.Params {
-            descriptionKey="david.wwinc.ChooseCard",
-            filterCallback=c=>c==source||!eligible(c),
-            cardChosenCallback=(c,m)=>ApplyChoice(c,source,eligible,apply,m),disableIneligibleCards=true,
-            selectionHandState=CardUI.CardUIState.HandDiscardCard },
-            automaticallySelectLastCard:false);
-    }
-    private static IEnumerator ApplyChoice(CardState card,CardState? source,Func<CardState,bool> eligible,
-        Func<CardState,IEnumerator> apply,CardManager manager)
-    {
-        if(card==source||!manager.GetHand().Contains(card)||!eligible(card))yield break;
-        yield return apply(card);
-    }
-    private static IEnumerator Complete(CardState card,Action<CardState> picked) { picked(card);yield break; }
 
 }
 // 2026-10-10-0003||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Correcciones de resoluciÃ³n, traits y acumulaciÃ³n de reglas
@@ -253,3 +204,12 @@ internal static class AcademicRuntime
 // 2026-10-25-1605||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Usar daño total independiente para U17 sin cambiar daño efectivo para PhD y otras conversiones
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Configurar estado nativo de selección para marcar y oscurecer cartas no elegibles
 // 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Conectar consumidores al núcleo independiente con managers explícitos y guardias W&W conservadas
+// 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Retirar selector de mano del estado global de combate; sin cambios a trackers
+// 2026-10-25-2036||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Retirar contador DamageCredits y caso WW_U18; delegar pasiva sin cambiar descuento nativo ni costes fijos
+// 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Retirar implementación de pasivas U17/U02 del runtime manteniendo cuotas, fuentes y protección de conversión
+// 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/AcademicRuntime.cs||Evitar doble disparo Arcane Slay tras migración
+// 2026-10-27-0010||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Guardias globales Active/Simulating no consultan SaveManager de Core retenido tras abandonar combate
+// 2026-10-27-1529||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Restaurar cámara una sola vez tras secuencia de copias, sin moverla en preview o batalla terminada
+// 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Restaurar cámara solo cuando hay copias Memo/Extended, sin cambiar hechizos nativos ajenos
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Delegar expiraciones en fases explícitas sin compartir listas de distintas duraciones
+// 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Delegar regla de robo final a su reliquia concreta

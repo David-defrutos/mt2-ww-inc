@@ -19,5 +19,6 @@
     "size": 1
   },
   "banner": true,
-  "ability_cooldown": null
+  "ability_cooldown": null,
+  "grafted_equipment": "WW_G05"
 }

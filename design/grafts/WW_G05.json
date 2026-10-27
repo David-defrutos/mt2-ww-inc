@@ -1,0 +1,15 @@
+﻿{
+  "id": "WW_G05",
+  "type": "grafted_equipment",
+  "names": {
+    "english": "Emergency Battery",
+    "spanish": "Batería de Emergencia"
+  },
+  "cost": 1,
+  "rarity": "common",
+  "owners": [
+    "WW_U17"
+  ],
+  "draftable": false,
+  "effect": "burst 3"
+}

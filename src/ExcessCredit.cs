@@ -64,7 +64,11 @@ public sealed class CardEffectAcademicAuthoredDamage : CardEffectDamage
         var victims=parameters.targets.Where(u=>!u.IsDestroyed&&u.IsAlive&&u.GetTeamType()==Team.Type.Heroes).Distinct().ToArray();
         // Native selfTarget -> attacker -> lastAttackerCharacter, Slay and Savagery.
         parameters.selfTarget=owner;
-        try { yield return base.ApplyEffect(state,parameters,core,systems); }
+        try {
+            var effects=base.ApplyEffect(state,parameters,core,systems);
+            yield return parameters.playedCard is { } spell
+                ?SpellReplay.WithSource(spell,core,parameters.selectedRoom,effects):effects;
+        }
         finally { parameters.selfTarget=previous; }
         if(!core.GetSaveManager().PreviewMode&&!AcademicRuntime.Simulating)
             ExcessCredit.RewardHandOwner(parameters.playedCard,victims.Count(u=>(u.IsDestroyed||u.IsDead)&&!MineMineMine.Claimed.Contains(u)),core);
@@ -87,3 +91,5 @@ internal static class ExcessCreditCopyHook
 // 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCredit.cs||Evitar Savagery doble en creadora en mano si MineMineMine reclama la baja
 // 2026-10-24-1946||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCredit.cs||Permitir mejora nativa permanente del Crédito Extra creado o acumulado sin duplicar upgrades ni borrar traits previos
 // 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCredit.cs||Generación de Crédito Extra recibe plantilla del efecto en vez de referencia global hardcoded
+// 2026-10-27-2018||codex-ww-inc||salidas/build/ww-inc/src/ExcessCredit.cs||Conservar traits del Crédito Extra y autoría de su creadora en el mismo daño nativo
+// 2026-10-27-2020||codex-ww-inc||salidas/build/ww-inc/src/ExcessCredit.cs||Mantener resolución nativa sin fuente cuando no existe carta; eliminar argumento nullable sin ocultar errores

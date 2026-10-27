@@ -86,7 +86,7 @@
       "targets_room": true,
       "card_art": "@WW_U10CardArt",
       "pools": [
-        "MegaPool"
+        "UnitsAllBanner"
       ],
       "effects": [
         "@WW_U10_Spawn"
@@ -113,7 +113,8 @@
       "health": 20,
       "attack_damage": 6,
       "subtypes": [
-        "@WW_Wizard"
+        "@WW_Wizard",
+        "SubtypesData_BannerUnit"
       ],
       "ability": "@WW_U10_Ability",
       "starting_status_effects": [

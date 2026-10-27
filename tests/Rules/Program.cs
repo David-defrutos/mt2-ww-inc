@@ -165,6 +165,28 @@ Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Unknown})==Dissertatio
 Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Harmful,DissertationIntent.Unknown})==DissertationSide.Choose,"Known damage does not hide an unknown attached effect");
 Check(DissertationPolicy.Resolve(new[]{DissertationIntent.Beneficial,DissertationIntent.Beneficial})==DissertationSide.Allies,"Multiple beneficial effects do not become ambiguous");
 Check(DissertationPolicy.Resolve(Array.Empty<DissertationIntent>())==DissertationSide.Enemies,"Native exclusive team/area effects need no arbitrary side choice");
+
+var expirations=new List<string>();
+void DrainLifetime(System.Collections.IEnumerator e){try{while(e.MoveNext())if(e.Current is System.Collections.IEnumerator child)DrainLifetime(child);}finally{(e as IDisposable)?.Dispose();}}
+System.Collections.IEnumerator ExpireNext(string name){expirations.Add(name);yield break;}
+EffectLifetimes.Reset();
+EffectLifetimes.AtEndCombatTurn(()=>expirations.Add("end-first"));
+EffectLifetimes.AtEndCombatTurn(()=>expirations.Add("end-second"));
+EffectLifetimes.AtNextPlayerTurn(()=>ExpireNext("next-first"));
+EffectLifetimes.FinishCombatTurn();
+Check(expirations.SequenceEqual(new[]{"end-second","end-first"}),"End combat turn expires nested changes in reverse order without waking next-turn effects");
+DrainLifetime(EffectLifetimes.StartPlayerTurn());
+Check(expirations.Last()=="next-first"&&EffectLifetimes.NextPlayerTurn.Count==0,"Next player turn has its independent expiry boundary");
+System.Collections.IEnumerator ScheduleLater(){EffectLifetimes.AtNextPlayerTurn(()=>ExpireNext("later"));yield break;}
+EffectLifetimes.AtNextPlayerTurn(ScheduleLater);DrainLifetime(EffectLifetimes.StartPlayerTurn());
+Check(EffectLifetimes.NextPlayerTurn.Count==1&&expirations.Last()!="later","Effects registered during expiry wait for the following boundary");
+var lifetimeSnapshot=new CollectionSnapshot(typeof(EffectLifetimes));
+EffectLifetimes.Reset();lifetimeSnapshot.Restore();
+Check(EffectLifetimes.NextPlayerTurn.Count==1,"Preview snapshot restores pending real expirations after a reset");
+DrainLifetime(EffectLifetimes.StartPlayerTurn());Check(expirations.Last()=="later","Restored expiration still executes its original callback");
+EffectLifetimes.AtEndCombatTurn(()=>expirations.Add("discarded"));EffectLifetimes.Reset();EffectLifetimes.FinishCombatTurn();
+Check(!expirations.Contains("discarded"),"Battle reset discards stale expiration callbacks");
+
 Console.WriteLine(JsonSerializer.Serialize(new {success=errors.Count==0,checks,errors},new JsonSerializerOptions{WriteIndented=true}));return errors.Count==0?0:1;
 // 2026-10-10-0020||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Casos de comportamiento para orden determinista, adyacencia, umbrales y Dazed
 // 2026-10-10-0058||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Casos de producción con cero, múltiples fuentes y límites de Conduit
@@ -213,3 +235,4 @@ internal static class SnapshotFixture
 // 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Probar prioridad frontal, varios portadores, cambio de posición y ausencia de portadores
 // 2026-10-24-2100||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Regresiones de daño, curación, estados, mezcla y efectos desconocidos
 // 2026-10-25-1843||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Rules/Program.cs||Verificar redondeo de Education, apilamiento, cero y límites enteros sin tocar textos de carta
+// 2026-10-27-2021||codex-ww-inc||salidas/build/ww-inc/tests/Rules/Program.cs||Probar fronteras de duración, LIFO, registro diferido, reset y rollback de preview

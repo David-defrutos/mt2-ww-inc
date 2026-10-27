@@ -31,7 +31,8 @@
       "subtypes": [
         "@WW_Witch",
         "SubtypesData_BannerUnit"
-      ]
+      ],
+      "grafted_equipment": "@WW_G05"
     }
   ],
   "cards": [

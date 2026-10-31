@@ -23,6 +23,7 @@ public class CardEffectAcademicSpellRule : AcademicEffectBase
         string rule=s.GetParamStr();
         if(m.GetSaveManager().PreviewMode&&!CanPreview(rule))yield break;
         AcademicRuntime.Core=m;var unit=p.characterThatActivatedAbility??p.selfTarget;
+        if(rule=="power"&&unit==null)yield break;
         if(rule=="floors"||rule=="double"||rule=="power")
             SpellRules.Pending.Add(new SpellRules.Rule {Kind=rule,Floor=rule=="power"?unit!.GetCurrentRoomIndex():-1,Unit=unit});
         else if(rule=="healing_area") SpellRules.HealingAreaTurn=AcademicRuntime.Turn;
@@ -76,5 +77,11 @@ public class CardEffectAcademicSpellRule : AcademicEffectBase
     }
 }
 // Only the rules which open a card selector declare the native UI contract.
-public sealed class CardEffectAcademicInteractiveRule : CardEffectAcademicSpellRule,ICardEffectUiDialog { }
+public sealed class CardEffectAcademicInteractiveRule : CardEffectAcademicSpellRule,ICardEffectUiDialog
+{
+    public override bool CanPlayAfterBossDead=>false;
+}
 // 2026-10-25-2137||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LegacySpellEffects.cs||Aislar dispatcher de cartas retiradas; conservar tipos y reglas para compatibilidad
+// 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/LegacySpellEffects.cs||Evitar NRE de regla power heredada cuando un efecto retirado carece de unidad origen
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/LegacySpellEffects.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/LegacySpellEffects.cs||Mantener formato legible del selector heredado con restricción postvictoria

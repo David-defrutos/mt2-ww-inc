@@ -48,7 +48,7 @@ public class CardStateModifiers
  public readonly List<CardUpgradeState> Upgrades=new();public List<CardUpgradeState> GetCardUpgrades()=>Upgrades;
 }
 public class SaveManager{public bool PreviewMode;}
-public class CardManager{public void RefreshCardInHand(CardState card){}}
+public class CardManager{public void RefreshCardInHand(CardState card,bool cleanupTweens=true,bool resetHandState=false,bool resetJuice=false){}}
 public interface ICoreGameManagers{SaveManager GetSaveManager();CardManager GetCardManager();CombatManager GetCombatManager();}
 public class FakeCore:ICoreGameManagers
 {
@@ -95,3 +95,4 @@ namespace WwInc
 namespace ShinyShoe{public static class Loc{public static string Localize(this string key)=>key;}}
 // 2026-10-27-1539||codex-ww-inc||salidas/build/ww-inc/tests/DamageTraits/EngineStubs.cs||Dobles de impactos con armadura, escudo y weakness para probar código de transferencia real
 // 2026-10-27-1545||codex-ww-inc||salidas/build/ww-inc/tests/DamageTraits/EngineStubs.cs||Modelar tipo y habilidad para comprobar alcance de Trample de hechizos
+// 2026-10-29-2036||codex-ww-inc||salidas/build/ww-inc/tests/DamageTraits/EngineStubs.cs||Alinear firma del doble con API real de refresco y preservar limpieza opcional de tweens

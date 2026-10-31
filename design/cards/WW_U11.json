@@ -10,7 +10,7 @@
   "rarity": "uncommon",
   "effect": "Habilidad Recuperación de Hechizos: devuelve un hechizo consumido a tu mano.",
   "status": "implemented_unverified",
-  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
+  "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego. Selector nativo CardEffectRecursion con instrucciones ChooseSpell; sin texto Reform.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas.",
   "subtype": "Witch",
   "stats": {

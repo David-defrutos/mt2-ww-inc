@@ -153,6 +153,18 @@ bool authoredFailed=false;
 try{Run(SpellReplay.WithSource(replaySpell,replayCore,2,FailAuthored()));}catch(InvalidOperationException){authoredFailed=true;}
 Check(authoredFailed&&SpellReplay.Casts.Count==0,"Failed authored damage cannot leak its traits to later cards");
 
+
+var recalledUnit=new CharacterState();var recalledSpell=Spell((new CardEffectDamage(),Team.Type.Heroes,TargetMode.DropTargetCharacter));
+SpellRules.ReservedCards.Add(recalledSpell);SpellRules.BoundSides[recalledSpell]=Team.Type.Heroes;
+SpellRules.BoundAttacks[recalledUnit]=[(recalledSpell,2)];AcademicRuntime.BoundForAttack[recalledUnit]=[recalledSpell];SpellRules.Released.Clear();
+IEnumerator RecallWithoutDeath(){Check(SpellRules.ReservedCards.Contains(recalledSpell),"Binding remains while native recall resolves");yield break;}
+Run(UnitBindings.AfterRemoval(RecallWithoutDeath(),recalledUnit));
+Check(!SpellRules.BoundAttacks.ContainsKey(recalledUnit)&&!AcademicRuntime.BoundForAttack.ContainsKey(recalledUnit),"Recall releases both persistent and active-attack binding ownership");
+Check(SpellRules.Released.SequenceEqual(new[]{recalledSpell})&&!SpellRules.ReservedCards.Contains(recalledSpell)&&!SpellRules.BoundSides.ContainsKey(recalledSpell),"A recalled unit releases its distinct bound spell exactly once");
+Run(UnitBindings.AfterRemoval(RecallWithoutDeathEmpty(),recalledUnit));
+Check(SpellRules.Released.Count==1,"Repeated removal cannot release the same spell twice");
+IEnumerator RecallWithoutDeathEmpty(){yield break;}
+
 Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,errors}));return errors.Count==0?0:1;
 // 2026-10-24-2102||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Dissertation/Program.cs||Regresiones ejecutables de código real: curación, daño, estados, oro, ambos bandos, bajas y errores
 // 2026-10-24-2102||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/Dissertation/Program.cs||Runner libera enumeradores anidados al propagar excepciones como el motor
@@ -165,3 +177,4 @@ Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,er
 // 2026-10-27-1540||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/Program.cs||Regresiones del contexto real de autoría, objetivo/emisor, piso lógico, cámara y limpieza ante excepción
 // 2026-10-27-2018||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/Program.cs||Probar ámbito productivo de daño con autor, anidamiento y limpieza por excepción
 // 2026-10-27-2021||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/Program.cs||Probar excepción con fuente anidada correctamente configurada
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/Program.cs||Probar devolución sin muerte, duplicación active/persistent y retirada repetida

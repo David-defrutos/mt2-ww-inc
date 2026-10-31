@@ -50,7 +50,19 @@
             "force_update_count_label": true
           }
         }
-      ]
+      ],
+      "relic_activated_texts": {
+        "english": "Ember refunded.",
+        "spanish": "Ascuas reembolsadas.",
+        "french": "Braises remboursées.",
+        "german": "Glut erstattet.",
+        "portuguese": "Brasas reembolsadas.",
+        "russian": "Угли возвращены.",
+        "chinese": "已返还余烬。",
+        "chinese_traditional": "已返還餘燼。",
+        "korean": "불씨를 돌려받았습니다.",
+        "japanese": "エンバーを返還。"
+      }
     }
   ],
   "sprites": [

@@ -14,7 +14,8 @@ public sealed class CardEffectAcademicUpgradeSlayingSpell : AcademicEffectBase
         if(card==null||card.GetCardType()!=CardType.Spell||card.IsAnyAbility())yield break;
         CardUpgradeHelper.TryApplyUpgradeToCard(card,null,s.GetParamCardUpgradeData(),
             false,p.isFromHiddenTrigger,m,out _);
-        card.UpdateCardBodyText();m.GetCardManager().RefreshCardInHand(card);
+        card.UpdateCardBodyText();m.GetCardManager().RefreshCardInHand(card,cleanupTweens:false);
     }
 }
 // 2026-10-25-1849||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ArcaneSlayEffects.cs||Mantener premio de mejora permanente como consumidor W&W separado del trigger reutilizable
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/ArcaneSlayEffects.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor

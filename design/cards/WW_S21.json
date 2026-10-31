@@ -8,7 +8,7 @@
   },
   "cost": 1,
   "rarity": "uncommon",
-  "effect": "Añade Armor igual a Attack. Attack es 0 durante la próxima ronda de combate. Añade Dazed 1.",
+  "effect": "Añade Armor igual al Attack de una unidad aliada. Su Attack es 0 durante la próxima ronda de combate. Añade Dazed 1.",
   "status": "implemented_unverified",
   "implementation_note": "Definición runtime generada; C# compilado. Pendiente verificación de carga y combate en juego.",
   "balance": "Versión de pruebas 1: valores iniciales fijados; ajuste posterior según partidas."

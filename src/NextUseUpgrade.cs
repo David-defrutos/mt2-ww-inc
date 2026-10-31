@@ -28,8 +28,9 @@ public sealed class CardTraitAcademicNextUseUpgrade : CardTraitState
         var ownData=GetCardTraitData();
         foreach(var upgrade in modifiers.GetCardUpgrades().Where(u=>u.GetTraitDataUpgrades().Contains(ownData)).ToArray())
             card.RemoveUpgrade(upgrade,modifiers);
-        card.UpdateCardBodyText();managers.GetCardManager().RefreshCardInHand(card);
+        card.UpdateCardBodyText();managers.GetCardManager().RefreshCardInHand(card,cleanupTweens:false);
     }
 }
 // 2026-10-15-2142||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/NextUseUpgrade.cs||Marcador de mejora: retirar solo su upgrade nativo tras el siguiente lanzamiento, sin limpiar por turno/descarte
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/NextUseUpgrade.cs||Retirar solo mejora marcada cubierta por concesión duradera; preservar otras fuentes
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/NextUseUpgrade.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor

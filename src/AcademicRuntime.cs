@@ -23,7 +23,7 @@ internal static class AcademicRuntime
     internal static readonly Dictionary<CharacterState,List<CardState>> BoundForAttack = new();
     internal static readonly Dictionary<CardState,int> FixedCosts = new();
     internal static bool Simulating => BattlePresentationContext.TryGet(out var current)&&current.GetSaveManager().PreviewMode;
-    internal static bool Active => Core!=null&&BattlePresentationContext.TryGet(out var current)&&
+    internal static bool Active => RunLoadDiagnostic.DataReady&&Core!=null&&BattlePresentationContext.TryGet(out var current)&&
         (!current.GetSaveManager().PreviewMode||PreviewScope.Active);
 
     internal sealed class SpellResolution
@@ -62,7 +62,7 @@ internal static class AcademicRuntime
         Core = ((AllGameManagers)AccessTools.Field(typeof(CardManager), "allGameManagers").GetValue(manager)).GetCoreManagers();
         SocialRules.AuraBonuses.Clear(); ZeroAttack.Clear(); FixedCosts.Clear();BoundForAttack.Clear(); Turn=0; ConversionDepth=0; HostileHealingDepth=0; EquipmentPreviewDepth=0; Frames.Clear(); LastPlayedCommonSpell=null; HealingModes.Clear();SpellRules.Reset();
         MineMineMine.Claimed.Clear();
-        FrozenTuition.Reset(); EffectLifetimes.Reset();
+        FrozenTuition.Reset(); EffectLifetimes.Reset(); FrozenCardPlays.Pending.Clear();
         DamageSpellPlayed=false; FirstDamageSpell=null;
         CardEffectAcademicPurgePermit.BeginBattle(Core);
     }
@@ -213,3 +213,5 @@ internal static class AcademicRuntime
 // 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Restaurar cámara solo cuando hay copias Memo/Extended, sin cambiar hechizos nativos ajenos
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Delegar expiraciones en fases explícitas sin compartir listas de distintas duraciones
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Delegar regla de robo final a su reliquia concreta
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||Reiniciar memoria de elegibilidad Frozen al comenzar combate
+// 2026-10-27-2205||codex-ww-inc||salidas/build/ww-inc/src/AcademicRuntime.cs||No activar mecánicas ni callbacks Conductor si el registro W&W no terminó correctamente

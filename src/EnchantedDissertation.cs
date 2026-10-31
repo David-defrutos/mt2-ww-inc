@@ -5,6 +5,7 @@ namespace WwInc;
 // Card-specific adapter: native hand selection, native mask and shared targeting policy.
 public sealed class CardEffectAcademicDissertation : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     private static bool EligibleBoundSpell(CardState card,CardEffectState effect,ICoreGameManagers managers)
         =>effect.GetParamCardFilter() is { } filter&&filter.FilterCard(card,managers.GetRelicManager())&&
@@ -22,3 +23,4 @@ public sealed class CardEffectAcademicDissertation : AcademicEffectBase,ICardEff
 }
 // 2026-10-25-1852||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/EnchantedDissertation.cs||Separar efecto activo por mecánica con selectores y operaciones nativas; sin despacho por cadena de regla
 // 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/EnchantedDissertation.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/EnchantedDissertation.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas

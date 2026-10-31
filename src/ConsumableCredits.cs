@@ -6,6 +6,7 @@ namespace WwInc;
 
 public sealed class CardEffectAcademicConsumeCredits : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
         =>m.GetCardManager().GetHand().Any(c=>c!=p.playedCard&&c.GetCardType()==CardType.Spell);
@@ -33,3 +34,4 @@ public sealed class CardEffectAcademicConsumeCredits : AcademicEffectBase,ICardE
 // 2026-10-27-1538||codex-ww-inc||salidas/build/ww-inc/src/ConsumableCredits.cs||Extraer conversión de créditos a efecto dedicado para probar coste, fuente, estado nativo y cola
 // 2026-10-27-1538||codex-ww-inc||salidas/build/ww-inc/src/ConsumableCredits.cs||Exponer límite de resolución al arnés sin cambiar API visible de cartas
 // 2026-10-27-1538||codex-ww-inc||salidas/build/ww-inc/src/ConsumableCredits.cs||Saturar coste base por multiplicador sin desbordamiento de Conduit
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/ConsumableCredits.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas

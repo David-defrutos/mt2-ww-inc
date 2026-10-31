@@ -42,7 +42,7 @@ internal static class ExcessCredit
         long current=modifiers.GetAdditionalDamage().Sum(value=>(long)value);
         modifiers.IncrementAdditionalDamage(AcademicMath.CreditDamageIncrement(current,power));
         spell.UpdateDamageText();spell.UpdateCardBodyText();
-        manager.RefreshCardInHand(spell);
+        manager.RefreshCardInHand(spell,cleanupTweens:false);
     }
     internal static void RewardHandOwner(CardState? spell,int kills,ICoreGameManagers core)
     {
@@ -51,7 +51,7 @@ internal static class ExcessCredit
             !Origins.TryGetValue(spell,out var card)||!core.GetCardManager().GetHand().Contains(card)||
             core.GetSaveManager().GetActiveSavePyreCharacterData()?.name!="PyreHeartSavagery")return;
         card.GetCardStateModifiers().IncrementAdditionalDamage(kills);
-        card.UpdateDamageText();card.UpdateCardBodyText();core.GetCardManager().RefreshCardInHand(card);
+        card.UpdateDamageText();card.UpdateCardBodyText();core.GetCardManager().RefreshCardInHand(card,cleanupTweens:false);
     }
 }
 
@@ -93,3 +93,4 @@ internal static class ExcessCreditCopyHook
 // 2026-10-25-1616||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ExcessCredit.cs||Generación de Crédito Extra recibe plantilla del efecto en vez de referencia global hardcoded
 // 2026-10-27-2018||codex-ww-inc||salidas/build/ww-inc/src/ExcessCredit.cs||Conservar traits del Crédito Extra y autoría de su creadora en el mismo daño nativo
 // 2026-10-27-2020||codex-ww-inc||salidas/build/ww-inc/src/ExcessCredit.cs||Mantener resolución nativa sin fuente cuando no existe carta; eliminar argumento nullable sin ocultar errores
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/ExcessCredit.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor

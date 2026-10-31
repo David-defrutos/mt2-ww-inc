@@ -5,6 +5,7 @@ namespace WwInc;
 
 public sealed class CardEffectAcademicTome : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     private static bool Eligible(CardState card,CardEffectState effect,ICoreGameManagers managers)
         =>effect.GetParamCardUpgradeData() is { } upgrade&&upgrade.GetFilters().All(filter=>filter.FilterCard(card,managers.GetRelicManager()));
@@ -42,7 +43,7 @@ public sealed class CardEffectAcademicReturnFrozen : AcademicEffectBase
     {
         card.RemoveTemporaryTrait(added);
         card.UpdateCardBodyText();
-        if(manager.GetHand().Contains(card))manager.RefreshCardInHand(card);
+        if(manager.GetHand().Contains(card))manager.RefreshCardInHand(card,cleanupTweens:false);
         yield break;
     }
 }
@@ -66,3 +67,5 @@ public sealed class CardEffectAcademicReturnFrozen : AcademicEffectBase
 // 2026-10-25-1640||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Declarar ICardEffectUiDialog en efectos que abren selección de cartas
 // 2026-10-25-2009||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ApprovedSpells.cs||Usar selector nativo independiente con managers del efecto; conservar filtros y resolución
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/ApprovedSpells.cs||Registrar vencimiento explícito sin cambiar instancias de mejoras ni duración aprobada
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/ApprovedSpells.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/ApprovedSpells.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor

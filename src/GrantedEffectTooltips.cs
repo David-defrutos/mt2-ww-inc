@@ -7,10 +7,28 @@ namespace WwInc;
 // Missing bridge only: render the configured grants with native localized formatters.
 internal static class GrantedEffectTooltips
 {
+    private static readonly HashSet<CardEffectData> ownedEffects=new();
+    internal static void Register(IEnumerable<CardData> cards)
+    {
+        ownedEffects.Clear();
+        foreach(var card in cards)
+        {
+            foreach(var effect in card.GetEffects())ownedEffects.Add(effect);
+            foreach(var trigger in card.GetCardTriggers())
+                foreach(var effect in trigger.GetCardEffects())ownedEffects.Add(effect);
+            foreach(var trigger in card.GetEffectTriggers())
+                foreach(var effect in trigger.GetEffects())ownedEffects.Add(effect);
+            var unit=card.GetSpawnCharacterData();
+            if(unit!=null)
+                foreach(var trigger in unit.GetTriggers())
+                    foreach(var effect in trigger.GetEffects())ownedEffects.Add(effect);
+        }
+    }
     internal static IEnumerable<TooltipContent> Append(IEnumerable<TooltipContent> original,CardEffectData data)
     {
         var type=data.GetEffectStateType();
-        if(type==null||type.Assembly!=typeof(Plugin).Assembly)
+        bool customEffect=type!=null&&type.Assembly==typeof(Plugin).Assembly;
+        if(!customEffect&&!ownedEffects.Contains(data))
         {
             foreach(var item in original)yield return item;
             yield break;
@@ -22,7 +40,7 @@ internal static class GrantedEffectTooltips
             if(TooltipIdentity.Prepare(ref content))entries.Add(content);
         }
         foreach(var content in entries)yield return content;
-        if(data.GetHideTooltip()||StatusEffectManager.Instance==null)yield break;
+        if(!customEffect||data.GetHideTooltip()||StatusEffectManager.Instance==null)yield break;
         var seen=new HashSet<string>(entries.Select(t=>t.tooltipId));
         if(!data.GetStatusEffectTooltipsSuppressed())
             foreach(var status in data.GetParamStatusEffects())
@@ -78,3 +96,7 @@ internal static class GrantedEffectDataTooltipHook
 // 2026-10-27-1434||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Completar título y cuerpo de estados con formateador nativo antes de validar tooltip; evitar datos inexistentes
 // 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Usar localización nativa de tooltips de traits concedidos
 // 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Replicar fallback nativo InitCardTrait para descripción localizada de Purge y otros rasgos concedidos
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Validar también tooltips de efectos nativos y Conductor cuyos datos pertenecen al clan
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Preservar generación nativa de tooltips sin duplicar mejoras para efectos ajenos a la DLL
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Registrar referencias reales de efectos del clan: CardEffectData no contiene nombre ni ID propio
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/src/GrantedEffectTooltips.cs||Determinar propiedad por referencias de datos registrados por Trainworks sin inventar campos nativos

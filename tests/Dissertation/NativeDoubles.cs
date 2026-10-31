@@ -122,7 +122,7 @@ namespace WwInc
  internal static class AcademicRuntime
  {
   internal sealed class SpellResolution{public CardState Card=null!;public int Floor;public CharacterState Target=null!;public bool Indirect;}
-  internal static Stack<SpellResolution> Frames=new();internal static ICoreGameManagers Core=null!;
+  internal static Dictionary<CharacterState,List<CardState>> BoundForAttack=new();internal static Stack<SpellResolution> Frames=new();internal static ICoreGameManagers Core=null!;
   internal static IEnumerator AfterSpell(SpellResolution f){yield break;}
  }
  // DissertationMarker is the production implementation linked by the project.
@@ -131,6 +131,11 @@ namespace WwInc
   internal static Dictionary<CardState,Team.Type> BoundSides=new();internal static HashSet<CardState> ReservedCards=new();
   internal static Dictionary<CharacterState,List<(CardState card,int attacks)>> BoundAttacks=new();
   internal static int EffectFloor=-1;internal static bool ChooseAllies=true;internal static List<CardState>? Shown;
+  internal static List<CardState> Released=new();
+  internal static IEnumerator ReleaseBoundSpell(CardState card){
+   if(BoundAttacks.Values.Any(list=>list.Any(binding=>binding.card==card)))yield break;
+   Released.Add(card);ReservedCards.Remove(card);BoundSides.Remove(card);yield break;
+  }
   internal static bool HealingEffect(CardEffectState effect)=>effect.Effect is CardEffectHeal;
   internal static IEnumerator SelectPile(ISystemManagers systems,TargetMode pile,Func<CardState,bool> eligible,Action<CardState> picked,bool cancel,List<CardState> candidates,string instructions)
   {Shown=candidates;picked(candidates[ChooseAllies?0:1]);yield break;}
@@ -175,3 +180,4 @@ public static class CardTooltipHelper
 // 2026-10-27-1536||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/NativeDoubles.cs||Modelar fase de batalla y getter de fuente para atributos Harmony
 // 2026-10-27-1536||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/NativeDoubles.cs||Permitir copias sin atacante físico en registros de efectos
 // 2026-10-27-1536||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/NativeDoubles.cs||Alinear doble con selfTarget opcional del motor
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/tests/Dissertation/NativeDoubles.cs||Modelar retirada y liberación sin reemplazar el adaptador productivo de vínculos

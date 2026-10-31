@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>WwInc.Plugin</AssemblyName>
     <RootNamespace>WwInc</RootNamespace>
-    <Version>0.1.167</Version>
+    <Version>0.1.169</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -673,3 +673,5 @@
 <!-- 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar desarrollo con correcciones posteriores al informe público 0.1.164 -->
 <!-- 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar versión 0.1.166 con propuestas de corrección aprobadas -->
 <!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->
+<!-- 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar correcciones posteriores a auditoría externa como desarrollo 0.1.168 -->
+<!-- 2026-10-27-2325||codex-ww-inc||salidas/build/ww-inc/src/WwInc.csproj||Identificar versión documental .169 sin cambiar mecánicas ni README -->

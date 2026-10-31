@@ -30,7 +30,8 @@ public class CharacterState
  public void AddStatusEffect(string id,int n){var map=TemporaryPreviewsEnabled?Temporary:Real;map[id]=map.GetValueOrDefault(id)+n;}
  public void Preview(){Temporary=new(Real);PreviewHP=RealHP;TemporaryPreviewsEnabled=true;}
 }
-public class SaveManager{public int Moved,Unlocks;public void IncrementTrackedValueForUnlocks(MetagameSaveData.TrackedValue value){Moved++;}public void CheckForNewUnlocks(){Unlocks++;}public bool PreviewMode;public int DisplayedRing=1;public int GetDisplayDistance()=>DisplayedRing;}
+public class SaveData { public enum GameSequence { InBattle, BattlePostCombatRewards, LeavingBattle } }
+public class SaveManager{public bool InBattle=true,Rewards;public SaveData.GameSequence GetGameSequence()=>!InBattle?SaveData.GameSequence.LeavingBattle:Rewards?SaveData.GameSequence.BattlePostCombatRewards:SaveData.GameSequence.InBattle;public bool IsInBattle()=>InBattle;public int Moved,Unlocks;public void IncrementTrackedValueForUnlocks(MetagameSaveData.TrackedValue value){Moved++;}public void CheckForNewUnlocks(){Unlocks++;}public bool PreviewMode;public int DisplayedRing=1;public int GetDisplayDistance()=>DisplayedRing;}
 public class PlayerManager{public int Energy;public void AddEnergy(int n){Energy+=n;}}
 public class CombatManager
 {
@@ -109,7 +110,10 @@ public class CardManager
  public HandSelectionUI.Params? Selection;
  public int OpenCount;public bool AutoPick;public int Drawn;public void DrawCards(int n){Drawn+=n;}
  public List<CardState> GetHand()=>Hand;
- public Action? Refreshed;public int Refreshes;public void RefreshHandCards(bool resetHandState=false){Refreshes++;Refreshed?.Invoke();}
+ public Action? Refreshed;public int Refreshes;public readonly List<(bool cleanup,bool reset)> RefreshOptions=new();
+ public void RefreshHandCards(bool resetHandState=false){Refreshes++;Refreshed?.Invoke();}
+ public void RefreshCardInHand(CardState card,bool cleanupTweens=true,bool resetHandState=false,bool resetJuice=false)
+ {RefreshOptions.Add((cleanupTweens,resetHandState));Refreshes++;Refreshed?.Invoke();}
  public IEnumerator SelectCardFromHand(HandSelectionUI.Params parameters,bool automaticallySelectLastCard=true)
  { Selection=parameters;AutoPick=automaticallySelectLastCard;OpenCount++;yield break; }
 }
@@ -125,7 +129,7 @@ public class RoomState
 }
 public class RoomManager{public int OrderUpdates;public IEnumerator HandleRoomUnitOrderPossiblyChanged(){OrderUpdates++;yield break;}public int GetNumRooms()=>Rooms.Count;public readonly Dictionary<int,RoomState> Rooms=new();public RoomState? GetRoom(int floor)=>Rooms.GetValueOrDefault(floor);}
 public class CardStatistics{}
-public class RelicManager{public List<CharacterState> Moved=new();public Action<CharacterState>? OnMove;public IEnumerator CharacterFloorRearranged(CharacterState unit,CardState? card){Moved.Add(unit);OnMove?.Invoke(unit);yield break;}public readonly List<WwInc.RelicEffectAcademic> Effects=new();public List<T> GetRelicEffects<T>(List<T> list){list.AddRange(Effects.OfType<T>());return list;}}
+public class RelicManager{public IEnumerator ApplyCardPlayedRelicEffects(){yield break;}public List<CharacterState> Moved=new();public Action<CharacterState>? OnMove;public IEnumerator CharacterFloorRearranged(CharacterState unit,CardState? card){Moved.Add(unit);OnMove?.Invoke(unit);yield break;}public readonly List<WwInc.RelicEffectAcademic> Effects=new();public List<WwInc.RelicEffectAcademicFrozenDraw> FrozenEffects=new();public List<T> GetRelicEffects<T>(List<T> list){list.AddRange(Effects.Cast<object>().Concat(FrozenEffects).OfType<T>());return list;}}
 public class PropDescriptions{public static PropDescriptions DisplayNone=>new();}
 public class RelicEffectData{public int Amount=1;public int GetParamInt()=>Amount;}
 public class RelicEffectBase
@@ -238,6 +242,7 @@ namespace WwInc
  public abstract class AcademicEffectBase
  {
   public virtual bool CanApplyInPreviewMode=>false;
+  public virtual bool CanPlayAfterBossDead=>true;
   public virtual bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)=>true;
   public abstract IEnumerator ApplyEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m,ISystemManagers sys);
  }
@@ -280,3 +285,17 @@ namespace WwInc
 // 2026-10-27-2021||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar únicamente APIs nativas de movimiento, reliquias y callbacks para ejecutar adaptadores productivos
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar excepción nativa durante ataque para verificar limpieza de parámetros
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Permitir fallo de ataque en doble sin interceptar error de producción
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar fase real de partida para distinguir mapa con gestores todavía cargados
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Exponer frontera nativa post-jugada para ejecutar wrapper real de Scholarship
+// 2026-10-27-2205||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Permitir efecto FrozenDraw real separado de la base de nueve reliquias en arnés
+
+public class ScenarioData { }
+public class RelicEffectParams { }
+public interface ITurnPhaseEndOfBattleRelicEffect
+{
+    void ApplyEffectEndOfBattle(ScenarioData? completedScenario,RelicEffectParams relicEffectParams,ICoreGameManagers coreGameManagers);
+}
+// 2026-10-29-1943||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Añadir firma exacta del evento nativo de fin de batalla para probar contador de reembolso
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar valor nativo por defecto para probar que selector Intern lo restringe explícitamente
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar opciones nativas de refresco para comprobar que la limpieza no cancela animaciones ni pisa selectores nuevos
+// 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar que el helper nativo IsInBattle acepta recompensas aunque no sean combate jugable

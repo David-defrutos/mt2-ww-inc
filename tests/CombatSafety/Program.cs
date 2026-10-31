@@ -81,6 +81,15 @@ Check(applied==0&&selectionCore.Cards.OpenCount==1,"Card-play preview independen
 selectionCore.Combat.IsRunningCardPlayPreview=false;
 Run(selection.cardChosenCallback(validChoice,selectionCore.Cards));
 Check(applied==1,"Valid confirmation runs against the original explicit managers");
+Check(!selection.filterCallback(invalidChoice)&&!selection.filterCallback(selectionSource),"Retained selector cannot darken cards after its choice has resolved");
+Run(selection.cardChosenCallback(validChoice,selectionCore.Cards));
+Check(applied==1,"A repeated confirmation cannot consume or reward a second time");
+var cancelledCore=new FakeCore();cancelledCore.Cards.Hand.AddRange([validChoice,invalidChoice]);
+Run(HandSelection.ChooseHand(cancelledCore,null,c=>c.Type==CardType.Spell,c=>{applied++;}));
+var cancelledSelection=cancelledCore.Cards.Selection!;cancelledCore.Cards.Completed?.Invoke();
+Check(!cancelledSelection.filterCallback(invalidChoice),"Native closure clears captured eligibility even without a chosen card");
+Run(cancelledSelection.cardChosenCallback(validChoice,cancelledCore.Cards));
+Check(applied==1,"A callback retained after cancellation cannot alter the hand");
 selectionCore.Save.PreviewMode=true;
 Run(HandSelection.ChooseHand(selectionCore,selectionSource,c=>true,c=>{applied++;}));
 Check(selectionCore.Cards.OpenCount==1,"Save preview never opens hand UI");
@@ -93,6 +102,26 @@ Run(HandSelection.ChooseHand(selectionCore,selectionSource,c=>true,new Func<Card
 Run(selectionCore.Cards.Selection!.cardChosenCallback(validChoice,selectionCore.Cards));
 Check(applied==3,"Confirmation runs the whole selected-effect coroutine");
 
+
+var lateSelectionCore=new FakeCore();lateSelectionCore.Cards.Hand.AddRange([validChoice,invalidChoice]);
+int lateMutations=0;
+Run(HandSelection.ChooseHand(lateSelectionCore,null,c=>c.Type==CardType.Spell,c=>{lateMutations++;}));
+var lateSelection=lateSelectionCore.Cards.Selection!;
+lateSelectionCore.Save.Rewards=true;
+Run(lateSelection.cardChosenCallback(validChoice,lateSelectionCore.Cards));
+Check(lateMutations==0&&lateSelectionCore.Cards.Hand.Contains(validChoice),"A callback from the completed fight cannot consume a card or grant rewards on the reward screen");
+Check(!lateSelection.filterCallback(invalidChoice),"A retained battle filter stops darkening cards once rewards begin");
+Run(HandSelection.ChooseHand(lateSelectionCore,null,c=>true,c=>{lateMutations++;}));
+Check(lateSelectionCore.Cards.OpenCount==1,"No new hand selector opens during postcombat rewards");
+lateSelectionCore.Save.InBattle=false;
+Run(lateSelection.cardChosenCallback(validChoice,lateSelectionCore.Cards));
+Check(lateMutations==0,"The same delayed callback is also harmless on the map");
+
+var finishingSelectionCore=new FakeCore();finishingSelectionCore.Cards.Hand.Add(validChoice);
+IEnumerator FinishDuringChoice(CardState card){finishingSelectionCore.Save.Rewards=true;yield break;}
+Run(HandSelection.ChooseHand(finishingSelectionCore,null,c=>true,new Func<CardState,IEnumerator>(FinishDuringChoice)));
+Run(finishingSelectionCore.Cards.Selection!.cardChosenCallback(validChoice,finishingSelectionCore.Cards));
+Check(finishingSelectionCore.Combat.QueueRuns==0,"A selected effect that ends battle cannot drain the old combat queue afterwards");
 
 // Frozen Tuition keeps per-unit damage credit while delegating the unchanged cost operation.
 var tuitionCore=new FakeCore();var tuitionSource=new CharacterData();FrozenTuition.Source=tuitionSource;FrozenTuition.Reset();
@@ -300,8 +329,16 @@ HandSelectionPresentation.Restore(new FakeCore());
 Check(dimmedCard.Disabled,"Old selection cannot clear another battle's presentation");
 selectionContext.Core.Hand.Selecting=true;HandSelectionPresentation.Restore(selectionContext.Core);
 Check(dimmedCard.Disabled,"Cleanup cannot override a newly opened native selector");
-selectionContext.Core.Hand.Selecting=false;HandSelectionPresentation.Restore(selectionContext.Core);
-Check(selectionContext.Core.Cards.Refreshes==1,"Closed selection delegates hand restoration to native RefreshHandCards");
+selectionContext.Core.Hand.Selecting=false;
+selectionContext.Core.Cards.Hand.AddRange([new CardState(),new CardState()]);
+HandSelectionPresentation.Restore(selectionContext.Core);
+Check(selectionContext.Core.Cards.Refreshes==2,"Closed selection restores each hand card through the native refresh API");
+Check(selectionContext.Core.Cards.RefreshOptions.All(x=>!x.cleanup&&x.reset),"Closing a selector resets hand state without killing DOTween animations");
+int beforeReentrantRefresh=selectionContext.Core.Cards.Refreshes;
+selectionContext.Core.Cards.Refreshed=()=>selectionContext.Core.Hand.Selecting=true;
+HandSelectionPresentation.Restore(selectionContext.Core);
+Check(selectionContext.Core.Cards.Refreshes==beforeReentrantRefresh+1,"A selector opening during refresh prevents cleanup from changing its remaining cards");
+selectionContext.Core.Cards.Refreshed=null;selectionContext.Core.Hand.Selecting=false;
 Check(dimmedCard.State==CardUI.CardUIState.Ineligible&&untouchedCard.State==CardUI.CardUIState.Screen,"Our callback leaves individual CardUI mutations to the native refresh");
 AllGameManagers.Instance=null;
 
@@ -402,6 +439,13 @@ Check(SpellRules.TuitionRefundCount==4&&relicCore.Player.Energy==0,"Lethal Refun
 var refundCounter=new System.Text.StringBuilder();refundRelic.AppendConditionCountDisplay(refundCounter,relicCore.Statistics);Check(refundCounter.ToString()=="4/5","Refund display reads the same counter as its behavior");
 refundRelic.RecordKillingSpell(costThree,1,relicCore);Check(SpellRules.TuitionRefundCount==0&&relicCore.Player.Energy==3,"Fifth killing spell refunds paid cost and resets");
 relicCore.Save.PreviewMode=true;refundRelic.RecordKillingSpell(costThree,1,relicCore);Check(SpellRules.TuitionRefundCount==0,"Refund preview cannot advance the counter");relicCore.Save.PreviewMode=false;
+SpellRules.TuitionRefundCount=4;relicCore.Save.PreviewMode=true;
+refundRelic.ApplyEffectEndOfBattle(null,new RelicEffectParams(),relicCore);
+Check(SpellRules.TuitionRefundCount==4,"Battle-end preview cannot reset real refund progress");
+relicCore.Save.PreviewMode=false;refundRelic.ApplyEffectEndOfBattle(null,new RelicEffectParams(),relicCore);
+Check(SpellRules.TuitionRefundCount==0,"Native end-of-battle clears refund progress before the map is displayed");
+refundCounter.Clear();refundRelic.AppendConditionCountDisplay(refundCounter,relicCore.Statistics);
+Check(refundCounter.ToString()=="0/5","Map counter no longer displays progress from the completed fight");
 var oldRefund=new RelicEffectAcademic{SourceRelicData=new(){name="old-WW_A05"}};oldRefund.RecordKillingSpell(costThree,1,relicCore);Check(SpellRules.TuitionRefundCount==1,"Legacy refund uses the same persisted battle counter");
 SpellRules.OnceTurn.Clear();var extended=new RelicEffectExtendedExam();var indirectFrame=new AcademicRuntime.SpellResolution{Card=new CardState(),Indirect=true};extended.BeforeRules(indirectFrame,relicTarget);
 Check(indirectFrame.Rules.Count==0&&!SpellRules.OnceTurn.Contains("A06"),"Extended Exam cannot spend its charge on an indirect replay");
@@ -419,6 +463,45 @@ foreach(var id in legacyTypes)
  legacy.BeforePower(new(){Card=new CardState{Damage=false}},new());legacy.BeforeRules(new(){Card=new CardState{Damage=false}},null);
  Check(legacy.TurnOrder==(id=="WW_A07"?0:id=="WW_A09"?1:100),id+": legacy route has a finite fallback and preserves event priority");
 }
+
+
+var mapContext=new AllGameManagers{Initialized=true};AllGameManagers.Instance=mapContext;
+mapContext.Save.InBattle=false;
+bool safeMapQueries=true;for(int i=0;i<1000;i++)safeMapQueries&=!BattlePresentationContext.TryGet(out _);
+Check(safeMapQueries,"Map with cached scene managers cannot be mistaken for battle over 1000 queries");
+Check(mapContext.CoreReads==0&&mapContext.ManagerReads==0,"Map queries reject phase before accessing combat managers");
+mapContext.Save.InBattle=true;mapContext.Save.Rewards=true;
+int rewardCoreReads=mapContext.CoreReads,rewardManagerReads=mapContext.ManagerReads;
+Check(mapContext.Save.IsInBattle(),"Native broad battle query still reports true on reward screens");
+for(int i=0;i<1000;i++)BattlePresentationContext.TryGet(out _);
+Check(mapContext.CoreReads==rewardCoreReads&&mapContext.ManagerReads==rewardManagerReads,"Reward tooltips cannot access stale combat managers despite native IsInBattle returning true");
+mapContext.Save.Rewards=false;
+mapContext.Save.InBattle=true;Check(BattlePresentationContext.TryGet(out _),"The same initialized scene is available after entering battle");
+AllGameManagers.Instance=null;
+var afterPlayContext=new AllGameManagers{Initialized=true};AllGameManagers.Instance=afterPlayContext;
+var afterPlayCore=afterPlayContext.Core;var afterPlayRelic=new RelicEffectAcademicFrozenDraw();afterPlayCore.Relics.Effects.Clear();
+// FrozenDraw has a distinct base; its native fake manager stores it separately.
+afterPlayCore.Relics.FrozenEffects.Add(afterPlayRelic);
+FrozenCardPlays.Pending.Clear();var frozenPlay=new CardState{Frozen=true};
+FrozenCardPlays.Record(frozenPlay,true,true);
+Check(afterPlayCore.Cards.Drawn==0,"Accepting a Frozen play cannot draw into that card's own selection");
+bool nativeFinished=false;
+IEnumerator NativeAfterPlay(){Check(afterPlayCore.Cards.Drawn==0,"Native post-play relics resolve before the Scholarship draw");nativeFinished=true;yield break;}
+Run(FrozenCardPlays.AfterNativeRelics(NativeAfterPlay(),frozenPlay));
+Check(nativeFinished&&afterPlayCore.Cards.Drawn==1&&afterPlayRelic.Triggers==1&&!FrozenCardPlays.Pending.ContainsKey(frozenPlay),"Scholarship consumes captured Freeze once at the native post-play boundary");
+Run(FrozenCardPlays.AfterNativeRelics(NativeAfterPlayEmpty(),frozenPlay));
+Check(afterPlayCore.Cards.Drawn==1,"A second callback without another accepted Frozen play cannot draw again");
+IEnumerator NativeAfterPlayEmpty(){yield break;}
+FrozenCardPlays.Record(frozenPlay,false,true);FrozenCardPlays.Record(frozenPlay,true,false);
+Check(FrozenCardPlays.Pending.Count==0,"Failed plays and non-Frozen plays leave no future reward");
+FrozenCardPlays.Record(frozenPlay,true,true);var frozenSnapshot=new CollectionSnapshot(typeof(FrozenCardPlays));
+afterPlayCore.Save.PreviewMode=true;Run(FrozenCardPlays.AfterNativeRelics(NativeAfterPlayEmpty(),frozenPlay));
+Check(FrozenCardPlays.Pending.ContainsKey(frozenPlay)&&afterPlayCore.Cards.Drawn==1,"Preview does not consume real post-play eligibility");
+afterPlayCore.Save.PreviewMode=false;FrozenCardPlays.Pending.Clear();frozenSnapshot.Restore();
+Check(FrozenCardPlays.Pending.ContainsKey(frozenPlay),"Post-play eligibility survives snapshot rollback");
+afterPlayContext.Save.InBattle=false;Run(FrozenCardPlays.AfterNativeRelics(NativeAfterPlayEmpty(),frozenPlay));
+Check(afterPlayCore.Cards.Drawn==1,"Map callback cannot award a pending battle draw");
+FrozenCardPlays.Pending.Clear();AllGameManagers.Instance=null;
 
 Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,errors}));return errors.Count==0?0:1;
 // 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/CombatSafety/Program.cs||Regresiones reales de hover, daño temporal, devolución real, Immortal Trade, armadura, exceso y escudos
@@ -441,3 +524,13 @@ Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,er
 // 2026-10-27-1540||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Regresiones FIFO de Memo, hechizo no elegible, repetición, otras reglas y snapshot
 // 2026-10-27-2021||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar movimiento atómico, callbacks nativos, muerte, preview y nueve reliquias concretas con compatibilidad antigua
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar intercambio mínimo y restauración de parámetros si el ataque nativo falla
+// 2026-10-27-2205||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar mapa con managers retenidos, mil consultas y Scholarship posterior a resolución con rollback
+// 2026-10-27-2207||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Mantener stress de mil consultas con una regresión agregada sin inflar el número de escenarios
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Reproducir filtros retenidos al pasar el ratón, callbacks duplicados y cierre sin confirmación
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar propiedad de datos de efectos nativos/Conductor y aislamiento de otros clanes
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Retirar prueba de ID inventado y conservar prueba funcional de identidad de tooltip
+// 2026-10-29-1943||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Verificar fin de batalla, contador de mapa y ausencia de mutación en preview
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar que el cierre de selección conserva tweens y respeta otro selector abierto durante su callback
+// 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Reproducir pantalla de recompensas con gestores retenidos y comprobar 1000 lecturas sin acceder al combate
+// 2026-10-29-2038||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Reproducir confirmación tardía tras victoria y verificar mano intacta, filtros inactivos y ausencia de nuevas interfaces
+// 2026-10-29-2039||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar transición a recompensas durante la propia coroutine elegida sin ejecutar después la cola antigua

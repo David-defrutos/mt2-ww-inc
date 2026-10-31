@@ -12,7 +12,7 @@ Wizards & Witches Inc. is a spell-focused clan for Monster Train 2. An academy o
 - **MineMineMine:** claims spell kills on the holder's floor.
 - Build around Conduit, spell upgrades, healing, and Wizard–Witch combinations.
 
-## BETA — 0.1.167
+## BETA — 0.1.168
 
 This clan is playable but **unfinished**, and I am publishing it at this stage on purpose: I would rather have real games behind it than keep guessing on my own. What helps most is **bug reports** and an opinion on the **balance of the champions, the units and the spells**.
 
@@ -34,6 +34,8 @@ If you have the local development build in `Local-WWInc`, disable or remove that
 ## Credits
 
 Built with [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) and [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Thank you to everyone who has helped me with any of my clans: the framework and mod authors, players, testers, and everyone who has shared bug reports, suggestions, code, or advice. Your help has made all of these projects better.
+
+Special thanks to **Brandon**, **Chéradénine**, **CodePointer**, **fohnjarmery**, **lostone**, **Rratvar, the Untitled**, and **timeracers** for their help with my clans, including bug reports, suggestions, and technical advice.
 
 ## Gallery
 
@@ -70,7 +72,7 @@ Wizards & Witches Inc. es un clan de hechizos para Monster Train 2. Una academia
 - **MíoMíoMío:** reclama las bajas de hechizos del piso del portador.
 - Combina Conduit, mejoras de hechizos, curación y parejas de Mago y Bruja.
 
-## BETA — 0.1.167
+## BETA — 0.1.168
 
 Este clan es jugable, pero está **sin terminar**, y lo publico en este estado a propósito: prefiero contar con partidas reales antes que seguir haciendo suposiciones por mi cuenta. Lo que más ayuda son los **informes de errores** y vuestra opinión sobre el **equilibrio de los campeones, las unidades y los hechizos**.
 
@@ -96,6 +98,8 @@ Si tienes la versión local de desarrollo en `Local-WWInc`, desactiva o retira e
 ## Créditos
 
 Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded) y [Conductor](https://github.com/Monster-Train-2-Modding-Group/Conductor). Gracias a todas las personas que me han ayudado con cualquiera de mis clanes: autores de herramientas y mods, jugadores, testers y quienes han compartido errores, sugerencias, código o consejos. Vuestra ayuda ha mejorado todos estos proyectos.
+
+Gracias especialmente a **Brandon**, **Chéradénine**, **CodePointer**, **fohnjarmery**, **lostone**, **Rratvar, the Untitled** y **timeracers** por su ayuda con mis clanes, incluidos reportes de errores, sugerencias y asesoramiento técnico.
 <!-- 2026-10-24-1621||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Ficha pública bilingüe beta con contenido, dependencias y aviso de instalación duplicada -->
 
 <!-- 2026-10-24-1705||claude-ww-thunderstore||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/README.md||Añadir galería de cinco capturas con enlaces públicos de mt2-ww-inc-media -->
@@ -129,3 +133,10 @@ Creado con [Trainworks Reloaded](https://github.com/Monster-Train-2-Modding-Grou
 <!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->
 <!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Ampliar agradecimientos generales a todas las personas que han ayudado en cualquiera de los clanes, en inglés -->
 <!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Ampliar agradecimientos generales a todas las personas que han ayudado en cualquiera de los clanes, en español -->
+<!-- 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Identificar correcciones posteriores a auditoría externa como desarrollo 0.1.168 -->
+<!-- 2026-10-27-2259||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Nombrar en README inglés a colaboradores confirmados por sus nombres de Discord -->
+<!-- 2026-10-27-2259||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Nombrar en README español a colaboradores confirmados por sus nombres de Discord -->
+<!-- 2026-10-27-2300||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Mantener agradecimiento inglés directo con nombres de Discord sin explicación redundante -->
+<!-- 2026-10-27-2300||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Mantener agradecimiento español directo con nombres de Discord sin explicación redundante -->
+<!-- 2026-10-27-2302||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Incluir siete nombres de Discord confirmados en agradecimientos generales ingleses -->
+<!-- 2026-10-27-2302||codex-ww-inc||salidas/build/ww-inc/thunderstore/README.md||Incluir siete nombres de Discord confirmados en agradecimientos generales españoles -->

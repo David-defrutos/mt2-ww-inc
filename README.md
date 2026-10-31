@@ -1,7 +1,7 @@
 <!-- Documento generado el 2026-10-10-0024 -->
 # W&W Inc.
 
-## Development source — 0.1.167 beta
+## Development source — 0.1.168 beta
 
 Source code and assets for **W&W Inc.**, a Monster Train 2 clan. The latest changes have passed code and data validation; their behavior and presentation still need in-game verification.
 
@@ -45,7 +45,7 @@ Arcane Slay hit detection and queueing use Conductor 0.5.16. Overheal and Overda
 Las secciones siguientes conservan el flujo del workspace original. Sus enlaces a `docs/`, scripts de operaciones y rutas absolutas requieren ese workspace y no se resuelven en un clon independiente. No son pasos necesarios para las pruebas de reglas y daño.
 
 
-Versión local 0.1.167 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
+Versión local 0.1.168 del clan Wizards & Witches Inc. Colección activa: 43 cartas, incluidos campeones y starters, y 10 reliquias. Las definiciones retiradas y habilidades auxiliares se conservan aparte.
 
 [Estado y pruebas pendientes](../../../docs/clanes/ww-inc/hechizos-starter-2026-10-11-1106.md) · [Catálogo seleccionado](design/catalog.json).
 
@@ -373,3 +373,4 @@ El empaquetador específico es `scripts/operaciones/empaquetar-ww-inc-thundersto
 <!-- 2026-10-27-1436||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar desarrollo con correcciones posteriores al informe público 0.1.164 -->
 <!-- 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar versión 0.1.166 con propuestas de corrección aprobadas -->
 <!-- 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas -->
+<!-- 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/README.md||Identificar correcciones posteriores a auditoría externa como desarrollo 0.1.168 -->

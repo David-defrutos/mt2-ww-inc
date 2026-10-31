@@ -11,19 +11,14 @@ internal static class DeathHook
     static void Prefix(CharacterState removeCharacter,bool death,ref bool vanishUnit)
     { if(AcademicRuntime.Active&&death&&removeCharacter.GetSourceCharacterData().name.Contains("WW_Token_"))vanishUnit=true; }
     static void Postfix(CharacterState removeCharacter,bool death,ref IEnumerator __result)
-    { if(AcademicRuntime.Active&&death)__result=Run(__result,removeCharacter); }
-    static IEnumerator Run(IEnumerator original,CharacterState unit)
+    { if(AcademicRuntime.Active&&(death||!AcademicRuntime.Simulating))__result=Run(__result,removeCharacter,death); }
+    static IEnumerator Run(IEnumerator original,CharacterState unit,bool death)
     {
         int floor=unit.GetCurrentRoomIndex();bool chaperone=SocialRules.Chaperone!=null&&unit.GetHasSubtype(SocialRules.Chaperone);
         var archived=SpellRules.Archived.TryGetValue(unit,out var stored)?stored.ToArray():Array.Empty<CardState>();
-        var bound=SpellRules.BoundAttacks.TryGetValue(unit,out var bindings)?bindings.Select(b=>b.card).ToArray():Array.Empty<CardState>();
-        if(AcademicRuntime.BoundForAttack.TryGetValue(unit,out var active))bound=bound.Concat(active).Distinct().ToArray();
-        yield return original;
-        SpellRules.BoundAttacks.Remove(unit);
-        foreach(var spell in bound)yield return SpellRules.ReleaseBoundSpell(spell);
-        if(!unit.IsDestroyed)DissertationMarker.Refresh(unit);
+        yield return UnitBindings.AfterRemoval(original,unit);
         if(!AcademicRuntime.Simulating&&archived.Length>0){SpellRules.Archived.Remove(unit);foreach(var spell in archived)yield return SpellRules.Restore(spell,false,true,attunedThisTurn:true);}
-        AcademicRelics.UnitDied(chaperone,floor);
+        if(death)AcademicRelics.UnitDied(chaperone,floor);
         SocialRules.RefreshAuras();
     }
 }
@@ -44,6 +39,8 @@ internal static class AuraPositionHook
 {
     static void Postfix()=>SocialRules.RefreshAuras();
 }
+// HarmonyX runs void postfixes before pass-through postfixes, regardless of HarmonyAfter.
+// Return the coroutine, like Conductor, so it can inspect native yield points first.
 [HarmonyPatch(typeof(CharacterState),nameof(CharacterState.ApplyDamage))]
 [HarmonyAfter("Conductor")]
 internal static class UnitAttackHook
@@ -53,8 +50,8 @@ internal static class UnitAttackHook
         if(!AcademicRuntime.Active)return;
         if(damageParams.damageSourceCard!=null && damageParams.damageType!=Damage.Type.SpellOverflow && SpellRules.DamageFactors.TryGetValue(damageParams.damageSourceCard,out var factor)) damage=(int)Math.Floor(damage*factor);
     }
-    static void Postfix(CharacterState __instance,int damage,CharacterState.ApplyDamageParams damageParams,ref IEnumerator __result)
-        =>__result=Run(__result,__instance,damage,damageParams);
+    static IEnumerator Postfix(IEnumerator enumerator,CharacterState __instance,int damage,CharacterState.ApplyDamageParams damageParams)
+        =>Run(enumerator,__instance,damage,damageParams);
     static IEnumerator Run(IEnumerator original,CharacterState target,int damage,CharacterState.ApplyDamageParams parameters)
     {
         if(!AcademicRuntime.Active||!PreviewDependencies.CanWrite(target,AcademicRuntime.Core)){yield return original;yield break;}
@@ -94,8 +91,8 @@ internal static class UnitAttackHook
 [HarmonyAfter("Conductor")]
 internal static class DiscardRuleHook
 {
-    static void Postfix(CardManager __instance,CardManager.DiscardCardParams discardCardParams,ref IEnumerator __result)
-        =>__result=Run(__instance,discardCardParams,__result);
+    static IEnumerator Postfix(IEnumerator enumerator,CardManager __instance,CardManager.DiscardCardParams discardCardParams)
+        =>Run(__instance,discardCardParams,enumerator);
     static IEnumerator Run(CardManager manager,CardManager.DiscardCardParams parameters,IEnumerator original)
     {
         if(!AcademicRuntime.Active||AcademicRuntime.Simulating){yield return original;yield break;}
@@ -159,12 +156,8 @@ internal static class FrozenCardDrawHook
 {
     static void Prefix(CardState cardState,out bool __state)
         =>__state=AcademicRuntime.Active&&!AcademicRuntime.Simulating&&!cardState.IsAnyAbility()&&cardState.HasTrait(typeof(CardTraitFreeze));
-    static void Postfix(CardManager __instance,bool __result,bool __state)
-    {
-        if(__result&&__state)
-            foreach(var relic in AcademicRuntime.Core.GetRelicManager().GetRelicEffects(new System.Collections.Generic.List<RelicEffectAcademicFrozenDraw>()))
-                relic.OnFrozenCardPlayed(AcademicRuntime.Core);
-    }
+    static void Postfix(CardState cardState,bool __result,bool __state)
+        =>FrozenCardPlays.Record(cardState,__result,__state);
 }
 
 // 2026-10-11-0941||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/LifecycleHooks.cs||Devolver Consume sin duplicados ni pérdida con mano llena; Freeze detecta cualquier carta jugada con éxito
@@ -203,3 +196,8 @@ internal static class FrozenCardDrawHook
 // 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||No ejecutar observadores/pasivas de daño sobre unidades sin copia temporal durante preview
 // 2026-10-27-2018||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Ordenar wrapper de descarte después de Conductor para conservar sus triggers
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Delegar reducción de recarga por muerte de chaperón a su consumidor específico
+// 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Limpiar vínculos también al retirar sin muerte; conservar premios de muerte exclusivamente en death=true
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Capturar Freeze al aceptar jugada sin robar antes de resolver la carta
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Usar postfix passthrough para que HarmonyAfter ordene realmente la coroutine después de Conductor
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Mantener visible la coroutine de descarte para Conductor usando la misma fase de postfix
+// 2026-10-29-1405||codex-ww-inc||salidas/build/ww-inc/src/LifecycleHooks.cs||Explicar por qué el wrapper debe devolver IEnumerator además de declarar HarmonyAfter

@@ -1,12 +1,26 @@
 <!-- Documento generado el 2026-10-24-1621 -->
 # Changelog
 
-## 0.1.167 — Spell, targeting and compatibility fixes
+[English changelog](#english) · [Español](#spanish) · [Français](#french) · [Deutsch](#german) · [Русский](#russian) · [Português (Brasil)](#portuguese-brazil) · [简体中文](#chinese) · [繁體中文](#chinese-traditional) · [한국어](#korean) · [日本語](#japanese)
 
-### English
+Latest release in all ten game languages. Full history in English and Spanish.
+
+## English
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Changelog:** added language navigation and the latest release notes in all ten game languages. English and Spanish retain the complete history.
+
+### 0.1.168 — Spell, targeting and compatibility fixes
 
 Special thanks to **Rratvar, the Untitled** and **Brandon** for their bug reports, investigations, and technical advice.
 
+- **Enchanted Dissertation** now clarifies that every hit casts the bound spell: Sweep can cast it once per enemy hit while spending one charge per attack.
+- **Enchanted Dissertation** releases bound spells when its bearer returns to hand or leaves play without dying.
+- Battle-only cost overrides and reserved-card markers no longer appear on the map after combat.
+- **Course Withdrawal** includes the selected floor’s cost modifiers when calculating its Ember refund.
+- **Frozen Enrollment Scholarship** draws at the native after-play relic timing, rather than when a card is accepted for play.
+- W&W initialization failures are isolated so they do not interrupt other mods’ initialization.
 - **Arcane Slay** also triggers when a spell kills a friendly unit.
 - **Triple Impact Exam** can target friendly units.
 - **Interdepartmental Damage Memo:** each copy adds one use, and each eligible spell spends one use. Repetitions do not spend additional uses.
@@ -24,30 +38,7 @@ Special thanks to **Rratvar, the Untitled** and **Brandon** for their bug report
 - Reworked effect-duration and relic handling while preserving existing durations and relic IDs.
 - Added diagnostic information for runs that cannot resolve their saved main clan.
 
-### Español
-
-Gracias especialmente a **Rratvar, the Untitled** y **Brandon** por sus reportes de errores, investigaciones y asesoramiento técnico.
-
-- **Arcane Slay** también se activa cuando un hechizo mata a una unidad aliada.
-- **Triple Impact Exam** puede dirigirse a unidades aliadas.
-- **Interdepartmental Damage Memo:** cada copia añade un uso y cada hechizo elegible gasta uno. Las repeticiones no gastan usos adicionales.
-- Los hechizos repetidos conservan **Trample**, **Explosive** y sus demás rasgos de daño. **Enchanted Dissertation** conserva estos rasgos y sus destinos aliados o enemigos.
-- Las repeticiones entre pisos usan las reglas de objetivos del piso de destino, incluidos los filtros de jefes, y restauran la cámara tras la secuencia.
-- **Trample de hechizos W&W** transfiere el exceso a los enemigos delanteros hasta agotarlo, también después de golpear a un aliado o a un enemigo trasero. El daño transferido respeta la mitigación y Spell Weakness no vuelve a multiplicarlo.
-- **Extra Credit** conserva sus propios rasgos y atribuye las bajas a su creadora. Guardar esa autoría desde el mapa ya no consulta gestores exclusivos de combate.
-- **Credit Conversion** y las selecciones de cartas resuelven los eventos generados por sus efectos antes de devolver el control.
-- Al cerrar la selección de mano se limpian las marcas **Not Eligible** y el sombreado persistente.
-- Corregidas las descripciones ausentes de estados y rasgos concedidos, incluidos **Conduit** y **Purge**.
-- Añadidos el mensaje de activación de **Frozen Enrollment Scholarship** y el contador de uso por turno de **Extended Exam Session**.
-- **Desk Swap** respeta las restricciones de movimiento y activa los efectos nativos después de completar el intercambio. Su ataque inmediato usa la unidad trasera original solo si sobrevive y permanece delante.
-- Mejorada la gestión de preview para evitar gestores de batalla no disponibles y cambios en unidades reales cuyo estado temporal aún no está preparado. La ampliación de preview entre pisos se limita a efectos W&W relevantes.
-- Mejorada la compatibilidad con los triggers de impacto y descarte de **Conductor**. Arcane Slay, Overheal y Overdamage evitan despachar eventos propios a unidades sin su trigger.
-- Reorganizada la gestión de duraciones y reliquias, conservando las duraciones e IDs existentes.
-- Añadida información de diagnóstico para partidas que no pueden resolver su clan principal guardado.
-
-## 0.1.164 — Massive Update
-
-### English
+### 0.1.164 — Massive Update
 
 Massive update! I’ve probably squashed 30 bugs and created 31 new ones.
 
@@ -131,7 +122,194 @@ Huge thanks to **Rratvar, the Untitled** and **Brandon** for testing, bug report
 
 Please post feedback and suggestions in the [W&W Inc. Discord channel](https://discord.com/channels/336546996779483136/1563714320058290300).
 
-### Español
+### 0.1.162 — Tooltip safety and graft portraits
+
+- Repair missing tooltip identifiers from W&W custom card effects before the native card tooltip renderer uses them. Preserve valid content and discard empty entries. Other effects retain their original tooltip path.
+- Triple Impact Exam deals 4 damage three times (previously 1).
+- Replace all five starting graft card portraits with full-background academic scenes. Separate equipment icons retain transparency.
+
+### 0.1.161 — Starting grafts
+
+- Added five illustrated starting grafts: Training Wand, Safety Hat, Protective Charm, Amulet of Undying and Emergency Battery. They use native graft attachment and stay outside normal reward pools.
+- Magical Education starts with Training Wand: Conduit 10 on ring 1, reduced by one per completed ring, minimum zero. Its small adapter resolves the same amount when the equipment is applied and removed.
+- Applied Weakness Inspector and Explosive Lab Assistant start with Safety Hat (+10 Health). Frozen Tuition starts with Protective Charm (Damage Shield 1). First Spell Class Representative starts with Emergency Battery (Burst 3).
+- Postdoc starts with Amulet of Undying (Undying 1), replacing its innate charge rather than adding a second one.
+- Added five transparent illustrations with card portraits and equipment icons. Names and the ring-dependent description are localized in all ten languages.
+
+### 0.1.160 — Distinct and bound spell details
+
+- Exam Week gains Distinct. Its native draw filter excludes every copy of Exam Week while retaining other spells in the draw and discard piles.
+- Enchanted Dissertation accepts verified native targetless gold, Dragon’s Hoard and draw effects, including Alchemy. Random targets, interactive effects and unknown purely global effects remain excluded.
+- Its marker shows each bound spell’s full native card description using the reserved card’s actual state, together with remaining attacks and target scope.
+- Thanks to Rratvar, the Untitled and Brandon for their suggestions.
+
+### 0.1.159 — Community fixes and Conductor events
+
+- Fixed Course Withdrawal drawing before its selected card was discarded. It now discards, refunds Ember, then draws.
+- Conduit Credit Transfer now preserves its lasting Explosive grant when the Dean’s next-use grant expires.
+- Arcane Slay uses Conductor’s hit-event registry and native queue, keeping the killing spell as its source. Rewards are resolved at each killing hit; the old end-of-spell dispatch is removed.
+- Consumable Credits Intern automatically consumes the only eligible spell in hand and joins the banner pool in place of Professor of Shared Damages.
+- Armored Honors Enrollment’s zero Attack lasts for the next combat round, including Relentless. Vital Records Exchange also restores 4 health to the front and rear allies after swapping their health.
+- Dissertation with Major Revisions accepts friendly targets. Native Trample and the existing Explosive recursion guard are retained.
+- Suppressed champion-aura status popups during prediction. Banner presentation now uses the native silhouette and hover effects with a W&W emblem.
+- Clarified friendly targeting, PhD’s health-loss accounting, and Insurance’s native trigger tooltip. Overheal Armor remains capped per activation, not as a total Armor cap.
+- Requires Conductor 0.5.16.
+- Thanks to **Rratvar, the Untitled** and **Brandon** for reports, testing and implementation advice. Please send suggestions to the [W&W Inc. Discord channel](https://discord.com/channels/336546996779483136/1563714320058290300).
+
+### 0.1.158 — Native components and clan audit
+
+- Desk Swap now declares its immediate attack as the official CardEffectAttackWithUnit. Its small adapter only swaps the front and rear allies.
+- Frozen Enrollment Scholarship uses native per-turn relic conditions. A small timing bridge preserves detection of Frozen before the trait is removed.
+- Withdrawal Stamp declares its Purge upgrade in JSON and spends its allowance only after the native upgrade succeeds. Vital Records Exchange declares Armor for tooltip generation.
+- Separated Representative, PhD and Education consumers from the general runtime and resolved carriers through registered character data. Character tooltip fallback now uses native class/type metadata.
+- Moved retired-card dispatch into a compatibility file. Existing card IDs, balance and descriptions are preserved.
+
+### 0.1.157 — Frozen Tuition extraction
+
+- Moved Frozen Tuition’s per-unit damage remainder and current Frozen-card selection out of the general combat runtime.
+- Resolve the unit through its registered character data, rather than matching a name suffix. Keep the same discount operation, including fixed-cost compatibility.
+- Preserve multiple thresholds per hit, independent unit counters, dynamic Frozen targets, battle reset and preview snapshots. Both preview flags block live credit changes.
+
+### 0.1.156 — Hand selection safety
+
+- Moved shared hand selection out of the combat runtime. Effects supply their own managers and keep the native selection UI, filters and confirmation flow.
+- Blocked hand selection and confirmation during both save previews and card-play previews. Confirmation rejects cards from another manager and rechecks hand membership and eligibility.
+- This development build includes the earlier combat fixes and refactoring recorded below; those were excluded from the presentation-only 0.1.155 release.
+
+### 0.1.155 — Presentation update
+
+- Shortened card, champion, relic and keyword descriptions across all ten languages.
+- Enlarged champion art in clan selection and supplied separate character and tooltip status icons.
+- Hidden untranslated internal tooltips on Enrollment Recall, Exam Week and recovery effects.
+- Added a link to the public source repository.
+
+Thank you to **Rratvar, the Untitled** and **Brandon** for testing the clan, reporting bugs, and sharing detailed feedback and technical advice.
+
+This is a data-only update over published 0.1.145. Its DLL is byte-for-byte unchanged, so BepInEx still reports plugin 0.1.145. Thunderstore reports package 0.1.155. No refactoring, balance changes, combat fixes or new gameplay code are included.
+
+### 0.1.154 — Even Attack, shared trigger cores and size notification
+
+- Applied approved even base Attack values. Dean paths use nominal Attack 6/10/16; the Professor’s middle Advanced Spellwork and Protective Tenure ranks use 16 Attack. Other stats and Incant bonuses are unchanged.
+- Extracted Overheal and Arcane Slay event transport into independently compiling source with no W&W or Conductor dependency. W&W reward effects, limits and attribution policies remain separate.
+- Enchanted Dissertation, Collective Assessment and Interdepartmental Damage Memo now use dedicated effect classes instead of the legacy string dispatcher.
+- Spatial Credit Transfer retains its native size notification, displaying −1 rather than +−1. Only its own negative size upgrade is affected.
+
+### 0.1.153 — Education rounding
+
+- Professor of Magical Education rounds half the front friendly unit’s Attack up. Its shared calculation covers preview, displayed spell values and resolution.
+- No rounding explanation was added to card text. Other half-value mechanics, base statistics and Conduit behavior are unchanged.
+
+### 0.1.152 — Non-random Dissertation
+
+- Enchanted Dissertation excludes spells with random targets through the native HasRandomTarget API, including overrides on custom effects.
+- Eligibility is rechecked before binding and before casting a reserved spell. The card states non-random in all ten languages.
+
+### 0.1.151 — Shorter card text / Textos más breves
+
+- Simplified approved card, relic, champion path and keyword descriptions across all ten languages.
+- Removed redundant local-floor wording and repeated explanations while retaining exceptional duration, global scope, limits and permanent upgrades.
+- Enchanted Dissertation keeps targeting details in its existing state tooltip. Committee for Improper Relations now has a shorter body and a separate native tooltip for its summoned chaperones.
+- Updated Blight/Scourge translations against the official glossary. Gameplay parameters are unchanged.
+
+### 0.1.150 — Selection and tooltip fixes / Selectores y tooltips
+
+- Invalid cards in hand selectors now receive the native disabled state and Not Eligible indication, including Enchanted Dissertation and Credit Conversion.
+- Enchanted Dissertation rejects spells containing dialog effects and rechecks before reserving or casting them during an attack.
+- Custom effects that open card selection now declare the native dialog interface; noninteractive rules retain their existing behavior.
+- Added native Magic Power explanations to relevant cards, champion upgrades, the room and Chair of Magical Strength. Explosive Requisition now exposes and reads its granted upgrade through its effect parameters.
+
+### 0.1.149 — Generated card and granted keyword tooltips
+
+- Advanced Spellwork now exposes Extra Credit through its configured generation pool, enabling the native generated-card tooltip.
+- Added native explanations for traits and statuses granted by custom effects, including Attuned, Explosive, Ephemeral, Stasis, Armor, Dazed, and Conduit.
+- Generation and grants now read their card/trait/status references from JSON. No generic duplicate spell-description tooltip is restored.
+
+### 0.1.148 — Preview safety and spell damage / Previsualización y daño
+
+- Lightning Rod Intern no longer refunds real Ember during card previews. Its damage and Dazed predictions are restricted to temporary character states.
+- Ally-only spells such as Immortal Trade no longer trigger redirection or its penalties.
+- First Spell Class Representative counts damage to Armor and overkill from the first damage spell each turn, across all floors. Damage Shield still blocks damage. Other damage-to-healing conversions retain their effective-health-damage calculation.
+
+### 0.1.147 — Display and upgrade fixes / Presentación y mejoras
+
+- Enlarged both champion displays in the clan selection screen.
+- Added separate 50×50 character and tooltip icons for Concussion Scholarship, Arcane Liability Insurance, and Enchanted Dissertation.
+- Extra Credit now registers with Conductor’s damage-spell filters for shop upgrades. One Turn Sabbatical uses native healing scaling: Magic Power increases its flat healing bonus, while its half-missing-health component remains unchanged.
+
+### 0.1.146 — Tooltip fixes / Corrección de tooltips
+
+- Removed redundant keyword-style tooltips that repeated the full spell description. Unit passive explanations, abilities, keywords, and status tooltips remain available.
+- Fixed untranslated internal tooltip keys on Enrollment Recall. Applied the matching official tooltip settings to Exam Week and spell-recovery effects.
+
+### 0.1.145 — Beta update
+
+Changes since 0.1.132.
+
+#### Professor of Advanced Witchcraft
+
+- All paths gain **MineMineMine**: spell kills on her floor count as her kills when she is the frontmost unit with this trigger. This includes Slay and Savagery credit.
+- **Queen Bee:** Mageblade +1/+2/+3 per Wizard in the train.
+- **Advanced Spellwork:** Incant grants +5/+10/+20 Attack. Overdamage converts 100% of excess attack damage into Extra Credit at every rank; rank II grants it Attuned, and rank III grants it Attuned and Explosive.
+- **Protective Tenure:** Incant grants 3 Armor and 1 Spikes / 6 Armor and 2 Spikes / 12 Armor and 4 Spikes. Fixed an issue that randomly applied only one of the two statuses.
+- Her Overheal damage effect is exclusive to Protective Tenure: excess healing deals damage to all enemies on her floor.
+
+#### Extra Credit
+
+- New generated damage spell with its own illustration: **0 Ember, Frozen, Purge**.
+- Excess damage accumulates on an Extra Credit already in hand. A new card is created only if none is in hand: 20 excess damage followed by 30 becomes one 50-damage card.
+- Unplayed copies remain in the run deck between battles. Creator attribution is saved, and their kills count toward the creating champion unless MineMineMine claims them.
+
+#### Enchanted Dissertation
+
+- Now accepts beneficial spells as well as offensive spells. Beneficial single-target spells target its bearer; harmful spells target the attacked enemy.
+- Keeps each effect’s native team restrictions and area targeting. Ambiguous spells offer an Allies/Enemies choice when bound.
+- Its marker displays the bound spells, remaining attacks, and target side. Spells return to the discard pile when the effect ends.
+- Beneficial effects can still resolve after the attack kills its enemy target.
+
+Card text and tooltips updated in all ten languages.
+
+### 0.1.132 — Public beta package
+
+- Two champions with three paths each; 43 active cards and 10 relics.
+- Spell-focused combat with Arcane Slay, Overheal, and Wizard–Witch interactions.
+- Course Withdrawal can discard a spell, Blight, or Scourge; gain twice its current cost in Ember and draw one card.
+- Overheal ignores healing amounts of 9999 or more. Armor generated by Overheal is capped at the unit's current maximum health per activation.
+- Includes localized card text in ten languages.
+
+## Spanish
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Changelog:** añadida navegación por idiomas y las notas de la última versión en los diez idiomas del juego. El inglés y el español conservan el historial completo.
+
+### 0.1.168 — Spell, targeting and compatibility fixes
+
+Gracias especialmente a **Rratvar, the Untitled** y **Brandon** por sus reportes de errores, investigaciones y asesoramiento técnico.
+
+- **Enchanted Dissertation** aclara que cada impacto lanza el hechizo vinculado: Sweep puede lanzarlo una vez por enemigo golpeado, gastando una carga por ataque.
+- **Enchanted Dissertation** libera los hechizos vinculados si su portador vuelve a la mano o sale de juego sin morir.
+- Los costes temporales de combate y las marcas de cartas reservadas dejan de mostrarse en el mapa después del combate.
+- **Course Withdrawal** incluye los modificadores de coste del piso seleccionado al calcular su reembolso de Ember.
+- **Frozen Enrollment Scholarship** roba en el momento nativo de las reliquias después de jugar, en lugar de hacerlo al aceptar la jugada.
+- Los fallos de inicialización de W&W quedan aislados para no interrumpir la inicialización de otros mods.
+- **Arcane Slay** también se activa cuando un hechizo mata a una unidad aliada.
+- **Triple Impact Exam** puede dirigirse a unidades aliadas.
+- **Interdepartmental Damage Memo:** cada copia añade un uso y cada hechizo elegible gasta uno. Las repeticiones no gastan usos adicionales.
+- Los hechizos repetidos conservan **Trample**, **Explosive** y sus demás rasgos de daño. **Enchanted Dissertation** conserva estos rasgos y sus destinos aliados o enemigos.
+- Las repeticiones entre pisos usan las reglas de objetivos del piso de destino, incluidos los filtros de jefes, y restauran la cámara tras la secuencia.
+- **Trample de hechizos W&W** transfiere el exceso a los enemigos delanteros hasta agotarlo, también después de golpear a un aliado o a un enemigo trasero. El daño transferido respeta la mitigación y Spell Weakness no vuelve a multiplicarlo.
+- **Extra Credit** conserva sus propios rasgos y atribuye las bajas a su creadora. Guardar esa autoría desde el mapa ya no consulta gestores exclusivos de combate.
+- **Credit Conversion** y las selecciones de cartas resuelven los eventos generados por sus efectos antes de devolver el control.
+- Al cerrar la selección de mano se limpian las marcas **Not Eligible** y el sombreado persistente.
+- Corregidas las descripciones ausentes de estados y rasgos concedidos, incluidos **Conduit** y **Purge**.
+- Añadidos el mensaje de activación de **Frozen Enrollment Scholarship** y el contador de uso por turno de **Extended Exam Session**.
+- **Desk Swap** respeta las restricciones de movimiento y activa los efectos nativos después de completar el intercambio. Su ataque inmediato usa la unidad trasera original solo si sobrevive y permanece delante.
+- Mejorada la gestión de preview para evitar gestores de batalla no disponibles y cambios en unidades reales cuyo estado temporal aún no está preparado. La ampliación de preview entre pisos se limita a efectos W&W relevantes.
+- Mejorada la compatibilidad con los triggers de impacto y descarte de **Conductor**. Arcane Slay, Overheal y Overdamage evitan despachar eventos propios a unidades sin su trigger.
+- Reorganizada la gestión de duraciones y reliquias, conservando las duraciones e IDs existentes.
+- Añadida información de diagnóstico para partidas que no pueden resolver su clan principal guardado.
+
+### 0.1.164 — Massive Update
 
 ¡Actualización enorme! Probablemente he eliminado 30 bugs y creado otros 31.
 
@@ -218,31 +396,13 @@ Cinco injertos nuevos con ilustraciones propias, equipados en sus unidades inici
 
 Comentarios y sugerencias en el [canal de W&W Inc. en Discord](https://discord.com/channels/336546996779483136/1563714320058290300).
 
-## 0.1.162 — Tooltip safety and graft portraits
-
-### English
-
-- Repair missing tooltip identifiers from W&W custom card effects before the native card tooltip renderer uses them. Preserve valid content and discard empty entries. Other effects retain their original tooltip path.
-- Triple Impact Exam deals 4 damage three times (previously 1).
-- Replace all five starting graft card portraits with full-background academic scenes. Separate equipment icons retain transparency.
-
-### Español
+### 0.1.162 — Tooltip safety and graft portraits
 
 - Reparar identificadores ausentes en tooltips de efectos propios antes de usarlos en el renderizador nativo de cartas. Conservar contenido válido y descartar entradas vacías. Los demás efectos mantienen su ruta original.
 - Triple Impact Exam inflige 4 de daño tres veces (antes 1).
 - Sustituir los cinco retratos de injerto por escenas académicas con fondo completo. Los iconos separados conservan transparencia.
 
-## 0.1.161 — Starting grafts
-
-### English
-
-- Added five illustrated starting grafts: Training Wand, Safety Hat, Protective Charm, Amulet of Undying and Emergency Battery. They use native graft attachment and stay outside normal reward pools.
-- Magical Education starts with Training Wand: Conduit 10 on ring 1, reduced by one per completed ring, minimum zero. Its small adapter resolves the same amount when the equipment is applied and removed.
-- Applied Weakness Inspector and Explosive Lab Assistant start with Safety Hat (+10 Health). Frozen Tuition starts with Protective Charm (Damage Shield 1). First Spell Class Representative starts with Emergency Battery (Burst 3).
-- Postdoc starts with Amulet of Undying (Undying 1), replacing its innate charge rather than adding a second one.
-- Added five transparent illustrations with card portraits and equipment icons. Names and the ring-dependent description are localized in all ten languages.
-
-### Español
+### 0.1.161 — Starting grafts
 
 - Añadidos cinco injertos iniciales con arte: Training Wand, Safety Hat, Protective Charm, Amulet of Undying y Emergency Battery. Usan el sistema nativo de injertos y no aparecen en recompensas normales.
 - Magical Education empieza con Training Wand: Conduit 10 en el ring 1, menos uno por ring completado, mínimo cero. La conexión propia calcula el mismo valor al equipar y retirar el objeto.
@@ -250,38 +410,14 @@ Comentarios y sugerencias en el [canal de W&W Inc. en Discord](https://discord.c
 - Postdoc lleva Amulet of Undying (Undying 1), sustituyendo su carga innata sin duplicarla.
 - Cinco ilustraciones transparentes preparadas como retratos de carta e iconos. Nombres y descripción dinámica localizados en diez idiomas.
 
-## 0.1.160 — Distinct and bound spell details
-
-### English
-
-- Exam Week gains Distinct. Its native draw filter excludes every copy of Exam Week while retaining other spells in the draw and discard piles.
-- Enchanted Dissertation accepts verified native targetless gold, Dragon’s Hoard and draw effects, including Alchemy. Random targets, interactive effects and unknown purely global effects remain excluded.
-- Its marker shows each bound spell’s full native card description using the reserved card’s actual state, together with remaining attacks and target scope.
-- Thanks to Rratvar, the Untitled and Brandon for their suggestions.
-
-### Español
+### 0.1.160 — Distinct and bound spell details
 
 - Exam Week obtiene Distinct. El filtro de robo nativo excluye todas sus copias y conserva los demás hechizos de robo y descarte.
 - Enchanted Dissertation admite efectos nativos verificados de oro, tesoro del dragón y robo sin objetivo, incluido Alchemy. Se siguen excluyendo objetivos aleatorios, interfaces y efectos puramente globales desconocidos.
 - Su marca muestra la descripción completa nativa de cada hechizo vinculado, con el estado real de la carta, ataques restantes y alcance.
 - Gracias a Rratvar, the Untitled y Brandon por las sugerencias.
 
-## 0.1.159 — Community fixes and Conductor events
-
-### English
-
-- Fixed Course Withdrawal drawing before its selected card was discarded. It now discards, refunds Ember, then draws.
-- Conduit Credit Transfer now preserves its lasting Explosive grant when the Dean’s next-use grant expires.
-- Arcane Slay uses Conductor’s hit-event registry and native queue, keeping the killing spell as its source. Rewards are resolved at each killing hit; the old end-of-spell dispatch is removed.
-- Consumable Credits Intern automatically consumes the only eligible spell in hand and joins the banner pool in place of Professor of Shared Damages.
-- Armored Honors Enrollment’s zero Attack lasts for the next combat round, including Relentless. Vital Records Exchange also restores 4 health to the front and rear allies after swapping their health.
-- Dissertation with Major Revisions accepts friendly targets. Native Trample and the existing Explosive recursion guard are retained.
-- Suppressed champion-aura status popups during prediction. Banner presentation now uses the native silhouette and hover effects with a W&W emblem.
-- Clarified friendly targeting, PhD’s health-loss accounting, and Insurance’s native trigger tooltip. Overheal Armor remains capped per activation, not as a total Armor cap.
-- Requires Conductor 0.5.16.
-- Thanks to **Rratvar, the Untitled** and **Brandon** for reports, testing and implementation advice. Please send suggestions to the [W&W Inc. Discord channel](https://discord.com/channels/336546996779483136/1563714320058290300).
-
-### Español
+### 0.1.159 — Community fixes and Conductor events
 
 - Course Withdrawal descarta la carta elegida, devuelve Ember y después roba; ya no roba antes de confirmar el descarte.
 - Conduit Credit Transfer conserva su Explosive duradero cuando expira la concesión de próximo uso del Dean.
@@ -294,17 +430,7 @@ Comentarios y sugerencias en el [canal de W&W Inc. en Discord](https://discord.c
 - Requiere Conductor 0.5.16.
 - Gracias a **Rratvar, the Untitled** y **Brandon** por los informes, pruebas y consejos. Sugerencias en el [canal de W&W Inc. en Discord](https://discord.com/channels/336546996779483136/1563714320058290300).
 
-## 0.1.158 — Native components and clan audit
-
-### English
-
-- Desk Swap now declares its immediate attack as the official CardEffectAttackWithUnit. Its small adapter only swaps the front and rear allies.
-- Frozen Enrollment Scholarship uses native per-turn relic conditions. A small timing bridge preserves detection of Frozen before the trait is removed.
-- Withdrawal Stamp declares its Purge upgrade in JSON and spends its allowance only after the native upgrade succeeds. Vital Records Exchange declares Armor for tooltip generation.
-- Separated Representative, PhD and Education consumers from the general runtime and resolved carriers through registered character data. Character tooltip fallback now uses native class/type metadata.
-- Moved retired-card dispatch into a compatibility file. Existing card IDs, balance and descriptions are preserved.
-
-### Español
+### 0.1.158 — Native components and clan audit
 
 - Desk Swap declara el ataque inmediato como CardEffectAttackWithUnit oficial. Su adaptador solo intercambia al aliado delantero y trasero.
 - Frozen Enrollment Scholarship usa condiciones nativas por turno. Un puente temporal conserva la detección de Frozen antes de retirarse el rasgo.
@@ -312,48 +438,19 @@ Comentarios y sugerencias en el [canal de W&W Inc. en Discord](https://discord.c
 - Separados Representative, PhD y Education del runtime general, con personajes resueltos desde el registro. El fallback de tooltip usa clase y tipo nativos.
 - Aislado el despacho de cartas retiradas en un archivo de compatibilidad. Se conservan IDs, balance y descripciones.
 
-## 0.1.157 — Frozen Tuition extraction
-
-### English
-
-- Moved Frozen Tuition’s per-unit damage remainder and current Frozen-card selection out of the general combat runtime.
-- Resolve the unit through its registered character data, rather than matching a name suffix. Keep the same discount operation, including fixed-cost compatibility.
-- Preserve multiple thresholds per hit, independent unit counters, dynamic Frozen targets, battle reset and preview snapshots. Both preview flags block live credit changes.
-
-### Español
+### 0.1.157 — Frozen Tuition extraction
 
 - Separados del runtime general el resto de daño por unidad y la selección de cartas Frozen de Frozen Tuition.
 - La unidad se resuelve mediante sus datos registrados, sin buscar un sufijo de nombre. Se conserva la operación de descuento, incluida la compatibilidad con costes fijados.
 - Conservados los umbrales múltiples por golpe, contadores independientes, objetivos Frozen actuales, reinicio de batalla e instantáneas de preview. Ambas señales de preview impiden cambiar el contador real.
 
-## 0.1.156 — Hand selection safety
-
-### English
-
-- Moved shared hand selection out of the combat runtime. Effects supply their own managers and keep the native selection UI, filters and confirmation flow.
-- Blocked hand selection and confirmation during both save previews and card-play previews. Confirmation rejects cards from another manager and rechecks hand membership and eligibility.
-- This development build includes the earlier combat fixes and refactoring recorded below; those were excluded from the presentation-only 0.1.155 release.
-
-### Español
+### 0.1.156 — Hand selection safety
 
 - Separada la selección compartida de mano del runtime de combate. Cada efecto aporta sus managers y conserva la interfaz, los filtros y la confirmación nativos.
 - Bloqueadas la selección y la confirmación durante las dos rutas de previsualización. La confirmación rechaza managers ajenos y vuelve a comprobar mano y elegibilidad.
 - Este desarrollo incluye los arreglos de combate y la refactorización anteriores, descritos más abajo y excluidos de la publicación 0.1.155 de presentación.
 
-## 0.1.155 — Presentation update
-
-### English
-
-- Shortened card, champion, relic and keyword descriptions across all ten languages.
-- Enlarged champion art in clan selection and supplied separate character and tooltip status icons.
-- Hidden untranslated internal tooltips on Enrollment Recall, Exam Week and recovery effects.
-- Added a link to the public source repository.
-
-Thank you to **Rratvar, the Untitled** and **Brandon** for testing the clan, reporting bugs, and sharing detailed feedback and technical advice.
-
-This is a data-only update over published 0.1.145. Its DLL is byte-for-byte unchanged, so BepInEx still reports plugin 0.1.145. Thunderstore reports package 0.1.155. No refactoring, balance changes, combat fixes or new gameplay code are included.
-
-### Español
+### 0.1.155 — Presentation update
 
 - Textos de cartas, campeones, reliquias y keywords abreviados en los diez idiomas.
 - Imágenes de campeones ampliadas en la selección de clan e iconos separados para personajes y tooltips.
@@ -364,121 +461,59 @@ Gracias a **Rratvar, the Untitled** y **Brandon** por probar el clan, informar d
 
 Actualización solo de datos sobre la versión publicada 0.1.145. La DLL se conserva idéntica: BepInEx sigue mostrando plugin 0.1.145 y Thunderstore muestra paquete 0.1.155. No incluye refactorizaciones, cambios de balance, correcciones de combate ni código nuevo de mecánicas.
 
-## 0.1.154 — Even Attack, shared trigger cores and size notification
+### 0.1.154 — Even Attack, shared trigger cores and size notification
 
-- Applied approved even base Attack values. Dean paths use nominal Attack 6/10/16; the Professor’s middle Advanced Spellwork and Protective Tenure ranks use 16 Attack. Other stats and Incant bonuses are unchanged.
-- Extracted Overheal and Arcane Slay event transport into independently compiling source with no W&W or Conductor dependency. W&W reward effects, limits and attribution policies remain separate.
-- Enchanted Dissertation, Collective Assessment and Interdepartmental Damage Memo now use dedicated effect classes instead of the legacy string dispatcher.
-- Spatial Credit Transfer retains its native size notification, displaying −1 rather than +−1. Only its own negative size upgrade is affected.
 - Ataques pares aprobados, núcleos de triggers independientes, efectos activos separados y corrección acotada del signo de tamaño.
 
-## 0.1.153 — Education rounding
+### 0.1.153 — Education rounding
 
-- Professor of Magical Education rounds half the front friendly unit’s Attack up. Its shared calculation covers preview, displayed spell values and resolution.
-- No rounding explanation was added to card text. Other half-value mechanics, base statistics and Conduit behavior are unchanged.
 - Education redondea hacia arriba la mitad del ataque delantero, sin añadir la regla al texto de la carta. Representative conserva el exceso al matar por decisión del usuario.
 
-## 0.1.152 — Non-random Dissertation
+### 0.1.152 — Non-random Dissertation
 
-- Enchanted Dissertation excludes spells with random targets through the native HasRandomTarget API, including overrides on custom effects.
-- Eligibility is rechecked before binding and before casting a reserved spell. The card states non-random in all ten languages.
 - Dissertation excluye hechizos de objetivos aleatorios mediante la API nativa, antes de vincular y de repetir. Texto actualizado en diez idiomas.
 
-## 0.1.151 — Shorter card text / Textos más breves
-
-- Simplified approved card, relic, champion path and keyword descriptions across all ten languages.
-- Removed redundant local-floor wording and repeated explanations while retaining exceptional duration, global scope, limits and permanent upgrades.
-- Enchanted Dissertation keeps targeting details in its existing state tooltip. Committee for Improper Relations now has a shorter body and a separate native tooltip for its summoned chaperones.
-- Updated Blight/Scourge translations against the official glossary. Gameplay parameters are unchanged.
+### 0.1.151 — Shorter card text / Textos más breves
 
 - Aplicadas las propuestas editoriales aprobadas en diez idiomas, omitiendo el piso local por defecto y conservando excepciones reales.
 - Dissertation mantiene los detalles de objetivos en su estado. Committee usa un cuerpo breve y un tooltip de invocación con estadísticas, variante y desaparición.
 - Tipos Ruina y Azote contrastados con el glosario oficial. Sin cambios de mecánica.
 
-## 0.1.150 — Selection and tooltip fixes / Selectores y tooltips
-
-- Invalid cards in hand selectors now receive the native disabled state and Not Eligible indication, including Enchanted Dissertation and Credit Conversion.
-- Enchanted Dissertation rejects spells containing dialog effects and rechecks before reserving or casting them during an attack.
-- Custom effects that open card selection now declare the native dialog interface; noninteractive rules retain their existing behavior.
-- Added native Magic Power explanations to relevant cards, champion upgrades, the room and Chair of Magical Strength. Explosive Requisition now exposes and reads its granted upgrade through its effect parameters.
+### 0.1.150 — Selection and tooltip fixes / Selectores y tooltips
 
 - Los selectores marcan las cartas no elegibles con el estado nativo, incluidos Enchanted Dissertation y Credit Conversion.
 - Dissertation rechaza hechizos con diálogos y vuelve a comprobarlo antes de apartarlos o lanzarlos durante ataques.
 - Los efectos personalizados que abren selectores declaran la interfaz nativa; las reglas sin selección conservan su comportamiento.
 - Explicación nativa de Magic Power en cartas, mejoras de campeón, sala y Chair of Magical Strength. Explosive Requisition declara y lee la mejora concedida desde sus parámetros.
 
-## 0.1.149 — Generated card and granted keyword tooltips
-
-- Advanced Spellwork now exposes Extra Credit through its configured generation pool, enabling the native generated-card tooltip.
-- Added native explanations for traits and statuses granted by custom effects, including Attuned, Explosive, Ephemeral, Stasis, Armor, Dazed, and Conduit.
-- Generation and grants now read their card/trait/status references from JSON. No generic duplicate spell-description tooltip is restored.
+### 0.1.149 — Generated card and granted keyword tooltips
 
 - Advanced Spellwork declara Crédito Extra en su pool de generación y muestra el tooltip nativo de la carta generada.
 - Explicaciones nativas de rasgos y estados concedidos por efectos C#: Attuned, Explosive, Ephemeral, Stasis, Armor, Dazed y Conduit.
 - Generación y concesión leen sus referencias de carta/rasgo/estado desde JSON. No se recupera el tooltip genérico que repetía la descripción del hechizo.
 
-## 0.1.148 — Preview safety and spell damage / Previsualización y daño
-
-- Lightning Rod Intern no longer refunds real Ember during card previews. Its damage and Dazed predictions are restricted to temporary character states.
-- Ally-only spells such as Immortal Trade no longer trigger redirection or its penalties.
-- First Spell Class Representative counts damage to Armor and overkill from the first damage spell each turn, across all floors. Damage Shield still blocks damage. Other damage-to-healing conversions retain their effective-health-damage calculation.
+### 0.1.148 — Preview safety and spell damage / Previsualización y daño
 
 - Lightning Rod Intern ya no devuelve Ember real durante la previsualización. Sus predicciones de daño y Dazed se limitan al estado temporal del personaje.
 - Los hechizos exclusivos de aliados, como Immortal Trade, ya no consumen la redirección ni aplican sus penalizaciones.
 - First Spell Class Representative cuenta armadura y exceso de daño del primer hechizo de daño del turno, en cualquier piso. Damage Shield sigue bloqueando el daño. Las conversiones de daño a curación mantienen su cálculo de vida efectivamente perdida.
 
-## 0.1.147 — Display and upgrade fixes / Presentación y mejoras
-
-- Enlarged both champion displays in the clan selection screen.
-- Added separate 50×50 character and tooltip icons for Concussion Scholarship, Arcane Liability Insurance, and Enchanted Dissertation.
-- Extra Credit now registers with Conductor’s damage-spell filters for shop upgrades. One Turn Sabbatical uses native healing scaling: Magic Power increases its flat healing bonus, while its half-missing-health component remains unchanged.
+### 0.1.147 — Display and upgrade fixes / Presentación y mejoras
 
 - Ampliadas las imágenes de ambos campeones al seleccionar clan.
 - Iconos separados de 50×50 para unidad y tooltip en Concussion Scholarship, Arcane Liability Insurance y Enchanted Dissertation.
 - Crédito Extra se registra en los filtros de daño de Conductor para las mejoras de tienda. One Turn Sabbatical usa el escalado de curación nativo: Magic Power mejora la parte fija, sin modificar la mitad de la salud que falta.
 
-## 0.1.146 — Tooltip fixes / Corrección de tooltips
-
-- Removed redundant keyword-style tooltips that repeated the full spell description. Unit passive explanations, abilities, keywords, and status tooltips remain available.
-- Fixed untranslated internal tooltip keys on Enrollment Recall. Applied the matching official tooltip settings to Exam Week and spell-recovery effects.
+### 0.1.146 — Tooltip fixes / Corrección de tooltips
 
 - Eliminados los tooltips de tipo keyword que repetían la descripción completa del hechizo. Se conservan las explicaciones de pasivas, habilidades, keywords y estados.
 - Corregidas las claves internas sin traducir de Enrollment Recall. Exam Week y los efectos de recuperación de hechizos usan también la configuración de tooltips de sus equivalentes oficiales.
 
-## 0.1.145 — Beta update
-
-Changes since 0.1.132.
-
-### Professor of Advanced Witchcraft
-
-- All paths gain **MineMineMine**: spell kills on her floor count as her kills when she is the frontmost unit with this trigger. This includes Slay and Savagery credit.
-- **Queen Bee:** Mageblade +1/+2/+3 per Wizard in the train.
-- **Advanced Spellwork:** Incant grants +5/+10/+20 Attack. Overdamage converts 100% of excess attack damage into Extra Credit at every rank; rank II grants it Attuned, and rank III grants it Attuned and Explosive.
-- **Protective Tenure:** Incant grants 3 Armor and 1 Spikes / 6 Armor and 2 Spikes / 12 Armor and 4 Spikes. Fixed an issue that randomly applied only one of the two statuses.
-- Her Overheal damage effect is exclusive to Protective Tenure: excess healing deals damage to all enemies on her floor.
-
-### Extra Credit
-
-- New generated damage spell with its own illustration: **0 Ember, Frozen, Purge**.
-- Excess damage accumulates on an Extra Credit already in hand. A new card is created only if none is in hand: 20 excess damage followed by 30 becomes one 50-damage card.
-- Unplayed copies remain in the run deck between battles. Creator attribution is saved, and their kills count toward the creating champion unless MineMineMine claims them.
-
-### Enchanted Dissertation
-
-- Now accepts beneficial spells as well as offensive spells. Beneficial single-target spells target its bearer; harmful spells target the attacked enemy.
-- Keeps each effect’s native team restrictions and area targeting. Ambiguous spells offer an Allies/Enemies choice when bound.
-- Its marker displays the bound spells, remaining attacks, and target side. Spells return to the discard pile when the effect ends.
-- Beneficial effects can still resolve after the attack kills its enemy target.
-
-Card text and tooltips updated in all ten languages.
-
----
-
-## 0.1.145 — Actualización de la beta
+### 0.1.145 — Beta update
 
 Cambios desde la 0.1.132.
 
-### Professor of Advanced Witchcraft
+#### Professor of Advanced Witchcraft
 
 - Todas las sendas reciben **MíoMíoMío**: las bajas de hechizos de su piso cuentan como suyas cuando es la primera unidad desde delante con este trigger. Incluye el crédito para Slay y Savagery.
 - **Queen Bee:** Mageblade +1/+2/+3 por cada Mago en el tren.
@@ -486,13 +521,13 @@ Cambios desde la 0.1.132.
 - **Protective Tenure:** Incant otorga 3 Armor y 1 Spikes / 6 Armor y 2 Spikes / 12 Armor y 4 Spikes. Corregido el error que aplicaba solo uno de los dos estados al azar.
 - Su efecto de Sobrecuración queda exclusivamente en Protective Tenure: la curación sobrante inflige daño a todos los enemigos de su piso.
 
-### Crédito Extra
+#### Crédito Extra
 
 - Nuevo hechizo generado de daño con ilustración propia: **coste 0, Frozen y Purge**.
 - El daño sobrante se acumula en el Crédito Extra que ya esté en la mano. Solo crea una carta nueva si no hay ninguna en mano: 20 de exceso y después 30 producen una sola carta de 50 de daño.
 - Las copias sin jugar permanecen en la baraja entre combates. Se guarda su autoría y sus bajas cuentan para la campeona creadora, salvo que MíoMíoMío las reclame.
 
-### Tesis Encantada
+#### Tesis Encantada
 
 - Admite hechizos beneficiosos además de ofensivos. Los beneficiosos de objetivo único se lanzan sobre su portador; los perjudiciales, sobre el enemigo atacado.
 - Respeta las restricciones de bando y el alcance de cada efecto. Los hechizos ambiguos permiten elegir Aliados/Enemigos al vincularlos.
@@ -501,25 +536,63 @@ Cambios desde la 0.1.132.
 
 Textos y tooltips actualizados en los diez idiomas.
 
----
-
-## 0.1.132 — Public beta package
-
-- Two champions with three paths each; 43 active cards and 10 relics.
-- Spell-focused combat with Arcane Slay, Overheal, and Wizard–Witch interactions.
-- Course Withdrawal can discard a spell, Blight, or Scourge; gain twice its current cost in Ember and draw one card.
-- Overheal ignores healing amounts of 9999 or more. Armor generated by Overheal is capped at the unit's current maximum health per activation.
-- Includes localized card text in ten languages.
-
----
-
-## 0.1.132 — Paquete de beta pública
+### 0.1.132 — Public beta package
 
 - Dos campeones con tres sendas cada uno; 43 cartas activas y 10 reliquias.
 - Combate centrado en hechizos con Arcane Slay, Sobrecuración e interacciones entre Magos y Brujas.
 - Course Withdrawal admite hechizos, Blights y Scourges; devuelve el doble de su coste actual en Ember y roba una carta.
 - Sobrecuración ignora cantidades de curación de 9999 o más. La armadura generada está limitada a la salud máxima actual de la unidad en cada activación.
 - Textos en diez idiomas.
+
+## French
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Journal des modifications :** ajout de liens de navigation par langue et des notes de la dernière version dans les dix langues du jeu. L’anglais et l’espagnol conservent l’historique complet.
+
+## German
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Änderungsprotokoll:** Sprachnavigation und Hinweise zur neuesten Version in allen zehn Spielsprachen hinzugefügt. Der vollständige Verlauf bleibt auf Englisch und Spanisch erhalten.
+
+## Russian
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Журнал изменений:** добавлена навигация по языкам и примечания к последней версии на всех десяти языках игры. Полная история сохранена на английском и испанском.
+
+## Portuguese Brazil
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **Histórico de alterações:** adicionada navegação por idioma e notas da versão mais recente nos dez idiomas do jogo. O histórico completo permanece em inglês e espanhol.
+
+## Chinese
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **更新日志：**新增语言导航，并以游戏支持的全部十种语言提供最新版本说明。英语和西班牙语保留完整历史记录。
+
+## Chinese Traditional
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **更新日誌：**新增語言導覽，並以遊戲支援的全部十種語言提供最新版本說明。英語和西班牙語保留完整歷史記錄。
+
+## Korean
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **변경 기록:** 언어별 탐색 링크와 게임이 지원하는 10개 언어의 최신 버전 안내를 추가했습니다. 전체 기록은 영어와 스페인어로 유지됩니다.
+
+## Japanese
+
+### 0.1.169 — 2026-10-27 — BETA
+
+- **更新履歴：**言語別のナビゲーションと、ゲームが対応する全10言語の最新バージョン情報を追加しました。英語とスペイン語では全履歴を保持します。
+
+
 <!-- 2026-10-24-1621||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/CHANGELOG.md||Historial público bilingüe de beta 0.1.132 -->
 <!-- 2026-10-24-1824||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/CHANGELOG.md||Documentar nuevo Overheal de la campeona en historial público -->
 <!-- 2026-10-24-1826||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/thunderstore/CHANGELOG.md||Historial bilingüe del nuevo balance de Protective Tenure -->
@@ -564,3 +637,7 @@ Textos y tooltips actualizados en los diez idiomas.
 <!-- 2026-10-27-2053||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Unificar cambios no publicados 0.1.165 y 0.1.166 en 0.1.167; inglés primero, español después, solo cambios y agradecimientos -->
 <!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Destacar agradecimientos específicos a quienes reportaron e investigaron errores de esta actualización -->
 <!-- 2026-10-27-2054||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Mantener agradecimientos específicos bilingües a quienes reportaron errores de esta actualización -->
+<!-- 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Consolidar correcciones externas confirmadas en candidato .168 manteniendo EN/ES y solo cambios del producto -->
+<!-- 2026-10-27-2255||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Añadir aclaración de texto aprobada a changelog bilingüe .168 sin afirmar cambio mecánico -->
+<!-- 2026-10-27-2325||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Reorganizar historial EN/ES por idioma y añadir notas .169 documentales en diez idiomas, conservando .168 publicada -->
+<!-- 2026-10-27-2327||codex-ww-inc||salidas/build/ww-inc/thunderstore/CHANGELOG.md||Conservar cabecera de generación al principio de la fuente; exportación pública mantiene cabecera Changelog limpia -->

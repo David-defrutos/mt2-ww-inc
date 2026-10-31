@@ -38,7 +38,7 @@ internal static class SpellRules
             int applied=Math.Min(1,Math.Max(0,cost));
             AcademicRuntime.FixedCosts[card]=cost-applied;
         }
-        card.UpdateCardBodyText();core.GetCardManager().RefreshCardInHand(card);
+        card.UpdateCardBodyText();core.GetCardManager().RefreshCardInHand(card,cleanupTweens:false);
     }
 
     internal static void Reset()
@@ -81,7 +81,12 @@ internal static class SpellRules
     internal static List<CardState> ArchiveCandidates(CardManager manager,CardState? played)
         =>RecoveryCandidates(manager,played).Concat(manager.GetExhaustedPile())
             .Where(c=>c!=played&&c.GetCardType()==CardType.Spell).Distinct().ToList();
-    internal static int Cost(CardState card)=>card.GetCost(AcademicRuntime.Core.GetCardStatistics(),AcademicRuntime.Core.GetMonsterManager(),AcademicRuntime.Core.GetRelicManager());
+    internal static int Cost(CardState card)
+    {
+        var core=AcademicRuntime.Core;
+        var rooms=core.GetRoomManager();
+        return card.GetCost(core.GetCardStatistics(),core.GetMonsterManager(),core.GetRelicManager(),rooms.GetRoom(rooms.GetSelectedRoom()));
+    }
 
     internal static IEnumerator SelectPile(ISystemManagers systems,TargetMode pile,Func<CardState,bool> eligible,Action<CardState> picked,bool cancel=true,List<CardState>? candidates=null,string instructions="david.wwinc.ChooseSpell")
     {
@@ -373,3 +378,5 @@ internal static class AcademicPileSelectionHook
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Extraer reglas de reliquias a clases específicas manteniendo estado de preview y secuencia de hechizos
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Retirar consulta por ID sin usuarios; conservar búsqueda de compatibilidad únicamente en fachada antigua
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Compartir enumeración nativa de consumidores concretos después de hechizos
+// 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Calcular reembolso Course Withdrawal con coste nativo del piso seleccionado
+// 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor

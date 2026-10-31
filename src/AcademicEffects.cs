@@ -115,6 +115,7 @@ public sealed class CardEffectAcademicConversion : AcademicEffectBase
 }
 public sealed class CardEffectAcademicConduitTransfer : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     public override bool TestEffect(CardEffectState s,CardEffectParams p,ICoreGameManagers m)
         =>m.GetCardManager().GetHand().Any(c=>c!=p.playedCard&&c.GetCardType()==CardType.Spell);
@@ -204,3 +205,4 @@ public sealed class CardEffectAcademicOneTurnUpgrade : AcademicEffectBase
 // 2026-10-27-1538||codex-ww-inc||salidas/build/ww-inc/src/AcademicEffects.cs||Retirar clase extraída manteniendo nombre binario y referencias JSON
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicEffects.cs||Registrar vencimiento explícito sin cambiar instancias de mejoras ni duración aprobada
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/AcademicEffects.cs||Extraer coordinación de intercambio a efecto dedicado con contrato nativo de movimiento
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/AcademicEffects.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas

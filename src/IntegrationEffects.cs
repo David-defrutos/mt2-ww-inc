@@ -36,6 +36,7 @@ public sealed class CardEffectAcademicWizardDraw : AcademicEffectBase,ICardTarge
 
 public sealed class CardEffectAcademicPurgePermit : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     static readonly RingPermitLedger Permit=new();
     internal static void BeginBattle(ICoreGameManagers core)=>Permit.BeginBattle(Ring(core),SaveManager.IsInUndoModeStatic);
@@ -133,6 +134,7 @@ internal static class RedirectTargetHook
 
 public sealed class CardEffectAcademicDiscardForEmber : AcademicEffectBase,ICardEffectUiDialog
 {
+    public override bool CanPlayAfterBossDead=>false;
     public override bool CanApplyInPreviewMode=>true;
     internal static bool Eligible(CardState card)=>(card.GetCardType() is CardType.Spell or CardType.Blight or CardType.Junk)&&
         !card.HasTrait(typeof(CardTraitPersistent))&&!card.HasTrait(typeof(CardTraitInfusion));
@@ -331,3 +333,4 @@ public sealed class CardEffectAcademicCopyLastCommon : AcademicEffectBase
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Pasar robo configurado a callback
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Resolver descarte y robo en misma confirmación
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Course Withdrawal: descartar, Ember y luego DrawCards nativo
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/IntegrationEffects.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas

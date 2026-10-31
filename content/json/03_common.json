@@ -22,16 +22,16 @@
         "japanese": "私の私の私の"
       },
       "descriptions": {
-        "english": "Spell kills count as this unit’s kills. Only the frontmost unit with MineMineMine claims them.",
-        "spanish": "Las bajas por hechizos cuentan como bajas de esta unidad. Solo las reclama la primera unidad con MineMineMine.",
-        "french": "Les ennemis tués par des sorts comptent pour cette unité. Seule l'unité de tête avec MineMineMine les revendique.",
-        "german": "Zaubertötungen zählen als Tötungen dieser Einheit. Nur die vorderste Einheit mit MineMineMine beansprucht sie.",
-        "portuguese": "Mortes por feitiços contam como mortes desta unidade. Só a unidade mais à frente com MineMineMine as reivindica.",
-        "russian": "Убийства заклинаниями засчитываются этому бойцу. Их получает только передний боец с MineMineMine.",
-        "chinese": "法术击杀归属于此单位。只有最前方拥有MineMineMine的单位获得归属。",
-        "chinese_traditional": "法術擊殺歸屬於此單位。只有最前方擁有MineMineMine的單位獲得歸屬。",
-        "korean": "주문 처치를 이 유닛의 처치로 계산합니다. MineMineMine를 가진 맨 앞 유닛만 처치를 가져갑니다.",
-        "japanese": "呪文による撃破をこのユニットの撃破として扱う。MineMineMineを持つ最前方のユニットだけが取得する。"
+        "english": "Claim enemies killed by spells, triggering [slay]. Only the frontmost unit with MineMineMine claims them.",
+        "spanish": "Reclama las bajas enemigas de los hechizos y activa [slay]. Solo las reclama la primera unidad con MíoMíoMío.",
+        "french": "Revendiquer les ennemis tués par les sorts déclenche [slay]. Seule l’unité de tête avec ÀMoiÀMoi les revendique.",
+        "german": "Beanspruche durch Zauber getötete Gegner und löse [slay] aus. Nur die vorderste Einheit mit MeinsMeinsMeins beansprucht sie.",
+        "portuguese": "Reivindica os inimigos mortos por feitiços, ativando [slay]. Só a unidade mais à frente com MeuMeuMeu os reivindica.",
+        "russian": "Засчитывает этому бойцу врагов, убитых заклинаниями, и активирует [slay]. Убийства получает только передний боец с МоёМоёМоё.",
+        "chinese": "获得法术击杀敌人的归属，并触发[slay]。只有最前方拥有我的我的我的的单位获得归属。",
+        "chinese_traditional": "獲得法術擊殺敵人的歸屬，並觸發[slay]。只有最前方擁有我的我的我的的單位獲得歸屬。",
+        "korean": "주문으로 처치한 적을 자신의 처치로 간주하고 [slay]를 발동합니다. 내꺼내꺼를 가진 맨 앞 유닛만 처치를 가져갑니다.",
+        "japanese": "呪文で倒した敵を自身の撃破として扱い、[slay]を発動する。私の私の私のを持つ最前方のユニットだけが取得する。"
       },
       "notifications": {
         "english": "MineMineMine",
@@ -54,7 +54,10 @@
       "id": "WW_MineMineMine_ClaimEffect",
       "name": "@CardEffectMineMineMineClaim",
       "target_mode": "self",
-      "target_team": "monsters"
+      "target_team": "monsters",
+      "additional_tooltips": [
+        "@WW_SlayReference"
+      ]
     }
   ],
   "character_triggers": [
@@ -76,6 +79,18 @@
       "effects": [
         "@WW_MineMineMine_ClaimEffect"
       ]
+    }
+  ],
+  "additional_tooltips": [
+    {
+      "id": "WW_SlayReference",
+      "trigger": "on_kill",
+      "titles": {
+        "key": "Trigger_OnKill_CardText"
+      },
+      "descriptions": {
+        "key": "Trigger_OnKill_TooltipText"
+      }
     }
   ]
 }

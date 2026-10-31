@@ -47,7 +47,8 @@ foreach(var patch in mod.MainModule.Types)
     }
     Check(methods.Length==1,$"Ambiguous Harmony target {target.Name}.{methodName}: {methods.Length} overloads");
     foreach(var hook in patch.Methods.Where(m=>m.Name is "Prefix" or "Postfix"))foreach(var p in hook.Parameters)
-        if(!p.Name.StartsWith("__"))Check(methods.Any(m=>m.Parameters.Any(a=>a.Name==p.Name)),$"{patch.Name}.{hook.Name}: invalid parameter {p.Name}");
+        if(!p.Name.StartsWith("__")&&!(hook.Name=="Postfix"&&p.Index==0&&hook.ReturnType.FullName!="System.Void"&&p.ParameterType.FullName==hook.ReturnType.FullName))
+            Check(methods.Any(m=>m.Parameters.Any(a=>a.Name==p.Name)),$"{patch.Name}.{hook.Name}: invalid parameter {p.Name}");
 }
 foreach(var name in new[]{"CardTraitStrongerMagicPower","CardTraitEphemeral","CardTraitDamageOverflow","CardTraitSelfPurge","CardTraitFreeze"})Check(types.ContainsKey(name),"Unknown native trait "+name);
 var plugin=mod.MainModule.Types.Single(t=>t.Name=="Plugin");
@@ -411,7 +412,7 @@ var appendTooltip=tooltipType.NestedTypes.Single(t=>t.Name.StartsWith("<Append>"
 Check(appendTooltip.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Reserved"), "Unit hover route includes dynamic reserved-spell tooltip");
 var reservedMarker=mod.MainModule.Types.Single(t=>t.Name=="ReservedSpellMarkers").Methods.Single(m=>m.Name=="Marker");
 var markerCalls=reservedMarker.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
-Check(markerCalls.Contains("AreMainSceneOnlyManagersInitialized"), "Reserved marker protects deck/shop rendering without battle managers");
+Check(markerCalls.Contains("TryGet"), "Reserved marker requires a valid in-battle context before rendering a reservation");
 Check(!markerCalls.Contains("AddUpgrade"), "Reserved marker does not add a gameplay upgrade");
 var cemeteryHook=mod.MainModule.Types.Single(t=>t.Name=="ReservedCemeteryViewHook").Methods.Single(m=>m.Name=="Postfix");
 var cemeteryCalls=cemeteryHook.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
@@ -610,10 +611,16 @@ var conversionRun=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").Nest
 var conversionCalls=conversionRun.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
 
 Check(bannerData["effects"]["WW_S12_Damage"].GetProperty("target_team").GetString()=="both","Triple Impact Exam accepts allied and enemy targets");
-foreach(var hookName in new[]{"UnitAttackHook","MineMineMineDamageHook"})
+foreach(var hookName in new[]{"UnitAttackHook","MineMineMineDamageHook","DiscardRuleHook"})
 {
     var hook=mod.MainModule.Types.Single(t=>t.Name==hookName);
     Check(hook.CustomAttributes.Any(a=>a.AttributeType.Name=="HarmonyAfter"&&a.ConstructorArguments.Any(v=>v.Value is CustomAttributeArgument[] items&&items.Any(item=>Equals(item.Value,"Conductor")))),hookName+": coroutine wraps after Conductor hit detection");
+}
+foreach(var hookName in new[]{"UnitAttackHook","MineMineMineDamageHook","DiscardRuleHook"})
+{
+    var postfix=mod.MainModule.Types.Single(t=>t.Name==hookName).Methods.Single(m=>m.Name=="Postfix");
+    Check(postfix.ReturnType.FullName=="System.Collections.IEnumerator"&&postfix.Parameters[0].ParameterType.FullName==postfix.ReturnType.FullName,
+        hookName+": passthrough shares Conductor phase; HarmonyAfter cannot order void postfixes after passthrough postfixes");
 }
 var creditSaveType=mod.MainModule.Types.Single(t=>t.Name=="ExcessCreditSave");
 foreach(var methodName in new[]{"Serialize","Deserialize"})
@@ -622,8 +629,25 @@ foreach(var methodName in new[]{"Serialize","Deserialize"})
 Check(bannerData["relics"]["WW_A03"].GetProperty("relic_activated_texts").GetProperty("english").GetString()=="Draw 1.","Frozen Enrollment Scholarship defines its native activation notification");
 var grantedTooltipIterator=mod.MainModule.Types.Single(t=>t.Name=="GrantedEffectTooltips").NestedTypes.Single(t=>t.Name.StartsWith("<Append>")).Methods.Single(m=>m.Name=="MoveNext");
 var grantedTooltipCalls=grantedTooltipIterator.Body.Instructions.Select(i=>i.Operand).OfType<MethodReference>().Select(m=>m.Name).ToHashSet();
+Check(grantedTooltipIterator.Body.Instructions.Any(i=>i.Operand is FieldReference f&&f.Name=="ownedEffects"),"Tooltip validation covers registered W&W effect data implemented by native or Conductor types");
+var tooltipRegistration=mod.MainModule.Types.Single(t=>t.Name=="GrantedEffectTooltips").Methods.Single(m=>m.Name=="Register");
+Check(tooltipRegistration.Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="GetCardTriggers")&&
+    tooltipRegistration.Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="GetCardEffects"),"Deferred Project reserve effects are registered for tooltip normalization");
 Check(grantedTooltipCalls.Contains("GetStatusEffectTooltipContents")&&grantedTooltipCalls.Contains("GetTraitTooltipTextLocalizationKey"),"Granted status and trait tooltips fill localized content like native tooltip initialization");
 
+var recoveryEffect=bannerData["effects"]["WW_U11_Ability_Effect"];
+Check(recoveryEffect.GetProperty("name").GetString()=="CardEffectRecursion"&&recoveryEffect.GetProperty("param_str").GetString()=="david.wwinc.ChooseSpell","Archivist uses native recursion instructions for a spell instead of Reform");
+var refundData=bannerData["relics"]["WW_A05"];
+Check(refundData.GetProperty("relic_activated_texts").EnumerateObject().Count()==10,"Refund activation message is defined in every supported language");
+Check(mod.MainModule.Types.Single(t=>t.Name=="RelicEffectLethalRefund").Interfaces.Any(i=>i.InterfaceType.Name=="ITurnPhaseEndOfBattleRelicEffect"),"Refund counter cleanup is wired to the native battle-end interface");
+Check(bannerData["cards"]["WW_S21"].GetProperty("descriptions").GetProperty("english").GetString()!.Contains("friendly unit"),"Armored Honors explains its friendly-only targeting");
+Check(bannerData["effects"]["WW_MineMineMine_ClaimEffect"].GetProperty("additional_tooltips").EnumerateArray().Any(t=>t.GetString()=="@WW_SlayReference"),"MineMineMine exposes the native Slay explanation instead of requiring players to infer it");
+foreach(var uiEffect in mod.MainModule.Types.Where(t=>t.Interfaces.Any(i=>i.InterfaceType.Name=="ICardEffectUiDialog")))
+{
+    var afterBoss=uiEffect.Methods.SingleOrDefault(m=>m.Name=="get_CanPlayAfterBossDead");
+    Check(afterBoss!=null&&afterBoss.Body.Instructions.Any(i=>i.OpCode.Code==Mono.Cecil.Cil.Code.Ldc_I4_0),
+        uiEffect.Name+": card-selection dialogs cannot open after the boss dies, matching native ChooseDiscard and Recursion");
+}
 var repeatCounter=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectExtendedExam").Methods.Single(m=>m.Name=="Count").Body.Instructions;
 Check(repeatCounter.Any(i=>Equals(i.Operand,"A06"))&&repeatCounter.Any(i=>i.Operand is FieldReference f&&f.Name=="OnceTurn"),"Extended Exam Session counter reads its actual per-turn use instead of a second tracker");
 
@@ -636,7 +660,22 @@ var replayType166=mod.MainModule.Types.Single(t=>t.Name=="SpellReplay");
 Check(replayType166.Methods.Single(m=>m.Name=="FrontEnemy").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.DeclaringType.Name=="TargetHelper"&&m.Name=="CollectTargets"),"Replay enemy selection reuses native filters instead of an unfiltered boss special case");
 var afterSpell166=mod.MainModule.Types.Single(t=>t.Name=="AcademicRuntime").NestedTypes.Single(t=>t.Name.StartsWith("<AfterSpell>")).Methods.Single(m=>m.Name=="MoveNext");
 Check(afterSpell166.Body.Instructions.Any(i=>Equals(i.Operand,"floors"))&&afterSpell166.Body.Instructions.Any(i=>Equals(i.Operand,"behind")),"Camera restoration is limited to actual cross-floor or behind-target repetitions");
-Check(mod.MainModule.Types.Single(t=>t.Name=="HandSelectionPresentation").Methods.Single(m=>m.Name=="Restore").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="RefreshHandCards"),"Selection cleanup uses native full-hand refresh");
+Check(mod.MainModule.Types.Single(t=>t.Name=="HandSelectionPresentation").Methods.Single(m=>m.Name=="Restore").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="RefreshCardInHand"),"Selection cleanup uses native per-card refresh without destroying active tweens");
+IEnumerable<TypeDefinition> RefreshTypes(TypeDefinition type)
+{
+    yield return type;
+    foreach(var nested in type.NestedTypes)
+        foreach(var entry in RefreshTypes(nested))yield return entry;
+}
+foreach(var type in mod.MainModule.Types.SelectMany(RefreshTypes))
+foreach(var method in type.Methods.Where(m=>m.HasBody))
+{
+    var instructions=method.Body.Instructions;
+    for(int i=3;i<instructions.Count;i++)
+        if(instructions[i].Operand is MethodReference call&&call.Name=="RefreshCardInHand"&&call.Parameters.Count==4)
+            Check(instructions[i-3].OpCode.Code==Mono.Cecil.Cil.Code.Ldc_I4_0,
+                type.Name+"."+method.Name+": value-only refresh preserves active DOTween animations");
+}
 Check(mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="ConsumeFloorUse"),"Memo FIFO helper is connected to real spell preparation");
 Check(mod.MainModule.Types.Single(t=>t.Name=="ArcaneSlayConductor").Methods.Single(m=>m.Name=="OnHit").Body.Instructions.Any(i=>i.Operand is MethodReference m&&m.Name=="HasEffectTrigger"),"Arcane Slay requires an actual native listener");
 Check(gameTypes["SaveManager"].Properties.Any(p=>p.Name=="ActiveSaveData"),"Saved-clan diagnosis reads the installed native active-save property");
@@ -715,7 +754,7 @@ Check(mod.MainModule.Types.Single(t=>t.Name=="PairAssignmentRefreshHook").Method
 var chooseHandState=mod.MainModule.Types.Single(t=>t.Name=="HandSelection").NestedTypes.Single(t=>t.Name.StartsWith("<ChooseHand>"));
 var chooseInstructions=chooseHandState.Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.ToList();
 int selectHandIndex=chooseInstructions.FindIndex(i=>i.Operand is MethodReference call&&call.Name=="SelectCardFromHand");
-Check(!chooseInstructions.Any(i=>i.Operand is FieldReference f&&f.Name=="completed"),"Shared selector does not keep card-play resolution blocked while awaiting hand input");
+Check(!chooseInstructions.Any(i=>i.Operand is MethodReference m&&m.Name=="IsHandSelectionActive"),"Shared selector does not poll or wait for native hand selection inside card-play resolution");
 Check(selectHandIndex>0&&chooseInstructions[selectHandIndex-1].OpCode==Mono.Cecil.Cil.OpCodes.Ldc_I4_0,"Hand selection disables native last-card auto-pick that bypasses filters");
 var applyChoice=mod.MainModule.Types.Single(t=>t.Name=="HandSelection").NestedTypes.Single(t=>t.Name.StartsWith("<ApplyChoice>")).Methods.Single(m=>m.Name=="MoveNext");
 Check(applyChoice.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Invoke")&&applyChoice.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="Contains"),"Confirmed callback verifies hand membership before running selected-card resolution");
@@ -752,7 +791,7 @@ Check(gameTypes["CardManager"].Methods.Single(m=>m.Name=="CheckStandByConditions
 var boundSequence=attackCallback.NestedTypes.Single(t=>t.Name.StartsWith("<Run>"));
 Check(boundSequence.Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="ReleaseBoundSpell"),"Bound spells are returned after the complete native attack sequence");
 foreach(var name in new[]{"DeathHook","UnitAttackHook"})
- Check(mod.MainModule.Types.Single(t=>t.Name==name).NestedTypes.Where(t=>t.Name.StartsWith("<Run>")).SelectMany(t=>t.Methods.Where(m=>m.HasBody)).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&c.Name=="ReleaseBoundSpell"),$"{name} returns bound spells when the owner dies or an alternate attack completes");
+ Check(mod.MainModule.Types.Single(t=>t.Name==name).NestedTypes.Where(t=>t.Name.StartsWith("<Run>")).SelectMany(t=>t.Methods.Where(m=>m.HasBody)).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&(c.Name=="ReleaseBoundSpell"||c.DeclaringType.Name=="UnitBindings"&&c.Name=="AfterRemoval")), $"{name} returns bound spells when the owner dies or an alternate attack completes");
 Check(bannerData["cards"]["WW_S02"].GetProperty("descriptions").GetProperty("english").GetString()!.Contains("discard pile when the effect ends"),"Dissertation states the original spell returns to discard");
 var slayingEffect=mod.MainModule.Types.Single(t=>t.Name=="CardEffectAcademicUpgradeSlayingSpell");
 var slayingIL=slayingEffect.NestedTypes.Single(t=>t.Name.StartsWith("<ApplyEffect>")).Methods.Single(m=>m.Name=="MoveNext").Body.Instructions.ToList();
@@ -1054,6 +1093,33 @@ foreach(var relic in relicClasses)
 var commonRelic=mod.MainModule.Types.Single(t=>t.Name=="RelicEffectAcademic");
 Check(!commonRelic.IsSealed&&commonRelic.Methods.Any(m=>m.Name=="Legacy"),"Former relic binary type is preserved with an isolated legacy adapter");
 
+
+Check(gameTypes["SaveManager"].Methods.Any(m=>m.Name=="GetGameSequence"&&m.Parameters.Count==0),"Installed SaveManager exposes the exact gameplay phase query");
+var phaseQuery=mod.MainModule.Types.Single(t=>t.Name=="BattlePresentationContext").Methods.Single(m=>m.Name=="TryGet").Body.Instructions;
+Check(phaseQuery.Any(i=>i.Operand is MethodReference c&&c.Name=="GetGameSequence")&&!phaseQuery.Any(i=>i.Operand is MethodReference c&&c.Name=="IsInBattle"),"Battle readers reject rewards as well as map; native IsInBattle also includes postcombat rewards");
+Check(cemeteryCalls.Contains("TryGet"),"Cemetery mirror excludes reserved spells outside battle");
+var scopedCost=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Methods.Single(m=>m.Name=="Cost").Body.Instructions;
+Check(scopedCost.Any(i=>i.Operand is MethodReference c&&c.Name=="GetCost"&&c.Parameters.Count==4&&c.Parameters[3].ParameterType.Name=="RoomState")&&scopedCost.Any(i=>i.Operand is MethodReference c&&c.Name=="GetSelectedRoom"),"Course Withdrawal uses the selected room in native current-cost calculation");
+var removalHook=mod.MainModule.Types.Single(t=>t.Name=="DeathHook");
+Check(removalHook.NestedTypes.SelectMany(t=>t.Methods).Where(m=>m.HasBody).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&c.DeclaringType.Name=="UnitBindings"&&c.Name=="AfterRemoval"),"Unit removal cleanup uses the production shared binding release");
+var removalRun=removalHook.NestedTypes.Single(t=>t.Name.StartsWith("<Run>")).Methods.Single(m=>m.Name=="MoveNext");
+Check(removalRun.Body.Instructions.Any(i=>i.Operand is FieldReference f&&f.Name=="death"),"Death-only rewards remain conditional during non-death recall cleanup");
+var freezePostfix=frozenHook.Methods.Single(m=>m.Name=="Postfix");
+Check(freezePostfix.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.DeclaringType.Name=="FrozenCardPlays"&&c.Name=="Record")&&!freezePostfix.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="OnFrozenCardPlayed"),"Accepting a Frozen play records eligibility without awarding the relic early");
+var frozenAfterHook=mod.MainModule.Types.Single(t=>t.Name=="FrozenAfterPlayHook");
+Check(frozenAfterHook.CustomAttributes.Any(a=>a.AttributeType.Name=="HarmonyPatch"&&a.ConstructorArguments.Count>=2&&(string)a.ConstructorArguments[1].Value=="ApplyCardPlayedRelicEffects"),"Frozen draw executes at the real native post-play relic boundary");
+Check(loadCheck166.Any(i=>i.Operand is MethodReference c&&c.Name=="get_Metadata"),"Load diagnostic uses declared BepInEx plugin version");
+var readyClosure=plugin.NestedTypes.SelectMany(t=>t.Methods).Concat(plugin.Methods).Where(m=>m.HasBody).Single(m=>m.Body.Instructions.Any(i=>i.Operand is string s&&s.Contains("failed to initialize; its hooks are disabled")));
+Check(readyClosure.Body.ExceptionHandlers.Any(h=>h.HandlerType==Mono.Cecil.Cil.ExceptionHandlerType.Catch)&&readyClosure.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="UnpatchSelf"),"Failed own finalizer is caught and disables only the W&W Harmony owner");
+using(var trainworksPlugin=AssemblyDefinition.ReadAssembly("C:/Users/david/AppData/Roaming/Thunderstore Mod Manager/DataFolder/MonsterTrain2/profiles/Default/BepInEx/plugins/MT2-Trainworks_Reloaded/TrainworksReloaded.Plugin.dll",reader))
+{
+ var initialization=trainworksPlugin.MainModule.Types.Single(t=>t.Name=="InitializationPatch");
+ Check(initialization.Methods.Where(m=>m.HasBody).SelectMany(m=>m.Body.Instructions).Any(i=>i.Operand is MethodReference c&&c.Name=="GetPostFinalizerActions"),"Installed Trainworks runs registered post-finalizers; own failure must not escape the callback");
+}
+
+
+Check(readyClosure.Body.Instructions.Any(i=>i.Operand is FieldReference f&&f.Name=="hooksInstalled"),"Data finalization cannot install duplicate Harmony hooks in the same plugin instance");
+
 Console.WriteLine(JsonSerializer.Serialize(new {success=errors.Count==0,checks,errors},new JsonSerializerOptions{WriteIndented=true}));
 return errors.Count==0?0:1;
 
@@ -1313,3 +1379,21 @@ return errors.Count==0?0:1;
 // 2026-10-27-2022||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Actualizar contratos de nuevas responsabilidades y comprobar conexión real a APIs de autoría, descarte, movimiento y reliquias
 // 2026-10-27-2022||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir comprobación de equipo retirado en nueva operación social concreta
 // 2026-10-27-2023||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir condiciones de curación y objetivo en consumidores extraídos y reconocer despacho virtual nativo de ataque
+// 2026-10-27-2207||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir guardia compartida de fase en presentación de cartas reservadas
+// 2026-10-27-2207||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar APIs instaladas y conexiones de retirada, fase, coste de sala, Scholarship y aislamiento de inicialización
+// 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Seguir liberación de vínculos a través del nuevo adaptador de retirada
+// 2026-10-27-2211||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar protección de instalación única de parches propios en callbacks ready repetidos
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Extender auditoría del orden Conductor a la conexión de descarte
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Impedir regresión de firmas void ref result que Harmony ejecuta antes del passthrough de Conductor
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar cobertura del normalizador en la DLL compilada
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Validar registro real de efectos y triggers sin depender de nombres inexistentes en CardEffectData
+// 2026-10-29-1402||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Reconocer primer argumento passthrough permitido por Harmony en validación de firmas
+// 2026-10-29-1402||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Distinguir sello de callbacks de un bucle de espera: no prohibir estado completed legítimo
+// 2026-10-29-1943||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Validar configuración nativa del Archivist, notificación localizada, evento de reembolso y objetivo aliado
+// 2026-10-29-1944||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar que MineMineMine incorpora explicación nativa de Slay
+// 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Impedir regresión de interfaces que se abren después de victoria como hacían los selectores propios
+// 2026-10-29-1946||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Usar namespace completo de opcode Cecil en contrato de selectores postvictoria
+// 2026-10-29-2034||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar que los refrescos de cifras y texto del plugin no destruyen tweens activos
+// 2026-10-29-2035||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Auditar refrescos también dentro de coroutines compiladas, no solo métodos superiores
+// 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar API nativa de fase exacta en el binario instalado
+// 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar fase exacta del juego para impedir contexto retenido en recompensas

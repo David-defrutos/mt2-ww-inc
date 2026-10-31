@@ -98,12 +98,13 @@ internal static class MineMineMine
     }
 }
 
+// Match Conductor's pass-through postfix phase; a void/ref postfix would run first.
 [HarmonyPatch(typeof(CharacterState),nameof(CharacterState.ApplyDamage))]
 [HarmonyAfter("Conductor")]
 internal static class MineMineMineDamageHook
 {
-    static void Postfix(CharacterState __instance,CharacterState.ApplyDamageParams damageParams,ref IEnumerator __result)
-        =>__result=MineMineMine.ObserveDamage(__result,__instance,damageParams);
+    static IEnumerator Postfix(IEnumerator enumerator,CharacterState __instance,CharacterState.ApplyDamageParams damageParams)
+        =>MineMineMine.ObserveDamage(enumerator,__instance,damageParams);
 }
 [HarmonyPatch(typeof(CombatManager),nameof(CombatManager.QueueTrigger),new Type[] {
     typeof(CharacterState),typeof(CharacterTriggerData.Trigger),typeof(CharacterState),
@@ -148,3 +149,5 @@ public sealed class CardEffectMineMineMineClaim : AcademicEffectBase
 // 2026-10-24-1930||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/MineMineMine.cs||Trigger reutilizable de atribución al primer portador frontal; contexto por daño, Slay nativo único y crédito de muerte sin modificar daño
 // 2026-10-24-1932||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/MineMineMine.cs||Evitar nombre Damage que oculta enum nativo y conceder Slay una sola vez por evento incluso con efectos duplicados
 // 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/src/MineMineMine.cs||Ejecutar wrapper después de Conductor para que su detector vea la coroutine nativa ApplyDamage
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/MineMineMine.cs||Corregir orden efectivo de wrapper MineMineMine para no ocultar impactos al detector Arcane Slay
+// 2026-10-29-1405||codex-ww-inc||salidas/build/ww-inc/src/MineMineMine.cs||Documentar dependencia de fase HarmonyX para futuras modificaciones de MineMineMine

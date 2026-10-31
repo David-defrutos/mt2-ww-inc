@@ -16,3 +16,5 @@ internal static class TooltipIdentity
     }
 }
 // 2026-10-26-2313||codex-ww-inc||salidas/build/ww-inc/src/TooltipIdentity.cs||Normalizar identidad de tooltips propios con fallback nativo título/cuerpo antes de InstantiateTooltip
+// 2026-10-29-1359||codex-ww-inc||salidas/build/ww-inc/src/TooltipIdentity.cs||Identificar propiedad por datos del efecto y no solo por assembly de su implementación
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/src/TooltipIdentity.cs||Retirar aproximación por ID porque la API nativa CardEffectData no lo expone

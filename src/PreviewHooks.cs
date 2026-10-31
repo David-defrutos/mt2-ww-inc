@@ -7,7 +7,7 @@ internal static class PreviewScope
     internal static bool Active=>snapshots.Count>0;
     internal static void Begin()
     {
-        snapshots.Push(new CollectionSnapshot(typeof(AcademicRuntime),typeof(SpellRules),typeof(SocialRules),typeof(FrozenTuition),typeof(EffectLifetimes)));
+        snapshots.Push(new CollectionSnapshot(typeof(AcademicRuntime),typeof(SpellRules),typeof(SocialRules),typeof(FrozenTuition),typeof(EffectLifetimes),typeof(FrozenCardPlays)));
         AcademicRuntime.Frames.Clear();
     }
     internal static void End()
@@ -50,3 +50,4 @@ internal static class EquipmentPreviewOwnerHook
 // 2026-10-27-1428||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||Usar contexto actual y unidades visibles válidas al ampliar preview; evitar asserts fuera de combate
 // 2026-10-27-1534||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||No ampliar todos los pisos en partidas sin cartas/pasivas W&W presentes
 // 2026-10-27-2019||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||Preservar colas de expiración extraídas al entrar y salir de preview
+// 2026-10-27-2204||codex-ww-inc||salidas/build/ww-inc/src/PreviewHooks.cs||Incluir elegibilidad post-jugada en rollback de preview

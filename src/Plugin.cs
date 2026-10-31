@@ -10,13 +10,14 @@ using TrainworksReloaded.Base;
 
 namespace WwInc;
 
-[BepInPlugin(Guid, "W&W Inc.", "0.1.167")]
+[BepInPlugin(Guid, "W&W Inc.", "0.1.169")]
 [BepInDependency("TrainworksReloaded.Plugin")]
 [BepInDependency("Conductor","0.5.16")]
 public sealed class Plugin : BaseUnityPlugin
 {
     public const string Guid = "david.wwinc";
     internal static Plugin Instance = null!;
+    private bool hooksInstalled;
     public void Awake()
     {
         Instance = this;
@@ -33,41 +34,58 @@ public sealed class Plugin : BaseUnityPlugin
             Conductor.Utilities.MarkEffectAsHealEffect(typeof(CardEffectAcademicSabbatical));
         });
         Roundhouse.WhenReady(Guid,ctx=> {
-            var missingCards=new[]{"WW_C01","WW_C02","WW_T01","WW_T02","WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08","WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18","WW_S01","WW_S02","WW_S03","WW_S04","WW_S05","WW_S06","WW_S07","WW_S08","WW_S09","WW_S10","WW_S11","WW_S12","WW_S13","WW_S14","WW_S15","WW_S16","WW_S17","WW_S18","WW_S19","WW_S20","WW_S21","WW_S22","WW_S23","WW_S24","WW_S25","WW_S26","WW_E01","WW_E02","WW_E03","WW_R01","WW_R02","WW_S27","WW_S28","WW_S29","WW_S30","WW_S31","WW_S32","WW_G01","WW_G02","WW_G03","WW_G04","WW_G05"}.Where(id=>ctx.GetCard(id)==null).ToArray();
-            var missingRelics=new[]{"WW_A01","WW_A02","WW_A03","WW_A04","WW_A05","WW_A06","WW_A07","WW_A08","WW_A09","WW_A10"}.Where(id=>ctx.GetRelic(id)==null).ToArray();
-            if(missingCards.Length>0||missingRelics.Length>0||ctx.GetClass("WW_Class")==null)
-                throw new InvalidOperationException("W&W Inc. incomplete registration: "+string.Join(",",missingCards.Concat(missingRelics)));
-            var purgeMask=ctx.GetCardUpgradeMask("WW_E01_PurgeableMask");
-            var permitEffect=ctx.GetCard("WW_E01_Ability").GetEffects()[0];
-            if(purgeMask==null||permitEffect.GetParamCardFilter()!=purgeMask)
-                throw new InvalidOperationException("W&W Inc.: Expulsion Permit card filters were not resolved.");
-            Logger.LogInfo("W&W Inc. DATA READY: 43 selected cards, 5 graft equipment, 10 relics, 4 tokens; localized content finalized.");
-            ArcaneSlayEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_ArcaneSlay");
-            ArcaneSlayConductor.Register();
-            TrainingWand.Template=ctx.GetCardUpgrade("WW_G01_Upgrade");
-            BannerPresentation.Configure((RewardNodeData)ctx.GetMapNode("WW_BannerNode"),ctx.GetSprite("WW_ClanIconSmall"));
-            MineMineMine.Trigger=ctx.GetCharacterTriggerEnum("WW_MineMineMine");
-            OverdamageEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overdamage");
-            OverhealEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overheal");
-            UnitSpellPassives.Representative=ctx.GetCharacter("WW_U17_Character");
-            UnitSpellPassives.FirstAid=ctx.GetCharacter("WW_U02_Character");
-            UnitSpellPassives.Education=ctx.GetCharacter("WW_U04_Character");
-            AcademicTooltips.ClassId=ctx.GetClass("WW_Class").GetID();
-            RunLoadDiagnostic.DataReady=true;
-            FrozenTuition.Source=ctx.GetCharacter("WW_U18_Character")??throw new InvalidOperationException("Missing Frozen Tuition character");
-            SpellRules.HitDiscountUpgrade=ctx.GetCardUpgrade("WW_S09_Discount");
-            StatusEffectAcademicScholarship.Id=ctx.GetStatusEffect("ww_scholarship").GetStatusId();
-            DissertationMarker.StatusId=ctx.GetStatusEffect("ww_dissertation").GetStatusId();
-            DissertationTargeting.AllyChoice=ctx.GetCard("WW_Dissertation_Allies");
-            DissertationTargeting.EnemyChoice=ctx.GetCard("WW_Dissertation_Enemies");
-            CateringRules.Stand=ctx.GetCharacter("WW_Token_IceCreamStand");
-            CateringRules.Serving=ctx.GetCharacter("WW_Token_IceCream");
-            SocialRules.Chaperon=ctx.GetCharacter("WW_Token_Chaperon");
-            SocialRules.Chaperona=ctx.GetCharacter("WW_Token_Chaperona");
-            SocialRules.Wizard=ctx.GetSubtype("WW_Wizard");SocialRules.Witch=ctx.GetSubtype("WW_Witch");SocialRules.Chaperone=ctx.GetSubtype("WW_Chaperone");
+            try
+            {
+                var cardIds=new[]{"WW_C01","WW_C02","WW_T01","WW_T02","WW_U01","WW_U02","WW_U03","WW_U04","WW_U05","WW_U06","WW_U08","WW_U10","WW_U11","WW_U13","WW_U16","WW_U17","WW_U18","WW_S01","WW_S02","WW_S03","WW_S04","WW_S05","WW_S06","WW_S07","WW_S08","WW_S09","WW_S10","WW_S11","WW_S12","WW_S13","WW_S14","WW_S15","WW_S16","WW_S17","WW_S18","WW_S19","WW_S20","WW_S21","WW_S22","WW_S23","WW_S24","WW_S25","WW_S26","WW_E01","WW_E02","WW_E03","WW_R01","WW_R02","WW_S27","WW_S28","WW_S29","WW_S30","WW_S31","WW_S32","WW_G01","WW_G02","WW_G03","WW_G04","WW_G05"};
+                var missingCards=cardIds.Where(id=>ctx.GetCard(id)==null).ToArray();
+                var missingRelics=new[]{"WW_A01","WW_A02","WW_A03","WW_A04","WW_A05","WW_A06","WW_A07","WW_A08","WW_A09","WW_A10"}.Where(id=>ctx.GetRelic(id)==null).ToArray();
+                if(missingCards.Length>0||missingRelics.Length>0||ctx.GetClass("WW_Class")==null)
+                    throw new InvalidOperationException("W&W Inc. incomplete registration: "+string.Join(",",missingCards.Concat(missingRelics)));
+                var purgeMask=ctx.GetCardUpgradeMask("WW_E01_PurgeableMask");
+                var permitEffect=ctx.GetCard("WW_E01_Ability").GetEffects()[0];
+                if(purgeMask==null||permitEffect.GetParamCardFilter()!=purgeMask)
+                    throw new InvalidOperationException("W&W Inc.: Expulsion Permit card filters were not resolved.");
+                ArcaneSlayEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_ArcaneSlay");
+                TrainingWand.Template=ctx.GetCardUpgrade("WW_G01_Upgrade");
+                BannerPresentation.Configure((RewardNodeData)ctx.GetMapNode("WW_BannerNode"),ctx.GetSprite("WW_ClanIconSmall"));
+                MineMineMine.Trigger=ctx.GetCharacterTriggerEnum("WW_MineMineMine");
+                OverdamageEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overdamage");
+                OverhealEvent.Trigger=ctx.GetCharacterTriggerEnum("WW_Overheal");
+                UnitSpellPassives.Representative=ctx.GetCharacter("WW_U17_Character");
+                UnitSpellPassives.FirstAid=ctx.GetCharacter("WW_U02_Character");
+                UnitSpellPassives.Education=ctx.GetCharacter("WW_U04_Character");
+                AcademicTooltips.ClassId=ctx.GetClass("WW_Class").GetID();
+                FrozenTuition.Source=ctx.GetCharacter("WW_U18_Character")??throw new InvalidOperationException("Missing Frozen Tuition character");
+                SpellRules.HitDiscountUpgrade=ctx.GetCardUpgrade("WW_S09_Discount");
+                StatusEffectAcademicScholarship.Id=ctx.GetStatusEffect("ww_scholarship").GetStatusId();
+                DissertationMarker.StatusId=ctx.GetStatusEffect("ww_dissertation").GetStatusId();
+                DissertationTargeting.AllyChoice=ctx.GetCard("WW_Dissertation_Allies");
+                DissertationTargeting.EnemyChoice=ctx.GetCard("WW_Dissertation_Enemies");
+                CateringRules.Stand=ctx.GetCharacter("WW_Token_IceCreamStand");
+                CateringRules.Serving=ctx.GetCharacter("WW_Token_IceCream");
+                SocialRules.Chaperon=ctx.GetCharacter("WW_Token_Chaperon");
+                SocialRules.Chaperona=ctx.GetCharacter("WW_Token_Chaperona");
+                SocialRules.Wizard=ctx.GetSubtype("WW_Wizard");SocialRules.Witch=ctx.GetSubtype("WW_Witch");SocialRules.Chaperone=ctx.GetSubtype("WW_Chaperone");
+                if(!hooksInstalled)
+                {
+                    new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
+                    hooksInstalled=true;
+                }
+                GrantedEffectTooltips.Register(cardIds.Select(id=>ctx.GetCard(id)));
+                ArcaneSlayConductor.Register();
+                RunLoadDiagnostic.DataReady=true;
+                Logger.LogInfo("W&W Inc. DATA READY: 43 selected cards, 5 graft equipment, 10 relics, 4 tokens; localized content finalized.");
+                Logger.LogInfo("W&W Inc.: academic mechanics 0.1.169 loaded; local Trample/Explosive guard enabled");
+            }
+            catch(Exception error)
+            {
+                RunLoadDiagnostic.DataReady=false;
+                new Harmony(Guid).UnpatchSelf();
+                hooksInstalled=false;
+                Logger.LogError("W&W Inc. failed to initialize; its hooks are disabled. Do not use this clan in this session. Other mods may continue initialization.");
+                Logger.LogError(error);
+            }
         });
-        new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
-        Logger.LogInfo("W&W Inc.: academic mechanics 0.1.167 loaded; local Trample/Explosive guard enabled");
     }
     internal static void Log(string message) => Instance.Logger.LogInfo(message);
 }
@@ -341,3 +359,11 @@ public sealed class Plugin : BaseUnityPlugin
 // 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Marcar finalización de registro de clase para diagnóstico de reanudación
 // 2026-10-27-1543||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar versión 0.1.166 con propuestas de corrección aprobadas
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar desarrollo 0.1.167 con mejoras de compatibilidad aprobadas
+// 2026-10-27-2205||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Aislar fallo propio de WhenReady y activar hooks solo tras referencias completas; retirar parches parciales sin cortar callbacks de otros mods
+// 2026-10-27-2208||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar correcciones posteriores a auditoría externa como desarrollo 0.1.168
+// 2026-10-27-2209||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Emitir DATA READY únicamente tras completar referencias, parches y registro de trigger
+// 2026-10-27-2211||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Conservar estado de instalación Harmony propio por instancia para callbacks ready repetidos
+// 2026-10-27-2211||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Evitar duplicar hooks al repetir finalización de datos durante la misma sesión
+// 2026-10-27-2211||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Permitir recuperación de instalación de hooks tras fallo sin conservar indicador obsoleto
+// 2026-10-27-2325||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Identificar versión documental .169 sin cambiar mecánicas ni README
+// 2026-10-29-1401||codex-ww-inc||salidas/build/ww-inc/src/Plugin.cs||Registrar efectos reales de cartas y triggers del clan antes de habilitar los parches de tooltips

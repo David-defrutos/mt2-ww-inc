@@ -8,9 +8,8 @@ internal static class ReservedSpellMarkers
 {
     internal static CardUpgradeState? Marker(CardState? card)
     {
-        var all=AllGameManagers.Instance;
-        if(card==null||all==null||!all.AreMainSceneOnlyManagersInitialized()||!SpellRules.ReservedCards.Contains(card))return null;
-        var data=all.GetCoreManagers().GetAllGameData().GetAllCardUpgradeData()
+        if(card==null||!BattlePresentationContext.TryGet(out var core)||!SpellRules.ReservedCards.Contains(card))return null;
+        var data=core.GetAllGameData().GetAllCardUpgradeData()
             .FirstOrDefault(u=>u!=null&&u.name.EndsWith("WW_ReservedMarker",System.StringComparison.Ordinal));
         if(data==null)return null;
         var marker=new CardUpgradeState();marker.Setup(data);return marker;
@@ -23,8 +22,7 @@ internal static class ReservedCemeteryViewHook
 {
     static void Postfix(DeckScreen.Mode ___mode,ref List<CardState> __result)
     {
-        var all=AllGameManagers.Instance;
-        if(___mode!=DeckScreen.Mode.ExhaustedPile||all==null||!all.AreMainSceneOnlyManagersInitialized())return;
+        if(___mode!=DeckScreen.Mode.ExhaustedPile||!BattlePresentationContext.TryGet(out _))return;
         __result=__result.Concat(SpellRules.ReservedCards).Distinct().ToList();
     }
 }
@@ -51,3 +49,4 @@ internal static class ReservedCardTooltipHook
 }
 
 // 2026-10-11-1637||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/ReservedSpellMarkers.cs||Mostrar apartadas en cementerio y marcador visual basado en Vesper, sin añadir mejoras reales
+// 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/ReservedSpellMarkers.cs||Ocultar marcadores y cartas de standby de batalla anterior cuando se consulta el mazo en el mapa

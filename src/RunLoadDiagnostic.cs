@@ -16,7 +16,7 @@ internal static class RunLoadDiagnostic
     {
         if(main!=null||save==null)return;
         string mainId=RawClassId(save,"GetMainClassID"),subId=RawClassId(save,"GetSubClassID");
-        string message=$"W&W LOAD DIAGNOSTIC: unresolved main clan; mainId={mainId}; subId={subId}; subResolved={sub!=null}; wwDataReady={DataReady}; wwClassId={AcademicTooltips.ClassId}; version={typeof(Plugin).Assembly.GetName().Version}. Saved IDs were not changed.";
+        string message=$"W&W LOAD DIAGNOSTIC: unresolved main clan; mainId={mainId}; subId={subId}; subResolved={sub!=null}; wwDataReady={DataReady}; wwClassId={AcademicTooltips.ClassId}; version={Plugin.Instance.Info.Metadata.Version}. Saved IDs were not changed.";
         if(message==last)return;
         last=message;Plugin.Log(message);
     }
@@ -29,3 +29,4 @@ internal static class MissingSavedClanDiagnostic
 }
 // 2026-10-27-1535||codex-ww-inc||salidas/build/ww-inc/src/RunLoadDiagnostic.cs||Diagnosticar IDs originales de clase no resuelta y momento de registro sin alterar guardado ni ocultar assertion
 // 2026-10-27-1545||codex-ww-inc||salidas/build/ww-inc/src/RunLoadDiagnostic.cs||Leer versión real del ensamblado en diagnóstico sin mantener otro literal
+// 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/RunLoadDiagnostic.cs||Usar versión declarada BepInPlugin en diagnóstico de carga

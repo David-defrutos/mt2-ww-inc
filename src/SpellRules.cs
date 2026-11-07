@@ -67,8 +67,7 @@ internal static class SpellRules
             .Any(t=>t.GetCardEffectParams().Any(HealingEffect)));
     internal static bool TargetsEnemy(CharacterState? target)=>target!=null&&target.GetTeamType()==Team.Type.Heroes;
     internal static bool IsAreaEffect(CardState card,CardEffectState effect)
-        =>AreaTurn.TryGetValue(card,out int turn)&&turn==AcademicRuntime.Turn&&
-          effect.GetTargetMode()==TargetMode.DropTargetCharacter&&effect.GetTargetTeamType().HasFlag(Team.Type.Heroes);
+        =>CollectiveAssessmentTargets.Applied(card,effect);
     internal static bool MonoEnemy(CardState card)
     {
         if(AreaTurn.TryGetValue(card,out int turn)&&turn==AcademicRuntime.Turn)return false;
@@ -380,3 +379,4 @@ internal static class AcademicPileSelectionHook
 // 2026-10-27-2024||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Compartir enumeración nativa de consumidores concretos después de hechizos
 // 2026-10-27-2203||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Calcular reembolso Course Withdrawal con coste nativo del piso seleccionado
 // 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Actualizar números y textos sin cancelar animaciones activas, como las mejoras nativas de Conductor
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/src/SpellRules.cs||Delegar conversión de área al predicado que también admite daño frontal, trasero y de sala

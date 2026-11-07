@@ -503,6 +503,66 @@ afterPlayContext.Save.InBattle=false;Run(FrozenCardPlays.AfterNativeRelics(Nativ
 Check(afterPlayCore.Cards.Drawn==1,"Map callback cannot award a pending battle draw");
 FrozenCardPlays.Pending.Clear();AllGameManagers.Instance=null;
 
+// Collective Assessment: execute production eligibility and query hooks against
+// native-shaped data; Unity/TargetHelper own actual unit filtering.
+AcademicRuntime.Active=true;AcademicRuntime.Turn=7;SpellRules.AreaTurn.Clear();
+CardState AssessmentSpell(TargetMode mode,Team.Type team=Team.Type.Heroes)
+{
+ var card=new CardState();card.Effects.Add(new(team,mode){Effect=new CardEffectDamage(),Parent=card});return card;
+}
+foreach(var mode in new[]{TargetMode.DropTargetCharacter,TargetMode.FrontInRoom,TargetMode.BackInRoom,TargetMode.Room})
+{
+ var spell=AssessmentSpell(mode);var effect=spell.Effects[0];
+ Check(CollectiveAssessmentTargets.Eligible(spell,core.Combat),mode+": direct enemy damage is eligible");
+ SpellRules.AreaTurn[spell]=AcademicRuntime.Turn;
+ var statusFilter=new object();var subtypeFilter=new object();var excludedFilter=new object();
+ var query=new TargetHelper.CollectTargetsData{targetMode=mode,targetTeamType=Team.Type.Heroes,roomIndex=2,
+  targetIgnoreBosses=true,ignorePyre=true,ignoreDead=true,isTesting=true,
+  targetSubtype=subtypeFilter,targetModeStatusEffectsFilter=statusFilter,targetExcludedSubtypesFilter=excludedFilter};
+ CollectiveTargetScopeHook.Prefix(effect,new(){playedCard=spell},out var opened);
+ try {CollectiveNativeTargetsHook.Prefix(ref query);}
+ finally {CollectiveTargetScopeHook.Finalizer(opened);}
+ Check(query.targetMode==TargetMode.Room&&query.targetTeamType==Team.Type.Heroes,mode+": becomes native enemy Room targeting");
+ Check(query.roomIndex==2&&query.targetIgnoreBosses&&query.ignorePyre&&query.ignoreDead&&query.isTesting&&
+  ReferenceEquals(query.targetSubtype,subtypeFilter)&&ReferenceEquals(query.targetModeStatusEffectsFilter,statusFilter)&&
+  ReferenceEquals(query.targetExcludedSubtypesFilter,excludedFilter),mode+": retains boss, status, subtype, floor and testing restrictions");
+ Check(effect.GetTargetMode()==mode&&CollectiveAssessmentTargets.Queries.Count==0,mode+": effect data and scope remain unchanged after query");
+}
+foreach(var mode in new[]{TargetMode.RandomInRoom,TargetMode.RandomFromAnyRoom,TargetMode.Tower,TargetMode.FrontInAllRooms,TargetMode.LastTargetedCharacters,TargetMode.Self})
+ Check(!CollectiveAssessmentTargets.Eligible(AssessmentSpell(mode),core.Combat),mode+": unsupported targeting is ineligible before spending an activation");
+var bothAssessment=AssessmentSpell(TargetMode.DropTargetCharacter,Team.Type.Monsters|Team.Type.Heroes);
+Check(CollectiveAssessmentTargets.Eligible(bothAssessment,core.Combat),"Both-team damage supports conversion to enemies only");
+SpellRules.AreaTurn[bothAssessment]=AcademicRuntime.Turn;
+CollectiveTargetScopeHook.Prefix(bothAssessment.Effects[0],new(){playedCard=bothAssessment},out var bothScope);
+var bothQuery=new TargetHelper.CollectTargetsData{targetMode=TargetMode.DropTargetCharacter,targetTeamType=Team.Type.Monsters|Team.Type.Heroes};
+CollectiveNativeTargetsHook.Prefix(ref bothQuery);
+Check(bothQuery.targetTeamType==Team.Type.Heroes,"Converting Both damage does not add friendly casualties");
+var healingEffect=new CardEffectState(Team.Type.Monsters,TargetMode.DropTargetCharacter){Effect=new CardEffectHeal(),Parent=bothAssessment};
+bothAssessment.Effects.Add(healingEffect);
+Check(CollectiveAssessmentTargets.Eligible(bothAssessment,core.Combat),"Mixed damage/healing spell remains eligible");
+CollectiveTargetScopeHook.Prefix(healingEffect,new(){playedCard=bothAssessment},out var healingScope);
+var healQuery=new TargetHelper.CollectTargetsData{targetMode=TargetMode.DropTargetCharacter,targetTeamType=Team.Type.Monsters};
+CollectiveNativeTargetsHook.Prefix(ref healQuery);
+Check(healQuery.targetMode==TargetMode.DropTargetCharacter&&healQuery.targetTeamType==Team.Type.Monsters,
+ "Nested healing query shadows damage scope and preserves the original allied target");
+CollectiveTargetScopeHook.Finalizer(healingScope);CollectiveTargetScopeHook.Finalizer(bothScope);
+var staleAssessment=AssessmentSpell(TargetMode.FrontInRoom);SpellRules.AreaTurn[staleAssessment]=AcademicRuntime.Turn-1;
+Check(!CollectiveAssessmentTargets.Applied(staleAssessment,staleAssessment.Effects[0]),"Area conversion expires with its combat turn");
+SpellRules.AreaTurn[staleAssessment]=AcademicRuntime.Turn;AcademicRuntime.Active=false;
+Check(!CollectiveAssessmentTargets.Applied(staleAssessment,staleAssessment.Effects[0]),"Out-of-combat queries never reuse a marked spell");AcademicRuntime.Active=true;
+var customRandomAssessment=AssessmentSpell(TargetMode.FrontInRoom);customRandomAssessment.Effects[0].Random=true;
+Check(!CollectiveAssessmentTargets.Eligible(customRandomAssessment,core.Combat),"Native random-target detection rejects custom random damage despite a supported nominal mode");
+var triggerOnlyAssessment=new CardState();
+Check(!CollectiveAssessmentTargets.Eligible(triggerOnlyAssessment,core.Combat),"Damage classification without a direct damage effect is not enough");
+Check(!CollectiveAssessmentTargets.Eligible(AssessmentSpell(TargetMode.FrontInRoom,Team.Type.Monsters),core.Combat),"Ally-only damage is not silently halved without conversion");
+var abilityAssessment=AssessmentSpell(TargetMode.FrontInRoom);abilityAssessment.Ability=true;
+Check(!CollectiveAssessmentTargets.Eligible(abilityAssessment,core.Combat),"Abilities are not eligible spells");
+var untouchedQuery=new TargetHelper.CollectTargetsData{targetMode=TargetMode.FrontInRoom,targetTeamType=Team.Type.Heroes};
+CollectiveNativeTargetsHook.Prefix(ref untouchedQuery);
+Check(untouchedQuery.targetMode==TargetMode.FrontInRoom&&CollectiveAssessmentTargets.Queries.Count==0,
+ "Unrelated native target queries keep their mode with no leaked scope");
+SpellRules.AreaTurn.Clear();
+
 Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,errors}));return errors.Count==0?0:1;
 // 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/CombatSafety/Program.cs||Regresiones reales de hover, daño temporal, devolución real, Immortal Trade, armadura, exceso y escudos
 // 2026-10-25-1850||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/CombatSafety/Program.cs||Probar signo único, preservación de aviso nativo y aislamiento de mejoras ajenas y valores no negativos
@@ -534,3 +594,4 @@ Console.WriteLine(JsonSerializer.Serialize(new{success=errors.Count==0,checks,er
 // 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Reproducir pantalla de recompensas con gestores retenidos y comprobar 1000 lecturas sin acceder al combate
 // 2026-10-29-2038||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Reproducir confirmación tardía tras victoria y verificar mano intacta, filtros inactivos y ausencia de nuevas interfaces
 // 2026-10-29-2039||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Probar transición a recompensas durante la propia coroutine elegida sin ejecutar después la cola antigua
+// 2026-11-07-1059||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/Program.cs||Regresiones de daño frontal/trasero, área, filtros nativos, ambos bandos, hechizos mixtos, scopes anidados y vencimiento

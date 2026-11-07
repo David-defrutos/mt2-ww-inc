@@ -1,9 +1,9 @@
 using System.Collections;
-namespace HarmonyLib{[AttributeUsage(AttributeTargets.Class)]public class HarmonyPatchAttribute:Attribute{public HarmonyPatchAttribute(Type t,string name){_=t;_=name;}}}
+namespace HarmonyLib{[AttributeUsage(AttributeTargets.Class)]public class HarmonyPatchAttribute:Attribute{public HarmonyPatchAttribute(){}public HarmonyPatchAttribute(Type t,string name,Type[]? args=null){_=t;_=name;_=args;}}}
 public static class Team{[Flags]public enum Type{None=0,Monsters=1,Heroes=2}}
 public enum CardType{Spell,Monster,Equipment}
 public enum TargetMode{DropTargetCharacter,Room,RandomInRoom,FrontInRoom,BackInRoom,FrontWithStatus,Weakest,Tower,FrontInAllRooms,FrontInRoomAndRoomAbove,WeakestAllRooms,StrongestAllRooms,RandomFromAnyRoom,LastTargetedCharacters,Self,Hand}
-public class CardEffectState(Team.Type team,TargetMode mode){public CardEffectState():this(Team.Type.Monsters,TargetMode.Self){}public CardEffectData Data=new();public int Param=5;public StatusEffectStackData[]? Override;public void Setup(CardEffectData data,Team.Type source,SaveManager save){Data=data;Param=data.Multiplier;}public CardEffectData GetSourceCardEffectData()=>Data;public int GetParamInt()=>Param;public void SetParamInt(int v)=>Param=v;public void SetParamStatusEffects(StatusEffectStackData[] s)=>Override=s;public StatusEffectStackData[] GetParamStatusEffectStackData()=>Override??Data.Statuses;public object? Effect;public object? GetCardEffect()=>Effect;public Team.Type GetTargetTeamType()=>team;public TargetMode GetTargetMode()=>mode;public CardState? Parent=new();public CardState? GetParentCardState()=>Parent;}
+public class CardEffectState(Team.Type team,TargetMode mode){public bool Random;public bool HasRandomTarget(CombatManager combat)=>Random||mode==TargetMode.RandomInRoom;public CardEffectState():this(Team.Type.Monsters,TargetMode.Self){}public CardEffectData Data=new();public int Param=5;public StatusEffectStackData[]? Override;public void Setup(CardEffectData data,Team.Type source,SaveManager save){Data=data;Param=data.Multiplier;}public CardEffectData GetSourceCardEffectData()=>Data;public int GetParamInt()=>Param;public void SetParamInt(int v)=>Param=v;public void SetParamStatusEffects(StatusEffectStackData[] s)=>Override=s;public StatusEffectStackData[] GetParamStatusEffectStackData()=>Override??Data.Statuses;public object? Effect;public object? GetCardEffect()=>Effect;public Team.Type GetTargetTeamType()=>team;public TargetMode GetTargetMode()=>mode;public CardState? Parent=new();public CardState? GetParentCardState()=>Parent;}
 public class CardTraitFreeze{}
 public class CharacterData{public string name="";}
 public class CardState{public enum UpgradeDisabledReason{NONE,NotEligible}public bool Duality;public bool HasDualityStatusEffect()=>Duality;public bool IsEquipmentCard()=>Type==CardType.Equipment;public static readonly CardState None=new();public bool Frozen;public bool Consumed,Damage=true,Healing,SingleEnemy=true;public bool GetIsDamageCard()=>Damage;public bool HasTrait(Type type)=>(Frozen&&type==typeof(CardTraitFreeze))||(Consumed&&type==typeof(CardTraitExhaustState));public CardType Type=CardType.Spell;public bool Ability;public int Cost=1;public List<CardEffectState> Effects=new();public CardType GetCardType()=>Type;public bool IsAnyAbility()=>Ability;public List<CardEffectState> GetEffectStates()=>Effects;public int GetCostWithoutAnyModifications()=>Cost;public int GetLastPlayedCost()=>Cost;}
@@ -57,7 +57,7 @@ namespace WwInc
   internal class SpellResolution{internal CardState Card=null!;internal int Floor,BonusPower;internal bool Indirect;internal HashSet<string> Rules=new();internal int RepresentativeDamage;internal int EffectiveDamage=7;}
   internal static List<CharacterState> Units(int floor)=>UnitSpellPassives.Units(Core,floor);
   internal static readonly HashSet<CharacterState> ZeroAttack=new();
-  internal static ICoreGameManagers Core=null!;internal static bool Simulating=false;internal static bool Active=true;internal static int ConversionDepth;internal static readonly Stack<SpellResolution> Frames=new();
+  internal static int Turn;internal static ICoreGameManagers Core=null!;internal static bool Simulating=false;internal static bool Active=true;internal static int ConversionDepth;internal static readonly Stack<SpellResolution> Frames=new();
  }
 }
 // 2026-10-25-1606||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/tests/CombatSafety/NativeDoubles.cs||Dobles con energía real no aislada y estados temporales por unidad para reproducir fuga de hover
@@ -216,7 +216,7 @@ namespace WwInc
  internal static class SpellRules
  {
   internal class Rule{internal string Kind="";internal int Floor=-1;}
-  internal static HashSet<string> OnceTurn=new();internal static int TuitionRefundCount;
+  internal static Dictionary<CardState,int> AreaTurn=new();internal static HashSet<string> OnceTurn=new();internal static int TuitionRefundCount;
   internal static List<(CardState card,string rule)> Rules=new();
   internal static void AddRule(CardState card,string rule)=>Rules.Add((card,rule));
   internal static bool IsHealingSpell(CardState card)=>card.Healing;
@@ -299,3 +299,21 @@ public interface ITurnPhaseEndOfBattleRelicEffect
 // 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar valor nativo por defecto para probar que selector Intern lo restringe explícitamente
 // 2026-10-29-2033||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar opciones nativas de refresco para comprobar que la limpieza no cancela animaciones ni pisa selectores nuevos
 // 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar que el helper nativo IsInBattle acepta recompensas aunque no sean combate jugable
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Permitir atributos de los hooks de consulta nativa en arnés de Collective Assessment
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar detección nativa de aleatoriedad para filtro compartido
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Añadir turno de combate al doble usado en conversión temporal
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Modelar registro temporal de hechizos convertidos sin implementar conversión en el doble
+
+public class CardEffectDamage { }
+public class CardEffectHeal { }
+public static class TargetHelper
+{
+ public struct CollectTargetsData
+ {
+  public TargetMode targetMode;public Team.Type targetTeamType;public int roomIndex;
+  public bool targetIgnoreBosses,ignorePyre,ignoreDead,isTesting;
+  public object? targetSubtype,targetModeStatusEffectsFilter,targetExcludedSubtypesFilter;
+ }
+ public static void CollectTargets() { }
+}
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/tests/CombatSafety/NativeDoubles.cs||Añadir metadatos de consulta nativa para comprobar preservación de filtros, contexto y ámbito

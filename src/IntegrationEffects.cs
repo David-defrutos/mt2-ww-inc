@@ -95,8 +95,7 @@ internal static class EligibleRedirectHook
         AcademicRuntime.Core=coreGameManagers;
         if(SpellRules.IsAreaEffect(card,effectState))
         {
-            cardEffectParams.targets.Clear();
-            cardEffectParams.targets.AddRange(RedirectTargets.InRoom(coreGameManagers.GetRoomManager().GetRoom(cardEffectParams.selectedRoom),Team.Type.Heroes));
+            // Already collected by the native Room query, including its original filters.
             return;
         }
         if(!effectState.GetTargetTeamType().HasFlag(Team.Type.Heroes))return;
@@ -334,3 +333,4 @@ public sealed class CardEffectAcademicCopyLastCommon : AcademicEffectBase
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Resolver descarte y robo en misma confirmación
 // 2026-10-26-2029||codex-ww-inc||repos/MT2/repos-propios/mt2-ww-inc/src/IntegrationEffects.cs||Course Withdrawal: descartar, Ember y luego DrawCards nativo
 // 2026-10-29-1945||codex-ww-inc||salidas/build/ww-inc/src/IntegrationEffects.cs||Igualar selectores nativos: impedir interfaces nuevas después de morir el jefe y durante transición a recompensas
+// 2026-11-07-1058||codex-ww-inc||salidas/build/ww-inc/src/IntegrationEffects.cs||Conservar objetivos de área calculados nativamente, evitando reinsertar enemigos excluidos por filtros

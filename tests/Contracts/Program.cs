@@ -530,7 +530,15 @@ foreach(var starterId in new[]{"WW_T01","WW_T02"})
 foreach(var bannerId in poolMembers)
     Check(bannerData["cards"][bannerId].GetProperty("pools").EnumerateArray().Select(p=>p.GetString()).SequenceEqual(new[]{"UnitsAllBanner"}),bannerId+": banner excluded from normal rewards");
 var areaPredicate=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").Methods.Single(m=>m.Name=="IsAreaEffect");
-Check(areaPredicate.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="HasFlag"),"Shared Damages accepts enemy-capable Both team flags");
+var collective=mod.MainModule.Types.Single(t=>t.Name=="CollectiveAssessmentTargets");
+Check(areaPredicate.Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.DeclaringType.Name==collective.Name&&c.Name=="Applied")&&
+    collective.Methods.Single(m=>m.Name=="Supported").Body.Instructions.Any(i=>i.Operand is MethodReference c&&c.Name=="HasFlag"),
+    "Shared Damages delegates to the same supported enemy-capable effect predicate as native query conversion");
+var convertFields=collective.Methods.Single(m=>m.Name=="Convert").Body.Instructions
+    .Where(i=>i.OpCode==Mono.Cecil.Cil.OpCodes.Stfld).Select(i=>((FieldReference)i.Operand).Name).ToArray();
+Check(convertFields.SequenceEqual(new[]{"targetMode","targetTeamType"}),"Collective Assessment changes only native query mode/team, preserving every native filter");
+Check(mod.MainModule.Types.Single(t=>t.Name=="CollectiveTargetScopeHook").Methods.Any(m=>m.Name=="Finalizer"),
+    "Collective target scope is unwound even if a native targeting query throws");
 foreach(var hookName in new[]{"EligibleRedirectHook","RedirectTargetHook"})
     Check(mod.MainModule.Types.Single(t=>t.Name==hookName).Methods.SelectMany(m=>m.HasBody?m.Body.Instructions.AsEnumerable():Enumerable.Empty<Mono.Cecil.Cil.Instruction>()).Any(i=>i.Operand is MethodReference c&&c.Name=="IsAreaEffect"),hookName+": shared area predicate controls targeting");
 var beforeIterator=mod.MainModule.Types.Single(t=>t.Name=="SpellRules").NestedTypes.Single(t=>t.Name.StartsWith("<Before>")).Methods.Single(m=>m.Name=="MoveNext");
@@ -1397,3 +1405,4 @@ return errors.Count==0?0:1;
 // 2026-10-29-2035||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Auditar refrescos también dentro de coroutines compiladas, no solo métodos superiores
 // 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Comprobar API nativa de fase exacta en el binario instalado
 // 2026-10-29-2037||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Verificar fase exacta del juego para impedir contexto retenido en recompensas
+// 2026-11-07-1059||codex-ww-inc||salidas/build/ww-inc/tests/Contracts/Program.cs||Actualizar contratos para conversión nativa y comprobar que no sobrescribe filtros originales
